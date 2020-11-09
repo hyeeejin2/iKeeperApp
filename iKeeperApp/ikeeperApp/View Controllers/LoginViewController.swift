@@ -11,19 +11,12 @@ class LoginViewController: UIViewController {
 
     @IBOutlet weak var idValue: UITextField!
     @IBOutlet weak var pwValue: UITextField!
-    @IBOutlet weak var errorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
-        setUpElements()
     }
 
-    func setUpElements() {
-        // Hide the error label
-        errorLabel.alpha = 0
-    }
     @IBAction func loginButton(_ sender: UIButton) {
         
         guard let id: String = idValue.text, id.isEmpty == false else {
@@ -79,6 +72,25 @@ class LoginViewController: UIViewController {
     
     func transitionHome() {
         
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let homeViewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController)
+        let rootViewController = UINavigationController(rootViewController: homeViewController)
+        
+        view.window?.rootViewController = rootViewController
+        view.window?.makeKeyAndVisible()
+/*
+        // navigation stack에 homeView push
+        let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC")
+        self.navigationController?.pushViewController(homeViewController!, animated: true)
+ */
+        
+/*
+        self.navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+        self.navigationController?.popToRootViewController(animated: true)
+*/
+        
+/*
         // homeViewController에 대한 참조 상수
         let homeViewController = storyboard?.instantiateViewController(identifier:
                                                                         Constants.Storyboard.homeViewController)
@@ -86,6 +98,7 @@ class LoginViewController: UIViewController {
         
         view.window?.rootViewController = homeViewController // rootViewController 속성에 homeViewController 할당
         view.window?.makeKeyAndVisible() // makekeyAndVisible() 메서드 호출
+ */
     }
     /*
     // MARK: - Navigation

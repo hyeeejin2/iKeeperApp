@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--i-Keeper-->
         <scene sceneID="ihl-WM-E2v">
             <objects>
                 <viewController id="ONh-dC-FHU" customClass="ViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,29 +17,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="J30-iR-RUy">
-                                <rect key="frame" x="40" y="665.5" width="334" height="107.5"/>
+                                <rect key="frame" x="40" y="743" width="334" height="30"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pKB-Q3-fu1">
-                                        <rect key="frame" x="0.0" y="0.0" width="334" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="LU6-q4-q34" userLabel="height = 50"/>
-                                        </constraints>
-                                        <state key="normal" title="Sign Up"/>
-                                        <connections>
-                                            <segue destination="6FG-Ge-tKf" kind="show" id="W98-HE-dsT"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETU-1g-cBP">
-                                        <rect key="frame" x="0.0" y="70" width="334" height="37.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="334" height="30"/>
                                         <state key="normal" title="Login"/>
                                         <connections>
                                             <segue destination="BYZ-38-t0r" kind="show" id="PMY-sy-Ox0"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="ETU-1g-cBP" firstAttribute="height" secondItem="pKB-Q3-fu1" secondAttribute="height" multiplier="0.75" id="wHd-dE-7Eg"/>
-                                </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="i-Keeper" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfu-s3-0jp">
                                 <rect key="frame" x="144.5" y="427.5" width="125.5" height="41"/>
@@ -58,40 +45,13 @@
                             <constraint firstItem="J30-iR-RUy" firstAttribute="leading" secondItem="Wuw-GM-Du9" secondAttribute="leading" constant="40" id="xdA-dj-ZOt"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="RnZ-Xi-QEQ"/>
+                    <navigationItem key="navigationItem" title="i-Keeper" id="RnZ-Xi-QEQ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZZW-eF-D4Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-739.13043478260875" y="-105.13392857142857"/>
+            <point key="canvasLocation" x="-761" y="-105"/>
         </scene>
-        <!--Home View Controller-->
-        <scene sceneID="NOe-Yo-kIY">
-            <objects>
-                <viewController storyboardIdentifier="HomeVC" id="96h-ed-PxU" customClass="HomeViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vKL-LI-Nl7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="i-Keeper Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxx-Vl-tbD">
-                                <rect key="frame" x="115.5" y="431" width="183" height="34"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="ZU9-5C-DQr"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="rxx-Vl-tbD" firstAttribute="centerY" secondItem="vKL-LI-Nl7" secondAttribute="centerY" id="fCs-Kd-AOw"/>
-                            <constraint firstItem="rxx-Vl-tbD" firstAttribute="centerX" secondItem="vKL-LI-Nl7" secondAttribute="centerX" id="ma4-Pc-L58"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aBF-ls-I8Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="955" y="-105"/>
-        </scene>
-        <!--Login View Controller-->
+        <!--Login-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="LoginVC" id="BYZ-38-t0r" customClass="LoginViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -100,9 +60,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7m0-hO-N6a">
-                                <rect key="frame" x="40" y="148" width="334" height="200.5"/>
+                                <rect key="frame" x="40" y="148" width="334" height="220"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AwP-Wr-wH5">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="studentID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AwP-Wr-wH5">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -122,12 +82,18 @@
                                             <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qov-8S-E1I"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZS-2H-cXk">
-                                        <rect key="frame" x="0.0" y="180" width="334" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" systemColor="systemRedColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYP-sf-4Md">
+                                        <rect key="frame" x="0.0" y="180" width="334" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="EEp-6r-RUG"/>
+                                        </constraints>
+                                        <state key="normal" title="Don't have an account yet?  Sign Up">
+                                            <color key="titleColor" systemColor="systemRedColor"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="6FG-Ge-tKf" kind="show" id="tgx-uz-tqR"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="eXr-PM-Xpx" firstAttribute="height" secondItem="AwP-Wr-wH5" secondAttribute="height" id="ZJw-wk-0Qb"/>
@@ -143,27 +109,26 @@
                             <constraint firstItem="7m0-hO-N6a" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="HWI-H9-HWY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="XKh-l5-4zy"/>
+                    <navigationItem key="navigationItem" title="Login" id="XKh-l5-4zy"/>
                     <connections>
-                        <outlet property="errorLabel" destination="aZS-2H-cXk" id="5LT-uO-SXi"/>
                         <outlet property="idValue" destination="AwP-Wr-wH5" id="jj8-L3-1kh"/>
                         <outlet property="pwValue" destination="eXr-PM-Xpx" id="KGe-k3-dtM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="129" y="306"/>
+            <point key="canvasLocation" x="90" y="-483"/>
         </scene>
-        <!--Sign Up View Controller-->
+        <!--Sign Up-->
         <scene sceneID="kzg-xb-ieA">
             <objects>
-                <viewController id="6FG-Ge-tKf" customClass="SignUpViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpVC" id="6FG-Ge-tKf" customClass="SignUpViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZWI-uf-il7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="U1B-i0-bIj">
-                                <rect key="frame" x="40" y="120" width="334" height="620.5"/>
+                                <rect key="frame" x="40" y="120" width="334" height="580"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="studentID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yqO-DE-dC4">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
@@ -224,12 +189,6 @@
                                             <action selector="signUpButton:" destination="6FG-Ge-tKf" eventType="touchUpInside" id="lse-Us-T7T"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSx-YK-SD8">
-                                        <rect key="frame" x="0.0" y="600" width="334" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" systemColor="systemRedColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Bk4-M1-Lfz" firstAttribute="height" secondItem="yqO-DE-dC4" secondAttribute="height" id="0ZT-tD-TIZ"/>
@@ -255,11 +214,10 @@
                             <constraint firstItem="W2Q-oX-BlD" firstAttribute="trailing" secondItem="U1B-i0-bIj" secondAttribute="trailing" constant="40" id="ziJ-n1-YPR"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="8dv-QR-UPs"/>
+                    <navigationItem key="navigationItem" title="Sign Up" id="8dv-QR-UPs"/>
                     <connections>
                         <outlet property="departmentValue" destination="Bk4-M1-Lfz" id="hhC-gZ-nXR"/>
                         <outlet property="emailValue" destination="bR5-TX-S5j" id="34f-zj-uri"/>
-                        <outlet property="errorLabel" destination="tSx-YK-SD8" id="es0-qd-H2Q"/>
                         <outlet property="gradeValue" destination="mng-Zk-isN" id="TBD-kL-6qh"/>
                         <outlet property="nameValue" destination="d56-Rf-E6F" id="Yea-8q-CgH"/>
                         <outlet property="partControl" destination="nZ3-zt-SGz" id="bu2-k2-Eyb"/>
@@ -271,7 +229,57 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SSG-mH-J6e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="129" y="-360"/>
+            <point key="canvasLocation" x="90" y="265"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="Ijc-oI-buy">
+            <objects>
+                <viewController storyboardIdentifier="HomeVC" id="wfz-wj-6ey" customClass="HomeViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fpe-B7-JDu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eue-gn-wBD">
+                                <rect key="frame" x="324" y="381" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="test"/>
+                                <connections>
+                                    <segue destination="evl-F7-Ihv" kind="show" id="Od5-bC-3Cq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="56l-1P-TfY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Home" id="Qtl-XC-deA">
+                        <barButtonItem key="rightBarButtonItem" title="menu" id="gbJ-Q1-kVg">
+                            <connections>
+                                <action selector="menuButton:" destination="wfz-wj-6ey" id="vqQ-yv-n51"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dKg-1l-7Tb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="995.65217391304361" y="-105.13392857142857"/>
+        </scene>
+        <!--Calendar View Controller-->
+        <scene sceneID="Wwg-wR-sfq">
+            <objects>
+                <viewController id="evl-F7-Ihv" customClass="CalendarViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ftx-MZ-dxg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="s27-nK-f8L"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="3Lj-J7-nYD"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hzz-9B-Xs4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1812" y="-105"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6Mk-NT-rzq">

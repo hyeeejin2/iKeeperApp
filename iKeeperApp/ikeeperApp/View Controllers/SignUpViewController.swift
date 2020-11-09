@@ -18,18 +18,12 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailValue: UITextField!
     @IBOutlet weak var partControl: UISegmentedControl!
     @IBOutlet weak var statusControl: UISegmentedControl!
-    @IBOutlet weak var errorLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        setUpElements()
     }
-    
-    func setUpElements() {
-        // Hide the error label
-        errorLabel.alpha = 0
-    }
+
 
     @IBAction func signUpButton(_ sender: UIButton) {
         guard let studentID: String = studentIDValue.text, studentID.isEmpty == false else {
@@ -96,7 +90,6 @@ class SignUpViewController: UIViewController {
             DispatchQueue.main.async() {
                 if let result = String(data: data!, encoding: .utf8), result == "success" {
                     self.showAlert(message: "회원가입 성공")
-                    self.transitionLogin()
                 } else {
                     self.showAlert(message: "회원가입 실패")
                 }
@@ -113,16 +106,6 @@ class SignUpViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func transitionLogin() {
-        let loginViewController = storyboard?.instantiateViewController(identifier:
-                                                                            Constants.Storyboard.loginViewController)
-                                                                            as? LoginViewController
-        
-        view.window?.rootViewController = loginViewController
-        view.window?.makeKeyAndVisible()
-        
-    }
-
     /*
     // MARK: - Navigation
 
@@ -130,6 +113,5 @@ class SignUpViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-    }
     */
-}
+ }

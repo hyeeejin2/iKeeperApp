@@ -3,13 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0A13DCAD2552FCBC00B3E53F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A13DCAC2552FCBC00B3E53F /* LoginViewController.swift */; };
 		0A3CC3A92555009D00AEACF9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3CC3A82555009D00AEACF9 /* SignUpViewController.swift */; };
-		0A3CC3AD25557A2000AEACF9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3CC3AC25557A2000AEACF9 /* HomeViewController.swift */; };
 		0A7A68EE2551473100DD3BC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A68ED2551473100DD3BC9 /* AppDelegate.swift */; };
 		0A7A68F02551473100DD3BC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A68EF2551473100DD3BC9 /* SceneDelegate.swift */; };
 		0A7A68F22551473100DD3BC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A68F12551473100DD3BC9 /* ViewController.swift */; };
@@ -17,12 +16,15 @@
 		0A7A68F72551473200DD3BC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A7A68F62551473200DD3BC9 /* Assets.xcassets */; };
 		0A7A68FA2551473200DD3BC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A7A68F82551473200DD3BC9 /* LaunchScreen.storyboard */; };
 		0A98D52125559DE400E4BF66 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A98D52025559DE400E4BF66 /* Constants.swift */; };
+		0AD493D82557F48700BA552E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD493D72557F48700BA552E /* HomeViewController.swift */; };
+		0AD493DD2558267C00BA552E /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD493DC2558267C00BA552E /* CalendarViewController.swift */; };
+		FF3A89ADAD5306D7E7CD1449 /* Pods_ikeeperApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8029E19F27DBDCB5C375ED7D /* Pods_ikeeperApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03D03C47217AB69227AB4B49 /* Pods-ikeeperApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ikeeperApp.release.xcconfig"; path = "Target Support Files/Pods-ikeeperApp/Pods-ikeeperApp.release.xcconfig"; sourceTree = "<group>"; };
 		0A13DCAC2552FCBC00B3E53F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0A3CC3A82555009D00AEACF9 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		0A3CC3AC25557A2000AEACF9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0A7A68EA2551473100DD3BC9 /* ikeeperApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ikeeperApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A7A68ED2551473100DD3BC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A7A68EF2551473100DD3BC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -32,6 +34,10 @@
 		0A7A68F92551473200DD3BC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A7A68FB2551473200DD3BC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A98D52025559DE400E4BF66 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0AD493D72557F48700BA552E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		0AD493DC2558267C00BA552E /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		8029E19F27DBDCB5C375ED7D /* Pods_ikeeperApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ikeeperApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		886F3A895E37B8AD54838270 /* Pods-ikeeperApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ikeeperApp.debug.xcconfig"; path = "Target Support Files/Pods-ikeeperApp/Pods-ikeeperApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF3A89ADAD5306D7E7CD1449 /* Pods_ikeeperApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,7 +58,8 @@
 				0A7A68F12551473100DD3BC9 /* ViewController.swift */,
 				0A3CC3A82555009D00AEACF9 /* SignUpViewController.swift */,
 				0A13DCAC2552FCBC00B3E53F /* LoginViewController.swift */,
-				0A3CC3AC25557A2000AEACF9 /* HomeViewController.swift */,
+				0AD493D72557F48700BA552E /* HomeViewController.swift */,
+				0AD493DC2558267C00BA552E /* CalendarViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -61,6 +69,8 @@
 			children = (
 				0A7A68EC2551473100DD3BC9 /* ikeeperApp */,
 				0A7A68EB2551473100DD3BC9 /* Products */,
+				4103AC61BCD35FD4E717B8ED /* Pods */,
+				D39C8B9A180AC68CDF64ABB2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,6 +105,23 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		4103AC61BCD35FD4E717B8ED /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				886F3A895E37B8AD54838270 /* Pods-ikeeperApp.debug.xcconfig */,
+				03D03C47217AB69227AB4B49 /* Pods-ikeeperApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D39C8B9A180AC68CDF64ABB2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8029E19F27DBDCB5C375ED7D /* Pods_ikeeperApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -102,9 +129,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0A7A68FE2551473200DD3BC9 /* Build configuration list for PBXNativeTarget "ikeeperApp" */;
 			buildPhases = (
+				7B23DA1C5D76A44CBDB4DB87 /* [CP] Check Pods Manifest.lock */,
 				0A7A68E62551473100DD3BC9 /* Sources */,
 				0A7A68E72551473100DD3BC9 /* Frameworks */,
 				0A7A68E82551473100DD3BC9 /* Resources */,
+				5A9379CA3305A3CB9A126ED1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -160,18 +189,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5A9379CA3305A3CB9A126ED1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ikeeperApp/Pods-ikeeperApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ikeeperApp/Pods-ikeeperApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ikeeperApp/Pods-ikeeperApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7B23DA1C5D76A44CBDB4DB87 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ikeeperApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0A7A68E62551473100DD3BC9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AD493DD2558267C00BA552E /* CalendarViewController.swift in Sources */,
 				0A13DCAD2552FCBC00B3E53F /* LoginViewController.swift in Sources */,
 				0A7A68F22551473100DD3BC9 /* ViewController.swift in Sources */,
 				0A7A68EE2551473100DD3BC9 /* AppDelegate.swift in Sources */,
 				0A7A68F02551473100DD3BC9 /* SceneDelegate.swift in Sources */,
 				0A98D52125559DE400E4BF66 /* Constants.swift in Sources */,
+				0AD493D82557F48700BA552E /* HomeViewController.swift in Sources */,
 				0A3CC3A92555009D00AEACF9 /* SignUpViewController.swift in Sources */,
-				0A3CC3AD25557A2000AEACF9 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +387,7 @@
 		};
 		0A7A68FF2551473200DD3BC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 886F3A895E37B8AD54838270 /* Pods-ikeeperApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -333,6 +406,7 @@
 		};
 		0A7A69002551473200DD3BC9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03D03C47217AB69227AB4B49 /* Pods-ikeeperApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
