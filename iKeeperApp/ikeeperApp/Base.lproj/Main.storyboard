@@ -238,16 +238,6 @@
                     <view key="view" contentMode="scaleToFill" id="Fpe-B7-JDu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eue-gn-wBD">
-                                <rect key="frame" x="324" y="381" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="test"/>
-                                <connections>
-                                    <segue destination="evl-F7-Ihv" kind="show" id="Od5-bC-3Cq"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="56l-1P-TfY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -263,15 +253,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dKg-1l-7Tb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="995.65217391304361" y="-105.13392857142857"/>
+            <point key="canvasLocation" x="913" y="-105"/>
         </scene>
         <!--Calendar View Controller-->
         <scene sceneID="Wwg-wR-sfq">
             <objects>
-                <viewController id="evl-F7-Ihv" customClass="CalendarViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CalenderVC" id="evl-F7-Ihv" customClass="CalendarViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ftx-MZ-dxg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="일정 페이지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNq-Ut-Y2Q">
+                                <rect key="frame" x="143" y="182" width="78" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="s27-nK-f8L"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -279,7 +278,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzz-9B-Xs4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1812" y="-105"/>
+            <point key="canvasLocation" x="1733" y="-483"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6Mk-NT-rzq">

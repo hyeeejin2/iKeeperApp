@@ -54,4 +54,22 @@ class MenuListController: UITableViewController {
         cell.textLabel?.text = lists[indexPath.row]
         return cell
     }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+           tableView.deselectRow(at: indexPath, animated: true)
+           switch indexPath.row {
+           case 0: print("mypage")
+           case 1: print("info")
+           case 2:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let calendarViewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.calenderViewController)
+            self.navigationController?.pushViewController(calendarViewController, animated: true)
+            print("calender")
+           case 3: print("money")
+           case 4: print("logout")
+           case 5: print("admin")
+           default:
+               return
+           }
+       }
+
 }
