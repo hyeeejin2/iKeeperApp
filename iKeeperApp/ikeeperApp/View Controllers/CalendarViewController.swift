@@ -32,7 +32,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         calendar.appearance.headerTitleColor = UIColor.red
         calendar.appearance.eventDefaultColor = UIColor.green
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0 // 이전, 다음달 표시
-        calendar.appearance.headerDateFormat = "YYYY년 M월"
+        calendar.appearance.headerDateFormat = "YYYY년 M월" // 헤더 데이터 형식
         calendar.locale = Locale(identifier: "ko_KR")
         //calendar.headerHeight = 50
         //calendar.appearance.headerTitleFont = UIFont.systemFont(ofSize: 24)
