@@ -14,6 +14,9 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationController?.setToolbarHidden(false, animated: false)
 
         sideMenu = SideMenuNavigationController(rootViewController: MenuListController())
         sideMenu?.leftSide = false
