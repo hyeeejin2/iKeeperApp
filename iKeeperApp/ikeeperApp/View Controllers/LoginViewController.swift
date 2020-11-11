@@ -76,6 +76,7 @@ class LoginViewController: UIViewController {
         let homeViewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController)
         let rootViewController = UINavigationController(rootViewController: homeViewController)
         
+        //self.navigationController?.popToRootViewController(animated: true)
         view.window?.rootViewController = rootViewController
         view.window?.makeKeyAndVisible()
 /*
