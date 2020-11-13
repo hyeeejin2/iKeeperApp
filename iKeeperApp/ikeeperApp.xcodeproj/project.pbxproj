@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0A13DCAD2552FCBC00B3E53F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A13DCAC2552FCBC00B3E53F /* LoginViewController.swift */; };
 		0A3CC3A92555009D00AEACF9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3CC3A82555009D00AEACF9 /* SignUpViewController.swift */; };
+		0A744D8F255E7CBB00FFC5F7 /* CalendarWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A744D8E255E7CBB00FFC5F7 /* CalendarWriteViewController.swift */; };
 		0A7A68EE2551473100DD3BC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A68ED2551473100DD3BC9 /* AppDelegate.swift */; };
 		0A7A68F02551473100DD3BC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A68EF2551473100DD3BC9 /* SceneDelegate.swift */; };
 		0A7A68F22551473100DD3BC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A68F12551473100DD3BC9 /* ViewController.swift */; };
@@ -25,6 +26,7 @@
 		03D03C47217AB69227AB4B49 /* Pods-ikeeperApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ikeeperApp.release.xcconfig"; path = "Target Support Files/Pods-ikeeperApp/Pods-ikeeperApp.release.xcconfig"; sourceTree = "<group>"; };
 		0A13DCAC2552FCBC00B3E53F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0A3CC3A82555009D00AEACF9 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		0A744D8E255E7CBB00FFC5F7 /* CalendarWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWriteViewController.swift; sourceTree = "<group>"; };
 		0A7A68EA2551473100DD3BC9 /* ikeeperApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ikeeperApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A7A68ED2551473100DD3BC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A7A68EF2551473100DD3BC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				0A13DCAC2552FCBC00B3E53F /* LoginViewController.swift */,
 				0AD493D72557F48700BA552E /* HomeViewController.swift */,
 				0AD493DC2558267C00BA552E /* CalendarViewController.swift */,
+				0A744D8E255E7CBB00FFC5F7 /* CalendarWriteViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				0A98D52125559DE400E4BF66 /* Constants.swift in Sources */,
 				0AD493D82557F48700BA552E /* HomeViewController.swift in Sources */,
 				0A3CC3A92555009D00AEACF9 /* SignUpViewController.swift in Sources */,
+				0A744D8F255E7CBB00FFC5F7 /* CalendarWriteViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -43,7 +43,7 @@ class HomeViewController: UIViewController {
 }
 
 class MenuListController: UITableViewController {
-    var lists = ["마이페이지", "정보", "일정", "공금내역", "로그아웃", "관리자페이지"]
+    var lists = ["마이페이지", "정보공유 게시판", "일정", "공금내역", "로그아웃", "관리자페이지"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

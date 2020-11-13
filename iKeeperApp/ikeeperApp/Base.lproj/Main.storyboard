@@ -286,8 +286,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="3Lj-J7-nYD">
-                        <barButtonItem key="rightBarButtonItem" title="add" id="leU-9u-H1g"/>
+                        <barButtonItem key="rightBarButtonItem" title="add" id="leU-9u-H1g">
+                            <connections>
+                                <segue destination="nqw-Nw-arn" kind="show" id="mvT-oB-chD"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="calendar" destination="WFD-l5-ysx" id="cTX-bJ-l8i"/>
                     </connections>
@@ -295,6 +301,97 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzz-9B-Xs4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1731.8840579710147" y="-483.48214285714283"/>
+        </scene>
+        <!--Calendar Write View Controller-->
+        <scene sceneID="gEs-cg-AGA">
+            <objects>
+                <viewController id="nqw-Nw-arn" customClass="CalendarWriteViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fIg-H5-Qlo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="txQ-vb-XOf">
+                                <rect key="frame" x="20" y="148" width="374" height="460"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HU2-sp-Lmu">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="writer" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gIv-fB-BR1">
+                                        <rect key="frame" x="0.0" y="60" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cMP-NA-E0Z">
+                                        <rect key="frame" x="0.0" y="120" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="place" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cD7-3A-XeW">
+                                        <rect key="frame" x="0.0" y="180" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="start time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nbH-JZ-9e9">
+                                        <rect key="frame" x="0.0" y="240" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="end time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yg4-Dn-ehm">
+                                        <rect key="frame" x="0.0" y="300" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="content" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NEc-Va-4nr">
+                                        <rect key="frame" x="0.0" y="360" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDD-Ki-Nnd">
+                                        <rect key="frame" x="0.0" y="420" width="374" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="cM1-6r-D3k"/>
+                                        </constraints>
+                                        <state key="normal" title="write"/>
+                                        <connections>
+                                            <action selector="writeButton:" destination="nqw-Nw-arn" eventType="touchUpInside" id="dvU-Il-vyr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="NEc-Va-4nr" firstAttribute="height" secondItem="HU2-sp-Lmu" secondAttribute="height" id="51j-7B-DCd"/>
+                                    <constraint firstItem="gIv-fB-BR1" firstAttribute="height" secondItem="HU2-sp-Lmu" secondAttribute="height" id="CDG-0k-oZ6"/>
+                                    <constraint firstItem="cD7-3A-XeW" firstAttribute="height" secondItem="HU2-sp-Lmu" secondAttribute="height" id="D0o-dO-JoE"/>
+                                    <constraint firstItem="nbH-JZ-9e9" firstAttribute="height" secondItem="HU2-sp-Lmu" secondAttribute="height" id="dFg-W6-zVr"/>
+                                    <constraint firstItem="VDD-Ki-Nnd" firstAttribute="height" secondItem="HU2-sp-Lmu" secondAttribute="height" id="g2y-gd-POX"/>
+                                    <constraint firstItem="Yg4-Dn-ehm" firstAttribute="height" secondItem="HU2-sp-Lmu" secondAttribute="height" id="mDo-YO-ric"/>
+                                    <constraint firstItem="cMP-NA-E0Z" firstAttribute="height" secondItem="HU2-sp-Lmu" secondAttribute="height" id="pt2-uw-9yp"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hAa-G1-FSx"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="txQ-vb-XOf" firstAttribute="top" secondItem="hAa-G1-FSx" secondAttribute="top" constant="60" id="Zp2-2F-eIF"/>
+                            <constraint firstItem="hAa-G1-FSx" firstAttribute="trailing" secondItem="txQ-vb-XOf" secondAttribute="trailing" constant="20" id="d5e-Gd-TIt"/>
+                            <constraint firstItem="txQ-vb-XOf" firstAttribute="leading" secondItem="hAa-G1-FSx" secondAttribute="leading" constant="20" id="yPn-ph-w68"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="X3y-KN-N7V"/>
+                    <connections>
+                        <outlet property="contentValue" destination="NEc-Va-4nr" id="Dv7-aX-kFx"/>
+                        <outlet property="dateValue" destination="cMP-NA-E0Z" id="Vwk-lg-9OG"/>
+                        <outlet property="endValue" destination="Yg4-Dn-ehm" id="z5e-LQ-Gud"/>
+                        <outlet property="placeValue" destination="cD7-3A-XeW" id="uBy-mt-oxc"/>
+                        <outlet property="startValue" destination="nbH-JZ-9e9" id="zxb-s1-Zr2"/>
+                        <outlet property="titleValue" destination="HU2-sp-Lmu" id="P01-rE-ijw"/>
+                        <outlet property="writerValue" destination="gIv-fB-BR1" id="1cq-dR-kgm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q9I-f5-icP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2585.507246376812" y="-483.48214285714283"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6Mk-NT-rzq">
