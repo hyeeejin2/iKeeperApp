@@ -18,8 +18,8 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         
         calendar.dataSource = self
         calendar.delegate = self
-        calendar.allowsMultipleSelection = true // 날짜 여러 개 선택
-        calendar.swipeToChooseGesture.isEnabled = true // 스와이프로 다중 선택
+        calendar.allowsMultipleSelection = false // 날짜 여러 개 선택
+        calendar.swipeToChooseGesture.isEnabled = false // 스와이프로 다중 선택
         calendar.scrollEnabled = true // 스와이프 스크롤 작동
         calendar.scrollDirection = .horizontal // 스와이프 스크롤 방향(가로)
         
