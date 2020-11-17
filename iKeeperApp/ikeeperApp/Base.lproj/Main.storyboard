@@ -65,7 +65,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="studentID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AwP-Wr-wH5">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eXr-PM-Xpx">
                                         <rect key="frame" x="0.0" y="60" width="334" height="40"/>
@@ -128,9 +128,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="U1B-i0-bIj">
-                                <rect key="frame" x="40" y="120" width="334" height="580"/>
+                                <rect key="frame" x="40" y="120" width="334" height="640"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="studentID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yqO-DE-dC4">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password check" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yqO-DE-dC4">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -145,42 +145,47 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="department" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bk4-M1-Lfz">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password check" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mGT-wn-qcQ">
                                         <rect key="frame" x="0.0" y="180" width="334" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="grade" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mng-Zk-isN">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="department" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bk4-M1-Lfz">
                                         <rect key="frame" x="0.0" y="240" width="334" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="grade" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mng-Zk-isN">
+                                        <rect key="frame" x="0.0" y="300" width="334" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ukq-OP-mRE">
-                                        <rect key="frame" x="0.0" y="300" width="334" height="40"/>
+                                        <rect key="frame" x="0.0" y="360" width="334" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bR5-TX-S5j">
-                                        <rect key="frame" x="0.0" y="360" width="334" height="40"/>
+                                        <rect key="frame" x="0.0" y="420" width="334" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nZ3-zt-SGz">
-                                        <rect key="frame" x="0.0" y="420" width="334" height="41"/>
+                                        <rect key="frame" x="0.0" y="480" width="334" height="41"/>
                                         <segments>
                                             <segment title="개발"/>
                                             <segment title="보안"/>
                                         </segments>
                                     </segmentedControl>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mM8-jh-gk3">
-                                        <rect key="frame" x="0.0" y="480" width="334" height="41"/>
+                                        <rect key="frame" x="0.0" y="540" width="334" height="41"/>
                                         <segments>
                                             <segment title="재학"/>
                                             <segment title="휴학"/>
                                         </segments>
                                     </segmentedControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXs-I3-5GO">
-                                        <rect key="frame" x="0.0" y="540" width="334" height="40"/>
+                                        <rect key="frame" x="0.0" y="600" width="334" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="cFp-4O-G9l"/>
                                         </constraints>
@@ -195,6 +200,7 @@
                                     <constraint firstItem="Ukq-OP-mRE" firstAttribute="height" secondItem="yqO-DE-dC4" secondAttribute="height" id="6Zs-TO-vPI"/>
                                     <constraint firstItem="bR5-TX-S5j" firstAttribute="height" secondItem="yqO-DE-dC4" secondAttribute="height" id="Dpj-YW-jtC"/>
                                     <constraint firstItem="aXs-I3-5GO" firstAttribute="height" secondItem="yqO-DE-dC4" secondAttribute="height" id="PFH-Of-tcx"/>
+                                    <constraint firstItem="mGT-wn-qcQ" firstAttribute="height" secondItem="yqO-DE-dC4" secondAttribute="height" id="d7r-eF-NZF"/>
                                     <constraint firstItem="d56-Rf-E6F" firstAttribute="height" secondItem="yqO-DE-dC4" secondAttribute="height" id="lvx-oA-uOY"/>
                                     <constraint firstItem="mng-Zk-isN" firstAttribute="height" secondItem="yqO-DE-dC4" secondAttribute="height" id="psV-g0-gZB"/>
                                     <constraint firstItem="mM8-jh-gk3" firstAttribute="height" secondItem="yqO-DE-dC4" secondAttribute="height" id="qFW-sX-PHL"/>
@@ -222,6 +228,7 @@
                         <outlet property="nameValue" destination="d56-Rf-E6F" id="Yea-8q-CgH"/>
                         <outlet property="partControl" destination="nZ3-zt-SGz" id="bu2-k2-Eyb"/>
                         <outlet property="phoneNumberValue" destination="Ukq-OP-mRE" id="7Ot-DV-Iue"/>
+                        <outlet property="pwCheckValue" destination="mGT-wn-qcQ" id="Dc2-Nm-eAO"/>
                         <outlet property="pwValue" destination="Jnr-ce-8VB" id="TxZ-rV-2Ev"/>
                         <outlet property="statusControl" destination="mM8-jh-gk3" id="J8u-dl-Qe8"/>
                         <outlet property="studentIDValue" destination="yqO-DE-dC4" id="F5i-ca-A5t"/>
@@ -239,9 +246,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="i-Keepr Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="21I-SJ-osb">
-                                <rect key="frame" x="154" y="373" width="106" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="i-Keepr Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="21I-SJ-osb">
+                                <rect key="frame" x="154" y="437.5" width="106" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -249,6 +255,10 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="56l-1P-TfY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="21I-SJ-osb" firstAttribute="centerX" secondItem="Fpe-B7-JDu" secondAttribute="centerX" id="0C8-5f-ZlR"/>
+                            <constraint firstItem="21I-SJ-osb" firstAttribute="centerY" secondItem="Fpe-B7-JDu" secondAttribute="centerY" id="0qs-f2-51C"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="Qtl-XC-deA">
                         <barButtonItem key="rightBarButtonItem" title="menu" id="gbJ-Q1-kVg">
@@ -281,9 +291,8 @@
                                     <outlet property="delegate" destination="evl-F7-Ihv" id="h3k-eV-6m2"/>
                                 </connections>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="오늘의 일정 띄우기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3QG-SK-0hx">
-                                <rect key="frame" x="144" y="542" width="127" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 일정 띄우기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3QG-SK-0hx">
+                                <rect key="frame" x="143.5" y="437.5" width="127" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -291,6 +300,10 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="s27-nK-f8L"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3QG-SK-0hx" firstAttribute="centerX" secondItem="ftx-MZ-dxg" secondAttribute="centerX" id="Xrw-pz-RKI"/>
+                            <constraint firstItem="3QG-SK-0hx" firstAttribute="centerY" secondItem="ftx-MZ-dxg" secondAttribute="centerY" id="iSK-Cn-ZHf"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3Lj-J7-nYD">
                         <barButtonItem key="rightBarButtonItem" title="add" id="leU-9u-H1g">

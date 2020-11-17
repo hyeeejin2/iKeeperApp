@@ -12,6 +12,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var studentIDValue: UITextField!
     @IBOutlet weak var nameValue: UITextField!
     @IBOutlet weak var pwValue: UITextField!
+    @IBOutlet weak var pwCheckValue: UITextField!
     @IBOutlet weak var departmentValue: UITextField!
     @IBOutlet weak var gradeValue: UITextField!
     @IBOutlet weak var phoneNumberValue: UITextField!
@@ -38,6 +39,10 @@ class SignUpViewController: UIViewController {
             showAlert(message: "빈칸을 채워주세요")
             return
         }
+        guard let pwCheck: String = pwCheckValue.text, pwCheck.isEmpty == false else {
+            showAlert(message: "빈칸을 채워주세요")
+            return
+        }
         guard let department: String = departmentValue.text, department.isEmpty == false else {
             showAlert(message: "빈칸을 채워주세요")
             return
@@ -54,9 +59,10 @@ class SignUpViewController: UIViewController {
             showAlert(message: "빈칸을 채워주세요")
             return
         }
+        
         var data: [String: String] = ["studentID": studentID, "name": name, "pw": pw,
-                                     "department": department, "grade": grade,
-                                     "phoneNumber": phoneNumber, "email": email]
+                                      "pwCheck" : pwCheck, "department": department,
+                                      "grade": grade, "phoneNumber": phoneNumber, "email": email]
         if partControl.selectedSegmentIndex == 0 {
             data["part"] = "개발"
         } else {
