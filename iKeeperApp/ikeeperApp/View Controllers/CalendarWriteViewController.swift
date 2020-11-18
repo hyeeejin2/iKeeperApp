@@ -12,23 +12,23 @@ class CalendarWriteViewController: UIViewController, UITextFieldDelegate, UIPick
     @IBOutlet weak var titleValue: UITextField!
     @IBOutlet weak var writerValue: UITextField!
     @IBOutlet weak var categoryValue: UITextField!
+    @IBOutlet weak var dateValue: UITextField!
+    @IBOutlet weak var startValue: UITextField!
+    @IBOutlet weak var endValue: UITextField!
     @IBOutlet weak var placeValue: UITextField!
     @IBOutlet weak var contentValue: UITextField!
-    let category = ["동아리", "외부"]
-    let clubCategory = ["스터디", "세미나", "교육", "대회", "기타"]
-    let externalCategory = ["세미나", "교육", "대회", "기타"]
+    let datePicker: UIDatePicker = UIDatePicker()
+    let category = ["-- 선택 --","스터디", "세미나", "교육", "대회", "기타"]
+    var selectedCategory:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // Do any additional setup after loading the view.
+        
         createPickerView()
         dismissPickerView()
-        // Do any additional setup after loading the view.
-    }
-    
-    @IBAction func writeButton(_ sender: UIButton) {
-        print("write")
-        self.navigationController?.popViewController(animated: true)
+        createDatePicker()
+        dismissDatePicker()
     }
     
     // 선택 가능한 리스트 개수
@@ -48,7 +48,12 @@ class CalendarWriteViewController: UIViewController, UITextFieldDelegate, UIPick
     
     // pickerView에서 특정 위치(row)가 선택될 때 어떤 행동을 할지 정의
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        categoryValue.text = category[row]
+        print("select")
+        if row != 0 {
+            selectedCategory = category[row]
+        } else {
+            selectedCategory = "" // "-- 선택 --" 선택하면
+        }
     }
     
     func createPickerView() {
@@ -62,19 +67,84 @@ class CalendarWriteViewController: UIViewController, UITextFieldDelegate, UIPick
         let pickerToolBar = UIToolbar()
         pickerToolBar.sizeToFit() // 서브뷰만큼 툴바 크기 맞춤
         pickerToolBar.isTranslucent = true // 툴바 반투명(true), 투명(false)
-        let btnDone = UIBarButtonItem(title: "확인", style: .plain, target: self, action: #selector(pickerDone))
+        let btnDone = UIBarButtonItem(title: "확인", style: .done, target: self, action: #selector(pickerDone))
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-        let btnCancel = UIBarButtonItem(title: "취소", style: .done, target: self, action: #selector(pickerCancel))
-        pickerToolBar.setItems([btnCancel, space, btnDone], animated: true) // 툴바에 버튼 추가
+        pickerToolBar.setItems([space, btnDone], animated: true) // 툴바에 버튼 추가
         pickerToolBar.isUserInteractionEnabled = true // 사용자 클릭 이벤트
         categoryValue.inputAccessoryView = pickerToolBar // picerkView 툴바 추가
     }
     
-    @objc func pickerDone(_sender: Any) {
+    @objc func pickerDone() {
+        categoryValue.text = selectedCategory
+        selectedCategory = ""
+        self.view.endEditing(true)
+        //categoryValue.resignFirstResponder() // 키보드 내려감
+    }
+
+    func createDatePicker() {
+        //let DatePicker: UIDatePicker = UIDatePicker()
+        dateValue.inputView = datePicker
+    }
+    
+    func dismissDatePicker() {
+        let dateToolBar = UIToolbar()
+        dateToolBar.sizeToFit()
+        dateToolBar.isTranslucent = true
+        let btnDone = UIBarButtonItem(title: "확인", style: .done, target: self, action: #selector(dateDone))
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        dateToolBar.setItems([space, btnDone], animated: true)
+        dateToolBar.isUserInteractionEnabled = true
+        dateValue.inputAccessoryView = dateToolBar
+    }
+    
+    @objc func dateDone() {
+        dateValue.text = "\(datePicker.date)"
         self.view.endEditing(true)
     }
-    @objc func pickerCancel() {
-        self.view.endEditing(true)
+    
+    @IBAction func writeButton(_ sender: UIButton) {
+        guard let title = titleValue.text, title.isEmpty == false else {
+            showAlert(message: "빈칸을 채워주세요")
+            return
+        }
+        guard let writer = writerValue.text, writer.isEmpty == false else {
+            showAlert(message: "빈칸을 채워주세요")
+            return
+        }
+        guard let category = categoryValue.text, category.isEmpty == false else {
+            showAlert(message: "빈칸을 채워주세요")
+            return
+        }
+        guard let date = dateValue.text, date.isEmpty == false else {
+            showAlert(message: "빈칸을 채워주세요")
+            return
+        }
+        guard let start = startValue.text, start.isEmpty == false else {
+            showAlert(message: "빈칸을 채워주세요")
+            return
+        }
+        guard let end = endValue.text, end.isEmpty == false else {
+            showAlert(message: "빈칸을 채워주세요")
+            return
+        }
+        guard let place = placeValue.text, place.isEmpty == false else {
+            showAlert(message: "빈칸을 채워주세요")
+            return
+        }
+        guard let content = contentValue.text, content.isEmpty == false else {
+            showAlert(message: "빈칸을 채워주세요")
+            return
+        }
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "알림",
+                                      message: message,
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
     /*
     // MARK: - Navigation

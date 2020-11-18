@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
         let data: [String: String] = ["id": id, "pw": pw]
         print("login data \(data)")
         
-        guard let url = URL(string: "http://192.168.35.215:3000/loginProcess") else {
+        guard let url = URL(string: "http://192.168.137.129:3000/loginProcess") else {
             return
         } // 데이터를 보낼 서버 url
         
