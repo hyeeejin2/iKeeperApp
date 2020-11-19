@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
         let data: [String: String] = ["id": id, "pw": pw]
         print("login data \(data)")
         
-        guard let url = URL(string: "http://192.168.137.129:3000/loginProcess") else {
+        guard let url = URL(string: "http://192.168.137.222:3000/loginProcess") else {
             return
         } // 데이터를 보낼 서버 url
         
@@ -52,7 +52,7 @@ class LoginViewController: UIViewController {
         let session = URLSession.shared
         session.dataTask(with: request) {(data, response, error) in
             DispatchQueue.main.async() {
-                if let result = String(data: data!, encoding: .utf8), result == "success" {
+                if let result = String(data: data!, encoding: .utf8), result == "Success" {
                     self.transitionHome()
                 } else {
                     self.showAlert(message: "아이디와 비밀번호를 확인해주세요")

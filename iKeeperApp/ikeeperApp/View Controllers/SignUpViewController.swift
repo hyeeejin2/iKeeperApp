@@ -75,7 +75,7 @@ class SignUpViewController: UIViewController {
         }
         print("sign up data \(data)")
         
-        guard let url = URL(string: "http://192.168.35.215:3000/signUpProcess") else {
+        guard let url = URL(string: "http://192.168.137.222:3000/signUpProcess") else {
             return
         }
         
@@ -94,7 +94,7 @@ class SignUpViewController: UIViewController {
         let session = URLSession.shared
         session.dataTask(with: request) {(data, response, error) in
             DispatchQueue.main.async() {
-                if let result = String(data: data!, encoding: .utf8), result == "success" {
+                if let result = String(data: data!, encoding: .utf8), result == "Success" {
                     self.showAlert(message: "회원가입 성공")
                 } else {
                     self.showAlert(message: "회원가입 실패")

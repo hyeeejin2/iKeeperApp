@@ -18,8 +18,11 @@ class CalendarWriteViewController: UIViewController, UITextFieldDelegate, UIPick
     @IBOutlet weak var placeValue: UITextField!
     @IBOutlet weak var contentValue: UITextField!
     let datePicker: UIDatePicker = UIDatePicker()
+    let startPicker: UIDatePicker = UIDatePicker()
+    let endPicker: UIDatePicker = UIDatePicker()
     let category = ["-- 선택 --","스터디", "세미나", "교육", "대회", "기타"]
     var selectedCategory:String = ""
+    let formatter = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +32,10 @@ class CalendarWriteViewController: UIViewController, UITextFieldDelegate, UIPick
         dismissPickerView()
         createDatePicker()
         dismissDatePicker()
+        createStartPicker()
+        dismissStartPicker()
+        createEndPicker()
+        dismissEndPicker()
     }
     
     // 선택 가능한 리스트 개수
@@ -56,6 +63,7 @@ class CalendarWriteViewController: UIViewController, UITextFieldDelegate, UIPick
         }
     }
     
+    // pickerView
     func createPickerView() {
         let pickerView: UIPickerView = UIPickerView()
         pickerView.delegate = self
@@ -81,8 +89,13 @@ class CalendarWriteViewController: UIViewController, UITextFieldDelegate, UIPick
         //categoryValue.resignFirstResponder() // 키보드 내려감
     }
 
+    // datePicker - date
     func createDatePicker() {
-        //let DatePicker: UIDatePicker = UIDatePicker()
+        if #available(iOS 13.4, *) {
+                datePicker.preferredDatePickerStyle = .wheels
+        }
+        datePicker.datePickerMode = .date
+        datePicker.locale = NSLocale(localeIdentifier: "ko_KO") as Locale // 한글로 변환
         dateValue.inputView = datePicker
     }
     
@@ -98,7 +111,65 @@ class CalendarWriteViewController: UIViewController, UITextFieldDelegate, UIPick
     }
     
     @objc func dateDone() {
-        dateValue.text = "\(datePicker.date)"
+        formatter.dateFormat = "YYYY-MM-dd"
+        let dateString = formatter.string(from: datePicker.date)
+        dateValue.text = "\(dateString)"
+        self.view.endEditing(true)
+    }
+    
+    // datePicker - time(start)
+    func createStartPicker() {
+        if #available(iOS 13.4, *) {
+                startPicker.preferredDatePickerStyle = .wheels
+        }
+        startPicker.datePickerMode = .time
+        //startPicker.locale = NSLocale(localeIdentifier: "ko_KO") as Locale
+        startValue.inputView = startPicker
+    }
+    
+    func dismissStartPicker() {
+        let startToolBar = UIToolbar()
+        startToolBar.sizeToFit()
+        startToolBar.isTranslucent = true
+        let btnDone = UIBarButtonItem(title: "확인", style: .done, target: self, action: #selector(startDone))
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        startToolBar.setItems([space, btnDone], animated: true)
+        startToolBar.isUserInteractionEnabled = true
+        startValue.inputAccessoryView = startToolBar
+    }
+    
+    @objc func startDone() {
+        formatter.dateFormat = "hh:mm a"
+        let startString = formatter.string(from: startPicker.date)
+        startValue.text = "\(startString)"
+        self.view.endEditing(true)
+    }
+    
+    // datePicker - time(end)
+    func createEndPicker() {
+        if #available(iOS 13.4, *) {
+                endPicker.preferredDatePickerStyle = .wheels
+        }
+        endPicker.datePickerMode = .time
+        //endPicker.locale = NSLocale(localeIdentifier: "ko_KO") as Locale
+        endValue.inputView = endPicker
+    }
+    
+    func dismissEndPicker() {
+        let endToolBar = UIToolbar()
+        endToolBar.sizeToFit()
+        endToolBar.isTranslucent = true
+        let btnDone = UIBarButtonItem(title: "확인", style: .done, target: self, action: #selector(endDone))
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        endToolBar.setItems([space, btnDone], animated: true)
+        endToolBar.isUserInteractionEnabled = true
+        endValue.inputAccessoryView = endToolBar
+    }
+    
+    @objc func endDone() {
+        formatter.dateFormat = "hh:mm a"
+        let endString = formatter.string(from: endPicker.date)
+        endValue.text = "\(endString)"
         self.view.endEditing(true)
     }
     
@@ -135,7 +206,38 @@ class CalendarWriteViewController: UIViewController, UITextFieldDelegate, UIPick
             showAlert(message: "빈칸을 채워주세요")
             return
         }
-        self.navigationController?.popViewController(animated: true)
+        let data: [String:String] = ["Header": title, "Name": writer, "Category": category,
+                                     "Date": date, "startTime": start, "endTime": end, "Place": place, "Body": content]
+        print("calendar add data \(data)")
+        
+        guard let url = URL(string: "http://192.168.137.222:3000/table") else {
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+            
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept-Type")
+        
+        let session = URLSession.shared
+        session.dataTask(with: request) {(data, response, error) in
+            DispatchQueue.main.async() {
+                if let result = String(data: data!, encoding: .utf8), result == "Success" {
+                    //self.showAlert(message: "등록 성공")
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    self.showAlert(message: "등록 실패")
+                }
+            }
+        }.resume()
+        
     }
     
     func showAlert(message: String) {
