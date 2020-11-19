@@ -95,7 +95,8 @@ class SignUpViewController: UIViewController {
         session.dataTask(with: request) {(data, response, error) in
             DispatchQueue.main.async() {
                 if let result = String(data: data!, encoding: .utf8), result == "Success" {
-                    self.showAlert(message: "회원가입 성공")
+                    //self.showAlert(message: "회원가입 성공")
+                    self.navigationController?.popViewController(animated: true)
                 } else {
                     self.showAlert(message: "회원가입 실패")
                 }
