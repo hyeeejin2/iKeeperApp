@@ -210,7 +210,7 @@ class CalendarWriteViewController: UIViewController, UITextFieldDelegate, UIPick
                                      "Date": date, "startTime": start, "endTime": end, "Place": place, "Body": content]
         print("calendar add data \(data)")
         
-        guard let url = URL(string: "http://192.168.137.222:3000/table") else {
+        guard let url = URL(string: "http://192.168.35.215:3000/table") else {
             return
         }
         

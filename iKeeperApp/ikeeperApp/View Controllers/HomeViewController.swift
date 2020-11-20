@@ -61,12 +61,14 @@ class MenuListController: UITableViewController {
            tableView.deselectRow(at: indexPath, animated: true)
            switch indexPath.row {
            case 0: print("mypage")
-           case 1: print("info")
+           case 1:
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let informationViewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.informationViewController)
+            self.navigationController?.pushViewController(informationViewController, animated: true)
            case 2:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let calendarViewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.calenderViewController)
             self.navigationController?.pushViewController(calendarViewController, animated: true)
-            print("calender")
            case 3: print("money")
            case 4: print("logout")
            case 5: print("admin")

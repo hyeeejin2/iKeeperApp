@@ -148,7 +148,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password check" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mGT-wn-qcQ">
                                         <rect key="frame" x="0.0" y="180" width="334" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="department" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bk4-M1-Lfz">
                                         <rect key="frame" x="0.0" y="240" width="334" height="40"/>
@@ -238,6 +238,109 @@
             </objects>
             <point key="canvasLocation" x="90" y="265"/>
         </scene>
+        <!--Information View Controller-->
+        <scene sceneID="yhu-je-w1j">
+            <objects>
+                <viewController storyboardIdentifier="InformationVC" id="DWt-xa-7Ux" customClass="InformationViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="czY-Vh-VkL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MYF-CM-irq">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InfoCustomCell" rowHeight="114" id="oNa-x1-HyE" customClass="InfoCustomCell" customModule="ikeeperApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="114"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oNa-x1-HyE" id="oQC-zu-lKV" customClass="InfoCustomCell" customModule="ikeeperApp" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="114"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="num" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fum-xG-Uv7">
+                                                    <rect key="frame" x="30" y="16" width="34" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOj-DD-1kw">
+                                                    <rect key="frame" x="79" y="16" width="29" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0tT-55-44B">
+                                                    <rect key="frame" x="30" y="77" width="34" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="views" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XlZ-2f-Q4r">
+                                                    <rect key="frame" x="123" y="16" width="43" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BiF-Rz-M5a">
+                                                    <rect key="frame" x="79" y="77" width="34" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="writer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gfa-0F-M1V">
+                                                    <rect key="frame" x="128" y="77" width="44" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="fum-xG-Uv7" firstAttribute="leading" secondItem="oQC-zu-lKV" secondAttribute="leadingMargin" constant="10" id="863-bz-u0G"/>
+                                                <constraint firstItem="XlZ-2f-Q4r" firstAttribute="centerY" secondItem="fum-xG-Uv7" secondAttribute="centerY" id="Lq1-uR-vmb"/>
+                                                <constraint firstItem="BiF-Rz-M5a" firstAttribute="leading" secondItem="0tT-55-44B" secondAttribute="trailing" constant="15" id="WU9-Cm-5aq"/>
+                                                <constraint firstItem="BiF-Rz-M5a" firstAttribute="centerY" secondItem="0tT-55-44B" secondAttribute="centerY" id="Yy8-c0-26W"/>
+                                                <constraint firstItem="0tT-55-44B" firstAttribute="centerX" secondItem="fum-xG-Uv7" secondAttribute="centerX" id="YzS-HB-DXh"/>
+                                                <constraint firstItem="gOj-DD-1kw" firstAttribute="leading" secondItem="fum-xG-Uv7" secondAttribute="trailing" constant="15" id="ZCv-tH-dfx"/>
+                                                <constraint firstItem="fum-xG-Uv7" firstAttribute="top" secondItem="oQC-zu-lKV" secondAttribute="topMargin" constant="5" id="bG6-Iy-7pG"/>
+                                                <constraint firstItem="Gfa-0F-M1V" firstAttribute="leading" secondItem="BiF-Rz-M5a" secondAttribute="trailing" constant="15" id="glb-cB-BlR"/>
+                                                <constraint firstItem="Gfa-0F-M1V" firstAttribute="centerY" secondItem="0tT-55-44B" secondAttribute="centerY" id="iKk-Mn-r85"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="0tT-55-44B" secondAttribute="bottom" constant="5" id="qGf-TW-qij"/>
+                                                <constraint firstItem="gOj-DD-1kw" firstAttribute="centerY" secondItem="fum-xG-Uv7" secondAttribute="centerY" id="qiB-IA-LGW"/>
+                                                <constraint firstItem="XlZ-2f-Q4r" firstAttribute="leading" secondItem="gOj-DD-1kw" secondAttribute="trailing" constant="15" id="vJm-Z0-FHa"/>
+                                            </constraints>
+                                            <connections>
+                                                <outlet property="dateLabel" destination="0tT-55-44B" id="dtk-f4-73q"/>
+                                                <outlet property="numLabel" destination="fum-xG-Uv7" id="aEr-43-SkY"/>
+                                                <outlet property="timeLabel" destination="BiF-Rz-M5a" id="lhd-iI-ga2"/>
+                                                <outlet property="titleLabel" destination="gOj-DD-1kw" id="dWU-sy-6CX"/>
+                                                <outlet property="viewsLable" destination="XlZ-2f-Q4r" id="Jht-ZG-EgU"/>
+                                                <outlet property="writerLabel" destination="Gfa-0F-M1V" id="mtX-nx-wQE"/>
+                                            </connections>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="w2L-n4-jDH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MYF-CM-irq" firstAttribute="top" secondItem="w2L-n4-jDH" secondAttribute="top" id="Xba-11-GKv"/>
+                            <constraint firstItem="MYF-CM-irq" firstAttribute="trailing" secondItem="w2L-n4-jDH" secondAttribute="trailing" id="cLH-Wk-G1p"/>
+                            <constraint firstItem="MYF-CM-irq" firstAttribute="leading" secondItem="w2L-n4-jDH" secondAttribute="leading" id="crw-WE-tk2"/>
+                            <constraint firstItem="MYF-CM-irq" firstAttribute="bottom" secondItem="w2L-n4-jDH" secondAttribute="bottom" id="rRG-vy-xNi"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="MYF-CM-irq" id="fca-2C-PC1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3lr-45-w3j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1731.8840579710147" y="239.73214285714283"/>
+        </scene>
         <!--Home-->
         <scene sceneID="Ijc-oI-buy">
             <objects>
@@ -274,7 +377,7 @@
             </objects>
             <point key="canvasLocation" x="913" y="-105"/>
         </scene>
-        <!--Calendar View Controller-->
+        <!--Calendar-->
         <scene sceneID="Wwg-wR-sfq">
             <objects>
                 <viewController storyboardIdentifier="CalenderVC" id="evl-F7-Ihv" customClass="CalendarViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -291,21 +394,11 @@
                                     <outlet property="delegate" destination="evl-F7-Ihv" id="h3k-eV-6m2"/>
                                 </connections>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 일정 띄우기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3QG-SK-0hx">
-                                <rect key="frame" x="143.5" y="437.5" width="127" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="s27-nK-f8L"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="3QG-SK-0hx" firstAttribute="centerX" secondItem="ftx-MZ-dxg" secondAttribute="centerX" id="Xrw-pz-RKI"/>
-                            <constraint firstItem="3QG-SK-0hx" firstAttribute="centerY" secondItem="ftx-MZ-dxg" secondAttribute="centerY" id="iSK-Cn-ZHf"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="3Lj-J7-nYD">
+                    <navigationItem key="navigationItem" title="Calendar" id="3Lj-J7-nYD">
                         <barButtonItem key="rightBarButtonItem" title="add" id="leU-9u-H1g">
                             <connections>
                                 <segue destination="nqw-Nw-arn" kind="show" id="mvT-oB-chD"/>
@@ -322,7 +415,7 @@
             </objects>
             <point key="canvasLocation" x="1731.8840579710147" y="-483.48214285714283"/>
         </scene>
-        <!--Calendar Write View Controller-->
+        <!--Calendar Write-->
         <scene sceneID="gEs-cg-AGA">
             <objects>
                 <viewController id="nqw-Nw-arn" customClass="CalendarWriteViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -420,7 +513,7 @@
                             <constraint firstItem="txQ-vb-XOf" firstAttribute="leading" secondItem="hAa-G1-FSx" secondAttribute="leading" constant="20" id="yPn-ph-w68"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="X3y-KN-N7V"/>
+                    <navigationItem key="navigationItem" title="Calendar Write" id="X3y-KN-N7V"/>
                     <connections>
                         <outlet property="categoryValue" destination="0Ky-Tb-oWC" id="ugp-lM-Eg7"/>
                         <outlet property="contentValue" destination="NEc-Va-4nr" id="Dv7-aX-kFx"/>

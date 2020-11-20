@@ -59,7 +59,10 @@ class SignUpViewController: UIViewController {
             showAlert(message: "빈칸을 채워주세요")
             return
         }
-        
+        guard pw == pwCheck else {
+            showAlert(message: "비밀번호를 확인해주세요")
+            return
+        }
         var data: [String: String] = ["studentID": studentID, "name": name, "pw": pw,
                                       "pwCheck" : pwCheck, "department": department,
                                       "grade": grade, "phoneNumber": phoneNumber, "email": email]
@@ -75,7 +78,7 @@ class SignUpViewController: UIViewController {
         }
         print("sign up data \(data)")
         
-        guard let url = URL(string: "http://192.168.137.222:3000/signUpProcess") else {
+        guard let url = URL(string: "http://192.168.35.215:3000/signUpProcess") else {
             return
         }
         

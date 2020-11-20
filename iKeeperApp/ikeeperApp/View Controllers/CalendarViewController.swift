@@ -15,6 +15,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        print("calendar road")
         
         calendar.dataSource = self
         calendar.delegate = self
