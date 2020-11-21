@@ -23,15 +23,4 @@ class InfoCustomCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
-/*
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        self.numLabel.text = nil
-        self.titleLabel.text = nil
-        self.viewsLable.text = nil
-        self.dateLabel.text = nil
-        self.timeLabel.text = nil
-        self.writerLabel.text = nil
-    }
- */
 }

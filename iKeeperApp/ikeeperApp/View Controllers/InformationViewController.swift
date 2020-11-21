@@ -10,8 +10,7 @@ import UIKit
 class InformationViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    let contents:[String] = ["1", "sw개발보안", "11", "2020-11-20", "14:00", "김혜진",
-                             "2", "kucis 영남권 세미나", "30", "2020-12-12", "13:00", "김혜진"]
+    var dataList = [[String: String]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,8 +18,18 @@ class InformationViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        //self.tableView.estimatedRowHeight = 80
-        //self.tableView.rowHeight = UITableView.automaticDimension
+        //tableView.register(InfoCustomCell.self, forCellReuseIdentifier: "InfoCustomCell")
+        //tableView.estimatedRowHeight = 200 // 임의 설정
+        //tableView.rowHeight = UITableView.automaticDimension // autolayout 설정에 맞게 자동으로 table vell height 조절
+        
+        dataAdd()
+    }
+    
+    func dataAdd() {
+        let data1: [String: String] = ["num": "1", "title": "sw개발보안", "views": "11", "date": "2020-11-20", "time": "14:00", "writer": "김혜진"]
+        dataList.append(data1)
+        let data2: [String: String] = ["num": "2", "title": "kucis 영남권 세미나", "views": "30", "date": "2020-12-12", "time": "13:00", "writer": "김혜진"]
+        dataList.append(data2)
     }
 
 }
@@ -29,23 +38,33 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
     
     // tableView setting - row
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        //print(dataList)
+        return dataList.count
     }
     
     // tableView setting - cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        /*guard let cell = tableView.dequeueReusableCell(withIdentifier: "InfoCustomCell") else {
-            fatalError("error")
-        }*/
         
         //cell은 as 키워드로 앞서 만든 InfoCustomCell 클래스화
         let cell = tableView.dequeueReusableCell(withIdentifier: "InfoCustomCell", for: indexPath) as! InfoCustomCell
-        cell.numLabel?.text = contents[indexPath.row]
-        cell.titleLabel?.text = contents[indexPath.row]
-        cell.viewsLable?.text = contents[indexPath.row]
-        cell.dateLabel?.text = contents[indexPath.row]
-        cell.timeLabel?.text = contents[indexPath.row]
-        cell.writerLabel?.text = contents[indexPath.row]
+        
+        // cell에 데이터 삽입
+        let data = dataList[indexPath.row]
+        cell.numLabel?.text = data["num"]
+        cell.titleLabel?.text = data["title"]
+        cell.viewsLable?.text = data["views"]
+        cell.dateLabel?.text = data["date"]
+        cell.timeLabel?.text = data["time"]
+        cell.writerLabel?.text = data["writer"]
         return cell
     }
+/*
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+ */
 }
