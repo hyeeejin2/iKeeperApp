@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class SignUpViewController: UIViewController {
 
@@ -63,48 +65,43 @@ class SignUpViewController: UIViewController {
             showAlert(message: "비밀번호를 확인해주세요")
             return
         }
-        var data: [String: String] = ["studentID": studentID, "name": name, "pw": pw,
-                                      "pwCheck" : pwCheck, "department": department,
-                                      "grade": grade, "phoneNumber": phoneNumber, "email": email]
-        if partControl.selectedSegmentIndex == 0 {
-            data["part"] = "개발"
-        } else {
-            data["part"] = "보안"
-        }
-        if statusControl.selectedSegmentIndex == 0 {
-            data["status"] = "재학"
-        } else {
-            data["status"] = "휴학"
-        }
-        print("sign up data \(data)")
-        
-        guard let url = URL(string: "http://192.168.35.215:3000/signUpProcess") else {
+        guard pw.count >= 7  || pwCheck.count >= 7 else {
+            showAlert(message: "비밀번호를 7자 이상 입력해주세요")
             return
         }
+        // email 형식 검사 추가
+        var part: String = ""
+        var status: String = ""
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-            
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
-        } catch {
-            print(error.localizedDescription)
+        if self.partControl.selectedSegmentIndex == 0 {
+            part = "개발"
+        } else {
+            part = "보안"
+        }
+        if self.statusControl.selectedSegmentIndex == 0 {
+            status = "재학"
+        } else {
+            status = "휴학"
         }
         
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept-Type")
-        
-        let session = URLSession.shared
-        session.dataTask(with: request) {(data, response, error) in
-            DispatchQueue.main.async() {
-                if let result = String(data: data!, encoding: .utf8), result == "Success" {
-                    //self.showAlert(message: "회원가입 성공")
-                    self.navigationController?.popViewController(animated: true)
-                } else {
-                    self.showAlert(message: "회원가입 실패")
+        Auth.auth().createUser(withEmail: email, password: pw) { (result, err) in
+            
+            // check for error
+            if err != nil {
+                self.showAlert(message: "이미 가입된 이메일입니다. \n 다른 이메일 주소를 사용해주세요")
+            } else {
+                
+                let db = Firestore.firestore()
+                db.collection("users").addDocument(data: ["email": email, "name": name, "password": pw, "studentID": studentID, "department": department, "grade": grade, "phoneNumber": phoneNumber, "part": part, "status": status, "uid":result!.user.uid]) { (error) in
+                    
+                    if error != nil {
+                        self.showAlert(message: "회원가입 실패")
+                    }
                 }
+                self.navigationController?.popViewController(animated: true)
+                
             }
-        }.resume()
+        }
     }
     
     func showAlert(message: String) {
@@ -115,13 +112,4 @@ class SignUpViewController: UIViewController {
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    */
  }

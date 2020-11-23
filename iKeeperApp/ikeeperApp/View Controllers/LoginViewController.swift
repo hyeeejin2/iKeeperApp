@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
 
-    @IBOutlet weak var idValue: UITextField!
+    @IBOutlet weak var emailValue: UITextField!
     @IBOutlet weak var pwValue: UITextField!
     
     override func viewDidLoad() {
@@ -19,7 +20,7 @@ class LoginViewController: UIViewController {
 
     @IBAction func loginButton(_ sender: UIButton) {
         
-        guard let id: String = idValue.text, id.isEmpty == false else {
+        guard let email: String = emailValue.text, email.isEmpty == false else {
             showAlert(message: "빈칸을 채워주세요")
             return
         }
@@ -27,38 +28,16 @@ class LoginViewController: UIViewController {
             showAlert(message: "빈칸을 채워주세요")
             return
         }
-        let data: [String: String] = ["id": id, "pw": pw]
-        print("login data \(data)")
         
-        guard let url = URL(string: "http://192.168.35.215:3000/loginProcess") else {
-            return
-        } // 데이터를 보낼 서버 url
-        
-        var request = URLRequest(url: url) // URLRequest 구조체 타입인 request 인스턴스 생성
-        request.httpMethod = "POST" // httpMethod 프로퍼티에 "POST" 메소드 입력
+        Auth.auth().signIn(withEmail: email, password: pw) { (result, error) in
             
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
-            // JSONSerializtion 객체는 데이터를 json 형식으로 변경해준다
-        } catch {
-            print(error.localizedDescription)
-        }
-        
-        // 헤더 필드 추가
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept-Type")
-        
-        // URLSession을 이용해서 데이터를 서버에 전송
-        let session = URLSession.shared
-        session.dataTask(with: request) {(data, response, error) in
-            DispatchQueue.main.async() {
-                if let result = String(data: data!, encoding: .utf8), result == "Success" {
-                    self.transitionHome()
-                } else {
-                    self.showAlert(message: "아이디와 비밀번호를 확인해주세요")
-                }
+            if error != nil {
+                self.showAlert(message: "이메일 또는 비밀번호를 확인해주세요")
+            } else {
+                self.transitionHome()
             }
-        }.resume()
+        }
+
     }
     
     func showAlert(message: String) {
@@ -76,9 +55,10 @@ class LoginViewController: UIViewController {
         let homeViewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController)
         let rootViewController = UINavigationController(rootViewController: homeViewController)
         
-        //self.navigationController?.popToRootViewController(animated: true)
         view.window?.rootViewController = rootViewController
         view.window?.makeKeyAndVisible()
+        
+        //self.navigationController?.popToRootViewController(animated: true)
 /*
         // navigation stack에 homeView push
         let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC")
