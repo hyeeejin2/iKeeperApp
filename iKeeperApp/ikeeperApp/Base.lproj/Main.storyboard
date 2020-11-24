@@ -11,7 +11,7 @@
         <!--i-Keeper-->
         <scene sceneID="ihl-WM-E2v">
             <objects>
-                <viewController id="ONh-dC-FHU" customClass="ViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VC" id="ONh-dC-FHU" customClass="ViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TkD-Zg-XQf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -65,7 +65,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AwP-Wr-wH5">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eXr-PM-Xpx">
                                         <rect key="frame" x="0.0" y="60" width="334" height="40"/>
@@ -130,11 +130,34 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="U1B-i0-bIj">
                                 <rect key="frame" x="40" y="120" width="334" height="640"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bR5-TX-S5j">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Uw1-d5-vBe">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                                    </textField>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bR5-TX-S5j">
+                                                <rect key="frame" x="0.0" y="0.0" width="149.5" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="U62-JO-jYq"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dzn-ky-V2y">
+                                                <rect key="frame" x="159.5" y="0.0" width="15.5" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ex) gmail.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yAS-zr-ety">
+                                                <rect key="frame" x="185" y="0.0" width="149" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="yAS-zr-ety" firstAttribute="width" secondItem="bR5-TX-S5j" secondAttribute="width" id="4yu-gd-5Ix"/>
+                                            <constraint firstItem="yAS-zr-ety" firstAttribute="height" secondItem="bR5-TX-S5j" secondAttribute="height" id="HfF-B8-XlF"/>
+                                        </constraints>
+                                    </stackView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d56-Rf-E6F">
                                         <rect key="frame" x="0.0" y="60" width="334" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -198,7 +221,6 @@
                                 <constraints>
                                     <constraint firstItem="Bk4-M1-Lfz" firstAttribute="height" secondItem="yqO-DE-dC4" secondAttribute="height" id="0ZT-tD-TIZ"/>
                                     <constraint firstItem="Ukq-OP-mRE" firstAttribute="height" secondItem="yqO-DE-dC4" secondAttribute="height" id="6Zs-TO-vPI"/>
-                                    <constraint firstItem="bR5-TX-S5j" firstAttribute="height" secondItem="yqO-DE-dC4" secondAttribute="height" id="Dpj-YW-jtC"/>
                                     <constraint firstItem="aXs-I3-5GO" firstAttribute="height" secondItem="yqO-DE-dC4" secondAttribute="height" id="PFH-Of-tcx"/>
                                     <constraint firstItem="mGT-wn-qcQ" firstAttribute="height" secondItem="yqO-DE-dC4" secondAttribute="height" id="d7r-eF-NZF"/>
                                     <constraint firstItem="d56-Rf-E6F" firstAttribute="height" secondItem="yqO-DE-dC4" secondAttribute="height" id="lvx-oA-uOY"/>
@@ -223,15 +245,16 @@
                     <navigationItem key="navigationItem" title="Sign Up" id="8dv-QR-UPs"/>
                     <connections>
                         <outlet property="departmentValue" destination="Bk4-M1-Lfz" id="hhC-gZ-nXR"/>
-                        <outlet property="emailValue" destination="bR5-TX-S5j" id="34f-zj-uri"/>
+                        <outlet property="domainValue" destination="yAS-zr-ety" id="2tu-u5-alQ"/>
                         <outlet property="gradeValue" destination="mng-Zk-isN" id="TBD-kL-6qh"/>
+                        <outlet property="idValue" destination="bR5-TX-S5j" id="AWl-kM-Wi1"/>
                         <outlet property="nameValue" destination="d56-Rf-E6F" id="Yea-8q-CgH"/>
                         <outlet property="partControl" destination="nZ3-zt-SGz" id="bu2-k2-Eyb"/>
                         <outlet property="phoneNumberValue" destination="Ukq-OP-mRE" id="7Ot-DV-Iue"/>
                         <outlet property="pwCheckValue" destination="mGT-wn-qcQ" id="Dc2-Nm-eAO"/>
                         <outlet property="pwValue" destination="Jnr-ce-8VB" id="TxZ-rV-2Ev"/>
                         <outlet property="statusControl" destination="mM8-jh-gk3" id="J8u-dl-Qe8"/>
-                        <outlet property="studentIDValue" destination="yqO-DE-dC4" id="F5i-ca-A5t"/>
+                        <outlet property="studentIDValue" destination="yqO-DE-dC4" id="JXE-at-mKZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SSG-mH-J6e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

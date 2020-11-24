@@ -7,6 +7,7 @@
 
 import UIKit
 import SideMenu
+import FirebaseAuth
 
 class HomeViewController: UIViewController {
     
@@ -59,22 +60,47 @@ class MenuListController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
            tableView.deselectRow(at: indexPath, animated: true)
+        
            switch indexPath.row {
-           case 0: print("mypage")
+           case 0:
+            print("mypage")
+            
            case 1:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let informationViewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.informationViewController)
             self.navigationController?.pushViewController(informationViewController, animated: true)
+            
            case 2:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let calendarViewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.calenderViewController)
             self.navigationController?.pushViewController(calendarViewController, animated: true)
-           case 3: print("money")
-           case 4: print("logout")
-           case 5: print("admin")
+            
+           case 3:
+            print("money")
+            
+           case 4:
+            let firebaseAuth = Auth.auth()
+            do {
+                try firebaseAuth.signOut()
+                transitionView()
+            } catch let signOutError as NSError {
+                print ("Error signing out: %@", signOutError)
+            }
+            
+           case 5:
+            print("admin")
+            
            default:
                return
            }
        }
-
+    func transitionView() {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.viewController)
+        let rootViewController = UINavigationController(rootViewController: viewController)
+        
+        view.window?.rootViewController = rootViewController
+        view.window?.makeKeyAndVisible()
+    }
 }

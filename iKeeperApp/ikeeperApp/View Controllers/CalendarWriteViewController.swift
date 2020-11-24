@@ -55,7 +55,6 @@ class CalendarWriteViewController: UIViewController, UITextFieldDelegate, UIPick
     
     // pickerView에서 특정 위치(row)가 선택될 때 어떤 행동을 할지 정의
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print("select")
         if row != 0 {
             selectedCategory = category[row]
         } else {
