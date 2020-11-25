@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class CalendarWriteViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -17,6 +19,7 @@ class CalendarWriteViewController: UIViewController, UITextFieldDelegate, UIPick
     @IBOutlet weak var endValue: UITextField!
     @IBOutlet weak var placeValue: UITextField!
     @IBOutlet weak var contentValue: UITextField!
+    //let writer: String = ""
     let datePicker: UIDatePicker = UIDatePicker()
     let startPicker: UIDatePicker = UIDatePicker()
     let endPicker: UIDatePicker = UIDatePicker()
@@ -28,6 +31,7 @@ class CalendarWriteViewController: UIViewController, UITextFieldDelegate, UIPick
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        //userSetting()
         createPickerView()
         dismissPickerView()
         createDatePicker()
@@ -36,6 +40,11 @@ class CalendarWriteViewController: UIViewController, UITextFieldDelegate, UIPick
         dismissStartPicker()
         createEndPicker()
         dismissEndPicker()
+    }
+    
+    func userSetting() {
+        let user = Auth.auth().currentUser
+        writerValue?.text = user?.displayName
     }
     
     // 선택 가능한 리스트 개수
@@ -205,38 +214,17 @@ class CalendarWriteViewController: UIViewController, UITextFieldDelegate, UIPick
             showAlert(message: "빈칸을 채워주세요")
             return
         }
-        let data: [String:String] = ["Header": title, "Name": writer, "Category": category,
-                                     "Date": date, "startTime": start, "endTime": end, "Place": place, "Body": content]
-        print("calendar add data \(data)")
         
-        guard let url = URL(string: "http://192.168.35.215:3000/table") else {
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
+        let db = Firestore.firestore()
+        db.collection("calendar").addDocument(data: ["title": title, "writer": writer, "category": category, "date": date, "startTime": start, "endTime": end, "place": place, "content": content]) { (error) in
             
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: data, options: .prettyPrinted)
-        } catch {
-            print(error.localizedDescription)
-        }
-        
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept-Type")
-        
-        let session = URLSession.shared
-        session.dataTask(with: request) {(data, response, error) in
-            DispatchQueue.main.async() {
-                if let result = String(data: data!, encoding: .utf8), result == "Success" {
-                    //self.showAlert(message: "등록 성공")
-                    self.navigationController?.popViewController(animated: true)
-                } else {
-                    self.showAlert(message: "등록 실패")
-                }
+            if error != nil {
+                print("check for error : \(error!.localizedDescription)")
+                self.showAlert(message: "일정 등록 실패")
+            } else {
+                self.navigationController?.popViewController(animated: true)
             }
-        }.resume()
-        
+        }
     }
     
     func showAlert(message: String) {

@@ -241,7 +241,7 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                 db.collection("users").addDocument(data: ["email": email, "name": name, "password": pw, "studentID": studentID, "department": department, "grade": grade, "phoneNumber": phoneNumber, "part": part, "status": status, "warning": 0, "permission": false, "uid":result!.user.uid]) { (error) in
                     
                     if error != nil {
-                        print("check for err : \(error!.localizedDescription)")
+                        print("check for error : \(error!.localizedDescription)")
                         self.showAlert(message: "회원가입 실패")
                     }
                 }
