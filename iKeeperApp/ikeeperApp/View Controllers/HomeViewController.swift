@@ -26,7 +26,7 @@ class HomeViewController: UIViewController {
         SideMenuManager.default.addPanGestureToPresent(toView: self.view) // 메뉴에 스와이핑 제스처 추가
         // Do any additional setup after loading the view.
     }
-    
+
     @IBAction func menuButton(_ sender: UIButton) {
         present(sideMenu!, animated: true)
     }

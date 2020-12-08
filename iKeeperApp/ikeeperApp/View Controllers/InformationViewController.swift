@@ -9,17 +9,17 @@ import UIKit
 
 class InformationViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var infoTableView: UITableView!
     var dataList = [[String: String]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.estimatedRowHeight = 80.0 // 임의 설정이지만 계산해서 80
-        tableView.rowHeight = UITableView.automaticDimension // autolayout 설정에 맞게 자동으로 table cell height 조절
+        infoTableView.delegate = self
+        infoTableView.dataSource = self
+        infoTableView.estimatedRowHeight = 80.0 // 임의 설정이지만 계산해서 80
+        infoTableView.rowHeight = UITableView.automaticDimension // autolayout 설정에 맞게 자동으로 table cell height 조절
         
         dataAdd()
     }
@@ -44,14 +44,13 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
     
     // tableView setting - row
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //print(dataList)
         return dataList.count
     }
     
     // tableView setting - cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        //cell은 as 키워드로 앞서 만든 InfoCustomCell 클래스화
+        // cell은 as 키워드로 앞서 만든 InfoCustomCell 클래스화
         let cell = tableView.dequeueReusableCell(withIdentifier: "InfoCustomCell", for: indexPath) as! InfoCustomCell
 
         // cell에 데이터 삽입

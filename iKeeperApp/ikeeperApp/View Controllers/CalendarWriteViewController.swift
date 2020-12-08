@@ -216,7 +216,8 @@ class CalendarWriteViewController: UIViewController, UITextFieldDelegate, UIPick
         }
         
         let db = Firestore.firestore()
-        db.collection("calendar").addDocument(data: ["title": title, "writer": writer, "category": category, "date": date, "startTime": start, "endTime": end, "place": place, "content": content]) { (error) in
+        let newDocument = db.collection("calendar").document()
+        newDocument.setData(["id": newDocument.documentID,"title": title, "writer": writer, "category": category, "date": date, "startTime": start, "endTime": end, "place": place, "content": content]) { (error) in
             
             if error != nil {
                 print("check for error : \(error!.localizedDescription)")
@@ -225,6 +226,16 @@ class CalendarWriteViewController: UIViewController, UITextFieldDelegate, UIPick
                 self.navigationController?.popViewController(animated: true)
             }
         }
+        
+//        db.collection("calendar").addDocument(data: ["title": title, "writer": writer, "category": category, "date": date, "startTime": start, "endTime": end, "place": place, "content": content]) { (error) in
+//
+//            if error != nil {
+//                print("check for error : \(error!.localizedDescription)")
+//                self.showAlert(message: "일정 등록 실패")
+//            } else {
+//                self.navigationController?.popViewController(animated: true)
+//            }
+//        }
     }
     
     func showAlert(message: String) {

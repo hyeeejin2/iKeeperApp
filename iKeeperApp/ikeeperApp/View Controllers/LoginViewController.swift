@@ -34,13 +34,11 @@ class LoginViewController: UIViewController {
             if error != nil {
                 self.showAlert(message: "이메일 또는 비밀번호를 확인해주세요")
             } else {
-/*
-                let user = Auth.auth().currentUser
-                if let user = user {
-                    let uid = user.uid
-                    print(uid)
-                }
- */
+//                let user = Auth.auth().currentUser
+//                if let user = user {
+//                    let uid = user.uid
+//                    print(uid)
+//                }
                 self.transitionHome()
             }
         }
