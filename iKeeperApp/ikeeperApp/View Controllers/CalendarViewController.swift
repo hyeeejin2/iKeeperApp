@@ -11,7 +11,7 @@ import Firebase
 
 class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate {
     
-    @IBOutlet var calendar: FSCalendar!
+    @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var calendarTableView: UITableView!
     var dataList = [[String: Any]]()
     var numbering = 1
@@ -20,13 +20,36 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        calendar.dataSource = self
-        calendar.delegate = self
         calendarTableView.delegate = self
         calendarTableView.dataSource = self
+        calendar.dataSource = self
+        calendar.delegate = self
         
-        calendarSetting()
         todayCalender()
+        calendarSetting()
+    }
+    
+    func todayCalender() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY-MM-dd"
+        formatter.locale = Locale(identifier: "ko")
+        let currentDate = formatter.string(from: Date())
+
+        let db = Firestore.firestore()
+        db.collection("calendar").whereField("date", isEqualTo: currentDate).getDocuments { (snapshot, error) in
+            if error == nil && snapshot != nil {
+                for document in snapshot!.documents {
+                    var documentData = document.data()
+                    documentData["num"] = "\(self.numbering)"
+                    //print("documentData", documentData)
+                    self.dataList.append(documentData)
+                    print("dataList", self.dataList)
+                    self.numbering += 1
+                }
+                self.calendarTableView.reloadData() // 속도가 tableview setting > firebase로 데이터 읽기 이므로 데이터를 다시 reload
+                self.numbering = 1 // 초기화
+            }
+        }
     }
     
     func calendarSetting() {
@@ -46,49 +69,24 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0 // 이전, 다음달 표시
         calendar.appearance.headerDateFormat = "YYYY년 M월" // 헤더 데이터 형식
         calendar.locale = Locale(identifier: "ko_KR")
+        
         //calendar.headerHeight = 50
         //calendar.appearance.headerTitleFont = UIFont.systemFont(ofSize: 24)
-    }
-    
-    func todayCalender() {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY-MM-dd"
-        formatter.locale = Locale(identifier: "ko")
-        let currentDate = formatter.string(from: Date())
-        
-        let db = Firestore.firestore()
-        db.collection("calendar").whereField("date", isEqualTo: currentDate).getDocuments { (snapshot, error) in
-            if error == nil && snapshot != nil {
-                for document in snapshot!.documents {
-                    var documentData = document.data()
-                    documentData["num"] = "\(self.numbering)"
-                    //print("documentData", documentData)
-                    self.dataList.append(documentData)
-                    //print("dataList", self.dataList)
-                    self.numbering += 1
-                }
-                self.numbering = 1 // 초기화
-            }
-        }
     }
 }
 
 extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 122
-//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("何が問題かな。。私は知らない")
         
         //cell은 as 키워드로 앞서 만든 CalendarCustomCell 클래스화
         let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCustomCell", for: indexPath) as! CalendarCustomCell
-
-        print("dataList", self.dataList)
+        
         // cell에 데이터 삽입
         let data = dataList[indexPath.row]
         cell.numLabel?.text = data["num"] as? String
