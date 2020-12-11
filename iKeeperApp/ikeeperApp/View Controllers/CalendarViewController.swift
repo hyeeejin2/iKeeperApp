@@ -12,6 +12,7 @@ import Firebase
 class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate {
     
     @IBOutlet weak var calendar: FSCalendar!
+    @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var calendarTableView: UITableView!
     var dataList = [[String: Any]]()
     var numbering = 1
@@ -25,9 +26,16 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         calendar.dataSource = self
         calendar.delegate = self
         
+        statusLabel.isHidden = true
+        calendarTableView.isHidden = true
+        
         todayCalender()
         calendarSetting()
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        calendarTableView.reloadData()
+//    }
     
     func todayCalender() {
         let formatter = DateFormatter()
@@ -37,17 +45,19 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
 
         let db = Firestore.firestore()
         db.collection("calendar").whereField("date", isEqualTo: currentDate).getDocuments { (snapshot, error) in
-            if error == nil && snapshot != nil {
+            if error == nil && snapshot?.isEmpty == false {
+                self.calendarTableView.isHidden = false
                 for document in snapshot!.documents {
                     var documentData = document.data()
                     documentData["num"] = "\(self.numbering)"
-                    //print("documentData", documentData)
                     self.dataList.append(documentData)
-                    print("dataList", self.dataList)
                     self.numbering += 1
                 }
                 self.calendarTableView.reloadData() // 속도가 tableview setting > firebase로 데이터 읽기 이므로 데이터를 다시 reload
                 self.numbering = 1 // 초기화
+            } else if error == nil && snapshot?.isEmpty == true {
+                self.statusLabel.isHidden = false
+                self.statusLabel.text = "오늘 일정 없음"
             }
         }
     }
@@ -82,8 +92,6 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("何が問題かな。。私は知らない")
-        
         //cell은 as 키워드로 앞서 만든 CalendarCustomCell 클래스화
         let cell = tableView.dequeueReusableCell(withIdentifier: "CalendarCustomCell", for: indexPath) as! CalendarCustomCell
         
@@ -97,11 +105,6 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         cell.endLabel?.text = data["endTime"] as? String
         cell.contentLabel?.text = data["content"] as? String
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        print("select")
     }
     
     override func didReceiveMemoryWarning() {
