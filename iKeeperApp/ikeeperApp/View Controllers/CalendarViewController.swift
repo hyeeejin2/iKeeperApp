@@ -14,6 +14,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var calendarTableView: UITableView!
+    let formatter = DateFormatter()
     var dataList = [[String: Any]]()
     var numbering = 1
     
@@ -29,40 +30,16 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         statusLabel.isHidden = true
         calendarTableView.isHidden = true
         
+        setCalendar()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear")
+        dataList = [[String: Any]]()
         todayCalender()
-        calendarSetting()
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        calendarTableView.reloadData()
-//    }
-    
-    func todayCalender() {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY-MM-dd"
-        formatter.locale = Locale(identifier: "ko")
-        let currentDate = formatter.string(from: Date())
-
-        let db = Firestore.firestore()
-        db.collection("calendar").whereField("date", isEqualTo: currentDate).getDocuments { (snapshot, error) in
-            if error == nil && snapshot?.isEmpty == false {
-                self.calendarTableView.isHidden = false
-                for document in snapshot!.documents {
-                    var documentData = document.data()
-                    documentData["num"] = "\(self.numbering)"
-                    self.dataList.append(documentData)
-                    self.numbering += 1
-                }
-                self.calendarTableView.reloadData() // 속도가 tableview setting > firebase로 데이터 읽기 이므로 데이터를 다시 reload
-                self.numbering = 1 // 초기화
-            } else if error == nil && snapshot?.isEmpty == true {
-                self.statusLabel.isHidden = false
-                self.statusLabel.text = "오늘 일정 없음"
-            }
-        }
-    }
-    
-    func calendarSetting() {
+    func setCalendar() {
         calendar.allowsMultipleSelection = false // 날짜 여러 개 선택
         calendar.swipeToChooseGesture.isEnabled = false // 스와이프로 다중 선택
         calendar.scrollEnabled = true // 스와이프 스크롤 작동
@@ -82,6 +59,35 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         
         //calendar.headerHeight = 50
         //calendar.appearance.headerTitleFont = UIFont.systemFont(ofSize: 24)
+    }
+    
+    func todayCalender() {
+        formatter.dateFormat = "YYYY-MM-dd"
+        formatter.locale = Locale(identifier: "ko")
+        let currentDate: String = formatter.string(from: Date())
+        showCalendar(date: currentDate)
+    }
+    
+    func showCalendar(date: String) {
+        let db = Firestore.firestore()
+        db.collection("calendar").whereField("date", isEqualTo: date).getDocuments { (snapshot, error) in
+            if error == nil && snapshot?.isEmpty == false {
+                self.calendarTableView.isHidden = false
+                self.statusLabel.isHidden = true
+                for document in snapshot!.documents {
+                    var documentData = document.data()
+                    documentData["num"] = "\(self.numbering)"
+                    self.dataList.append(documentData)
+                    self.numbering += 1
+                }
+                self.calendarTableView.reloadData() // 속도가 tableview setting > firebase로 데이터 읽기 이므로 데이터를 다시 reload
+                self.numbering = 1 // 초기화
+            } else if error == nil && snapshot?.isEmpty == true {
+                self.statusLabel.isHidden = false
+                self.calendarTableView.isHidden = true
+                self.statusLabel.text = "오늘 일정 없음"
+            }
+        }
     }
 }
 
@@ -105,6 +111,14 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         cell.endLabel?.text = data["endTime"] as? String
         cell.contentLabel?.text = data["content"] as? String
         return cell
+    }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        dataList = [[String: Any]]()
+        formatter.dateFormat = "YYYY-MM-dd"
+        let selectedDate: String = formatter.string(from: date)
+        print(selectedDate)
+        showCalendar(date: selectedDate)
     }
     
     override func didReceiveMemoryWarning() {
