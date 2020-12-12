@@ -442,8 +442,19 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="oEH-iN-HCp">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                                     <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uop-10-ND6">
+                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="38.5"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUS-hA-42A">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="38.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="shK-6f-8P1">
-                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="38.5" width="414" height="20.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="num" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5t6-OA-9Hv">
                                                                     <rect key="frame" x="0.0" y="0.0" width="33.5" height="20.5"/>
@@ -466,7 +477,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="9vl-Qh-XfP">
-                                                            <rect key="frame" x="0.0" y="20.5" width="414" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="59" width="414" height="20.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="place" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrj-5Z-pLy">
                                                                     <rect key="frame" x="0.0" y="0.0" width="131.5" height="20.5"/>
@@ -493,10 +504,10 @@
                                                             </constraints>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T8x-7c-xaM">
-                                                            <rect key="frame" x="0.0" y="41" width="414" height="59"/>
+                                                            <rect key="frame" x="0.0" y="79.5" width="414" height="20.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="content" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Sx-vO-tpV">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="59"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -514,6 +525,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="categoryLabel" destination="eUS-hA-42A" id="Rdc-GV-9Rk"/>
                                             <outlet property="contentLabel" destination="0Sx-vO-tpV" id="rZ4-EZ-h3X"/>
                                             <outlet property="endLabel" destination="8tc-zP-MkR" id="htQ-mW-5aD"/>
                                             <outlet property="numLabel" destination="5t6-OA-9Hv" id="drh-rl-NIt"/>

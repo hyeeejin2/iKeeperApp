@@ -9,6 +9,7 @@ import UIKit
 
 class CalendarCustomCell: UITableViewCell {
     
+    @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var numLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var writerLabel: UILabel!

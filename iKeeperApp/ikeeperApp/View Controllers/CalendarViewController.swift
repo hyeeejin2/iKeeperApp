@@ -16,6 +16,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     @IBOutlet weak var calendarTableView: UITableView!
     let formatter = DateFormatter()
     var dataList = [[String: Any]]()
+    var scheduleDate: Set<String> = []
     var numbering = 1
     
     override func viewDidLoad() {
@@ -36,6 +37,8 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     override func viewWillAppear(_ animated: Bool) {
         print("viewWillAppear")
         dataList = [[String: Any]]()
+        scheduleDate = []
+        EventDate()
         todayCalender()
     }
     
@@ -45,20 +48,34 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         calendar.scrollEnabled = true // 스와이프 스크롤 작동
         calendar.scrollDirection = .horizontal // 스와이프 스크롤 방향(가로)
         
-        calendar.appearance.weekdayTextColor = UIColor.black
+        calendar.appearance.headerTitleColor = UIColor.black
+        calendar.appearance.weekdayTextColor = UIColor.systemPink
         calendar.appearance.titleWeekendColor = UIColor.gray
-        calendar.appearance.selectionColor = UIColor.blue
-        calendar.appearance.todayColor = UIColor.orange
-        calendar.appearance.todaySelectionColor = UIColor.black
+        calendar.appearance.selectionColor = UIColor.black
+        calendar.appearance.todayColor = UIColor.systemPink
+        calendar.appearance.todaySelectionColor = UIColor.gray
         
-        calendar.appearance.headerTitleColor = UIColor.red
-        calendar.appearance.eventDefaultColor = UIColor.green
+        calendar.appearance.eventDefaultColor = UIColor.systemBlue
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0 // 이전, 다음달 표시
         calendar.appearance.headerDateFormat = "YYYY년 M월" // 헤더 데이터 형식
         calendar.locale = Locale(identifier: "ko_KR")
         
         //calendar.headerHeight = 50
         //calendar.appearance.headerTitleFont = UIFont.systemFont(ofSize: 24)
+    }
+    
+    func EventDate() {
+        let db = Firestore.firestore()
+        db.collection("calendar").getDocuments { (snapshot, error) in
+            if error == nil && snapshot?.isEmpty == false {
+                for document in snapshot!.documents {
+                    let documentData = document.data()
+                    self.scheduleDate.insert(documentData["date"] as! String)
+                }
+                self.calendar.reloadData()
+                print("test2", self.scheduleDate)
+            }
+        }
     }
     
     func todayCalender() {
@@ -103,6 +120,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         
         // cell에 데이터 삽입
         let data = dataList[indexPath.row]
+        cell.categoryLabel?.text = data["category"] as? String
         cell.numLabel?.text = data["num"] as? String
         cell.titleLabel?.text = data["title"] as? String
         cell.writerLabel?.text = data["writer"] as? String
@@ -120,6 +138,19 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         print(selectedDate)
         showCalendar(date: selectedDate)
     }
+    
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        let dateToString: String = formatter.string(from: date)
+        
+        if scheduleDate.contains(dateToString){
+            return 1
+        }
+        return 0
+    }
+    
+//    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance,eventDefaultColorsFor date: Date) -> [UIColor]? {
+//
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
