@@ -18,6 +18,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     var dataList = [[String: Any]]()
     var scheduleDate: Set<String> = []
     var numbering = 1
+    var scheduleCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,15 +29,15 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         calendar.dataSource = self
         calendar.delegate = self
         
-        statusLabel.isHidden = true
         calendarTableView.isHidden = true
+        statusLabel.text = ""
         
         setCalendar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         print("viewWillAppear")
-        dataList = [[String: Any]]()
+        dataList = [[String:Any]]()
         scheduleDate = []
         EventDate()
         todayCalender()
@@ -55,7 +56,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         calendar.appearance.todayColor = UIColor.systemPink
         calendar.appearance.todaySelectionColor = UIColor.gray
         
-        calendar.appearance.eventDefaultColor = UIColor.systemBlue
+        calendar.appearance.eventDefaultColor = UIColor.systemTeal
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0 // 이전, 다음달 표시
         calendar.appearance.headerDateFormat = "YYYY년 M월" // 헤더 데이터 형식
         calendar.locale = Locale(identifier: "ko_KR")
@@ -90,26 +91,28 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         db.collection("calendar").whereField("date", isEqualTo: date).getDocuments { (snapshot, error) in
             if error == nil && snapshot?.isEmpty == false {
                 self.calendarTableView.isHidden = false
-                self.statusLabel.isHidden = true
                 for document in snapshot!.documents {
                     var documentData = document.data()
                     documentData["num"] = "\(self.numbering)"
                     self.dataList.append(documentData)
                     self.numbering += 1
+                    self.scheduleCount += 1
                 }
+                self.statusLabel.text = "✓ \(self.scheduleCount)개의 일정이 있습니다."
                 self.calendarTableView.reloadData() // 속도가 tableview setting > firebase로 데이터 읽기 이므로 데이터를 다시 reload
                 self.numbering = 1 // 초기화
+                self.scheduleCount = 0 // 초기화
             } else if error == nil && snapshot?.isEmpty == true {
                 self.statusLabel.isHidden = false
                 self.calendarTableView.isHidden = true
-                self.statusLabel.text = "오늘 일정 없음"
+                self.statusLabel.text = "X 오늘 일정은 없습니다."
             }
         }
     }
 }
 
 extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataList.count
     }

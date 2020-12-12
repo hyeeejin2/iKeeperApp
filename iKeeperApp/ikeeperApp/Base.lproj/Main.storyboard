@@ -423,7 +423,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lwb-ec-vbN" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="98" width="414" height="350"/>
+                                <rect key="frame" x="0.0" y="98" width="414" height="335"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
@@ -537,16 +537,19 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytK-3e-gF6">
-                                <rect key="frame" x="0.0" y="448" width="414" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytK-3e-gF6">
+                                <rect key="frame" x="180" y="436" width="54" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="s27-nK-f8L"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ytK-3e-gF6" firstAttribute="centerX" secondItem="ftx-MZ-dxg" secondAttribute="centerX" id="3vP-5c-bsV"/>
+                            <constraint firstItem="ytK-3e-gF6" firstAttribute="centerY" secondItem="ftx-MZ-dxg" secondAttribute="centerY" id="77c-6q-TfI"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Calendar" id="3Lj-J7-nYD">
                         <barButtonItem key="rightBarButtonItem" title="add" id="leU-9u-H1g">
