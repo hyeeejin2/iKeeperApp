@@ -49,7 +49,7 @@ class LoginViewController: UIViewController {
         let alert = UIAlertController(title: "알림",
                                       message: message,
                                       preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }

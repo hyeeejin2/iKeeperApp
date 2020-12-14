@@ -74,7 +74,6 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
                     self.scheduleDate.insert(documentData["date"] as! String)
                 }
                 self.calendar.reloadData()
-                print("test2", self.scheduleDate)
             }
         }
     }
@@ -109,8 +108,19 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
             }
         }
     }
+    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "알림",
+                                      message: message,
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+        let cancelAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
 }
-
+    
 extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -131,7 +141,26 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         cell.startLabel?.text = data["startTime"] as? String
         cell.endLabel?.text = data["endTime"] as? String
         cell.contentLabel?.text = data["content"] as? String
+        
+        cell.deleteButton.tag = indexPath.row
+        cell.deleteButton.addTarget(self, action: #selector(test(_:)), for: .touchUpInside)
+        print(cell.deleteButton.tag)
         return cell
+    }
+    
+    @objc func test(_ sender: UIButton) {
+        let data = dataList[sender.tag]
+        let id = data["id"] as! String
+        
+        let db = Firestore.firestore()
+        db.collection("calendar").document("\(id)").delete { (error) in
+            if error != nil {
+                print("check for error : \(error!.localizedDescription)")
+            } else {
+                print("delete success")
+                //self.viewWillAppear(true)
+            }
+        }
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -151,9 +180,10 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         return 0
     }
     
-//    func calendar(_ calendar: FSCalendar, appearance: FSCalendarAppearance,eventDefaultColorsFor date: Date) -> [UIColor]? {
-//
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        print("select")
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -226,23 +226,13 @@ class CalendarWriteViewController: UIViewController, UITextFieldDelegate, UIPick
                 self.navigationController?.popViewController(animated: true)
             }
         }
-        
-//        db.collection("calendar").addDocument(data: ["title": title, "writer": writer, "category": category, "date": date, "startTime": start, "endTime": end, "place": place, "content": content]) { (error) in
-//
-//            if error != nil {
-//                print("check for error : \(error!.localizedDescription)")
-//                self.showAlert(message: "일정 등록 실패")
-//            } else {
-//                self.navigationController?.popViewController(animated: true)
-//            }
-//        }
     }
     
     func showAlert(message: String) {
         let alert = UIAlertController(title: "알림",
                                       message: message,
                                       preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "확인", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }
