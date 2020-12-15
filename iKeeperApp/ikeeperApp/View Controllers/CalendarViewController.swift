@@ -17,8 +17,6 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     let formatter = DateFormatter()
     var dataList = [[String: Any]]()
     var scheduleDate: Set<String> = []
-    var numbering = 1
-    var scheduleCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +39,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         scheduleDate = []
         EventDate()
         todayCalender()
+        //calendar.deselect(<#T##date: Date##Date#>)
     }
     
     func setCalendar() {
@@ -90,22 +89,28 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         db.collection("calendar").whereField("date", isEqualTo: date).getDocuments { (snapshot, error) in
             if error == nil && snapshot?.isEmpty == false {
                 self.calendarTableView.isHidden = false
+                var temp: Int = 1
                 for document in snapshot!.documents {
                     var documentData = document.data()
-                    documentData["num"] = "\(self.numbering)"
+                    documentData["num"] = "\(temp)"
                     self.dataList.append(documentData)
-                    self.numbering += 1
-                    self.scheduleCount += 1
+                    temp += 1
                 }
-                self.statusLabel.text = "✓ \(self.scheduleCount)개의 일정이 있습니다."
+                self.statusLabel.text = "✓ \(self.dataList.count)개의 일정이 있습니다."
                 self.calendarTableView.reloadData() // 속도가 tableview setting > firebase로 데이터 읽기 이므로 데이터를 다시 reload
-                self.numbering = 1 // 초기화
-                self.scheduleCount = 0 // 초기화
             } else if error == nil && snapshot?.isEmpty == true {
                 self.statusLabel.isHidden = false
                 self.calendarTableView.isHidden = true
                 self.statusLabel.text = "X 오늘 일정은 없습니다."
             }
+        }
+    }
+    
+    func numbering() {
+        var temp: Int = 1
+        for i in 0..<dataList.count {
+            dataList[i]["num"] = "\(temp)"
+            temp += 1
         }
     }
     
@@ -143,24 +148,9 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         cell.contentLabel?.text = data["content"] as? String
         
         cell.deleteButton.tag = indexPath.row
-        cell.deleteButton.addTarget(self, action: #selector(test(_:)), for: .touchUpInside)
+        cell.deleteButton.addTarget(self, action: #selector(deleteCalendar(_:)), for: .touchUpInside)
         print(cell.deleteButton.tag)
         return cell
-    }
-    
-    @objc func test(_ sender: UIButton) {
-        let data = dataList[sender.tag]
-        let id = data["id"] as! String
-        
-        let db = Firestore.firestore()
-        db.collection("calendar").document("\(id)").delete { (error) in
-            if error != nil {
-                print("check for error : \(error!.localizedDescription)")
-            } else {
-                print("delete success")
-                //self.viewWillAppear(true)
-            }
-        }
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -183,6 +173,32 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         print("select")
+    }
+    
+    @objc func deleteCalendar(_ sender: UIButton) {
+        let date = dataList[sender.tag]["date"] as! String
+        let data = dataList[sender.tag]
+        let id = data["id"] as! String
+        
+        let db = Firestore.firestore()
+        db.collection("calendar").document("\(id)").delete { (error) in
+            if error != nil {
+                print("check for error : \(error!.localizedDescription)")
+            } else {
+                self.dataList.remove(at: sender.tag)
+                if self.dataList.count > 0 {
+                    self.numbering()
+                    self.statusLabel.text = "✓ \(self.dataList.count)개의 일정이 있습니다."
+                    self.calendarTableView.reloadData()
+                } else {
+                    self.statusLabel.isHidden = false
+                    self.calendarTableView.isHidden = true
+                    self.statusLabel.text = "X 오늘 일정은 없습니다."
+                    self.scheduleDate.remove(date)
+                    self.calendar.reloadData()
+                }
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
