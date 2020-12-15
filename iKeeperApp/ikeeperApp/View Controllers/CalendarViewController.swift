@@ -17,7 +17,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     let formatter = DateFormatter()
     var dataList = [[String: Any]]()
     var scheduleDate: Set<String> = []
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -39,7 +39,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         scheduleDate = []
         EventDate()
         todayCalender()
-        //calendar.deselect(<#T##date: Date##Date#>)
+        deselectDate()
     }
     
     func setCalendar() {
@@ -114,16 +114,23 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         }
     }
     
-    func showAlert(message: String) {
-        let alert = UIAlertController(title: "알림",
-                                      message: message,
-                                      preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
-        let cancelAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
-        alert.addAction(okAction)
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
+    func deselectDate() {
+        guard calendar.selectedDate == nil else {
+            calendar.deselect(calendar.selectedDate!)
+            return
+        }
     }
+    
+//    func showAlert(message: String) {
+//        let alert = UIAlertController(title: "알림",
+//                                      message: message,
+//                                      preferredStyle: .alert)
+//        let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+//        let cancelAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
+//        alert.addAction(cancelAction)
+//        alert.addAction(okAction)
+//        self.present(alert, animated: true, completion: nil)
+//    }
 }
     
 extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
@@ -148,31 +155,14 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         cell.contentLabel?.text = data["content"] as? String
         
         cell.deleteButton.tag = indexPath.row
+        cell.modifyButton.addTarget(self, action: #selector(modifyCalendar(_:)), for: .touchUpInside)
         cell.deleteButton.addTarget(self, action: #selector(deleteCalendar(_:)), for: .touchUpInside)
         print(cell.deleteButton.tag)
         return cell
     }
     
-    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        dataList = [[String: Any]]()
-        formatter.dateFormat = "YYYY-MM-dd"
-        let selectedDate: String = formatter.string(from: date)
-        print(selectedDate)
-        showCalendar(date: selectedDate)
-    }
-    
-    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        let dateToString: String = formatter.string(from: date)
-        
-        if scheduleDate.contains(dateToString){
-            return 1
-        }
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        print("select")
+    @objc func modifyCalendar(_ sender: UIButton) {
+        print("test")
     }
     
     @objc func deleteCalendar(_ sender: UIButton) {
@@ -201,7 +191,30 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        print("select")
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        dataList = [[String: Any]]()
+        formatter.dateFormat = "YYYY-MM-dd"
+        let selectedDate: String = formatter.string(from: date)
+        print(selectedDate)
+        showCalendar(date: selectedDate)
+    }
+    
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        let dateToString: String = formatter.string(from: date)
+        
+        if scheduleDate.contains(dateToString){
+            return 1
+        }
+        return 0
+    }
+    
 }

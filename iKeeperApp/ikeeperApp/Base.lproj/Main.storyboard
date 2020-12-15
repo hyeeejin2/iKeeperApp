@@ -445,12 +445,16 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Uop-10-ND6">
                                                             <rect key="frame" x="0.0" y="0.0" width="414" height="38.5"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUS-hA-42A">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="384.5" height="38.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUN-q4-QWj">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="354" height="38.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
+                                                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKQ-2k-vzg">
+                                                                    <rect key="frame" x="364" y="0.0" width="20.5" height="38.5"/>
+                                                                    <state key="normal" image="square.and.pencil" catalog="system"/>
+                                                                </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ku-MS-oRa">
                                                                     <rect key="frame" x="394.5" y="0.0" width="19.5" height="38.5"/>
                                                                     <state key="normal" image="trash" catalog="system"/>
@@ -529,10 +533,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="categoryLabel" destination="eUS-hA-42A" id="Rdc-GV-9Rk"/>
+                                            <outlet property="categoryLabel" destination="qUN-q4-QWj" id="33E-Qa-oDK"/>
                                             <outlet property="contentLabel" destination="0Sx-vO-tpV" id="rZ4-EZ-h3X"/>
                                             <outlet property="deleteButton" destination="2ku-MS-oRa" id="D7X-QB-Ybq"/>
                                             <outlet property="endLabel" destination="8tc-zP-MkR" id="htQ-mW-5aD"/>
+                                            <outlet property="modifyButton" destination="JKQ-2k-vzg" id="0QV-Pd-SlZ"/>
                                             <outlet property="numLabel" destination="5t6-OA-9Hv" id="drh-rl-NIt"/>
                                             <outlet property="placeLabel" destination="xrj-5Z-pLy" id="b0N-DF-MkW"/>
                                             <outlet property="startLabel" destination="lTz-mm-wi4" id="wjA-MJ-xF7"/>
@@ -713,6 +718,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <image name="trash" catalog="system" width="121" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

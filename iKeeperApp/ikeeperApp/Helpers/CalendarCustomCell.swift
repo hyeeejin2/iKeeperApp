@@ -9,6 +9,7 @@ import UIKit
 
 class CalendarCustomCell: UITableViewCell {
     
+    //@IBOutlet weak var categoryTextField: UITextField!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var numLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -17,6 +18,7 @@ class CalendarCustomCell: UITableViewCell {
     @IBOutlet weak var startLabel: UILabel!
     @IBOutlet weak var endLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var modifyButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
     
     override func awakeFromNib() {
