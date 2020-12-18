@@ -698,7 +698,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ypw-hw-ou4">
-                                <rect key="frame" x="20" y="128" width="374" height="450"/>
+                                <rect key="frame" x="20" y="128" width="374" height="460"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Adt-Xo-tWw">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
@@ -773,25 +773,17 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6hZ-Ww-xiG">
-                                        <rect key="frame" x="0.0" y="420" width="374" height="30"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xhp-Pq-IQu">
-                                                <rect key="frame" x="0.0" y="0.0" width="182" height="30"/>
-                                                <state key="normal" title="modify"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DnF-Bm-rO6">
-                                                <rect key="frame" x="192" y="0.0" width="182" height="30"/>
-                                                <state key="normal" title="delete"/>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="DnF-Bm-rO6" firstAttribute="width" secondItem="Xhp-Pq-IQu" secondAttribute="width" id="UP1-s7-3lq"/>
-                                        </constraints>
-                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sI-R0-fPG">
+                                        <rect key="frame" x="0.0" y="420" width="374" height="40"/>
+                                        <state key="normal" title="complete"/>
+                                        <connections>
+                                            <action selector="completeButton:" destination="St8-50-2p8" eventType="touchUpInside" id="nkS-Vz-84N"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="CTa-6t-RkY" firstAttribute="height" secondItem="Adt-Xo-tWw" secondAttribute="height" id="0zh-U0-YgR"/>
+                                    <constraint firstItem="7sI-R0-fPG" firstAttribute="height" secondItem="Adt-Xo-tWw" secondAttribute="height" id="d1C-6B-5TN"/>
                                     <constraint firstItem="w66-Tj-JoK" firstAttribute="height" secondItem="Adt-Xo-tWw" secondAttribute="height" id="ed1-ge-cZ7"/>
                                     <constraint firstItem="2pv-BR-Dju" firstAttribute="height" secondItem="Adt-Xo-tWw" secondAttribute="height" id="ieO-0M-TYl"/>
                                     <constraint firstItem="5j9-qe-74Q" firstAttribute="height" secondItem="Adt-Xo-tWw" secondAttribute="height" id="j7e-LS-aHs"/>
@@ -808,13 +800,21 @@
                             <constraint firstItem="Ypw-hw-ou4" firstAttribute="leading" secondItem="u2o-xp-lan" secondAttribute="leading" constant="20" id="t2g-Oc-n62"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Calendar Detail" id="3l3-Wi-1fg"/>
+                    <navigationItem key="navigationItem" title="Calendar Detail" id="3l3-Wi-1fg">
+                        <barButtonItem key="rightBarButtonItem" title="edit" id="iQo-ps-gAo">
+                            <connections>
+                                <action selector="editButton:" destination="St8-50-2p8" id="WIA-hL-JTy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="categoryValue" destination="5j9-qe-74Q" id="8Hf-Bd-jdb"/>
+                        <outlet property="completeButton" destination="7sI-R0-fPG" id="dyt-2j-OXt"/>
                         <outlet property="contentValue" destination="MNR-MP-2eR" id="KRi-cl-WoI"/>
                         <outlet property="dateValue" destination="w66-Tj-JoK" id="tpy-oa-0TV"/>
+                        <outlet property="editBarButton" destination="iQo-ps-gAo" id="5oK-XI-29s"/>
                         <outlet property="endValue" destination="4Yd-7N-D8b" id="Clq-Kl-yev"/>
                         <outlet property="placeValue" destination="2pv-BR-Dju" id="eSI-Br-y7b"/>
                         <outlet property="startValue" destination="FB9-sp-jtF" id="kgO-pQ-Mqg"/>
