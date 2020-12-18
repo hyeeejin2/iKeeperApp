@@ -72,6 +72,39 @@ class CalendarDetailViewController: UIViewController {
     }
     
     @IBAction func completeButton(_ sender: UIButton) {
+        guard let title: String = titleValue.text, title.isEmpty == false else {
+            showAlert(message: "빈칸을 채워주세요")
+            return
+        }
+        guard let writer: String = writerValue.text, writer.isEmpty == false else {
+            showAlert(message: "빈칸을 채워주세요")
+            return
+        }
+        guard let category: String = categoryValue.text, category.isEmpty == false else {
+            showAlert(message: "빈칸을 채워주세요")
+            return
+        }
+        guard let date: String = dateValue.text, date.isEmpty == false else {
+            showAlert(message: "빈칸을 채워주세요")
+            return
+        }
+        guard let startTime: String = startValue.text, startTime.isEmpty == false else {
+            showAlert(message: "빈칸을 채워주세요")
+            return
+        }
+        guard let endTime: String = endValue.text, endTime.isEmpty == false else {
+            showAlert(message: "빈칸을 채워주세요")
+            return
+        }
+        guard let place: String = placeValue.text, place.isEmpty == false else {
+            showAlert(message: "빈칸을 채워주세요")
+            return
+        }
+        guard let content: String = contentValue.text, content.isEmpty == false else {
+            showAlert(message: "빈칸을 채워주세요")
+            return
+        }
+        
         let modifyData = ["title": titleValue.text!, "writer": writerValue.text!, "category":categoryValue.text!, "date": dateValue.text!, "startTime": startValue.text!, "endTime": endValue.text!, "place": placeValue.text!, "content": contentValue.text!]
         let id = data["id"] as! String
         print(modifyData, id)
@@ -90,6 +123,14 @@ class CalendarDetailViewController: UIViewController {
         setDisabled()
     }
     
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "알림",
+                                      message: message,
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation
