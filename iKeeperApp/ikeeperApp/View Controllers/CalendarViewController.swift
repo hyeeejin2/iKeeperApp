@@ -155,14 +155,9 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         cell.contentLabel?.text = data["content"] as? String
         
         cell.deleteButton.tag = indexPath.row
-        cell.modifyButton.addTarget(self, action: #selector(modifyCalendar(_:)), for: .touchUpInside)
         cell.deleteButton.addTarget(self, action: #selector(deleteCalendar(_:)), for: .touchUpInside)
         print(cell.deleteButton.tag)
         return cell
-    }
-    
-    @objc func modifyCalendar(_ sender: UIButton) {
-        print("test")
     }
     
     @objc func deleteCalendar(_ sender: UIButton) {
@@ -193,7 +188,10 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print("select")
+        let data = dataList[indexPath.row]
+        let calendarDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.calendarDetailViewController) as! CalendarDetailViewController
+        calendarDetailViewController.data = data
+        self.navigationController?.pushViewController(calendarDetailViewController, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
