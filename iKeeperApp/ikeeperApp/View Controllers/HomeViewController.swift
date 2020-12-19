@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Do any additional setup after loading the view.
         
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.navigationController?.setToolbarHidden(false, animated: false)
@@ -24,7 +25,6 @@ class HomeViewController: UIViewController {
         
         SideMenuManager.default.rightMenuNavigationController = sideMenu // 메뉴는 오른쪽
         SideMenuManager.default.addPanGestureToPresent(toView: self.view) // 메뉴에 스와이핑 제스처 추가
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func menuButton(_ sender: UIButton) {
@@ -33,7 +33,7 @@ class HomeViewController: UIViewController {
 }
 
 class MenuListController: UITableViewController {
-    var lists = ["마이페이지", "정보공유 게시판", "일정", "공금내역", "로그아웃", "관리자페이지"]
+    var lists = ["마이페이지", "정보 게시판", "일정", "공금 내역", "로그아웃", "관리자페이지"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
