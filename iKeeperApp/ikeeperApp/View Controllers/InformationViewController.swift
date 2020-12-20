@@ -11,7 +11,7 @@ import Firebase
 class InformationViewController: UIViewController {
 
     @IBOutlet weak var infoTableView: UITableView!
-    var dataList = [[String: String]]()
+    var dataList = [[String: Any]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,22 +22,33 @@ class InformationViewController: UIViewController {
         infoTableView.dataSource = self
         //infoTableView.estimatedRowHeight = 80.0 // 임의 설정이지만 계산해서 80
         //infoTableView.rowHeight = UITableView.automaticDimension // autolayout 설정에 맞게 자동으로 table cell height 조절
-        
-        dataAdd()
     }
     
-//    func showInfo() {
-//        let db = Firestore.firestore()
-//        db.collection("info_notice")
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        dataList = [[String:Any]]()
+        showInfo()
+    }
     
-    func dataAdd() {
-        let data1: [String: String] = ["num": "1", "title": "sw개발보안경진대회", "views": "11",
-                                       "date": "2020-11-20", "time": "14:00", "writer": "김혜진"]
-        dataList.append(data1)
-        let data2: [String: String] = ["num": "2", "title": "kucis 영남권 세미나", "views": "30",
-                                       "date": "2020-12-12", "time": "13:00", "writer": "김혜진"]
-        dataList.append(data2)
+    func showInfo() {
+        let db = Firestore.firestore()
+        db.collection("infoList").getDocuments { (snapshot, error) in
+            if error == nil && snapshot?.isEmpty == false {
+                var temp: Int = 1
+                for document in snapshot!.documents {
+                    var documentData = document.data()
+                    documentData["num"] = "\(temp)"
+                    self.dataList.append(documentData)
+                    temp += 1
+                }
+                print(self.dataList)
+                self.infoTableView.reloadData()
+            } else if error == nil && snapshot?.isEmpty == true {
+                let statusLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 414, height: 40))
+                statusLabel.textAlignment = .center
+                statusLabel.text = "아직 게시글이 없습니다."
+                self.view.addSubview(statusLabel)
+            }
+        }
     }
 
 }
@@ -62,18 +73,33 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
 
         // cell에 데이터 삽입
         let data = dataList[indexPath.row]
-        cell.numLabel?.text = data["num"]
-        cell.titleLabel?.text = data["title"]
-        cell.viewsLable?.text = data["views"]
-        cell.dateLabel?.text = data["date"]
-        cell.timeLabel?.text = data["time"]
-        cell.writerLabel?.text = data["writer"]
+        cell.numLabel?.text = data["num"] as? String
+        cell.titleLabel?.text = data["title"] as? String
+        cell.viewsLable?.text = String((data["views"] as? Int)!)
+        cell.dateLabel?.text = data["date"] as? String
+        cell.timeLabel?.text = data["time"] as? String
+        cell.writerLabel?.text = data["writer"] as? String
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print("select")
+        let data = dataList[indexPath.row]
+        let id = data["id"] as! String
+        let views = data["views"] as! Int
+        
+        let informationDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.informationDetailViewController) as! InformationDetailViewController
+        informationDetailViewController.dataList = data
+        self.navigationController?.pushViewController(informationDetailViewController, animated: true)
+        
+        let db = Firestore.firestore()
+        db.collection("infoList").document("\(id)").updateData(["views" : views+1]) { (error) in
+            if error != nil {
+                print("check for error : \(error!.localizedDescription)")
+            } else {
+                print("success")
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {

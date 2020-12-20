@@ -453,6 +453,23 @@
             </objects>
             <point key="canvasLocation" x="2624.6376811594205" y="264.50892857142856"/>
         </scene>
+        <!--Information Detail View Controller-->
+        <scene sceneID="P55-0g-6Vr">
+            <objects>
+                <viewController storyboardIdentifier="InformationDetailVC" id="As0-6X-N1O" customClass="InformationDetailViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nTU-nF-aCa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="FAl-2X-D71"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nq3-dq-HFp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3425" y="265"/>
+        </scene>
         <!--Home-->
         <scene sceneID="Ijc-oI-buy">
             <objects>

@@ -37,7 +37,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         print("viewWillAppear")
         dataList = [[String:Any]]()
         scheduleDate = []
-        EventDate()
+        eventDate()
         todayCalender()
         deselectDate()
     }
@@ -64,7 +64,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         //calendar.appearance.headerTitleFont = UIFont.systemFont(ofSize: 24)
     }
     
-    func EventDate() {
+    func eventDate() {
         let db = Firestore.firestore()
         db.collection("calendar").getDocuments { (snapshot, error) in
             if error == nil && snapshot?.isEmpty == false {
@@ -162,8 +162,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     
     @objc func deleteCalendar(_ sender: UIButton) {
         let date = dataList[sender.tag]["date"] as! String
-        let data = dataList[sender.tag]
-        let id = data["id"] as! String
+        let id = dataList[sender.tag]["id"] as! String
         
         let db = Firestore.firestore()
         db.collection("calendar").document("\(id)").delete { (error) in
@@ -190,7 +189,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         let data = dataList[indexPath.row]
         let calendarDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.calendarDetailViewController) as! CalendarDetailViewController
-        calendarDetailViewController.data = data
+        calendarDetailViewController.dataList = data
         self.navigationController?.pushViewController(calendarDetailViewController, animated: true)
     }
     

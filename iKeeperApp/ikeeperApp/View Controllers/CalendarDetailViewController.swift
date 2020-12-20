@@ -26,7 +26,7 @@ class CalendarDetailViewController: UIViewController, UIPickerViewDelegate, UIPi
     let category = ["-- 선택 --","스터디", "세미나", "교육", "대회", "기타"]
     var selectedCategory:String = ""
     let formatter = DateFormatter()
-    var data = [String: Any]()
+    var dataList = [String: Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,14 +68,14 @@ class CalendarDetailViewController: UIViewController, UIPickerViewDelegate, UIPi
     }
     
     func setValue() {
-        titleValue.text = data["title"] as? String
-        writerValue.text = data["writer"] as? String
-        categoryValue.text = data["category"] as? String
-        dateValue.text = data["date"] as? String
-        startValue.text = data["startTime"] as? String
-        endValue.text = data["endTime"] as? String
-        placeValue.text = data["place"] as? String
-        contentValue.text = data["content"] as? String
+        titleValue.text = dataList["title"] as? String
+        writerValue.text = dataList["writer"] as? String
+        categoryValue.text = dataList["category"] as? String
+        dateValue.text = dataList["date"] as? String
+        startValue.text = dataList["startTime"] as? String
+        endValue.text = dataList["endTime"] as? String
+        placeValue.text = dataList["place"] as? String
+        contentValue.text = dataList["content"] as? String
     }
     
     // 선택 가능한 리스트 개수
@@ -254,7 +254,7 @@ class CalendarDetailViewController: UIViewController, UIPickerViewDelegate, UIPi
         }
         
         let modifyData = ["title": titleValue.text!, "writer": writerValue.text!, "category":categoryValue.text!, "date": dateValue.text!, "startTime": startValue.text!, "endTime": endValue.text!, "place": placeValue.text!, "content": contentValue.text!]
-        let id = data["id"] as! String
+        let id = dataList["id"] as! String
         print(modifyData, id)
         
         let db = Firestore.firestore()

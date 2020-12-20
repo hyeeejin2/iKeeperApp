@@ -21,6 +21,7 @@
 		0A7A68FA2551473200DD3BC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A7A68F82551473200DD3BC9 /* LaunchScreen.storyboard */; };
 		0A98D52125559DE400E4BF66 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A98D52025559DE400E4BF66 /* Constants.swift */; };
 		0AA73699258F25A800CD6314 /* InformationWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA73698258F25A800CD6314 /* InformationWriteViewController.swift */; };
+		0AA7369D258F5EAE00CD6314 /* InformationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA7369C258F5EAE00CD6314 /* InformationDetailViewController.swift */; };
 		0ABF3481258B9AA300919E1F /* CalendarDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABF3480258B9AA300919E1F /* CalendarDetailViewController.swift */; };
 		0ABFF950256B9FAA007FD690 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0ABFF94F256B9FAA007FD690 /* GoogleService-Info.plist */; };
 		0AD493D82557F48700BA552E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD493D72557F48700BA552E /* HomeViewController.swift */; };
@@ -46,6 +47,7 @@
 		0A7A68FB2551473200DD3BC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A98D52025559DE400E4BF66 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0AA73698258F25A800CD6314 /* InformationWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationWriteViewController.swift; sourceTree = "<group>"; };
+		0AA7369C258F5EAE00CD6314 /* InformationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationDetailViewController.swift; sourceTree = "<group>"; };
 		0ABF3480258B9AA300919E1F /* CalendarDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDetailViewController.swift; sourceTree = "<group>"; };
 		0ABFF94F256B9FAA007FD690 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0AD493D72557F48700BA552E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				0ABF3480258B9AA300919E1F /* CalendarDetailViewController.swift */,
 				0A744D8E255E7CBB00FFC5F7 /* CalendarWriteViewController.swift */,
 				0A1A578C2567A43C00562BE1 /* InformationViewController.swift */,
+				0AA7369C258F5EAE00CD6314 /* InformationDetailViewController.swift */,
 				0AA73698258F25A800CD6314 /* InformationWriteViewController.swift */,
 			);
 			path = "View Controllers";
@@ -272,6 +275,7 @@
 				0A744D8F255E7CBB00FFC5F7 /* CalendarWriteViewController.swift in Sources */,
 				0ABF3481258B9AA300919E1F /* CalendarDetailViewController.swift in Sources */,
 				0A1A578D2567A43C00562BE1 /* InformationViewController.swift in Sources */,
+				0AA7369D258F5EAE00CD6314 /* InformationDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
