@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class InformationViewController: UIViewController {
 
@@ -14,15 +15,21 @@ class InformationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
         
         infoTableView.delegate = self
         infoTableView.dataSource = self
-        infoTableView.estimatedRowHeight = 80.0 // 임의 설정이지만 계산해서 80
-        infoTableView.rowHeight = UITableView.automaticDimension // autolayout 설정에 맞게 자동으로 table cell height 조절
+        //infoTableView.estimatedRowHeight = 80.0 // 임의 설정이지만 계산해서 80
+        //infoTableView.rowHeight = UITableView.automaticDimension // autolayout 설정에 맞게 자동으로 table cell height 조절
         
         dataAdd()
     }
+    
+//    func showInfo() {
+//        let db = Firestore.firestore()
+//        db.collection("info_notice")
+//    }
     
     func dataAdd() {
         let data1: [String: String] = ["num": "1", "title": "sw개발보안경진대회", "views": "11",
@@ -38,9 +45,9 @@ class InformationViewController: UIViewController {
 extension InformationViewController: UITableViewDelegate, UITableViewDataSource {
     
     // tableView setting - height of row
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 80
+//    }
     
     // tableView setting - row
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
