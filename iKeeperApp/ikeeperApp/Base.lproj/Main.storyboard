@@ -429,6 +429,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yW3-dc-GPW">
                                         <rect key="frame" x="0.0" y="240" width="374" height="40"/>
                                         <state key="normal" title="write"/>
+                                        <connections>
+                                            <action selector="writeButton:" destination="e2W-Vt-boQ" eventType="touchUpInside" id="kVW-sg-uk2"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -448,6 +451,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Info Write" id="toL-MF-Cqg"/>
+                    <connections>
+                        <outlet property="contentValue" destination="uhh-T1-DRc" id="52O-h8-IYn"/>
+                        <outlet property="dateValue" destination="4fD-Vo-kVM" id="fvV-ym-R8y"/>
+                        <outlet property="timeValue" destination="b3w-1Q-35x" id="JGK-Um-8Ii"/>
+                        <outlet property="titleValue" destination="htX-Ft-dd9" id="aRm-6h-PnJ"/>
+                        <outlet property="writerValue" destination="Khu-gM-MHp" id="HfC-jW-y9h"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sKw-13-iap" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
