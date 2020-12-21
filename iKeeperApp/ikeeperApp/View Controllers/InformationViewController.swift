@@ -40,7 +40,6 @@ class InformationViewController: UIViewController {
                     self.dataList.append(documentData)
                     temp += 1
                 }
-                print(self.dataList)
                 self.infoTableView.reloadData()
             } else if error == nil && snapshot?.isEmpty == true {
                 let statusLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 414, height: 40))

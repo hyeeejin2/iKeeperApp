@@ -379,7 +379,7 @@
             </objects>
             <point key="canvasLocation" x="1731.8840579710147" y="264.50892857142856"/>
         </scene>
-        <!--Information Write View Controller-->
+        <!--Info Write-->
         <scene sceneID="z7s-Lt-PtS">
             <objects>
                 <viewController id="e2W-Vt-boQ" customClass="InformationWriteViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -447,28 +447,120 @@
                             <constraint firstItem="7Ph-k4-cjH" firstAttribute="trailing" secondItem="45z-Hu-QrA" secondAttribute="trailing" constant="20" id="nEp-Cu-JPk"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="toL-MF-Cqg"/>
+                    <navigationItem key="navigationItem" title="Info Write" id="toL-MF-Cqg"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sKw-13-iap" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2624.6376811594205" y="264.50892857142856"/>
         </scene>
-        <!--Information Detail View Controller-->
+        <!--Info Detail-->
         <scene sceneID="P55-0g-6Vr">
             <objects>
                 <viewController storyboardIdentifier="InformationDetailVC" id="As0-6X-N1O" customClass="InformationDetailViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nTU-nF-aCa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ehp-cG-ey0">
+                                <rect key="frame" x="20" y="128" width="374" height="340"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mpO-QH-0k2">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="xLV-DG-iOM"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="writer" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JFj-VT-hPN">
+                                        <rect key="frame" x="0.0" y="60" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="v1e-Lc-8OD">
+                                        <rect key="frame" x="0.0" y="120" width="374" height="40"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pAA-YD-YQ6">
+                                                <rect key="frame" x="0.0" y="0.0" width="182" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2ui-hf-z5P">
+                                                <rect key="frame" x="192" y="0.0" width="182" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="2ui-hf-z5P" firstAttribute="width" secondItem="pAA-YD-YQ6" secondAttribute="width" id="dSS-Yr-NNA"/>
+                                        </constraints>
+                                    </stackView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="views" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s5l-wV-piG">
+                                        <rect key="frame" x="0.0" y="180" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="content" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sjl-AG-5WS">
+                                        <rect key="frame" x="0.0" y="240" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVF-3C-NQI">
+                                        <rect key="frame" x="0.0" y="300" width="374" height="40"/>
+                                        <state key="normal" title="complete"/>
+                                        <connections>
+                                            <action selector="completeButton:" destination="As0-6X-N1O" eventType="touchUpInside" id="jBQ-qp-mAq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="s5l-wV-piG" firstAttribute="height" secondItem="mpO-QH-0k2" secondAttribute="height" id="AT6-ld-Nj7"/>
+                                    <constraint firstItem="eVF-3C-NQI" firstAttribute="height" secondItem="mpO-QH-0k2" secondAttribute="height" id="Hh1-SI-WSm"/>
+                                    <constraint firstItem="sjl-AG-5WS" firstAttribute="height" secondItem="mpO-QH-0k2" secondAttribute="height" id="Kp1-uZ-TJ4"/>
+                                    <constraint firstItem="JFj-VT-hPN" firstAttribute="height" secondItem="mpO-QH-0k2" secondAttribute="height" id="S2h-0b-WTG"/>
+                                    <constraint firstItem="v1e-Lc-8OD" firstAttribute="height" secondItem="mpO-QH-0k2" secondAttribute="height" id="kCE-GT-5al"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="FAl-2X-D71"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ehp-cG-ey0" firstAttribute="leading" secondItem="FAl-2X-D71" secondAttribute="leading" constant="20" id="TT9-0O-bdM"/>
+                            <constraint firstItem="Ehp-cG-ey0" firstAttribute="top" secondItem="FAl-2X-D71" secondAttribute="top" constant="40" id="hk6-86-S3D"/>
+                            <constraint firstItem="FAl-2X-D71" firstAttribute="trailing" secondItem="Ehp-cG-ey0" secondAttribute="trailing" constant="20" id="xXz-kt-p1Z"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Info Detail" id="ijW-NO-nJP">
+                        <rightBarButtonItems>
+                            <barButtonItem title="edit" image="pencil.slash" catalog="system" id="kbT-km-tAI">
+                                <connections>
+                                    <action selector="editButton:" destination="As0-6X-N1O" id="yYd-5N-zUw"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="delete" image="trash" catalog="system" id="Xvl-lo-YE1">
+                                <color key="tintColor" red="1" green="0.2111233495" blue="0.25000072680000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <action selector="deleteButton:" destination="As0-6X-N1O" id="5xc-Pq-r6z"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="completeButton" destination="eVF-3C-NQI" id="dZh-K6-sCR"/>
+                        <outlet property="contentValue" destination="sjl-AG-5WS" id="eaw-16-cRY"/>
+                        <outlet property="dateValue" destination="pAA-YD-YQ6" id="dth-Po-bsb"/>
+                        <outlet property="editBarButton" destination="kbT-km-tAI" id="QfD-cL-4Bw"/>
+                        <outlet property="timeValue" destination="2ui-hf-z5P" id="hdU-YV-QzL"/>
+                        <outlet property="titleValue" destination="mpO-QH-0k2" id="VRG-m9-Vd7"/>
+                        <outlet property="viewsValue" destination="s5l-wV-piG" id="iUl-Ny-0Ih"/>
+                        <outlet property="writerValue" destination="JFj-VT-hPN" id="trs-xf-c6U"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nq3-dq-HFp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3425" y="265"/>
+            <point key="canvasLocation" x="3424.6376811594205" y="264.50892857142856"/>
         </scene>
         <!--Home-->
         <scene sceneID="Ijc-oI-buy">
@@ -545,6 +637,7 @@
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ku-MS-oRa">
                                                                     <rect key="frame" x="394.5" y="0.0" width="19.5" height="38.5"/>
+                                                                    <color key="tintColor" red="1" green="0.2111233495" blue="0.25000072680000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     <state key="normal" image="trash" catalog="system"/>
                                                                 </button>
                                                             </subviews>
@@ -893,7 +986,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Calendar Detail" id="3l3-Wi-1fg">
-                        <barButtonItem key="rightBarButtonItem" title="edit" id="iQo-ps-gAo">
+                        <barButtonItem key="rightBarButtonItem" title="edit" image="pencil.slash" catalog="system" id="iQo-ps-gAo">
                             <connections>
                                 <action selector="editButton:" destination="St8-50-2p8" id="WIA-hL-JTy"/>
                             </connections>
@@ -942,6 +1035,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="pencil.slash" catalog="system" width="128" height="113"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="text.justify" catalog="system" width="128" height="100"/>
         <image name="trash" catalog="system" width="121" height="128"/>

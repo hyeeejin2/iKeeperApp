@@ -222,7 +222,6 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
         
         Auth.auth().createUser(withEmail: email, password: pw) { (result, err) in
-            
             // check for error
             if err != nil {
                 print("check for err : \(err!.localizedDescription)")
@@ -236,17 +235,15 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                     return
                 }
             } else {
-                
                 let db = Firestore.firestore()
                 db.collection("users").addDocument(data: ["email": email, "name": name, "password": pw, "studentID": studentID, "department": department, "grade": grade, "phoneNumber": phoneNumber, "part": part, "status": status, "warning": 0, "permission": false, "uid":result!.user.uid]) { (error) in
-                    
                     if error != nil {
                         print("check for error : \(error!.localizedDescription)")
                         self.showAlert(message: "회원가입 실패")
+                    } else {
+                        self.navigationController?.popViewController(animated: true)
                     }
                 }
-                self.navigationController?.popViewController(animated: true)
-                
             }
         }
     }

@@ -19,7 +19,6 @@ class CalendarWriteViewController: UIViewController, UIPickerViewDelegate, UIPic
     @IBOutlet weak var endValue: UITextField!
     @IBOutlet weak var placeValue: UITextField!
     @IBOutlet weak var contentValue: UITextField!
-    //let writer: String = ""
     let datePicker: UIDatePicker = UIDatePicker()
     let startPicker: UIDatePicker = UIDatePicker()
     let endPicker: UIDatePicker = UIDatePicker()
