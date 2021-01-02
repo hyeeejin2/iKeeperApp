@@ -67,18 +67,22 @@ class PublicMoneyWriteViewController: UIViewController {
         var category = ""
         if self.categoryControl.selectedSegmentIndex == 0 {
             category = "수입"
-            if let amount = Int(amount), let sumInt = Int(sum) {
-                sum = String(sumInt + amount)
+            if let amountInt = Int(amount), let sumInt = Int(sum) {
+                sum = String(sumInt + amountInt)
                 print("current sum is \(sum)")
             }
         } else {
             category = "지출"
-            if let amount = Int(amount), let sumInt = Int(sum) {
-                sum = String(sumInt - amount)
+            if let amountInt = Int(amount), let sumInt = Int(sum) {
+                guard sumInt-amountInt >= 0 else {
+                    self.showAlert(message: "합계가 0보다 작을 수 없음")
+                    return
+                }
+                sum = String(sumInt - amountInt)
                 print("current sum is \(sum)")
             }
         }
-    
+
         // update sum(document)
         let db = Firestore.firestore()
         db.collection("publicMoney").document("sum").updateData(["sum": sum]) { (error) in
