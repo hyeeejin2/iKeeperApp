@@ -10,3 +10,7 @@ for i in 1...10{
     result+=i
 }
 print(result)
+
+let a: String = "신서유기"
+let b: String = "토인이"
+print("christmas is \(a) and \(b)")

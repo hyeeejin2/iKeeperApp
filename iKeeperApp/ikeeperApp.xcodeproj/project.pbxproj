@@ -11,6 +11,8 @@
 		0A194BB3257FB2B700820837 /* CalendarCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A194BB2257FB2B700820837 /* CalendarCustomCell.swift */; };
 		0A1A578D2567A43C00562BE1 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A578C2567A43C00562BE1 /* InformationViewController.swift */; };
 		0A1A579D2567E10400562BE1 /* InfoCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A579C2567E10400562BE1 /* InfoCustomCell.swift */; };
+		0A3A931325A06AF90015C43D /* PublicMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3A931225A06AF90015C43D /* PublicMoneyViewController.swift */; };
+		0A3A931725A07E530015C43D /* PublicMoneyWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3A931625A07E530015C43D /* PublicMoneyWriteViewController.swift */; };
 		0A3CC3A92555009D00AEACF9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3CC3A82555009D00AEACF9 /* SignUpViewController.swift */; };
 		0A744D8F255E7CBB00FFC5F7 /* CalendarWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A744D8E255E7CBB00FFC5F7 /* CalendarWriteViewController.swift */; };
 		0A7A68EE2551473100DD3BC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7A68ED2551473100DD3BC9 /* AppDelegate.swift */; };
@@ -35,6 +37,8 @@
 		0A194BB2257FB2B700820837 /* CalendarCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCustomCell.swift; sourceTree = "<group>"; };
 		0A1A578C2567A43C00562BE1 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		0A1A579C2567E10400562BE1 /* InfoCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCustomCell.swift; sourceTree = "<group>"; };
+		0A3A931225A06AF90015C43D /* PublicMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMoneyViewController.swift; sourceTree = "<group>"; };
+		0A3A931625A07E530015C43D /* PublicMoneyWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMoneyWriteViewController.swift; sourceTree = "<group>"; };
 		0A3CC3A82555009D00AEACF9 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0A744D8E255E7CBB00FFC5F7 /* CalendarWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWriteViewController.swift; sourceTree = "<group>"; };
 		0A7A68EA2551473100DD3BC9 /* ikeeperApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ikeeperApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +85,8 @@
 				0A1A578C2567A43C00562BE1 /* InformationViewController.swift */,
 				0AA7369C258F5EAE00CD6314 /* InformationDetailViewController.swift */,
 				0AA73698258F25A800CD6314 /* InformationWriteViewController.swift */,
+				0A3A931225A06AF90015C43D /* PublicMoneyViewController.swift */,
+				0A3A931625A07E530015C43D /* PublicMoneyWriteViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -261,9 +267,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A3A931325A06AF90015C43D /* PublicMoneyViewController.swift in Sources */,
 				0A194BB3257FB2B700820837 /* CalendarCustomCell.swift in Sources */,
 				0AD493DD2558267C00BA552E /* CalendarViewController.swift in Sources */,
 				0A13DCAD2552FCBC00B3E53F /* LoginViewController.swift in Sources */,
+				0A3A931725A07E530015C43D /* PublicMoneyWriteViewController.swift in Sources */,
 				0A7A68F22551473100DD3BC9 /* ViewController.swift in Sources */,
 				0A7A68EE2551473100DD3BC9 /* AppDelegate.swift in Sources */,
 				0A7A68F02551473100DD3BC9 /* SceneDelegate.swift in Sources */,

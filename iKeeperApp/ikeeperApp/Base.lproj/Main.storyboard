@@ -213,9 +213,6 @@
                                             <constraint firstAttribute="height" constant="40" id="cFp-4O-G9l"/>
                                         </constraints>
                                         <state key="normal" title="Sign Up"/>
-                                        <connections>
-                                            <action selector="signUpButton:" destination="6FG-Ge-tKf" eventType="touchUpInside" id="lse-Us-T7T"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -421,11 +418,23 @@
                                             <constraint firstItem="b3w-1Q-35x" firstAttribute="width" secondItem="4fD-Vo-kVM" secondAttribute="width" id="xvD-NT-Qcn"/>
                                         </constraints>
                                     </stackView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="content" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uhh-T1-DRc">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xCW-WO-QfR">
                                         <rect key="frame" x="0.0" y="180" width="374" height="40"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="content" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uhh-T1-DRc">
+                                                <rect key="frame" x="0.0" y="0.0" width="322" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCU-Fd-aaM">
+                                                <rect key="frame" x="332" y="0.0" width="42" height="40"/>
+                                                <state key="normal" title="image"/>
+                                                <connections>
+                                                    <action selector="imageButton:" destination="e2W-Vt-boQ" eventType="touchUpInside" id="Mr5-fI-SHh"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yW3-dc-GPW">
                                         <rect key="frame" x="0.0" y="240" width="374" height="40"/>
                                         <state key="normal" title="write"/>
@@ -435,9 +444,9 @@
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="xCW-WO-QfR" firstAttribute="height" secondItem="htX-Ft-dd9" secondAttribute="height" id="Gi9-xw-CpT"/>
                                     <constraint firstItem="yW3-dc-GPW" firstAttribute="height" secondItem="htX-Ft-dd9" secondAttribute="height" id="UN1-Un-pTP"/>
                                     <constraint firstItem="Khu-gM-MHp" firstAttribute="height" secondItem="htX-Ft-dd9" secondAttribute="height" id="oso-y2-DUD"/>
-                                    <constraint firstItem="uhh-T1-DRc" firstAttribute="height" secondItem="htX-Ft-dd9" secondAttribute="height" id="y0E-kw-NFq"/>
                                     <constraint firstItem="ZGf-ZP-0Yo" firstAttribute="height" secondItem="htX-Ft-dd9" secondAttribute="height" id="yQb-pZ-8vE"/>
                                 </constraints>
                             </stackView>
@@ -607,6 +616,122 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dKg-1l-7Tb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="913" y="-105"/>
+        </scene>
+        <!--PublicMoney-->
+        <scene sceneID="R8e-92-VHs">
+            <objects>
+                <viewController storyboardIdentifier="PublicMoneyVC" id="mIw-Ke-mcN" customClass="PublicMoneyViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0zK-dy-Wky">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="3Fb-IW-n7Q"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="PublicMoney" id="i9a-sj-fL1">
+                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="Esf-k3-Yt4">
+                            <connections>
+                                <segue destination="gqA-Sk-ljF" kind="show" id="f5h-v3-5K1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KYy-Ve-SaP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1732" y="-1223"/>
+        </scene>
+        <!--PublicMoneyWrite-->
+        <scene sceneID="gEb-39-Vwj">
+            <objects>
+                <viewController id="gqA-Sk-ljF" customClass="PublicMoneyWriteViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7he-7x-rf3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="2OB-Ib-HeN">
+                                <rect key="frame" x="20" y="128" width="374" height="270"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Joz-hB-LML">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="41"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="3aQ-rB-3nE"/>
+                                        </constraints>
+                                        <segments>
+                                            <segment title="수입"/>
+                                            <segment title="지출"/>
+                                        </segments>
+                                    </segmentedControl>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="stH-BK-Lg2">
+                                        <rect key="frame" x="0.0" y="60" width="374" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="bc9-To-JpA"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jnc-h7-J6h">
+                                        <rect key="frame" x="0.0" y="120" width="374" height="40"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hGX-R7-0mH">
+                                                <rect key="frame" x="0.0" y="0.0" width="182" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="writer" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TRf-zB-9na">
+                                                <rect key="frame" x="192" y="0.0" width="182" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="TRf-zB-9na" firstAttribute="width" secondItem="hGX-R7-0mH" secondAttribute="width" id="37G-Bd-R8b"/>
+                                            <constraint firstAttribute="height" constant="40" id="Wj8-JX-gek"/>
+                                        </constraints>
+                                    </stackView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="memo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NJX-f4-KQl">
+                                        <rect key="frame" x="0.0" y="180" width="374" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="urx-It-N8Z"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bW-V4-fVf">
+                                        <rect key="frame" x="0.0" y="240" width="374" height="30"/>
+                                        <state key="normal" title="write"/>
+                                        <connections>
+                                            <action selector="writeButton:" destination="gqA-Sk-ljF" eventType="touchUpInside" id="JRw-xL-9Qz"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="stH-BK-Lg2" firstAttribute="height" secondItem="Joz-hB-LML" secondAttribute="height" id="rqi-NY-k8U"/>
+                                    <constraint firstItem="jnc-h7-J6h" firstAttribute="height" secondItem="Joz-hB-LML" secondAttribute="height" id="t4i-Z4-86J"/>
+                                    <constraint firstItem="NJX-f4-KQl" firstAttribute="height" secondItem="Joz-hB-LML" secondAttribute="height" id="xKH-4h-xsg"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="g67-8L-03y"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2OB-Ib-HeN" firstAttribute="leading" secondItem="g67-8L-03y" secondAttribute="leading" constant="20" id="BIc-Bb-Wgf"/>
+                            <constraint firstItem="g67-8L-03y" firstAttribute="trailing" secondItem="2OB-Ib-HeN" secondAttribute="trailing" constant="20" id="lyA-bc-7Pg"/>
+                            <constraint firstItem="2OB-Ib-HeN" firstAttribute="top" secondItem="g67-8L-03y" secondAttribute="top" constant="40" id="qaT-N2-sfh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="PublicMoneyWrite" id="Q5G-lH-fql"/>
+                    <connections>
+                        <outlet property="amountValue" destination="stH-BK-Lg2" id="z7c-dR-Tc7"/>
+                        <outlet property="categoryControl" destination="Joz-hB-LML" id="QAE-nz-rZi"/>
+                        <outlet property="dateValue" destination="hGX-R7-0mH" id="sA9-73-aXC"/>
+                        <outlet property="memoValue" destination="NJX-f4-KQl" id="dXW-9a-MRi"/>
+                        <outlet property="writerValue" destination="TRf-zB-9na" id="XTz-9b-dhq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OZF-Z0-evH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2624.6376811594205" y="-1223.4375"/>
         </scene>
         <!--Calendar-->
         <scene sceneID="Wwg-wR-sfq">

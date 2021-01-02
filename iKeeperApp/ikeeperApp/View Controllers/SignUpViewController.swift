@@ -160,7 +160,6 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     // signUpButton
     @IBAction func signUpButton(_ sender: UIButton) {
-       
         guard let id: String = idValue.text, id.isEmpty == false else {
             showAlert(message: "빈칸을 채워주세요")
             return

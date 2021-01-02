@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Photos
 import Firebase
 
 class InformationWriteViewController: UIViewController {
@@ -15,11 +16,67 @@ class InformationWriteViewController: UIViewController {
     @IBOutlet weak var dateValue: UITextField!
     @IBOutlet weak var timeValue: UITextField!
     @IBOutlet weak var contentValue: UITextField!
+    var fetchResult: PHFetchResult<PHAsset>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+    }
+    
+    func requestPhotosPermission() {
+        let photoAuthorizationStatusStatus = PHPhotoLibrary.authorizationStatus()
+            
+        switch photoAuthorizationStatusStatus {
+        case .authorized:
+            print("Photo Authorization status is authorized.")
+            self.requestCollection()
+                
+        case .denied:
+            print("Photo Authorization status is denied.")
+                
+        case .notDetermined:
+            print("Photo Authorization status is not determined.")
+            PHPhotoLibrary.requestAuthorization() { (status) in
+                switch status {
+                case .authorized:
+                    print("User permiited.")
+                    self.requestCollection()
+                case .denied:
+                    print("User denied.")
+                    break
+                default:
+                    break
+                }
+            }
+                
+        case .restricted:
+            print("Photo Authorization status is restricted.")
+        default:
+            break
+        }
+    }
+    
+    func requestCollection() {
+        let cameraRoll: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
+
+        guard let cameraRollCollection = cameraRoll.firstObject else {
+            return
+        }
+
+        let fetchOption = PHFetchOptions()
+        fetchOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+
+        self.fetchResult = PHAsset.fetchAssets(in: cameraRollCollection, options: fetchOption)
+
+        OperationQueue.main.addOperation {
+            //self.tableView.reloadData()
+        }
+    }
+    
+    @IBAction func imageButton(_ sender: UIButton) {
+        requestPhotosPermission()
     }
     
     @IBAction func writeButton(_ sender: UIButton) {

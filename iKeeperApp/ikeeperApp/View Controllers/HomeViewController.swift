@@ -65,7 +65,9 @@ class MenuListController: UITableViewController {
             self.navigationController?.pushViewController(calendarViewController, animated: true)
             
            case 3:
-            print("money")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let publicMoneyViewcontroller = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.publicMoneyViewController)
+            self.navigationController?.pushViewController(publicMoneyViewcontroller, animated: true)
             
            case 4:
             let firebaseAuth = Auth.auth()
