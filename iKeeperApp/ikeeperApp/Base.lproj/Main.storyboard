@@ -624,8 +624,38 @@
                     <view key="view" contentMode="scaleToFill" id="0zK-dy-Wky">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gGu-yn-tGz">
+                                <rect key="frame" x="0.0" y="162" width="414" height="651"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="aYN-bX-Wet">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aYN-bX-Wet" id="y7z-MZ-1Hb">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="click" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CJ3-Wt-uAO">
+                                <rect key="frame" x="147" y="108" width="120" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="3Fb-IW-n7Q"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gGu-yn-tGz" firstAttribute="top" secondItem="CJ3-Wt-uAO" secondAttribute="bottom" constant="20" id="NBW-S5-9fU"/>
+                            <constraint firstItem="gGu-yn-tGz" firstAttribute="leading" secondItem="3Fb-IW-n7Q" secondAttribute="leading" id="T5m-H0-tD3"/>
+                            <constraint firstItem="CJ3-Wt-uAO" firstAttribute="leading" secondItem="3Fb-IW-n7Q" secondAttribute="leading" constant="147" id="T83-6l-rLe"/>
+                            <constraint firstItem="gGu-yn-tGz" firstAttribute="trailing" secondItem="3Fb-IW-n7Q" secondAttribute="trailing" id="V7Y-dM-0A0"/>
+                            <constraint firstItem="CJ3-Wt-uAO" firstAttribute="top" secondItem="3Fb-IW-n7Q" secondAttribute="top" constant="20" id="X5n-gN-hnI"/>
+                            <constraint firstItem="3Fb-IW-n7Q" firstAttribute="trailing" secondItem="CJ3-Wt-uAO" secondAttribute="trailing" constant="147" id="YDV-0y-AQv"/>
+                            <constraint firstItem="3Fb-IW-n7Q" firstAttribute="bottom" secondItem="gGu-yn-tGz" secondAttribute="bottom" id="wfQ-OB-1bx"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="PublicMoney" id="i9a-sj-fL1">
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="Esf-k3-Yt4">
@@ -636,10 +666,13 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="dateValue" destination="CJ3-Wt-uAO" id="Qjv-6p-saf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KYy-Ve-SaP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1732" y="-1223"/>
+            <point key="canvasLocation" x="1731.8840579710147" y="-1223.4375"/>
         </scene>
         <!--PublicMoneyWrite-->
         <scene sceneID="gEb-39-Vwj">

@@ -64,6 +64,11 @@ class PublicMoneyWriteViewController: UIViewController {
             return
         }
         
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: Date())
+        let month = calendar.component(.month, from: Date())
+        let day = calendar.component(.day, from: Date())
+        
         var category = ""
         if self.categoryControl.selectedSegmentIndex == 0 {
             category = "수입"
@@ -95,7 +100,7 @@ class PublicMoneyWriteViewController: UIViewController {
             
         // add data
         let newDocument = db.collection("publicMoney").document()
-        newDocument.setData(["id": newDocument.documentID, "category": category, "amount": amount, "sum": sum, "date": date, "writer": writer, "memo": memo]) { (error) in
+        newDocument.setData(["id": newDocument.documentID, "category": category, "amount": amount, "sum": sum, "date": date, "year":year, "month":month, "day": day, "writer": writer, "memo": memo]) { (error) in
             if error != nil {
                 print("check for error : \(error!.localizedDescription)")
                 self.showAlert(message: "공금내역 등록 실패")

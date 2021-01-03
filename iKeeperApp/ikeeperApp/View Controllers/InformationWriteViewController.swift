@@ -70,13 +70,14 @@ class InformationWriteViewController: UIViewController {
 
         self.fetchResult = PHAsset.fetchAssets(in: cameraRollCollection, options: fetchOption)
 
-        OperationQueue.main.addOperation {
-            //self.tableView.reloadData()
-        }
+//        OperationQueue.main.addOperation {
+//            self.tableView.reloadData()
+//        }
     }
     
     @IBAction func imageButton(_ sender: UIButton) {
-        requestPhotosPermission()
+        print("image button click")
+        //requestPhotosPermission()
     }
     
     @IBAction func writeButton(_ sender: UIButton) {
