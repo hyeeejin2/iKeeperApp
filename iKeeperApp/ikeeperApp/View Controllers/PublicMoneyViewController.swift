@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class PublicMoneyViewController: UIViewController {
 
@@ -20,10 +21,25 @@ class PublicMoneyViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        test()
         createPickerView()
         dismissPickerView()
     }
     
+    func test() {
+        let db = Firestore.firestore()
+        db.collection("publicMoney").whereField("year", isEqualTo: "2021").whereField("month", isEqualTo: "1").getDocuments { (snapshot, error) in
+            if error == nil && snapshot?.isEmpty == false {
+                for document in snapshot!.documents {
+                    let documentData = document.data()
+                    print(documentData)
+                }
+            } else {
+                print("x")
+            }
+        }
+    }
+        
     func createPickerView() {
         let datePicker: UIPickerView = UIPickerView()
         datePicker.delegate = self
