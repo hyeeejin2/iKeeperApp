@@ -629,13 +629,56 @@
                                 <rect key="frame" x="0.0" y="162" width="414" height="651"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="aYN-bX-Wet">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PublicMoneyCustomCell" rowHeight="50" id="aYN-bX-Wet" customClass="PublicMoneyCustomCell" customModule="ikeeperApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aYN-bX-Wet" id="y7z-MZ-1Hb">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tft-pF-P4A">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="num" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1MZ-Mp-iAk">
+                                                            <rect key="frame" x="0.0" y="0.0" width="33.5" height="50"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h2Z-X4-5Pr">
+                                                            <rect key="frame" x="43.5" y="0.0" width="67.5" height="50"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSW-BY-nmY">
+                                                            <rect key="frame" x="121" y="0.0" width="250.5" height="50"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="end-Jq-DlP">
+                                                            <rect key="frame" x="381.5" y="0.0" width="32.5" height="50"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="tft-pF-P4A" firstAttribute="top" secondItem="y7z-MZ-1Hb" secondAttribute="top" id="6dw-HR-U0X"/>
+                                                <constraint firstItem="tft-pF-P4A" firstAttribute="leading" secondItem="y7z-MZ-1Hb" secondAttribute="leading" id="Vsp-wP-0iW"/>
+                                                <constraint firstAttribute="trailing" secondItem="tft-pF-P4A" secondAttribute="trailing" id="X1c-VI-rpg"/>
+                                                <constraint firstAttribute="bottom" secondItem="tft-pF-P4A" secondAttribute="bottom" id="cLg-Wq-MJt"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="categoryLabel" destination="h2Z-X4-5Pr" id="G7U-vK-U2M"/>
+                                            <outlet property="dateLabel" destination="MSW-BY-nmY" id="N60-Xn-Wef"/>
+                                            <outlet property="numLabel" destination="1MZ-Mp-iAk" id="B1B-sv-oNK"/>
+                                            <outlet property="sumLabel" destination="end-Jq-DlP" id="ODb-nd-QP9"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -677,6 +720,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="monthValue" destination="CJ3-Wt-uAO" id="Qjv-6p-saf"/>
+                        <outlet property="publicMoneyTableView" destination="gGu-yn-tGz" id="HJB-ZW-mIh"/>
                         <outlet property="yearValue" destination="ji0-dm-hXC" id="Rvk-7k-UTi"/>
                     </connections>
                 </viewController>

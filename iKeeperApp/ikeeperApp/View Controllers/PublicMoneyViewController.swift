@@ -12,10 +12,12 @@ class PublicMoneyViewController: UIViewController {
 
     @IBOutlet weak var yearValue: UITextField!
     @IBOutlet weak var monthValue: UITextField!
+    @IBOutlet weak var publicMoneyTableView: UITableView!
     let yearPickerView: UIPickerView = UIPickerView()
     let monthPickerView: UIPickerView = UIPickerView()
     let years = ["-- year --", "2018년", "2019년", "2020년", "2021년", "2022년"]
     let months = ["-- month --", "전체", "1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
+    var dataList = [[String: Any]]()
     var selectedYear = ""
     var selectedMonth = ""
     
@@ -23,22 +25,41 @@ class PublicMoneyViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        test()
+        publicMoneyTableView.delegate = self
+        publicMoneyTableView.dataSource = self
+        
         createPickerView()
         dismissPickerView()
     }
     
-    func test() {
+    override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear")
+        dataList = [[String:Any]]()
+        showPublicMoney()
+    }
+        
+    func showPublicMoney() {
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: Date())
+        let month = calendar.component(.month, from: Date())
+        yearValue.text = "\(year)년"
+        monthValue.text = "\(month)월"
+        
         let db = Firestore.firestore()
-        db.collection("publicMoney").whereField("year", isEqualTo: "2021").whereField("month", isEqualTo: "1").getDocuments { (snapshot, error) in
+        db.collection("publicMoney").whereField("year", isEqualTo: year).whereField("month", isEqualTo: month).getDocuments { (snapshot, error) in
             if error == nil && snapshot?.isEmpty == false {
+                var temp: Int = 1
                 for document in snapshot!.documents {
-                    let documentData = document.data()
-                    print(documentData)
+                    var documentData = document.data()
+                    documentData["num"] = "\(temp)"
+                    self.dataList.append(documentData)
+                    temp += 1
                 }
+                print(self.dataList)
             } else {
                 print("x")
             }
+            self.publicMoneyTableView.reloadData()
         }
     }
         
@@ -92,8 +113,8 @@ class PublicMoneyViewController: UIViewController {
     }
 }
 
-extension PublicMoneyViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    
+extension PublicMoneyViewController: UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource {
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -107,11 +128,6 @@ extension PublicMoneyViewController: UIPickerViewDelegate, UIPickerViewDataSourc
         default:
             return 1
         }
-//        if component == 0 {
-//            return year.count
-//        } else {
-//            return month.count
-//        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
@@ -139,5 +155,34 @@ extension PublicMoneyViewController: UIPickerViewDelegate, UIPickerViewDataSourc
                 selectedMonth = "" // "-- 선택 --" 선택하면
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //cell은 as 키워드로 앞서 만든 CalendarCustomCell 클래스화
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PublicMoneyCustomCell", for: indexPath) as! PublicMoneyCustomCell
+        
+        // cell에 데이터 삽입
+        let data = dataList[indexPath.row]
+        cell.numLabel?.text = data["num"] as? String
+        cell.categoryLabel?.text = data["category"] as? String
+        cell.dateLabel?.text = data["date"] as? String
+        cell.sumLabel?.text = data["sum"] as? String
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+//        let data = dataList[indexPath.row]
+//        let calendarDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.calendarDetailViewController) as! CalendarDetailViewController
+//        calendarDetailViewController.dataList = data
+//        self.navigationController?.pushViewController(calendarDetailViewController, animated: true)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
 }
