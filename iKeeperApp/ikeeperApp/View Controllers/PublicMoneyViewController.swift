@@ -55,7 +55,6 @@ class PublicMoneyViewController: UIViewController {
                     self.dataList.append(documentData)
                     temp += 1
                 }
-                print(self.dataList)
             } else {
                 print("x")
             }
@@ -170,6 +169,7 @@ extension PublicMoneyViewController: UIPickerViewDelegate, UIPickerViewDataSourc
         cell.numLabel?.text = data["num"] as? String
         cell.categoryLabel?.text = data["category"] as? String
         cell.dateLabel?.text = data["date"] as? String
+        cell.amountLabel?.text = data["amount"] as? String
         cell.sumLabel?.text = data["sum"] as? String
         return cell
     }

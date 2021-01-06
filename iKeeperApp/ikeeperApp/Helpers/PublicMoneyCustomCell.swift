@@ -12,6 +12,7 @@ class PublicMoneyCustomCell: UITableViewCell {
     @IBOutlet weak var numLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var sumLabel: UILabel!
     
     override func awakeFromNib() {

@@ -652,7 +652,13 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSW-BY-nmY">
-                                                            <rect key="frame" x="121" y="0.0" width="250.5" height="50"/>
+                                                            <rect key="frame" x="121" y="0.0" width="182.5" height="50"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gxa-jN-3dh">
+                                                            <rect key="frame" x="313.5" y="0.0" width="58" height="50"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -674,6 +680,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="amountLabel" destination="Gxa-jN-3dh" id="CxQ-68-9UG"/>
                                             <outlet property="categoryLabel" destination="h2Z-X4-5Pr" id="G7U-vK-U2M"/>
                                             <outlet property="dateLabel" destination="MSW-BY-nmY" id="N60-Xn-Wef"/>
                                             <outlet property="numLabel" destination="1MZ-Mp-iAk" id="B1B-sv-oNK"/>
