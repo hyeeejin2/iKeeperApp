@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class SignUpViewController: UIViewController {
 
     @IBOutlet weak var idValue: UITextField!
     @IBOutlet weak var domainValue: UITextField!
@@ -38,58 +38,6 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         createPickerView()
         dismissPickerView()
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        switch pickerView.tag {
-        case 1:
-            return domainKinds.count
-        case 2:
-            return departmentKinds.count
-        case 3:
-            return gradeKinds.count
-        default:
-            return 1
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        switch pickerView.tag {
-        case 1:
-            return domainKinds[row]
-        case 2:
-            return departmentKinds[row]
-        case 3:
-            return gradeKinds[row]
-        default:
-            return "Data not found"
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView.tag == 1 {
-            if row != 0 {
-                selectedDomain = domainKinds[row]
-            } else {
-                selectedDomain = "" // "-- 선택 --" 선택하면
-            }
-        } else if pickerView.tag == 2 {
-            if row != 0 {
-                selectedDepartment = departmentKinds[row]
-            } else {
-                selectedDepartment = "" // "-- 선택 --" 선택하면
-            }
-        } else {
-            if row != 0 {
-                selectedGrade = gradeKinds[row]
-            } else {
-                selectedGrade = "" // "-- 선택 --" 선택하면
-            }
-        }
     }
 
     func createPickerView() {
@@ -256,3 +204,58 @@ class SignUpViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         self.present(alert, animated: true, completion: nil)
     }
  }
+
+extension SignUpViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        switch pickerView.tag {
+        case 1:
+            return domainKinds.count
+        case 2:
+            return departmentKinds.count
+        case 3:
+            return gradeKinds.count
+        default:
+            return 1
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        switch pickerView.tag {
+        case 1:
+            return domainKinds[row]
+        case 2:
+            return departmentKinds[row]
+        case 3:
+            return gradeKinds[row]
+        default:
+            return "Data not found"
+        }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView.tag == 1 {
+            if row != 0 {
+                selectedDomain = domainKinds[row]
+            } else {
+                selectedDomain = "" // "-- 선택 --" 선택하면
+            }
+        } else if pickerView.tag == 2 {
+            if row != 0 {
+                selectedDepartment = departmentKinds[row]
+            } else {
+                selectedDepartment = "" // "-- 선택 --" 선택하면
+            }
+        } else {
+            if row != 0 {
+                selectedGrade = gradeKinds[row]
+            } else {
+                selectedGrade = "" // "-- 선택 --" 선택하면
+            }
+        }
+    }
+}

@@ -639,22 +639,31 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="click" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CJ3-Wt-uAO">
-                                <rect key="frame" x="147" y="108" width="120" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hnr-fM-Kld">
+                                <rect key="frame" x="139.5" y="108" width="135.5" height="34"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="year" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ji0-dm-hXC">
+                                        <rect key="frame" x="0.0" y="0.0" width="56" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="month" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CJ3-Wt-uAO">
+                                        <rect key="frame" x="66" y="0.0" width="69.5" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3Fb-IW-n7Q"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="gGu-yn-tGz" firstAttribute="top" secondItem="CJ3-Wt-uAO" secondAttribute="bottom" constant="20" id="NBW-S5-9fU"/>
-                            <constraint firstItem="gGu-yn-tGz" firstAttribute="leading" secondItem="3Fb-IW-n7Q" secondAttribute="leading" id="T5m-H0-tD3"/>
-                            <constraint firstItem="CJ3-Wt-uAO" firstAttribute="leading" secondItem="3Fb-IW-n7Q" secondAttribute="leading" constant="147" id="T83-6l-rLe"/>
-                            <constraint firstItem="gGu-yn-tGz" firstAttribute="trailing" secondItem="3Fb-IW-n7Q" secondAttribute="trailing" id="V7Y-dM-0A0"/>
-                            <constraint firstItem="CJ3-Wt-uAO" firstAttribute="top" secondItem="3Fb-IW-n7Q" secondAttribute="top" constant="20" id="X5n-gN-hnI"/>
-                            <constraint firstItem="3Fb-IW-n7Q" firstAttribute="trailing" secondItem="CJ3-Wt-uAO" secondAttribute="trailing" constant="147" id="YDV-0y-AQv"/>
-                            <constraint firstItem="3Fb-IW-n7Q" firstAttribute="bottom" secondItem="gGu-yn-tGz" secondAttribute="bottom" id="wfQ-OB-1bx"/>
+                            <constraint firstItem="gGu-yn-tGz" firstAttribute="trailing" secondItem="3Fb-IW-n7Q" secondAttribute="trailing" id="9PJ-dr-bmI"/>
+                            <constraint firstItem="hnr-fM-Kld" firstAttribute="centerX" secondItem="0zK-dy-Wky" secondAttribute="centerX" id="ARc-Zo-9Zh"/>
+                            <constraint firstItem="hnr-fM-Kld" firstAttribute="top" secondItem="3Fb-IW-n7Q" secondAttribute="top" constant="20" id="LST-qn-tSI"/>
+                            <constraint firstItem="gGu-yn-tGz" firstAttribute="bottom" secondItem="3Fb-IW-n7Q" secondAttribute="bottom" id="grn-qy-SmC"/>
+                            <constraint firstItem="gGu-yn-tGz" firstAttribute="leading" secondItem="3Fb-IW-n7Q" secondAttribute="leading" id="lER-4X-Qxq"/>
+                            <constraint firstItem="gGu-yn-tGz" firstAttribute="top" secondItem="hnr-fM-Kld" secondAttribute="bottom" constant="20" id="me7-OJ-3gP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="PublicMoney" id="i9a-sj-fL1">
@@ -667,7 +676,8 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="dateValue" destination="CJ3-Wt-uAO" id="Qjv-6p-saf"/>
+                        <outlet property="monthValue" destination="CJ3-Wt-uAO" id="Qjv-6p-saf"/>
+                        <outlet property="yearValue" destination="ji0-dm-hXC" id="Rvk-7k-UTi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KYy-Ve-SaP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
