@@ -17,6 +17,7 @@ class PublicMoneyViewController: UIViewController {
     let monthPickerView: UIPickerView = UIPickerView()
     let years = ["-- year --", "2018년", "2019년", "2020년", "2021년", "2022년"]
     let months = ["-- month --", "전체", "1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
+    let statusLabel = UILabel(frame: CGRect(x: 0, y: 160, width: 414, height: 40))
     var dataList = [[String: Any]]()
     var selectedYear = ""
     var selectedMonth = ""
@@ -37,16 +38,18 @@ class PublicMoneyViewController: UIViewController {
         dataList = [[String:Any]]()
         showPublicMoney()
     }
-        
+    
     func showPublicMoney() {
         let calendar = Calendar.current
         let year = calendar.component(.year, from: Date())
         let month = calendar.component(.month, from: Date())
+        selectedYear = "\(year)년"
+        selectedMonth = "\(month)월"
         yearValue.text = "\(year)년"
         monthValue.text = "\(month)월"
         
         let db = Firestore.firestore()
-        db.collection("publicMoney").whereField("year", isEqualTo: year).whereField("month", isEqualTo: month).getDocuments { (snapshot, error) in
+        db.collection("publicMoney").whereField("year", isEqualTo: year).whereField("month", isEqualTo: month).order(by: "created", descending: false).getDocuments { (snapshot, error) in
             if error == nil && snapshot?.isEmpty == false {
                 var temp: Int = 1
                 for document in snapshot!.documents {
@@ -56,9 +59,57 @@ class PublicMoneyViewController: UIViewController {
                     temp += 1
                 }
             } else {
-                print("x")
+                self.statusLabel.textAlignment = .center
+                self.statusLabel.text = "공금내역이 없습니다."
+                self.view.addSubview(self.statusLabel)
             }
             self.publicMoneyTableView.reloadData()
+        }
+    }
+    
+    func selectPublicMoney() {
+        dataList = [[String:Any]]()
+        statusLabel.removeFromSuperview()
+        
+        let db = Firestore.firestore()
+        let year:Int = Int(selectedYear.trimmingCharacters(in: ["년"]))!
+        
+        if selectedMonth == "전체" {
+            db.collection("publicMoney").whereField("year", isEqualTo: year).order(by: "created", descending: false).getDocuments { (snapshot, error) in
+                if error == nil && snapshot?.isEmpty == false {
+                    var temp: Int = 1
+                    for document in snapshot!.documents {
+                        var documentData = document.data()
+                        documentData["num"] = "\(temp)"
+                        self.dataList.append(documentData)
+                        temp += 1
+                    }
+                } else {
+                    self.statusLabel.textAlignment = .center
+                    self.statusLabel.text = "공금내역이 없습니다."
+                    self.view.addSubview(self.statusLabel)
+                }
+                self.publicMoneyTableView.reloadData()
+            }
+        } else {
+            let month:Int = Int(selectedMonth.trimmingCharacters(in: ["월"]))!
+            db.collection("publicMoney").whereField("year", isEqualTo: year).whereField("month", isEqualTo: month).order(by: "created", descending: false).getDocuments { (snapshot, error) in
+                if error == nil && snapshot?.isEmpty == false {
+                    var temp: Int = 1
+                    for document in snapshot!.documents {
+                        var documentData = document.data()
+                        documentData["num"] = "\(temp)"
+                        self.dataList.append(documentData)
+                        temp += 1
+                    }
+                } else {
+                    self.statusLabel.textAlignment = .center
+                    self.statusLabel.text = "공금내역이 없습니다."
+                    self.view.addSubview(self.statusLabel)
+                }
+                self.publicMoneyTableView.reloadData()
+                
+            }
         }
     }
         
@@ -101,14 +152,39 @@ class PublicMoneyViewController: UIViewController {
     
     @objc func yearPickerDone() {
         yearValue.text = selectedYear
-        selectedYear = ""
+        if selectedYear != "" && selectedMonth != "" {
+            print("not empty")
+            selectPublicMoney()
+        } else if selectedYear == "" {
+            showAlert(message: "연도를 선택하세요")
+            dataList = [[String:Any]]()
+            statusLabel.removeFromSuperview()
+            self.publicMoneyTableView.reloadData()
+        }
         self.view.endEditing(true)
     }
     
     @objc func monthPickerDone() {
         monthValue.text = selectedMonth
-        selectedMonth = ""
+        if selectedYear != "" && selectedMonth != "" {
+            print("not empty")
+            selectPublicMoney()
+        } else if selectedMonth == "" {
+            showAlert(message: "월을 선택하세요")
+            dataList = [[String:Any]]()
+            statusLabel.removeFromSuperview()
+            self.publicMoneyTableView.reloadData()
+        }
         self.view.endEditing(true)
+    }
+    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "알림",
+                                      message: message,
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -161,7 +237,7 @@ extension PublicMoneyViewController: UIPickerViewDelegate, UIPickerViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //cell은 as 키워드로 앞서 만든 CalendarCustomCell 클래스화
+        //cell은 as 키워드로 앞서 만든 PublicMoneyCustomCell 클래스화
         let cell = tableView.dequeueReusableCell(withIdentifier: "PublicMoneyCustomCell", for: indexPath) as! PublicMoneyCustomCell
         
         // cell에 데이터 삽입
