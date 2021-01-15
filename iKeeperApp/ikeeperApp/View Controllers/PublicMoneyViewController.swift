@@ -28,6 +28,7 @@ class PublicMoneyViewController: UIViewController {
         
         publicMoneyTableView.delegate = self
         publicMoneyTableView.dataSource = self
+        publicMoneyTableView.allowsSelection = false
         
         createPickerView()
         dismissPickerView()
@@ -250,13 +251,13 @@ extension PublicMoneyViewController: UIPickerViewDelegate, UIPickerViewDataSourc
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.deselectRow(at: indexPath, animated: true)
 //        let data = dataList[indexPath.row]
 //        let calendarDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.calendarDetailViewController) as! CalendarDetailViewController
 //        calendarDetailViewController.dataList = data
 //        self.navigationController?.pushViewController(calendarDetailViewController, animated: true)
-    }
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

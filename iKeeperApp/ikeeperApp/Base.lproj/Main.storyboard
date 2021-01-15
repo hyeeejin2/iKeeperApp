@@ -556,7 +556,7 @@
                                     <action selector="editButton:" destination="As0-6X-N1O" id="yYd-5N-zUw"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="delete" image="trash" catalog="system" id="Xvl-lo-YE1">
+                            <barButtonItem image="trash" catalog="system" id="Xvl-lo-YE1">
                                 <color key="tintColor" red="1" green="0.2111233495" blue="0.25000072680000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <action selector="deleteButton:" destination="As0-6X-N1O" id="5xc-Pq-r6z"/>
@@ -735,7 +735,7 @@
             </objects>
             <point key="canvasLocation" x="1731.8840579710147" y="-1223.4375"/>
         </scene>
-        <!--PublicMoneyWrite-->
+        <!--PublicMoney Write-->
         <scene sceneID="gEb-39-Vwj">
             <objects>
                 <viewController id="gqA-Sk-ljF" customClass="PublicMoneyWriteViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -814,7 +814,7 @@
                             <constraint firstItem="2OB-Ib-HeN" firstAttribute="top" secondItem="g67-8L-03y" secondAttribute="top" constant="40" id="qaT-N2-sfh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="PublicMoneyWrite" id="Q5G-lH-fql"/>
+                    <navigationItem key="navigationItem" title="PublicMoney Write" id="Q5G-lH-fql"/>
                     <connections>
                         <outlet property="amountValue" destination="stH-BK-Lg2" id="z7c-dR-Tc7"/>
                         <outlet property="categoryControl" destination="Joz-hB-LML" id="QAE-nz-rZi"/>
@@ -1215,11 +1215,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Calendar Detail" id="3l3-Wi-1fg">
-                        <barButtonItem key="rightBarButtonItem" title="edit" image="pencil.slash" catalog="system" id="iQo-ps-gAo">
-                            <connections>
-                                <action selector="editButton:" destination="St8-50-2p8" id="WIA-hL-JTy"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="edit" image="pencil.slash" catalog="system" id="iQo-ps-gAo">
+                                <connections>
+                                    <action selector="editButton:" destination="St8-50-2p8" id="WIA-hL-JTy"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="trash" catalog="system" id="pvF-0p-m7s">
+                                <color key="tintColor" red="1" green="0.2111233495" blue="0.25000072680000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <connections>
+                                    <action selector="deleteButton:" destination="St8-50-2p8" id="7HB-nk-yFX"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
