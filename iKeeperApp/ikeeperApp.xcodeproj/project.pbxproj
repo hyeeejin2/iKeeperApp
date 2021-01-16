@@ -11,6 +11,9 @@
 		0A194BB3257FB2B700820837 /* CalendarCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A194BB2257FB2B700820837 /* CalendarCustomCell.swift */; };
 		0A1A578D2567A43C00562BE1 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A578C2567A43C00562BE1 /* InformationViewController.swift */; };
 		0A1A579D2567E10400562BE1 /* InfoCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A579C2567E10400562BE1 /* InfoCustomCell.swift */; };
+		0A361F4D25B2E54800EB27A0 /* logo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A361F4C25B2E54800EB27A0 /* logo1.png */; };
+		0A361F5025B2E6A900EB27A0 /* logo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A361F4F25B2E6A900EB27A0 /* logo2.png */; };
+		0A361F5325B2E6B300EB27A0 /* logo3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A361F5225B2E6B300EB27A0 /* logo3.png */; };
 		0A3A931325A06AF90015C43D /* PublicMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3A931225A06AF90015C43D /* PublicMoneyViewController.swift */; };
 		0A3A931725A07E530015C43D /* PublicMoneyWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3A931625A07E530015C43D /* PublicMoneyWriteViewController.swift */; };
 		0A3CC3A92555009D00AEACF9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3CC3A82555009D00AEACF9 /* SignUpViewController.swift */; };
@@ -38,6 +41,9 @@
 		0A194BB2257FB2B700820837 /* CalendarCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCustomCell.swift; sourceTree = "<group>"; };
 		0A1A578C2567A43C00562BE1 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		0A1A579C2567E10400562BE1 /* InfoCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCustomCell.swift; sourceTree = "<group>"; };
+		0A361F4C25B2E54800EB27A0 /* logo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo1.png; sourceTree = "<group>"; };
+		0A361F4F25B2E6A900EB27A0 /* logo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo2.png; sourceTree = "<group>"; };
+		0A361F5225B2E6B300EB27A0 /* logo3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo3.png; sourceTree = "<group>"; };
 		0A3A931225A06AF90015C43D /* PublicMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMoneyViewController.swift; sourceTree = "<group>"; };
 		0A3A931625A07E530015C43D /* PublicMoneyWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMoneyWriteViewController.swift; sourceTree = "<group>"; };
 		0A3CC3A82555009D00AEACF9 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +129,9 @@
 				0A7A68F82551473200DD3BC9 /* LaunchScreen.storyboard */,
 				0A7A68FB2551473200DD3BC9 /* Info.plist */,
 				0ABFF94F256B9FAA007FD690 /* GoogleService-Info.plist */,
+				0A361F4C25B2E54800EB27A0 /* logo1.png */,
+				0A361F4F25B2E6A900EB27A0 /* logo2.png */,
+				0A361F5225B2E6B300EB27A0 /* logo3.png */,
 			);
 			path = ikeeperApp;
 			sourceTree = "<group>";
@@ -214,9 +223,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A361F5325B2E6B300EB27A0 /* logo3.png in Resources */,
 				0A7A68FA2551473200DD3BC9 /* LaunchScreen.storyboard in Resources */,
+				0A361F5025B2E6A900EB27A0 /* logo2.png in Resources */,
 				0ABFF950256B9FAA007FD690 /* GoogleService-Info.plist in Resources */,
 				0A7A68F72551473200DD3BC9 /* Assets.xcassets in Resources */,
+				0A361F4D25B2E54800EB27A0 /* logo1.png in Resources */,
 				0A7A68F52551473100DD3BC9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

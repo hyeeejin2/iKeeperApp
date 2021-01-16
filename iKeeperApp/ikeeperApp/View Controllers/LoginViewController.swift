@@ -19,7 +19,6 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func loginButton(_ sender: UIButton) {
-        
         guard let email: String = emailValue.text, email.isEmpty == false else {
             showAlert(message: "빈칸을 채워주세요")
             return

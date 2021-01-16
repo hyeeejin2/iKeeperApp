@@ -17,9 +17,17 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        setNavigation()
+        setSideMenu()
+        
+    }
+    
+    func setNavigation() {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.navigationController?.setToolbarHidden(false, animated: false)
-
+    }
+    
+    func setSideMenu(){
         sideMenu = SideMenuNavigationController(rootViewController: MenuListController())
         sideMenu?.leftSide = false
         
@@ -39,37 +47,40 @@ class MenuListController: UITableViewController {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lists.count
     }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = lists[indexPath.row]
         return cell
     }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-           tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
         
-           switch indexPath.row {
-           case 0:
+        switch indexPath.row {
+        case 0:
             print("mypage")
             
-           case 1:
+        case 1:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let informationViewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.informationViewController)
             self.navigationController?.pushViewController(informationViewController, animated: true)
             
-           case 2:
+        case 2:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let calendarViewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.calenderViewController)
             self.navigationController?.pushViewController(calendarViewController, animated: true)
             
-           case 3:
+        case 3:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let publicMoneyViewcontroller = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.publicMoneyViewController)
             self.navigationController?.pushViewController(publicMoneyViewcontroller, animated: true)
             
-           case 4:
+        case 4:
             let firebaseAuth = Auth.auth()
             do {
                 try firebaseAuth.signOut()
@@ -78,13 +89,14 @@ class MenuListController: UITableViewController {
                 print ("Error signing out: %@", signOutError)
             }
             
-           case 5:
+        case 5:
             print("admin")
             
-           default:
-               return
-           }
-       }
+        default:
+            return
+        }
+    }
+    
     func transitionView() {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

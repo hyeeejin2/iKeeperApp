@@ -17,39 +17,45 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="J30-iR-RUy">
-                                <rect key="frame" x="40" y="743" width="334" height="30"/>
+                                <rect key="frame" x="40" y="737" width="334" height="36"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETU-1g-cBP">
-                                        <rect key="frame" x="0.0" y="0.0" width="334" height="30"/>
-                                        <state key="normal" title="Login"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="334" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Login">
+                                            <color key="titleColor" systemColor="linkColor"/>
+                                        </state>
                                         <connections>
                                             <segue destination="BYZ-38-t0r" kind="show" id="PMY-sy-Ox0"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="i-Keeper" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfu-s3-0jp">
-                                <rect key="frame" x="144.5" y="427.5" width="125.5" height="41"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo1.png" translatesAutoresizingMaskIntoConstraints="NO" id="fOF-4l-f1x">
+                                <rect key="frame" x="20" y="303" width="374" height="220"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="220" id="35v-x0-3Ym"/>
+                                    <constraint firstAttribute="width" constant="374" id="T5k-Tu-cwk"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Wuw-GM-Du9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Cfu-s3-0jp" firstAttribute="centerY" secondItem="TkD-Zg-XQf" secondAttribute="centerY" id="B68-bl-nWL"/>
                             <constraint firstItem="Wuw-GM-Du9" firstAttribute="bottom" secondItem="J30-iR-RUy" secondAttribute="bottom" constant="40" id="C58-MQ-Kes"/>
-                            <constraint firstItem="Cfu-s3-0jp" firstAttribute="centerX" secondItem="TkD-Zg-XQf" secondAttribute="centerX" id="FwU-yb-MYH"/>
+                            <constraint firstItem="J30-iR-RUy" firstAttribute="top" secondItem="fOF-4l-f1x" secondAttribute="bottom" constant="214" id="MZO-Pp-P6Y"/>
+                            <constraint firstItem="fOF-4l-f1x" firstAttribute="leading" secondItem="Wuw-GM-Du9" secondAttribute="leading" constant="20" id="QEf-n4-4LH"/>
+                            <constraint firstItem="fOF-4l-f1x" firstAttribute="top" secondItem="Wuw-GM-Du9" secondAttribute="top" constant="215" id="ehr-Hl-CzR"/>
                             <constraint firstItem="Wuw-GM-Du9" firstAttribute="trailing" secondItem="J30-iR-RUy" secondAttribute="trailing" constant="40" id="fBZ-b5-HlF"/>
                             <constraint firstItem="J30-iR-RUy" firstAttribute="leading" secondItem="Wuw-GM-Du9" secondAttribute="leading" constant="40" id="xdA-dj-ZOt"/>
+                            <constraint firstItem="Wuw-GM-Du9" firstAttribute="trailing" secondItem="fOF-4l-f1x" secondAttribute="trailing" constant="20" id="zzT-Tt-UAt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="i-Keeper" id="RnZ-Xi-QEQ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZZW-eF-D4Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-761" y="-105"/>
+            <point key="canvasLocation" x="-762.31884057971024" y="-105.13392857142857"/>
         </scene>
         <!--Login-->
         <scene sceneID="tne-QT-ifu">
@@ -1272,10 +1278,14 @@
         </scene>
     </scenes>
     <resources>
+        <image name="logo1.png" width="1044" height="526.5"/>
         <image name="pencil.slash" catalog="system" width="128" height="113"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="text.justify" catalog="system" width="128" height="100"/>
         <image name="trash" catalog="system" width="121" height="128"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
