@@ -16,13 +16,19 @@ class InformationWriteViewController: UIViewController {
     @IBOutlet weak var dateValue: UITextField!
     @IBOutlet weak var timeValue: UITextField!
     @IBOutlet weak var contentValue: UITextField!
+    let datePicker: UIDatePicker = UIDatePicker()
+    let timePicker: UIDatePicker = UIDatePicker()
+    let formatter = DateFormatter()
     var fetchResult: PHFetchResult<PHAsset>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        createDatePicker()
+        dismissDatePicker()
+        createTimePicker()
+        dismissTimePicker()
     }
     
     func requestPhotosPermission() {
@@ -75,6 +81,62 @@ class InformationWriteViewController: UIViewController {
 //        }
     }
     
+    // datePicker - date
+    func createDatePicker() {
+        if #available(iOS 13.4, *) {
+                datePicker.preferredDatePickerStyle = .wheels
+        }
+        datePicker.datePickerMode = .date
+        datePicker.locale = NSLocale(localeIdentifier: "ko_KO") as Locale // 한글로 변환
+        dateValue.inputView = datePicker
+    }
+    
+    func dismissDatePicker() {
+        let dateToolBar = UIToolbar()
+        dateToolBar.sizeToFit()
+        dateToolBar.isTranslucent = true
+        let btnDone = UIBarButtonItem(title: "확인", style: .done, target: self, action: #selector(dateDone))
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        dateToolBar.setItems([space, btnDone], animated: true)
+        dateToolBar.isUserInteractionEnabled = true
+        dateValue.inputAccessoryView = dateToolBar
+    }
+    
+    @objc func dateDone() {
+        formatter.dateFormat = "YYYY-MM-dd"
+        let dateString = formatter.string(from: datePicker.date)
+        dateValue.text = "\(dateString)"
+        self.view.endEditing(true)
+    }
+    
+    // datePicker - time
+    func createTimePicker() {
+        if #available(iOS 13.4, *) {
+            timePicker.preferredDatePickerStyle = .wheels
+        }
+        timePicker.datePickerMode = .time
+        //startPicker.locale = NSLocale(localeIdentifier: "ko_KO") as Locale
+        timeValue.inputView = timePicker
+    }
+    
+    func dismissTimePicker() {
+        let timeToolBar = UIToolbar()
+        timeToolBar.sizeToFit()
+        timeToolBar.isTranslucent = true
+        let btnDone = UIBarButtonItem(title: "확인", style: .done, target: self, action: #selector(timeDone))
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        timeToolBar.setItems([space, btnDone], animated: true)
+        timeToolBar.isUserInteractionEnabled = true
+        timeValue.inputAccessoryView = timeToolBar
+    }
+    
+    @objc func timeDone() {
+        formatter.dateFormat = "hh:mm a"
+        let timeString = formatter.string(from: timePicker.date)
+        timeValue.text = "\(timeString)"
+        self.view.endEditing(true)
+    }
+    
     @IBAction func imageButton(_ sender: UIButton) {
         print("image button click")
         //requestPhotosPermission()
@@ -102,10 +164,11 @@ class InformationWriteViewController: UIViewController {
             return
         }
         
+        let timestamp = NSDate().timeIntervalSince1970
         let views: Int = 0
         let db = Firestore.firestore()
         let newDocument = db.collection("infoList").document()
-        newDocument.setData(["id": newDocument.documentID,"title": title, "writer": writer, "date": date, "time": time, "views": views, "content": content]) { (error) in
+        newDocument.setData(["id": newDocument.documentID,"title": title, "writer": writer, "date": date, "time": time, "views": views, "content": content, "created": timestamp]) { (error) in
             if error != nil {
                 print("check for error : \(error!.localizedDescription)")
                 self.showAlert(message: "게시글 등록 실패")

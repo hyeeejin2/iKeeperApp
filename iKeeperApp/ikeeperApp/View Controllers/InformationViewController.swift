@@ -11,6 +11,7 @@ import Firebase
 class InformationViewController: UIViewController {
 
     @IBOutlet weak var infoTableView: UITableView!
+    let statusLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 414, height: 40))
     var dataList = [[String: Any]]()
     
     override func viewDidLoad() {
@@ -30,8 +31,10 @@ class InformationViewController: UIViewController {
     }
     
     func showInfo() {
+        statusLabel.removeFromSuperview()
+        
         let db = Firestore.firestore()
-        db.collection("infoList").getDocuments { (snapshot, error) in
+        db.collection("infoList").order(by: "created", descending: true).getDocuments { (snapshot, error) in
             if error == nil && snapshot?.isEmpty == false {
                 var temp: Int = 1
                 for document in snapshot!.documents {
@@ -40,13 +43,12 @@ class InformationViewController: UIViewController {
                     self.dataList.append(documentData)
                     temp += 1
                 }
-                self.infoTableView.reloadData()
             } else if error == nil && snapshot?.isEmpty == true {
-                let statusLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 414, height: 40))
-                statusLabel.textAlignment = .center
-                statusLabel.text = "아직 게시글이 없습니다."
-                self.view.addSubview(statusLabel)
+                self.statusLabel.textAlignment = .center
+                self.statusLabel.text = "아직 게시글이 없습니다."
+                self.view.addSubview(self.statusLabel)
             }
+            self.infoTableView.reloadData()
         }
     }
 
