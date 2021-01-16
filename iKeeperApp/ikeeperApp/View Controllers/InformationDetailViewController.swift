@@ -18,6 +18,9 @@ class InformationDetailViewController: UIViewController {
     @IBOutlet weak var contentValue: UITextField!
     @IBOutlet weak var editBarButton: UIBarButtonItem!
     @IBOutlet weak var completeButton: UIButton!
+    let datePicker: UIDatePicker = UIDatePicker()
+    let timePicker: UIDatePicker = UIDatePicker()
+    let formatter = DateFormatter()
     var dataList = [String: Any]()
     
     override func viewDidLoad() {
@@ -28,6 +31,10 @@ class InformationDetailViewController: UIViewController {
         setDisabled()
         setValue()
         print(dataList)
+        createDatePicker()
+        dismissDatePicker()
+        createTimePicker()
+        dismissTimePicker()
     }
     
     func setEnabled() {
@@ -62,6 +69,62 @@ class InformationDetailViewController: UIViewController {
         editBarButton.isEnabled = false
         completeButton.isHidden = false
         setEnabled()
+    }
+    
+    // datePicker - date
+    func createDatePicker() {
+        if #available(iOS 13.4, *) {
+                datePicker.preferredDatePickerStyle = .wheels
+        }
+        datePicker.datePickerMode = .date
+        datePicker.locale = NSLocale(localeIdentifier: "ko_KO") as Locale // 한글로 변환
+        dateValue.inputView = datePicker
+    }
+    
+    func dismissDatePicker() {
+        let dateToolBar = UIToolbar()
+        dateToolBar.sizeToFit()
+        dateToolBar.isTranslucent = true
+        let btnDone = UIBarButtonItem(title: "확인", style: .done, target: self, action: #selector(dateDone))
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        dateToolBar.setItems([space, btnDone], animated: true)
+        dateToolBar.isUserInteractionEnabled = true
+        dateValue.inputAccessoryView = dateToolBar
+    }
+    
+    @objc func dateDone() {
+        formatter.dateFormat = "YYYY-MM-dd"
+        let dateString = formatter.string(from: datePicker.date)
+        dateValue.text = "\(dateString)"
+        self.view.endEditing(true)
+    }
+    
+    // datePicker - time
+    func createTimePicker() {
+        if #available(iOS 13.4, *) {
+            timePicker.preferredDatePickerStyle = .wheels
+        }
+        timePicker.datePickerMode = .time
+        //startPicker.locale = NSLocale(localeIdentifier: "ko_KO") as Locale
+        timeValue.inputView = timePicker
+    }
+    
+    func dismissTimePicker() {
+        let timeToolBar = UIToolbar()
+        timeToolBar.sizeToFit()
+        timeToolBar.isTranslucent = true
+        let btnDone = UIBarButtonItem(title: "확인", style: .done, target: self, action: #selector(timeDone))
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        timeToolBar.setItems([space, btnDone], animated: true)
+        timeToolBar.isUserInteractionEnabled = true
+        timeValue.inputAccessoryView = timeToolBar
+    }
+    
+    @objc func timeDone() {
+        formatter.dateFormat = "hh:mm a"
+        let timeString = formatter.string(from: timePicker.date)
+        timeValue.text = "\(timeString)"
+        self.view.endEditing(true)
     }
     
     @IBAction func completeButton(_ sender: UIButton) {
