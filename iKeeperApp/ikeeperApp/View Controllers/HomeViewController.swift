@@ -7,10 +7,14 @@
 
 import UIKit
 import SideMenu
+import Firebase
 import FirebaseAuth
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var calendarTableView: UITableView!
+    let statusLabel = UILabel(frame: CGRect(x: 0, y: 450, width: 414, height: 40))
+    var dataList = [[String: Any]]()
     var sideMenu: SideMenuNavigationController?
 
     override func viewDidLoad() {
@@ -20,6 +24,12 @@ class HomeViewController: UIViewController {
         setNavigation()
         setSideMenu()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear")
+        dataList = [[String:Any]]()
+        showCalendar()
     }
     
     func setNavigation() {
@@ -34,9 +44,65 @@ class HomeViewController: UIViewController {
         SideMenuManager.default.rightMenuNavigationController = sideMenu // 메뉴는 오른쪽
         SideMenuManager.default.addPanGestureToPresent(toView: self.view) // 메뉴에 스와이핑 제스처 추가
     }
+    
+    func showCalendar() {
+        statusLabel.removeFromSuperview()
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY-MM-dd"
+        formatter.locale = Locale(identifier: "ko")
+        let todayDate: String = formatter.string(from: Date())
+        
+        let db = Firestore.firestore()
+        db.collection("calendar").whereField("date", isEqualTo: todayDate).getDocuments { (snapshot, error) in
+            if error == nil && snapshot?.isEmpty == false {
+                var temp: Int = 1
+                for document in snapshot!.documents {
+                    var documentData = document.data()
+                    documentData["num"] = "\(temp)"
+                    self.dataList.append(documentData)
+                    temp += 1
+                }
+                print(self.dataList)
+                //self.statusLabel.text = "✓ \(self.dataList.count)개의 일정이 있습니다."
+            } else if error == nil && snapshot?.isEmpty == true {
+                self.statusLabel.textAlignment = .center
+                self.statusLabel.text = "오늘은 일정이 없습니다."
+                self.view.addSubview(self.statusLabel)
+            }
+            self.calendarTableView.reloadData()
+        }
+    }
 
     @IBAction func menuButton(_ sender: UIButton) {
         present(sideMenu!, animated: true)
+    }
+}
+
+extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCalendarCustomCell", for: indexPath) as! HomeCalendarCustomCell
+        
+        // cell에 데이터 삽입
+        let data = dataList[indexPath.row]
+        cell.numLabel?.text = "test"
+        //cell.numLabel?.text = data["num"] as? String
+        cell.titleLabel?.text = data["title"] as? String
+        cell.categoryLabel?.text = data["category"] as? String
+        cell.writerLabel?.text = data["writer"] as? String
+        return cell
+    }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        //셀 자세히 보기
+//    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
 }
 
@@ -63,7 +129,9 @@ class MenuListController: UITableViewController {
         
         switch indexPath.row {
         case 0:
-            print("mypage")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let mypageViewcontroller = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.mypageViewController)
+            self.navigationController?.pushViewController(mypageViewcontroller, animated: true)
             
         case 1:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
