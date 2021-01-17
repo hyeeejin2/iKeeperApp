@@ -28,7 +28,7 @@ class PublicMoneyViewController: UIViewController {
         
         publicMoneyTableView.delegate = self
         publicMoneyTableView.dataSource = self
-        publicMoneyTableView.allowsSelection = false
+        publicMoneyTableView.allowsSelection = false // 테이블셀 클릭 안되게
         
         createPickerView()
         dismissPickerView()

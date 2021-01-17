@@ -638,10 +638,10 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="uoy-f3-sBt" firstAttribute="top" secondItem="PE0-E8-du5" secondAttribute="topMargin" id="AKy-Z6-wQC"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="uoy-f3-sBt" secondAttribute="bottom" id="bBp-4U-Heh"/>
-                                                <constraint firstItem="uoy-f3-sBt" firstAttribute="leading" secondItem="PE0-E8-du5" secondAttribute="leadingMargin" id="gIS-HK-79c"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="uoy-f3-sBt" secondAttribute="trailing" id="kDo-WD-HNM"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="uoy-f3-sBt" secondAttribute="bottom" id="9rW-c1-xvc"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="uoy-f3-sBt" secondAttribute="trailing" id="KTn-9Y-Xho"/>
+                                                <constraint firstItem="uoy-f3-sBt" firstAttribute="leading" secondItem="PE0-E8-du5" secondAttribute="leadingMargin" id="LJ3-h3-uV0"/>
+                                                <constraint firstItem="uoy-f3-sBt" firstAttribute="top" secondItem="PE0-E8-du5" secondAttribute="topMargin" id="lIs-kg-EmP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

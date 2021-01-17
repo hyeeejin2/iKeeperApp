@@ -13,13 +13,16 @@ import FirebaseAuth
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var calendarTableView: UITableView!
-    let statusLabel = UILabel(frame: CGRect(x: 0, y: 450, width: 414, height: 40))
+    let statusLabel = UILabel(frame: CGRect(x: 0, y: 400, width: 414, height: 40))
     var dataList = [[String: Any]]()
     var sideMenu: SideMenuNavigationController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        calendarTableView.delegate = self
+        calendarTableView.dataSource = self
         
         setNavigation()
         setSideMenu()
@@ -63,8 +66,6 @@ class HomeViewController: UIViewController {
                     self.dataList.append(documentData)
                     temp += 1
                 }
-                print(self.dataList)
-                //self.statusLabel.text = "✓ \(self.dataList.count)개의 일정이 있습니다."
             } else if error == nil && snapshot?.isEmpty == true {
                 self.statusLabel.textAlignment = .center
                 self.statusLabel.text = "오늘은 일정이 없습니다."
@@ -85,12 +86,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //cell은 as 키워드로 앞서 만든 HomeCalendarCustomCell 클래스화
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCalendarCustomCell", for: indexPath) as! HomeCalendarCustomCell
         
         // cell에 데이터 삽입
         let data = dataList[indexPath.row]
-        cell.numLabel?.text = "test"
-        //cell.numLabel?.text = data["num"] as? String
+        cell.numLabel?.text = data["num"] as? String
         cell.titleLabel?.text = data["title"] as? String
         cell.categoryLabel?.text = data["category"] as? String
         cell.writerLabel?.text = data["writer"] as? String
