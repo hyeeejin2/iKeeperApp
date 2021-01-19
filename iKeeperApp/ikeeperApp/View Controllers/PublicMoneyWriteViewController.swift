@@ -12,10 +12,13 @@ class PublicMoneyWriteViewController: UIViewController {
 
     @IBOutlet weak var categoryControl: UISegmentedControl!
     @IBOutlet weak var amountValue: UITextField!
-    @IBOutlet weak var dateValue: UITextField!
+    @IBOutlet weak var historyDateValue: UITextField!
+    @IBOutlet weak var createDateValue: UITextField!
     @IBOutlet weak var writerValue: UITextField!
     @IBOutlet weak var memoValue: UITextField!
-    var sum: String = ""
+    let datePicker: UIDatePicker = UIDatePicker()
+    let formatter = DateFormatter()
+    var sum: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,27 +26,56 @@ class PublicMoneyWriteViewController: UIViewController {
         
         setDate()
         getSum()
+        createDatePicker()
+        dismissDatePicker()
     }
     
     func setDate() {
-        let formatter = DateFormatter()
         formatter.dateFormat = "YYYY-MM-dd"
         let dateString = formatter.string(from: Date())
-        dateValue.text = "\(dateString)"
-        dateValue.isEnabled = false
+        createDateValue.text = "\(dateString)"
+        createDateValue.isEnabled = false
     }
     
     func getSum() {
         let db = Firestore.firestore()
-        db.collection("publicMoney").document("sum").getDocument { (document, error) in
+        db.collection("publicMoney").document("sum").getDocument { [self] (document, error) in
             if error == nil {
                 if document != nil && document!.exists {
                     let documentData = document!.data()
-                    self.sum = documentData?["sum"] as! String
+                    self.sum.append((documentData?["sum"] as? String)!) //error
                     print("getSum is \(self.sum)")
                 }
             }
         }
+    }
+    
+    // datePicker - date
+    func createDatePicker() {
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        }
+        datePicker.datePickerMode = .date
+        datePicker.locale = NSLocale(localeIdentifier: "ko_KO") as Locale // 한글로 변환
+        historyDateValue.inputView = datePicker
+    }
+    
+    func dismissDatePicker() {
+        let dateToolBar = UIToolbar()
+        dateToolBar.sizeToFit()
+        dateToolBar.isTranslucent = true
+        let btnDone = UIBarButtonItem(title: "확인", style: .done, target: self, action: #selector(dateDone))
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        dateToolBar.setItems([space, btnDone], animated: true)
+        dateToolBar.isUserInteractionEnabled = true
+        historyDateValue.inputAccessoryView = dateToolBar
+    }
+    
+    @objc func dateDone() {
+        formatter.dateFormat = "YYYY-MM-dd"
+        let dateString = formatter.string(from: datePicker.date)
+        historyDateValue.text = "\(dateString)"
+        self.view.endEditing(true)
     }
     
     @IBAction func writeButton(_ sender : UIButton) {
@@ -51,7 +83,11 @@ class PublicMoneyWriteViewController: UIViewController {
             showAlert(message: "빈칸을 채워주세요")
             return
         }
-        guard let date: String = dateValue.text, date.isEmpty == false else {
+        guard let createDate: String = createDateValue.text, createDate.isEmpty == false else {
+            showAlert(message: "빈칸을 채워주세요")
+            return
+        }
+        guard let historyDate: String = historyDateValue.text, historyDate.isEmpty == false else {
             showAlert(message: "빈칸을 채워주세요")
             return
         }
@@ -65,33 +101,32 @@ class PublicMoneyWriteViewController: UIViewController {
         }
         
         var category = ""
+        var op: Bool = true
         if self.categoryControl.selectedSegmentIndex == 0 {
             category = "수입"
-            if let amountInt = Int(amount), let sumInt = Int(sum) {
-                sum = String(sumInt + amountInt)
-                print("current sum is \(sum)")
-            }
+            op = true
+//            if let amountInt = Int(amount), let sumInt = Int(sum) {
+//                sum = String(sumInt + amountInt)
+//                print("current sum is \(sum)")
+//            }
         } else {
             category = "지출"
-            if let amountInt = Int(amount), let sumInt = Int(sum) {
-                guard sumInt-amountInt >= 0 else {
-                    self.showAlert(message: "합계가 0보다 작을 수 없음")
-                    return
-                }
-                sum = String(sumInt - amountInt)
-                print("current sum is \(sum)")
-            }
+            op = false
+//            if let amountInt = Int(amount), let sumInt = Int(sum) {
+//                sum = String(sumInt - amountInt)
+//                print("current sum is \(sum)")
+//            }
         }
         
         let calendar = Calendar.current
-        let year = calendar.component(.year, from: Date())
-        let month = calendar.component(.month, from: Date())
-        let day = calendar.component(.day, from: Date())
+        let year = calendar.component(.year, from: self.datePicker.date)
+        let month = calendar.component(.month, from: self.datePicker.date)
+        let day = calendar.component(.day, from: self.datePicker.date)
         let timestamp = NSDate().timeIntervalSince1970
 
         // update sum(document)
         let db = Firestore.firestore()
-        db.collection("publicMoney").document("sum").updateData(["sum": sum]) { (error) in
+        db.collection("publicMoney").document("sum").updateData(["sum": amount]) { (error) in
             if error != nil {
                 print("check for error : \(error!.localizedDescription)")
             } else {
@@ -101,13 +136,47 @@ class PublicMoneyWriteViewController: UIViewController {
             
         // add data
         let newDocument = db.collection("publicMoney").document()
-        newDocument.setData(["id": newDocument.documentID, "category": category, "amount": amount, "sum": sum, "date": date, "year":year, "month":month, "day": day, "writer": writer, "memo": memo, "created": timestamp]) { (error) in
+        newDocument.setData(["id": newDocument.documentID, "category": category, "amount": amount, "create date": createDate, "history date": historyDate, "year":year, "month":month, "day": day, "writer": writer, "memo": memo, "created": timestamp]) { (error) in
             if error != nil {
                 print("check for error : \(error!.localizedDescription)")
                 self.showAlert(message: "공금내역 등록 실패")
-            } else {
+            }
+//            else {
+//                self.navigationController?.popViewController(animated: true)
+//            }
+        }
+        
+        // getDocuments
+        db.collection("publicMoney").whereField("year", isGreaterThanOrEqualTo: year).order(by: "year", descending: false).order(by: "month", descending: false).order(by: "day", descending: false).order(by: "created", descending: false).getDocuments { (snapshot, error) in
+            if error == nil && snapshot?.isEmpty == false {
+                for document in snapshot!.documents {
+                    let documentData = document.data()
+                    if documentData["month"] as! Int >= month && documentData["day"] as! Int > day {
+                        if let amountInt = Int(amount), let id = documentData["id"] as? String {
+                            print(amountInt, id)
+//                            db.collection("publicMoney").document("\(id)").updateData(["sum" : self.calculator(left: sumInt, right: amountInt , op: op)]) { (error) in
+//                                if error != nil {
+//                                    print("check for error : \(error!.localizedDescription)")
+//                                } else {
+//                                    print("success")
+//                                }
+//                            }
+                        }
+                    }
+                }
+                self.navigationController?.popViewController(animated: true)
+                //db.collection("publicMoney").document("sum").updateData["sum": ]
+            } else if error == nil && snapshot?.isEmpty == true {
                 self.navigationController?.popViewController(animated: true)
             }
+        }
+    }
+    
+    func calculator(left: Int, right: Int, op: Bool) -> String {
+        if op {
+            return String(left + right)
+        } else {
+            return String(left - right)
         }
     }
     

@@ -40,6 +40,8 @@ class PublicMoneyViewController: UIViewController {
     }
     
     func showPublicMoney() {
+        statusLabel.removeFromSuperview()
+        
         let calendar = Calendar.current
         let year = calendar.component(.year, from: Date())
         let month = calendar.component(.month, from: Date())
@@ -49,7 +51,7 @@ class PublicMoneyViewController: UIViewController {
         monthValue.text = "\(month)월"
         
         let db = Firestore.firestore()
-        db.collection("publicMoney").whereField("year", isEqualTo: year).whereField("month", isEqualTo: month).order(by: "created", descending: false).getDocuments { (snapshot, error) in
+        db.collection("publicMoney").whereField("year", isEqualTo: year).whereField("month", isEqualTo: month).order(by: "day", descending: false).order(by: "created", descending: false).getDocuments { (snapshot, error) in
             if error == nil && snapshot?.isEmpty == false {
                 var temp: Int = 1
                 for document in snapshot!.documents {
@@ -75,7 +77,7 @@ class PublicMoneyViewController: UIViewController {
         let year:Int = Int(selectedYear.trimmingCharacters(in: ["년"]))!
         
         if selectedMonth == "전체" {
-            db.collection("publicMoney").whereField("year", isEqualTo: year).order(by: "created", descending: false).getDocuments { (snapshot, error) in
+            db.collection("publicMoney").whereField("year", isEqualTo: year).order(by: "month", descending: false).order(by: "day", descending: false).order(by: "created", descending: false).getDocuments { (snapshot, error) in
                 if error == nil && snapshot?.isEmpty == false {
                     var temp: Int = 1
                     for document in snapshot!.documents {
@@ -84,7 +86,7 @@ class PublicMoneyViewController: UIViewController {
                         self.dataList.append(documentData)
                         temp += 1
                     }
-                } else {
+                } else if error == nil && snapshot?.isEmpty == true {
                     self.statusLabel.textAlignment = .center
                     self.statusLabel.text = "공금내역이 없습니다."
                     self.view.addSubview(self.statusLabel)
@@ -93,7 +95,7 @@ class PublicMoneyViewController: UIViewController {
             }
         } else {
             let month:Int = Int(selectedMonth.trimmingCharacters(in: ["월"]))!
-            db.collection("publicMoney").whereField("year", isEqualTo: year).whereField("month", isEqualTo: month).order(by: "created", descending: false).getDocuments { (snapshot, error) in
+            db.collection("publicMoney").whereField("year", isEqualTo: year).whereField("month", isEqualTo: month).order(by: "day", descending: false).order(by: "created", descending: false).getDocuments { (snapshot, error) in
                 if error == nil && snapshot?.isEmpty == false {
                     var temp: Int = 1
                     for document in snapshot!.documents {
@@ -244,7 +246,7 @@ extension PublicMoneyViewController: UIPickerViewDelegate, UIPickerViewDataSourc
         let data = dataList[indexPath.row]
         cell.numLabel?.text = data["num"] as? String
         cell.categoryLabel?.text = data["category"] as? String
-        cell.dateLabel?.text = data["date"] as? String
+        cell.dateLabel?.text = data["history date"] as? String
         cell.amountLabel?.text = data["amount"] as? String
         cell.sumLabel?.text = data["sum"] as? String
         cell.memoLabel?.text = data["memo"] as? String

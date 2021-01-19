@@ -12,7 +12,8 @@ class PublicMoneyDetailViewController: UIViewController {
     @IBOutlet weak var categoryControl: UISegmentedControl!
     @IBOutlet weak var amountValue: UITextField!
     @IBOutlet weak var sumValue: UITextField!
-    @IBOutlet weak var dateValue: UITextField!
+    @IBOutlet weak var historyDateValue: UITextField!
+    @IBOutlet weak var createDateValue: UITextField!
     @IBOutlet weak var writerValue: UITextField!
     @IBOutlet weak var memoValue: UITextField!
     @IBOutlet weak var editBarButton: UIBarButtonItem!
@@ -31,7 +32,8 @@ class PublicMoneyDetailViewController: UIViewController {
     func setEnabled() {
         categoryControl.isEnabled = true
         amountValue.isEnabled = true
-        dateValue.isEnabled = true
+        historyDateValue.isEnabled = true
+        //createDateValue.isEnabled = true
         //writerValue.isEnabled = true
         memoValue.isEnabled = true
     }
@@ -39,7 +41,8 @@ class PublicMoneyDetailViewController: UIViewController {
     func setDisabled() {
         categoryControl.isEnabled = false
         amountValue.isEnabled = false
-        dateValue.isEnabled = false
+        historyDateValue.isEnabled = false
+        createDateValue.isEnabled = false
         writerValue.isEnabled = false
         memoValue.isEnabled = false
     }
@@ -53,7 +56,8 @@ class PublicMoneyDetailViewController: UIViewController {
         }
         amountValue.text = dataList["amount"] as? String
         sumValue.text = dataList["sum"] as? String
-        dateValue.text = dataList["date"] as? String
+        historyDateValue.text = dataList["history date"] as? String
+        createDateValue.text = dataList["create date"] as? String
         writerValue.text = dataList["writer"] as? String
         memoValue.text = dataList["memo"] as? String
     }
