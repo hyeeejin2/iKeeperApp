@@ -14,6 +14,7 @@ class PublicMoneyCustomCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var sumLabel: UILabel!
+    @IBOutlet weak var memoLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

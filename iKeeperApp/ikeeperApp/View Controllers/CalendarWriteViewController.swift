@@ -214,9 +214,10 @@ class CalendarWriteViewController: UIViewController, UIPickerViewDelegate, UIPic
             return
         }
         
+        let timestamp = NSDate().timeIntervalSince1970
         let db = Firestore.firestore()
         let newDocument = db.collection("calendar").document()
-        newDocument.setData(["id": newDocument.documentID,"title": title, "writer": writer, "category": category, "date": date, "startTime": start, "endTime": end, "place": place, "content": content]) { (error) in
+        newDocument.setData(["id": newDocument.documentID,"title": title, "writer": writer, "category": category, "date": date, "startTime": start, "endTime": end, "place": place, "content": content, "created": timestamp]) { (error) in
             
             if error != nil {
                 print("check for error : \(error!.localizedDescription)")

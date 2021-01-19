@@ -86,7 +86,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     
     func showCalendar(date: String) {
         let db = Firestore.firestore()
-        db.collection("calendar").whereField("date", isEqualTo: date).getDocuments { (snapshot, error) in
+        db.collection("calendar").whereField("date", isEqualTo: date).order(by: "created", descending: true).getDocuments { (snapshot, error) in
             if error == nil && snapshot?.isEmpty == false {
                 self.calendarTableView.isHidden = false
                 var temp: Int = 1

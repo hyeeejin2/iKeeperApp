@@ -56,11 +56,6 @@ class InformationViewController: UIViewController {
 
 extension InformationViewController: UITableViewDelegate, UITableViewDataSource {
     
-    // tableView setting - height of row
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 80
-//    }
-    
     // tableView setting - row
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataList.count

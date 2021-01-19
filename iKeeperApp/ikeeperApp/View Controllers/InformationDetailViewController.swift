@@ -30,7 +30,6 @@ class InformationDetailViewController: UIViewController {
         completeButton.isHidden = true
         setDisabled()
         setValue()
-        print(dataList)
         createDatePicker()
         dismissDatePicker()
         createTimePicker()
@@ -42,7 +41,6 @@ class InformationDetailViewController: UIViewController {
         writerValue.isEnabled = true
         dateValue.isEnabled = true
         timeValue.isEnabled = true
-        //viewsValue.isEnabled = true
         contentValue.isEnabled = true
     }
     
@@ -62,13 +60,6 @@ class InformationDetailViewController: UIViewController {
         timeValue.text = dataList["time"] as? String
         viewsValue.text = String((dataList["views"] as? Int)!)
         contentValue.text = dataList["content"] as? String
-    }
-
-    @IBAction func editButton(_ sender: UIBarButtonItem) {
-        editBarButton.title = ""
-        editBarButton.isEnabled = false
-        completeButton.isHidden = false
-        setEnabled()
     }
     
     // datePicker - date
@@ -125,6 +116,13 @@ class InformationDetailViewController: UIViewController {
         let timeString = formatter.string(from: timePicker.date)
         timeValue.text = "\(timeString)"
         self.view.endEditing(true)
+    }
+
+    @IBAction func editButton(_ sender: UIBarButtonItem) {
+        editBarButton.title = ""
+        editBarButton.isEnabled = false
+        completeButton.isHidden = false
+        setEnabled()
     }
     
     @IBAction func completeButton(_ sender: UIButton) {

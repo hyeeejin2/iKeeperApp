@@ -13,6 +13,7 @@ import FirebaseAuth
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var calendarTableView: UITableView!
+    @IBOutlet weak var dateLabel: UILabel!
     let statusLabel = UILabel(frame: CGRect(x: 0, y: 400, width: 414, height: 40))
     var dataList = [[String: Any]]()
     var sideMenu: SideMenuNavigationController?
@@ -56,8 +57,11 @@ class HomeViewController: UIViewController {
         formatter.locale = Locale(identifier: "ko")
         let todayDate: String = formatter.string(from: Date())
         
+        dateLabel.text = "\(todayDate) 일정"
+        dateLabel.textAlignment = .center
+        
         let db = Firestore.firestore()
-        db.collection("calendar").whereField("date", isEqualTo: todayDate).getDocuments { (snapshot, error) in
+        db.collection("calendar").whereField("date", isEqualTo: todayDate).order(by: "created", descending: true).getDocuments { (snapshot, error) in
             if error == nil && snapshot?.isEmpty == false {
                 var temp: Int = 1
                 for document in snapshot!.documents {

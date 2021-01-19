@@ -28,7 +28,6 @@ class PublicMoneyViewController: UIViewController {
         
         publicMoneyTableView.delegate = self
         publicMoneyTableView.dataSource = self
-        publicMoneyTableView.allowsSelection = false // 테이블셀 클릭 안되게
         
         createPickerView()
         dismissPickerView()
@@ -248,16 +247,17 @@ extension PublicMoneyViewController: UIPickerViewDelegate, UIPickerViewDataSourc
         cell.dateLabel?.text = data["date"] as? String
         cell.amountLabel?.text = data["amount"] as? String
         cell.sumLabel?.text = data["sum"] as? String
+        cell.memoLabel?.text = data["memo"] as? String
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
-//        let data = dataList[indexPath.row]
-//        let calendarDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.calendarDetailViewController) as! CalendarDetailViewController
-//        calendarDetailViewController.dataList = data
-//        self.navigationController?.pushViewController(calendarDetailViewController, animated: true)
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let data = dataList[indexPath.row]
+        let publicMoneyDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.publicMoneyDetailViewController) as! PublicMoneyDetailViewController
+        publicMoneyDetailViewController.dataList = data
+        self.navigationController?.pushViewController(publicMoneyDetailViewController, animated: true)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
