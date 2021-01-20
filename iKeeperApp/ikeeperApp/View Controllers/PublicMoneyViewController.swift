@@ -248,9 +248,26 @@ extension PublicMoneyViewController: UIPickerViewDelegate, UIPickerViewDataSourc
         cell.categoryLabel?.text = data["category"] as? String
         cell.dateLabel?.text = data["history date"] as? String
         cell.amountLabel?.text = data["amount"] as? String
-        cell.sumLabel?.text = data["sum"] as? String
+        cell.sumLabel?.text = calculator(index: indexPath.row)
         cell.memoLabel?.text = data["memo"] as? String
         return cell
+    }
+    
+    func calculator(index: Int) -> String {
+        var sum: Int = 0
+        for i in 0...index {
+            if let amount = Int(dataList[i]["amount"] as! String), let op = dataList[i]["op"] as? String {
+                switch op {
+                case "+":
+                    sum += amount
+                case "-":
+                    sum -= amount
+                default:
+                    return "0"
+                }
+            }
+        }
+        return String(sum)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
