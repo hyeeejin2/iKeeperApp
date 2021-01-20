@@ -159,6 +159,19 @@ class PublicMoneyDetailViewController: UIViewController {
         setDisabled()
     }
     
+    @IBAction func deleteButton(_ sender: UIBarButtonItem) {
+        let id = dataList["id"] as! String
+        
+        let db = Firestore.firestore()
+        db.collection("publicMoney").document("\(id)").delete { (error) in
+            if error != nil {
+                print("check for error : \(error!.localizedDescription)")
+            } else {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+    
     func showAlert(message: String) {
         let alert = UIAlertController(title: "알림",
                                       message: message,

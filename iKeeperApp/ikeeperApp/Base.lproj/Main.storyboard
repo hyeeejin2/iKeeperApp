@@ -1039,6 +1039,9 @@
                             </barButtonItem>
                             <barButtonItem image="trash" catalog="system" id="RRZ-4E-YXN">
                                 <color key="tintColor" systemColor="systemRedColor"/>
+                                <connections>
+                                    <action selector="deleteButton:" destination="yeE-Sf-C3D" id="YPY-6H-XWR"/>
+                                </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
