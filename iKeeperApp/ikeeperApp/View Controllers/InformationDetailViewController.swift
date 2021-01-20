@@ -38,7 +38,6 @@ class InformationDetailViewController: UIViewController {
     
     func setEnabled() {
         titleValue.isEnabled = true
-        writerValue.isEnabled = true
         dateValue.isEnabled = true
         timeValue.isEnabled = true
         contentValue.isEnabled = true
@@ -151,7 +150,7 @@ class InformationDetailViewController: UIViewController {
             return
         }
         
-        let modifyData = ["title": titleValue.text!, "writer": writerValue.text!, "date": dateValue.text!, "time": timeValue.text!, "content": contentValue.text!]
+        let modifyData = ["title": title, "date": date, "time": time, "content": content]
         let id = dataList["id"] as! String
         print(modifyData, id)
         

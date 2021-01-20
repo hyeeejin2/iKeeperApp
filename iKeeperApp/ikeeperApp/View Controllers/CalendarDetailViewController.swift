@@ -47,7 +47,6 @@ class CalendarDetailViewController: UIViewController, UIPickerViewDelegate, UIPi
     
     func setEnabled() {
         titleValue.isEnabled = true
-        writerValue.isEnabled = true
         categoryValue.isEnabled = true
         dateValue.isEnabled = true
         startValue.isEnabled = true
@@ -253,7 +252,7 @@ class CalendarDetailViewController: UIViewController, UIPickerViewDelegate, UIPi
             return
         }
         
-        let modifyData = ["title": titleValue.text!, "writer": writerValue.text!, "category":categoryValue.text!, "date": dateValue.text!, "startTime": startValue.text!, "endTime": endValue.text!, "place": placeValue.text!, "content": contentValue.text!]
+        let modifyData = ["title": title, "category":category, "date": date, "startTime": startTime, "endTime": endTime, "place": place, "content": content]
         let id = dataList["id"] as! String
         print(modifyData, id)
         

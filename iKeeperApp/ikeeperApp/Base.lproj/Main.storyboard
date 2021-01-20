@@ -960,7 +960,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vFQ-O1-tjz">
-                                <rect key="frame" x="20" y="128" width="374" height="400"/>
+                                <rect key="frame" x="20" y="128" width="374" height="340"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7Az-3V-DFp">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="41"/>
@@ -975,20 +975,15 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aDt-EY-aMO">
                                         <rect key="frame" x="0.0" y="60" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="sum" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pXT-BT-OD9">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="history date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vGq-7b-8jP">
                                         <rect key="frame" x="0.0" y="120" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="history date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vGq-7b-8jP">
-                                        <rect key="frame" x="0.0" y="180" width="374" height="40"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kuw-9h-JJV">
-                                        <rect key="frame" x="0.0" y="240" width="374" height="40"/>
+                                        <rect key="frame" x="0.0" y="180" width="374" height="40"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="create date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fSf-L0-FgB">
                                                 <rect key="frame" x="0.0" y="0.0" width="182" height="40"/>
@@ -1006,12 +1001,12 @@
                                         </constraints>
                                     </stackView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="memo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="twy-o8-8JI">
-                                        <rect key="frame" x="0.0" y="300" width="374" height="40"/>
+                                        <rect key="frame" x="0.0" y="240" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WmD-7e-k0O">
-                                        <rect key="frame" x="0.0" y="360" width="374" height="40"/>
+                                        <rect key="frame" x="0.0" y="300" width="374" height="40"/>
                                         <state key="normal" title="complete"/>
                                         <connections>
                                             <action selector="completeButton:" destination="yeE-Sf-C3D" eventType="touchUpInside" id="eHl-uH-slg"/>
@@ -1024,7 +1019,6 @@
                                     <constraint firstItem="twy-o8-8JI" firstAttribute="height" secondItem="7Az-3V-DFp" secondAttribute="height" id="Rub-YY-tq2"/>
                                     <constraint firstItem="vGq-7b-8jP" firstAttribute="height" secondItem="7Az-3V-DFp" secondAttribute="height" id="nSU-wt-WE0"/>
                                     <constraint firstItem="kuw-9h-JJV" firstAttribute="height" secondItem="7Az-3V-DFp" secondAttribute="height" id="roT-03-PEa"/>
-                                    <constraint firstItem="pXT-BT-OD9" firstAttribute="height" secondItem="7Az-3V-DFp" secondAttribute="height" id="vap-mn-TZ7"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -1058,7 +1052,6 @@
                         <outlet property="editBarButton" destination="sFE-sI-vxd" id="S4f-8G-4tf"/>
                         <outlet property="historyDateValue" destination="vGq-7b-8jP" id="aSs-P1-2GT"/>
                         <outlet property="memoValue" destination="twy-o8-8JI" id="h43-Fj-brH"/>
-                        <outlet property="sumValue" destination="pXT-BT-OD9" id="MSV-nU-gNQ"/>
                         <outlet property="writerValue" destination="1lj-vO-MFu" id="XHs-02-Tew"/>
                     </connections>
                 </viewController>

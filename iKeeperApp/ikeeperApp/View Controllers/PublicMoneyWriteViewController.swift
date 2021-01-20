@@ -18,7 +18,6 @@ class PublicMoneyWriteViewController: UIViewController {
     @IBOutlet weak var memoValue: UITextField!
     let datePicker: UIDatePicker = UIDatePicker()
     let formatter = DateFormatter()
-    var sum = [String: Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +85,7 @@ class PublicMoneyWriteViewController: UIViewController {
             return
         }
         
-        var category = ""
+        var category: String = ""
         var op: String = ""
         if self.categoryControl.selectedSegmentIndex == 0 {
             category = "수입"
