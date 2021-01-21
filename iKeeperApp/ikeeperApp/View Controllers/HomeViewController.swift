@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var calendarTableView: UITableView!
     @IBOutlet weak var dateLabel: UILabel!
     let statusLabel = UILabel(frame: CGRect(x: 0, y: 400, width: 414, height: 40))
-    let pink = UIColor(red: 243/255.0, green: 148/255.0, blue: 173/255.0, alpha: 1)
+    //let pink = UIColor(red: 243/255.0, green: 148/255.0, blue: 173/255.0, alpha: 1)
     var dataList = [[String: Any]]()
     var sideMenu: SideMenuNavigationController?
 
@@ -26,7 +26,6 @@ class HomeViewController: UIViewController {
         calendarTableView.delegate = self
         calendarTableView.dataSource = self
         
-        setNavigation()
         setSideMenu()
     }
     
@@ -36,16 +35,16 @@ class HomeViewController: UIViewController {
         showCalendar()
     }
     
-    func setNavigation() {
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
-        self.navigationController?.setToolbarHidden(false, animated: false)
-    }
+//    func setNavigation() {
+//        self.navigationController?.setNavigationBarHidden(false, animated: false)
+//        self.navigationController?.setToolbarHidden(false, animated: false)
+//    }
     
     func setSideMenu(){
         sideMenu = SideMenuNavigationController(rootViewController: MenuListController())
         sideMenu?.leftSide = false
-        sideMenu?.navigationBar.topItem?.title = "admin님"
-        sideMenu?.navigationBar.barTintColor = pink
+        sideMenu?.navigationBar.topItem?.title = "@@@님" //willAppear로 따로 해줘야될 듯
+        //sideMenu?.navigationBar.barTintColor = pink
         //sideMenu?.setNavigationBarHidden(true, animated: false)
         
         SideMenuManager.default.rightMenuNavigationController = sideMenu // 메뉴는 오른쪽
@@ -84,26 +83,6 @@ class HomeViewController: UIViewController {
             self.calendarTableView.reloadData()
         }
     }
-
-//    func setTabBar() {
-//        let tabBarController = UITabBarController()
-//
-//        let homeViewController = HomeViewController()
-//        let informationViewController = InformationViewController()
-//        let calendarViewController = CalendarViewController()
-//        let publicMoneyViewController = PublicMoneyViewController()
-//        let mypageViewController = MypageViewController()
-//
-//        homeViewController.tabBarItem = UITabBarItem(title: "home", image: UIImage(systemName: "house"), tag: 0)
-//        informationViewController.tabBarItem = UITabBarItem(title: "information", image: UIImage(systemName: "list.bullet.rectangle"), tag: 1)
-//        calendarViewController.tabBarItem = UITabBarItem(title: "calendar", image: UIImage(systemName: "calendar"), tag: 2)
-//        publicMoneyViewController.tabBarItem = UITabBarItem(title: "public money", image: UIImage(systemName: "dollarsign.circle"), tag: 3)
-//        mypageViewController.tabBarItem = UITabBarItem(title: "mypage", image: UIImage(systemName: "person.circle"), tag: 4)
-//
-//        tabBarController.setViewControllers([homeViewController, informationViewController, calendarViewController, publicMoneyViewController, mypageViewController], animated: false)
-//        view.window?.rootViewController = tabBarController
-//    }
-
     
     @IBAction func menuButton(_ sender: UIButton) {
         present(sideMenu!, animated: true)
@@ -148,12 +127,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 class MenuListController: UITableViewController {
-    let pink = UIColor(red: 243/255.0, green: 148/255.0, blue: 173/255.0, alpha: 1)
-    var lists = ["마이페이지", "정보 게시판", "일정", "공금 내역", "로그아웃", "관리자페이지"]
+    //let pink = UIColor(red: 243/255.0, green: 148/255.0, blue: 173/255.0, alpha: 1)
+    var lists = ["로그인", "회원가입"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.backgroundColor = pink
+        //tableView.backgroundColor = pink
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
@@ -164,8 +143,8 @@ class MenuListController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = lists[indexPath.row]
-        cell.textLabel?.textColor = .black
-        cell.backgroundColor = pink
+        //cell.textLabel?.textColor = .black
+        //cell.backgroundColor = pink
         return cell
     }
     
@@ -175,48 +154,15 @@ class MenuListController: UITableViewController {
         switch indexPath.row {
         case 0:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let mypageViewcontroller = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.mypageViewController)
-            self.navigationController?.pushViewController(mypageViewcontroller, animated: true)
+            let loginViewcontroller = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.loginViewController)
+            self.navigationController?.pushViewController(loginViewcontroller, animated: true)
             
         case 1:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let informationViewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.informationViewController)
-            self.navigationController?.pushViewController(informationViewController, animated: true)
-            
-        case 2:
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let calendarViewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.calenderViewController)
-            self.navigationController?.pushViewController(calendarViewController, animated: true)
-            
-        case 3:
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let publicMoneyViewcontroller = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.publicMoneyViewController)
-            self.navigationController?.pushViewController(publicMoneyViewcontroller, animated: true)
-            
-        case 4:
-            let firebaseAuth = Auth.auth()
-            do {
-                try firebaseAuth.signOut()
-                transitionView()
-            } catch let signOutError as NSError {
-                print ("Error signing out: %@", signOutError)
-            }
-            
-        case 5:
-            print("admin")
-            
+            let signupViewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.signUpViewController)
+            self.navigationController?.pushViewController(signupViewController, animated: true)
         default:
             return
         }
-    }
-    
-    func transitionView() {
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.viewController)
-        let rootViewController = UINavigationController(rootViewController: viewController)
-        
-        view.window?.rootViewController = rootViewController
-        view.window?.makeKeyAndVisible()
     }
 }
