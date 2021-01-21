@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 import FirebaseAuth
 
 class LoginViewController: UIViewController {
@@ -36,7 +37,8 @@ class LoginViewController: UIViewController {
 //                let user = Auth.auth().currentUser
 //                if let user = user {
 //                    let uid = user.uid
-//                    print(uid)
+//                    let email = user.email
+//                    let name = user.displayName
 //                }
                 self.transitionHome()
             }
@@ -85,13 +87,4 @@ class LoginViewController: UIViewController {
         view.window?.makeKeyAndVisible() // makekeyAndVisible() 메서드 호출
  */
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
