@@ -17,26 +17,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
-        
-//        let tabBarController = UITabBarController()
-//        
-//        let homeViewController = HomeViewController()
-//        let informationViewController = InformationViewController()
-//        let calendarViewController = CalendarViewController()
-//        let publicMoneyViewController = PublicMoneyViewController()
-//        let mypageViewController = MypageViewController()
-//        
-//        homeViewController.tabBarItem = UITabBarItem(title: "home", image: UIImage(systemName: "house"), tag: 0)
-//        informationViewController.tabBarItem = UITabBarItem(title: "information", image: UIImage(systemName: "list.bullet.rectangle"), tag: 1)
-//        calendarViewController.tabBarItem = UITabBarItem(title: "calendar", image: UIImage(systemName: "calendar"), tag: 2)
-//        publicMoneyViewController.tabBarItem = UITabBarItem(title: "public money", image: UIImage(systemName: "dollarsign.circle"), tag: 3)
-//        mypageViewController.tabBarItem = UITabBarItem(title: "mypage", image: UIImage(systemName: "person.circle"), tag: 4)
-//        tabBarController.viewControllers = [homeViewController, informationViewController, calendarViewController, publicMoneyViewController, mypageViewController]
-//        
-//        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-//        window?.windowScene = windowScene
-//        window?.rootViewController = tabBarController
-//        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
