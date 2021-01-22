@@ -662,6 +662,7 @@
                     <connections>
                         <outlet property="calendarTableView" destination="rRM-cT-7ni" id="Ux5-h7-zbm"/>
                         <outlet property="dateLabel" destination="9Y7-Lc-AXJ" id="Ey7-bh-emC"/>
+                        <outlet property="menuBarButton" destination="gbJ-Q1-kVg" id="I31-Cs-0r4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dKg-1l-7Tb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var calendarTableView: UITableView!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var menuBarButton: UIBarButtonItem!
     let statusLabel = UILabel(frame: CGRect(x: 0, y: 400, width: 414, height: 40))
     //let pink = UIColor(red: 243/255.0, green: 148/255.0, blue: 173/255.0, alpha: 1)
     var dataList = [[String: Any]]()
@@ -33,6 +34,7 @@ class HomeViewController: UIViewController {
         print("viewWillAppear")
         dataList = [[String:Any]]()
         showCalendar()
+        setUser()
     }
     
 //    func setNavigation() {
@@ -43,7 +45,6 @@ class HomeViewController: UIViewController {
     func setSideMenu(){
         sideMenu = SideMenuNavigationController(rootViewController: MenuListController())
         sideMenu?.leftSide = false
-        sideMenu?.navigationBar.topItem?.title = "@@@님" //willAppear로 따로 해줘야될 듯
         //sideMenu?.navigationBar.barTintColor = pink
         //sideMenu?.setNavigationBarHidden(true, animated: false)
         
@@ -51,6 +52,33 @@ class HomeViewController: UIViewController {
         SideMenuManager.default.addPanGestureToPresent(toView: self.view) // 메뉴에 스와이핑 제스처 추가
         sideMenu?.statusBarEndAlpha = 0.0 // 상태바 보이게
         sideMenu?.presentationStyle = .menuSlideIn
+        
+    }
+    
+    func setUser() {
+        let user = Auth.auth().currentUser
+        if user != nil {
+            menuBarButton.title = ""
+            menuBarButton.image = nil
+            menuBarButton.isEnabled = false
+            let uid: String = user!.uid
+            let db = Firestore.firestore()
+            db.collection("users").whereField("uid", isEqualTo: uid).getDocuments { (snapshot, error) in
+                if error == nil && snapshot?.isEmpty == false {
+                    for document in snapshot!.documents {
+                        let documentData = document.data()
+                        print(documentData)
+                        let userName = documentData["name"] as! String
+                        self.sideMenu?.navigationBar.topItem?.title = "\(userName)님"
+                    }
+                }
+            }
+        } else {
+            menuBarButton.title = "menu"
+            menuBarButton.image = UIImage(systemName: "text.justify")
+            menuBarButton.isEnabled = true
+            sideMenu?.navigationBar.topItem?.title = "환영합니다."
+        }
         
     }
     
@@ -128,7 +156,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
 class MenuListController: UITableViewController {
     //let pink = UIColor(red: 243/255.0, green: 148/255.0, blue: 173/255.0, alpha: 1)
-    var lists = ["로그인", "회원가입"]
+    let lists = ["로그인", "회원가입"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

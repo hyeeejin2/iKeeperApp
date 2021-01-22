@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MypageViewController: UIViewController {
 
@@ -15,14 +16,15 @@ class MypageViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    
-//    let firebaseAuth = Auth.auth()
-//    do {
-//        try firebaseAuth.signOut()
-//        transitionView()
-//    } catch let signOutError as NSError {
-//        print ("Error signing out: %@", signOutError)
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            //transitionView()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
 
     /*
     // MARK: - Navigation

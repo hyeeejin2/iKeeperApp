@@ -98,6 +98,7 @@ class PublicMoneyDetailViewController: UIViewController {
     
     @IBAction func editButton(_ sender: UIBarButtonItem) {
         editBarButton.title = ""
+        editBarButton.image = nil
         editBarButton.isEnabled = false
         completeButton.isHidden = false
         setEnabled()
@@ -154,6 +155,7 @@ class PublicMoneyDetailViewController: UIViewController {
         }
         
         editBarButton.title = "edit"
+        editBarButton.image = UIImage(systemName: "pencil.slash")
         editBarButton.isEnabled = true
         completeButton.isHidden = true
         setDisabled()
