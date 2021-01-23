@@ -79,7 +79,6 @@ class HomeViewController: UIViewController {
             menuBarButton.isEnabled = true
             sideMenu?.navigationBar.topItem?.title = "환영합니다."
         }
-        
     }
     
     func showCalendar() {
