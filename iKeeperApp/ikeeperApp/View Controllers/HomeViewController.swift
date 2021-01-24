@@ -120,7 +120,7 @@ class HomeViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let calendarViewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.calenderViewController)
         self.navigationController?.pushViewController(calendarViewController, animated: true)
-    }
+    } 
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -194,3 +194,12 @@ class MenuListController: UITableViewController {
         }
     }
 }
+
+
+//tabBarController?.delegate = self
+//extension ViewController: UITabBarControllerDelegate {
+//// excute when the tab is selected
+//func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+//    print("tab!!")
+//}
+//}

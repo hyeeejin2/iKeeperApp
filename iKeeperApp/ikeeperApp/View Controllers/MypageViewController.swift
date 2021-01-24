@@ -23,16 +23,36 @@ class MypageViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            //transitionView()
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
+        setProfile()
     }
     
     func setProfile() {
-        
+        let user = Auth.auth().currentUser
+        if user != nil {
+            let uid: String = user!.uid
+            let db = Firestore.firestore()
+            db.collection("users").whereField("uid", isEqualTo: uid).getDocuments { (snapshot, error) in
+                if error == nil && snapshot?.isEmpty == false {
+                    for document in snapshot!.documents {
+                        let documentData = document.data()
+                        print(documentData)
+                        self.nameLabel.text = documentData["name"] as? String
+                        self.departmentLabel.text = documentData["department"] as? String
+                        self.gradeLabel.text = documentData["grade"] as? String
+                        self.partLabel.text = documentData["part"] as? String
+                        self.statusLabel.text = documentData["status"] as? String
+                    }
+                }
+            }
+        }
+    }
+    
+    @IBAction func logout(_ sender: UIButton) {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
     }
 }
