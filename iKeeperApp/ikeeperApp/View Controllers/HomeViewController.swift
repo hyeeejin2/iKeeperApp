@@ -61,6 +61,7 @@ class HomeViewController: UIViewController {
             menuBarButton.title = ""
             menuBarButton.image = nil
             menuBarButton.isEnabled = false
+            
             let uid: String = user!.uid
             let db = Firestore.firestore()
             db.collection("users").whereField("uid", isEqualTo: uid).getDocuments { (snapshot, error) in
