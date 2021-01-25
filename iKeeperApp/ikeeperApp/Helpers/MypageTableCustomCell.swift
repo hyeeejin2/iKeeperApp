@@ -1,13 +1,15 @@
 //
-//  MypageCustomCell.swift
+//  MypageTableCustomCell.swift
 //  ikeeperApp
 //
-//  Created by 김혜진 on 2021/01/24.
+//  Created by 김혜진 on 2021/01/25.
 //
 
 import UIKit
 
-class MypageCustomCell: UITableViewCell {
+class MypageTableCustomCell: UITableViewCell {
+    
+    @IBOutlet weak var functionLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
