@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A0D4AB325BEF66D00E0AEDD /* MypageInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0D4AB225BEF66D00E0AEDD /* MypageInfoViewController.swift */; };
 		0A13DCAD2552FCBC00B3E53F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A13DCAC2552FCBC00B3E53F /* LoginViewController.swift */; };
 		0A194BB3257FB2B700820837 /* CalendarCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A194BB2257FB2B700820837 /* CalendarCustomCell.swift */; };
 		0A1A578D2567A43C00562BE1 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A578C2567A43C00562BE1 /* InformationViewController.swift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		03D03C47217AB69227AB4B49 /* Pods-ikeeperApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ikeeperApp.release.xcconfig"; path = "Target Support Files/Pods-ikeeperApp/Pods-ikeeperApp.release.xcconfig"; sourceTree = "<group>"; };
+		0A0D4AB225BEF66D00E0AEDD /* MypageInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageInfoViewController.swift; sourceTree = "<group>"; };
 		0A13DCAC2552FCBC00B3E53F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0A194BB2257FB2B700820837 /* CalendarCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCustomCell.swift; sourceTree = "<group>"; };
 		0A1A578C2567A43C00562BE1 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				0A3A931625A07E530015C43D /* PublicMoneyWriteViewController.swift */,
 				0A4E5BBA25B6FDF1006193F3 /* PublicMoneyDetailViewController.swift */,
 				0AC41B9025B46F2A00968B9B /* MypageViewController.swift */,
+				0A0D4AB225BEF66D00E0AEDD /* MypageInfoViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				0A7279EB25BEAF650092C551 /* MypageTableCustomCell.swift in Sources */,
 				0A3A931325A06AF90015C43D /* PublicMoneyViewController.swift in Sources */,
 				0AC41B9125B46F2A00968B9B /* MypageViewController.swift in Sources */,
+				0A0D4AB325BEF66D00E0AEDD /* MypageInfoViewController.swift in Sources */,
 				0A194BB3257FB2B700820837 /* CalendarCustomCell.swift in Sources */,
 				0AD493DD2558267C00BA552E /* CalendarViewController.swift in Sources */,
 				0A13DCAD2552FCBC00B3E53F /* LoginViewController.swift in Sources */,

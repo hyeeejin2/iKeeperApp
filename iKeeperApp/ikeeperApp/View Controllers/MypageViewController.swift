@@ -21,7 +21,7 @@ class MypageViewController: UIViewController {
     let collectionList = ["작성한 글 확인", "작성한 일정 확인", "경고 내역 확인"]
     let collectionImage = ["list.dash", "calendar", "bell"]
     let tableViewTitle = ["계정", "기타"]
-    let tableViewList1 = ["회원 정보 수정", "프로필 사진 설정"]
+    let tableViewList1 = ["회원정보 수정", "프로필 사진 설정"]
     let tableViewList2 = ["로그아웃", "회원탈퇴"]
     let space = [" ", " "]
     
@@ -31,6 +31,7 @@ class MypageViewController: UIViewController {
         
         self.functionCollectionView.delegate = self
         self.functionCollectionView.dataSource = self
+        
         self.functionTableView.delegate = self
         self.functionTableView.dataSource = self
     }
@@ -60,15 +61,6 @@ class MypageViewController: UIViewController {
             }
         }
     }
-    
-    @IBAction func logout(_ sender: UIBarButtonItem) {
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
-    }
 }
 
 extension MypageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -81,10 +73,9 @@ extension MypageViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MypageCollectionCustomCell", for: indexPath) as! MypageCollectionCustomCell
         
         // cell에 데이터 삽입
-        let index: String = collectionImage[indexPath.row]
-        let image = UIImage(systemName: "\(index)")
+        let imageString: String = collectionImage[indexPath.row]
         cell.backgroundColor = .systemGray6
-        cell.functionImage = UIImageView(image: image)
+        cell.functionImage.image = UIImage(systemName: "\(imageString)")
         cell.functionLabel.text? = collectionList[indexPath.row]
         return cell
     }
@@ -98,29 +89,24 @@ extension MypageViewController: UICollectionViewDelegate, UICollectionViewDataSo
 extension MypageViewController: UICollectionViewDelegateFlowLayout {
     // 옆 간격
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 3
+        return 2
     }
 
     // cell 사이즈
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        let width = collectionView.frame.width / 3-3
-        print("collectionView width=\(collectionView.frame.width)")
-        print("cell하나당 width=\(width)")
-        print("root view width = \(self.view.frame.width)")
+        let width = collectionView.frame.width / 3-2
         let size = CGSize(width: width, height: width)
         return size
+        
+//        print("collectionView width=\(collectionView.frame.width)")
+//        print("cell하나당 width=\(width)")
+//        print("root view width = \(self.view.frame.width)")
     }
-
-    // 여백
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        let edgeInSet = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
-//        return edgeInSet
-//    }
 }
 
 extension MypageViewController: UITableViewDelegate, UITableViewDataSource {
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return tableViewTitle.count
     }
@@ -159,6 +145,25 @@ extension MypageViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("test")
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                print("회원정보 수정")
+            } else if indexPath.row == 1{
+                print("프로필 사진 설정")
+            }
+        } else if indexPath.section == 1{
+            if indexPath.row == 0 {
+                print("로그아웃")
+                let firebaseAuth = Auth.auth()
+                do {
+                    try firebaseAuth.signOut()
+                    // 초기화면으로 전환
+                } catch let signOutError as NSError {
+                    print ("Error signing out: %@", signOutError)
+                }
+            } else if indexPath.row == 1{
+                print("회원탈퇴")
+            }
+        }
     }
 }

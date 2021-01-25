@@ -21,5 +21,6 @@ struct Constants {
         static let publicMoneyViewController = "PublicMoneyVC"
         static let publicMoneyDetailViewController = "PublicMoneyDetailVC"
         static let mypageViewController = "MypageVC"
+        static let mypageInfoViewController = "MypageInfoVC"
     }
 }
