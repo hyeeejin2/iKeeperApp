@@ -21,7 +21,7 @@ class MypageViewController: UIViewController {
     let collectionList = ["작성한 글 확인", "작성한 일정 확인", "경고 내역 확인"]
     let collectionImage = ["list.dash", "calendar", "bell"]
     let tableViewTitle = ["계정", "기타"]
-    let tableViewList1 = ["회원정보 수정", "프로필 사진 설정"]
+    let tableViewList1 = ["회원정보 수정", "비밀번호 변경" ,"프로필 사진 설정"]
     let tableViewList2 = ["로그아웃", "회원탈퇴"]
     let space = [" ", " "]
     
@@ -98,7 +98,6 @@ extension MypageViewController: UICollectionViewDelegateFlowLayout {
         let width = collectionView.frame.width / 3-2
         let size = CGSize(width: width, height: width)
         return size
-        
 //        print("collectionView width=\(collectionView.frame.width)")
 //        print("cell하나당 width=\(width)")
 //        print("root view width = \(self.view.frame.width)")
@@ -106,7 +105,6 @@ extension MypageViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension MypageViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return tableViewTitle.count
     }
@@ -145,10 +143,16 @@ extension MypageViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
         if indexPath.section == 0 {
             if indexPath.row == 0 {
-                print("회원정보 수정")
+                let mypageUserInfoViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.mypageUserInfoViewController) as! MypageUserInfoViewController
+                self.navigationController?.pushViewController(mypageUserInfoViewController, animated: true)
             } else if indexPath.row == 1{
+                let mypageChangePasswordViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.mypageChangePasswordViewController) as! MypageChangePasswordViewController
+                self.navigationController?.pushViewController(mypageChangePasswordViewController, animated: true)
+            } else if indexPath.row == 2 {
                 print("프로필 사진 설정")
             }
         } else if indexPath.section == 1{

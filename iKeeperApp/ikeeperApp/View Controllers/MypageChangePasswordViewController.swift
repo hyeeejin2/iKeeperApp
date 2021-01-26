@@ -1,13 +1,13 @@
 //
-//  MypageInfoViewController.swift
+//  MypageChangePasswordViewController.swift
 //  ikeeperApp
 //
-//  Created by 김혜진 on 2021/01/25.
+//  Created by 김혜진 on 2021/01/26.
 //
 
 import UIKit
 
-class MypageInfoViewController: UIViewController {
+class MypageChangePasswordViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

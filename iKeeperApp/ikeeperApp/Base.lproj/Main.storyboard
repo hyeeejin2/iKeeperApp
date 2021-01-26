@@ -148,7 +148,7 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="grade" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mng-Zk-isN">
                                         <rect key="frame" x="0.0" y="360" width="334" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                        <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ukq-OP-mRE">
                                         <rect key="frame" x="0.0" y="420" width="334" height="40"/>
@@ -516,9 +516,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Info Detail" id="ijW-NO-nJP">
                         <rightBarButtonItems>
-                            <barButtonItem title="edit" image="pencil.slash" catalog="system" id="kbT-km-tAI">
+                            <barButtonItem image="pencil.slash" catalog="system" id="kbT-km-tAI">
                                 <connections>
-                                    <action selector="editButton:" destination="As0-6X-N1O" id="yYd-5N-zUw"/>
+                                    <action selector="editBarButton:" destination="As0-6X-N1O" id="yYd-5N-zUw"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="trash" catalog="system" id="Xvl-lo-YE1">
@@ -983,7 +983,7 @@
                         <rightBarButtonItems>
                             <barButtonItem image="pencil.slash" catalog="system" id="sFE-sI-vxd">
                                 <connections>
-                                    <action selector="editButton:" destination="yeE-Sf-C3D" id="TIj-q7-iF7"/>
+                                    <action selector="editBarButton:" destination="yeE-Sf-C3D" id="TIj-q7-iF7"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="trash" catalog="system" id="RRZ-4E-YXN">
@@ -1400,9 +1400,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Calendar Detail" id="3l3-Wi-1fg">
                         <rightBarButtonItems>
-                            <barButtonItem title="edit" image="pencil.slash" catalog="system" id="iQo-ps-gAo">
+                            <barButtonItem image="pencil.slash" catalog="system" id="iQo-ps-gAo">
                                 <connections>
-                                    <action selector="editButton:" destination="St8-50-2p8" id="WIA-hL-JTy"/>
+                                    <action selector="editBarButton:" destination="St8-50-2p8" id="WIA-hL-JTy"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="trash" catalog="system" id="pvF-0p-m7s">
@@ -1627,20 +1627,180 @@
             </objects>
             <point key="canvasLocation" x="2189.8550724637685" y="1552.9017857142856"/>
         </scene>
-        <!--Mypage Info View Controller-->
+        <!--User Info-->
         <scene sceneID="Ahi-de-9ae">
             <objects>
-                <viewController storyboardIdentifier="MypageInfoVC" id="gND-ri-y6x" customClass="MypageInfoViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MypageUserInfoVC" id="gND-ri-y6x" customClass="MypageUserInfoViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fuy-yc-xoD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Pxd-nu-4SF">
+                                <rect key="frame" x="20" y="128" width="374" height="580"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gbd-pc-rfa">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="M5y-eF-Ye0"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8cf-or-sGW">
+                                        <rect key="frame" x="0.0" y="60" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yew-vH-AhU">
+                                        <rect key="frame" x="0.0" y="120" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="studentID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4PR-iO-wWd">
+                                        <rect key="frame" x="0.0" y="180" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="department" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o3x-ov-4mo">
+                                        <rect key="frame" x="0.0" y="240" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="grade" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LEj-so-Hkc">
+                                        <rect key="frame" x="0.0" y="300" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fXv-V0-HLZ">
+                                        <rect key="frame" x="0.0" y="360" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                    </textField>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5NI-yP-sXd">
+                                        <rect key="frame" x="0.0" y="420" width="374" height="41"/>
+                                        <segments>
+                                            <segment title="개발"/>
+                                            <segment title="보안"/>
+                                        </segments>
+                                    </segmentedControl>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="SfX-2Q-bSh">
+                                        <rect key="frame" x="0.0" y="480" width="374" height="41"/>
+                                        <segments>
+                                            <segment title="재학"/>
+                                            <segment title="휴학"/>
+                                        </segments>
+                                    </segmentedControl>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pl3-N4-bJf">
+                                        <rect key="frame" x="0.0" y="540" width="374" height="40"/>
+                                        <state key="normal" title="complete"/>
+                                        <connections>
+                                            <action selector="completeButton:" destination="gND-ri-y6x" eventType="touchUpInside" id="38d-2m-sn5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="o3x-ov-4mo" firstAttribute="height" secondItem="gbd-pc-rfa" secondAttribute="height" id="5TF-Am-MwD"/>
+                                    <constraint firstItem="Pl3-N4-bJf" firstAttribute="height" secondItem="gbd-pc-rfa" secondAttribute="height" id="7Sk-gX-On8"/>
+                                    <constraint firstItem="yew-vH-AhU" firstAttribute="height" secondItem="gbd-pc-rfa" secondAttribute="height" id="XXM-V8-mNy"/>
+                                    <constraint firstItem="LEj-so-Hkc" firstAttribute="height" secondItem="gbd-pc-rfa" secondAttribute="height" id="ceH-vT-JPG"/>
+                                    <constraint firstItem="4PR-iO-wWd" firstAttribute="height" secondItem="gbd-pc-rfa" secondAttribute="height" id="j5r-Ig-ol2"/>
+                                    <constraint firstItem="SfX-2Q-bSh" firstAttribute="height" secondItem="gbd-pc-rfa" secondAttribute="height" id="mDk-4v-0TN"/>
+                                    <constraint firstItem="5NI-yP-sXd" firstAttribute="height" secondItem="gbd-pc-rfa" secondAttribute="height" id="pnA-g9-Wm1"/>
+                                    <constraint firstItem="8cf-or-sGW" firstAttribute="height" secondItem="gbd-pc-rfa" secondAttribute="height" id="rKw-q8-nfg"/>
+                                    <constraint firstItem="fXv-V0-HLZ" firstAttribute="height" secondItem="gbd-pc-rfa" secondAttribute="height" id="wfC-w7-NhS"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="IGI-2K-KIm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="IGI-2K-KIm" firstAttribute="trailing" secondItem="Pxd-nu-4SF" secondAttribute="trailing" constant="20" id="UEI-wc-4ED"/>
+                            <constraint firstItem="Pxd-nu-4SF" firstAttribute="top" secondItem="IGI-2K-KIm" secondAttribute="top" constant="40" id="f9F-va-0fY"/>
+                            <constraint firstItem="Pxd-nu-4SF" firstAttribute="leading" secondItem="IGI-2K-KIm" secondAttribute="leading" constant="20" id="x0y-L0-Oab"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="User Info" id="NRj-vh-nvF">
+                        <barButtonItem key="rightBarButtonItem" image="pencil.slash" catalog="system" id="Efr-GR-WNZ">
+                            <connections>
+                                <action selector="editBarButton:" destination="gND-ri-y6x" id="VyP-e0-AQZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="completeButton" destination="Pl3-N4-bJf" id="csO-X5-SGS"/>
+                        <outlet property="departmentValue" destination="o3x-ov-4mo" id="uaI-pg-F8P"/>
+                        <outlet property="editBarButton" destination="Efr-GR-WNZ" id="B04-lA-3VS"/>
+                        <outlet property="emailValue" destination="gbd-pc-rfa" id="9zw-D8-zD3"/>
+                        <outlet property="gradeValue" destination="LEj-so-Hkc" id="gFl-fL-vLQ"/>
+                        <outlet property="nameValue" destination="8cf-or-sGW" id="t4w-Ax-eWy"/>
+                        <outlet property="partControl" destination="5NI-yP-sXd" id="avC-W2-SVY"/>
+                        <outlet property="phoneNumberValue" destination="fXv-V0-HLZ" id="WWl-iu-OFS"/>
+                        <outlet property="statusControl" destination="SfX-2Q-bSh" id="HOz-l4-Jrj"/>
+                        <outlet property="studentIDValue" destination="4PR-iO-wWd" id="Lby-CI-p6X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wCz-bF-wdN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3067" y="1553"/>
+            <point key="canvasLocation" x="3066.666666666667" y="1552.9017857142856"/>
+        </scene>
+        <!--Change password-->
+        <scene sceneID="4xf-IL-aMY">
+            <objects>
+                <viewController storyboardIdentifier="MypageChangePasswordVC" id="lca-jX-mgz" customClass="MypageChangePasswordViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mpc-4X-coO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="e0r-OU-HPv">
+                                <rect key="frame" x="20" y="128" width="374" height="220"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="current password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SwN-Pf-xhG">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="WY8-wI-mn6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="new password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0hw-LK-396">
+                                        <rect key="frame" x="0.0" y="60" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="new password check" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EMm-PP-P7o">
+                                        <rect key="frame" x="0.0" y="120" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SP8-DT-VLm">
+                                        <rect key="frame" x="0.0" y="180" width="374" height="40"/>
+                                        <state key="normal" title="change"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="SP8-DT-VLm" firstAttribute="height" secondItem="SwN-Pf-xhG" secondAttribute="height" id="A7S-rC-fqd"/>
+                                    <constraint firstItem="0hw-LK-396" firstAttribute="height" secondItem="SwN-Pf-xhG" secondAttribute="height" id="dXR-dD-4q9"/>
+                                    <constraint firstItem="EMm-PP-P7o" firstAttribute="height" secondItem="SwN-Pf-xhG" secondAttribute="height" id="oXW-zm-av2"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="tea-G0-a4s"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="tea-G0-a4s" firstAttribute="trailing" secondItem="e0r-OU-HPv" secondAttribute="trailing" constant="20" id="U6s-bd-mRv"/>
+                            <constraint firstItem="e0r-OU-HPv" firstAttribute="top" secondItem="tea-G0-a4s" secondAttribute="top" constant="40" id="XeL-9Y-OKO"/>
+                            <constraint firstItem="e0r-OU-HPv" firstAttribute="leading" secondItem="tea-G0-a4s" secondAttribute="leading" constant="20" id="y0C-kE-3wR"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Change password" id="iib-xS-ebK"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SKn-dp-CrC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3886.9565217391309" y="1552.9017857142856"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Je2-Pc-ZVD">
