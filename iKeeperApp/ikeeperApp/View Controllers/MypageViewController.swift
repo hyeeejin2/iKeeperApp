@@ -41,9 +41,10 @@ class MypageViewController: UIViewController {
     }
     
     func setProfile() {
-        // systemName : person.circle
         let user = Auth.auth().currentUser
         if user != nil {
+            // systemName : person.circle
+            let user = Auth.auth().currentUser
             let uid: String = user!.uid
             let db = Firestore.firestore()
             db.collection("users").whereField("uid", isEqualTo: uid).getDocuments { (snapshot, error) in
@@ -59,6 +60,8 @@ class MypageViewController: UIViewController {
                     }
                 }
             }
+        } else {
+            print("no user")
         }
     }
 }
@@ -81,6 +84,7 @@ extension MypageViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
         print("test")
     }
     
@@ -161,6 +165,11 @@ extension MypageViewController: UITableViewDelegate, UITableViewDataSource {
                 let firebaseAuth = Auth.auth()
                 do {
                     try firebaseAuth.signOut()
+                    self.nameLabel.text = "name"
+                    self.departmentLabel.text = "department"
+                    self.gradeLabel.text = "grade"
+                    self.partLabel.text = "part"
+                    self.statusLabel.text = "status"
                     // 초기화면으로 전환
                 } catch let signOutError as NSError {
                     print ("Error signing out: %@", signOutError)

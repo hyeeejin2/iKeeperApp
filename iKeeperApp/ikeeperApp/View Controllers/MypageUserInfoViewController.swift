@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class MypageUserInfoViewController: UIViewController {
 
     @IBOutlet weak var emailValue: UITextField!
     @IBOutlet weak var nameValue: UITextField!
+    @IBOutlet weak var pwValue: UITextField!
     @IBOutlet weak var studentIDValue: UITextField!
     @IBOutlet weak var departmentValue: UITextField!
     @IBOutlet weak var gradeValue: UITextField!
@@ -23,6 +26,8 @@ class MypageUserInfoViewController: UIViewController {
     let gradePickerView: UIPickerView = UIPickerView()
     let departmentKinds = ["-- 선택 --", "컴퓨터소프트웨어학부", "컴퓨터공학전공", "스마트IoT전공", "사이버보안전공", "모바일소프트웨어전공"]
     let gradeKinds = ["-- 선택 --", "1", "2", "3", "4"]
+    var documentID: String = ""
+    var currentPW: String = ""
     var selectedDepartment: String = ""
     var selectedGrade: String = ""
     
@@ -32,25 +37,26 @@ class MypageUserInfoViewController: UIViewController {
         
         completeButton.isHidden = true
         setDisabled()
-        setValue()
         createPickerView()
         dismissPickerView()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setValue()
+    }
 
     func setEnabled() {
-        //emailValue.isEnabled = false
-        //nameValue.isEnabled = false
-        //studentIDValue.isEnabled = false
+        pwValue.isEnabled = true
         departmentValue.isEnabled = true
         gradeValue.isEnabled = true
         phoneNumberValue.isEnabled = true
-        //partControl.isEnabled = false
         statusControl.isEnabled = true
     }
     
     func setDisabled() {
         emailValue.isEnabled = false
         nameValue.isEnabled = false
+        pwValue.isEnabled = false
         studentIDValue.isEnabled = false
         departmentValue.isEnabled = false
         gradeValue.isEnabled = false
@@ -60,7 +66,40 @@ class MypageUserInfoViewController: UIViewController {
     }
     
     func setValue() {
-        
+        let user = Auth.auth().currentUser
+        if user != nil {
+            let uid: String = user!.uid
+            let db = Firestore.firestore()
+            db.collection("users").whereField("uid", isEqualTo: uid).getDocuments { (snapshot, error) in
+                if error == nil && snapshot?.isEmpty == false {
+                    for document in snapshot!.documents {
+                        let documentData = document.data()
+                        print(documentData)
+                        self.emailValue.text = documentData["email"] as? String
+                        self.nameValue.text = documentData["name"] as? String
+                        self.studentIDValue.text = documentData["studentID"] as? String
+                        self.departmentValue.text = documentData["department"] as? String
+                        self.gradeValue.text = documentData["grade"] as? String
+                        self.phoneNumberValue.text = documentData["phoneNumber"] as? String
+                        self.documentID = document.documentID
+                        self.currentPW = documentData["password"] as! String
+                        
+                        if let part = documentData["part"] as? String, part == "개발" {
+                            self.partControl.selectedSegmentIndex = 0
+                        } else {
+                            self.partControl.selectedSegmentIndex = 1
+                        }
+                        if let status = documentData["status"] as? String, status == "재학" {
+                            self.statusControl.selectedSegmentIndex = 0
+                        } else {
+                            self.statusControl.selectedSegmentIndex = 1
+                        }
+                    }
+                }
+            }
+        } else {
+            print("no user")
+        }
     }
     
     func createPickerView() {
@@ -120,6 +159,57 @@ class MypageUserInfoViewController: UIViewController {
     }
     
     @IBAction func completeButton(_ sender: UIButton) {
+        guard let email: String = emailValue.text, email.isEmpty == false else {
+            showAlert(message: "빈칸을 채워주세요")
+            return
+        }
+        guard let name: String = nameValue.text, name.isEmpty == false else {
+            showAlert(message: "빈칸을 채워주세요")
+            return
+        }
+        guard let pw: String = pwValue.text, pw.isEmpty == false else {
+            showAlert(message: "빈칸을 채워주세요")
+            return
+        }
+        guard let studentID: String = studentIDValue.text, studentID.isEmpty == false else {
+            showAlert(message: "빈칸을 채워주세요")
+            return
+        }
+        guard let department: String = departmentValue.text, department.isEmpty == false else {
+            showAlert(message: "빈칸을 채워주세요")
+            return
+        }
+        guard let grade: String = gradeValue.text, grade.isEmpty == false else {
+            showAlert(message: "빈칸을 채워주세요")
+            return
+        }
+        guard let phoneNumber: String = phoneNumberValue.text, phoneNumber.isEmpty == false else {
+            showAlert(message: "빈칸을 채워주세요")
+            return
+        }
+        guard currentPW == pw else {
+            showAlert(message: "비밀번호를 확인해주세요")
+            return
+        }
+        
+        var status: String = ""
+        if statusControl.selectedSegmentIndex == 0 {
+            status = "재학"
+        } else {
+            status = "휴학"
+        }
+        let modifyData = ["department": department, "grade": grade, "phoneNumber": phoneNumber, "status": status]
+        print(modifyData)
+        
+        let db = Firestore.firestore()
+        db.collection("users").document("\(self.documentID)").updateData(modifyData) { (error) in
+            if error != nil {
+                print("check for error : \(error!.localizedDescription)")
+            } else {
+                print("success")
+            }
+        }
+        
         editBarButton.image = UIImage(systemName: "pencil.slash")
         editBarButton.isEnabled = true
         completeButton.isHidden = true
