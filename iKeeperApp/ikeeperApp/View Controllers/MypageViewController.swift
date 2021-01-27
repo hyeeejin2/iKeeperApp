@@ -85,9 +85,18 @@ extension MypageViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        print("test")
+        
+        if indexPath.row == 0 {
+            let mypageWrittenInfoViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.mypageWrittenInfoViewController) as! MypageWrittenInfoViewController
+            self.navigationController?.pushViewController(mypageWrittenInfoViewController, animated: true)
+        } else if indexPath.row == 1 {
+            let mypageWrittenCalendarViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.mypageWrittenCalendarViewController) as! MypageWrittenCalendarViewController
+            self.navigationController?.pushViewController(mypageWrittenCalendarViewController, animated: true)
+        } else {
+            let mypageWarningListViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.mypageWarningListViewController) as! MypageWarningListViewController
+            self.navigationController?.pushViewController(mypageWarningListViewController, animated: true)
+        }
     }
-    
 }
 
 extension MypageViewController: UICollectionViewDelegateFlowLayout {

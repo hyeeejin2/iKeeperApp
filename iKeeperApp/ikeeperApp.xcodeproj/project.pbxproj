@@ -32,6 +32,9 @@
 		0AA73699258F25A800CD6314 /* InformationWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA73698258F25A800CD6314 /* InformationWriteViewController.swift */; };
 		0AA7369D258F5EAE00CD6314 /* InformationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA7369C258F5EAE00CD6314 /* InformationDetailViewController.swift */; };
 		0ABF3481258B9AA300919E1F /* CalendarDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABF3480258B9AA300919E1F /* CalendarDetailViewController.swift */; };
+		0ABF9B9D25C151A50015B788 /* MypageWrittenInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABF9B9C25C151A50015B788 /* MypageWrittenInfoViewController.swift */; };
+		0ABF9BA025C151B60015B788 /* MypageWrittenCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABF9B9F25C151B60015B788 /* MypageWrittenCalendarViewController.swift */; };
+		0ABF9BA325C1546D0015B788 /* MypageWarningListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABF9BA225C1546D0015B788 /* MypageWarningListViewController.swift */; };
 		0ABFF950256B9FAA007FD690 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0ABFF94F256B9FAA007FD690 /* GoogleService-Info.plist */; };
 		0AC41B9125B46F2A00968B9B /* MypageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC41B9025B46F2A00968B9B /* MypageViewController.swift */; };
 		0AC41B9525B47A6200968B9B /* HomeCalendarCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC41B9425B47A6200968B9B /* HomeCalendarCustomCell.swift */; };
@@ -70,6 +73,9 @@
 		0AA73698258F25A800CD6314 /* InformationWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationWriteViewController.swift; sourceTree = "<group>"; };
 		0AA7369C258F5EAE00CD6314 /* InformationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationDetailViewController.swift; sourceTree = "<group>"; };
 		0ABF3480258B9AA300919E1F /* CalendarDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDetailViewController.swift; sourceTree = "<group>"; };
+		0ABF9B9C25C151A50015B788 /* MypageWrittenInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageWrittenInfoViewController.swift; sourceTree = "<group>"; };
+		0ABF9B9F25C151B60015B788 /* MypageWrittenCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageWrittenCalendarViewController.swift; sourceTree = "<group>"; };
+		0ABF9BA225C1546D0015B788 /* MypageWarningListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageWarningListViewController.swift; sourceTree = "<group>"; };
 		0ABFF94F256B9FAA007FD690 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0AC41B9025B46F2A00968B9B /* MypageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageViewController.swift; sourceTree = "<group>"; };
 		0AC41B9425B47A6200968B9B /* HomeCalendarCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCalendarCustomCell.swift; sourceTree = "<group>"; };
@@ -108,6 +114,9 @@
 				0A3A931625A07E530015C43D /* PublicMoneyWriteViewController.swift */,
 				0A4E5BBA25B6FDF1006193F3 /* PublicMoneyDetailViewController.swift */,
 				0AC41B9025B46F2A00968B9B /* MypageViewController.swift */,
+				0ABF9B9C25C151A50015B788 /* MypageWrittenInfoViewController.swift */,
+				0ABF9B9F25C151B60015B788 /* MypageWrittenCalendarViewController.swift */,
+				0ABF9BA225C1546D0015B788 /* MypageWarningListViewController.swift */,
 				0AA00FE025C02838004122F5 /* MypageUserInfoViewController.swift */,
 				0AA00FDC25C02802004122F5 /* MypageChangePasswordViewController.swift */,
 			);
@@ -305,11 +314,13 @@
 				0AC41B9125B46F2A00968B9B /* MypageViewController.swift in Sources */,
 				0A194BB3257FB2B700820837 /* CalendarCustomCell.swift in Sources */,
 				0AD493DD2558267C00BA552E /* CalendarViewController.swift in Sources */,
+				0ABF9BA025C151B60015B788 /* MypageWrittenCalendarViewController.swift in Sources */,
 				0A13DCAD2552FCBC00B3E53F /* LoginViewController.swift in Sources */,
 				0AC41B9525B47A6200968B9B /* HomeCalendarCustomCell.swift in Sources */,
 				0A3A931725A07E530015C43D /* PublicMoneyWriteViewController.swift in Sources */,
 				0A7A68EE2551473100DD3BC9 /* AppDelegate.swift in Sources */,
 				0A7A68F02551473100DD3BC9 /* SceneDelegate.swift in Sources */,
+				0ABF9B9D25C151A50015B788 /* MypageWrittenInfoViewController.swift in Sources */,
 				0AA00FE125C02838004122F5 /* MypageUserInfoViewController.swift in Sources */,
 				0A98D52125559DE400E4BF66 /* Constants.swift in Sources */,
 				0AA73699258F25A800CD6314 /* InformationWriteViewController.swift in Sources */,
@@ -324,6 +335,7 @@
 				0A1A578D2567A43C00562BE1 /* InformationViewController.swift in Sources */,
 				0ADB319625A5D9B3009812B0 /* PublicMoneyCustomCell.swift in Sources */,
 				0AA7369D258F5EAE00CD6314 /* InformationDetailViewController.swift in Sources */,
+				0ABF9BA325C1546D0015B788 /* MypageWarningListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
