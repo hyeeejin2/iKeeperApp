@@ -60,7 +60,13 @@ class CalendarDetailViewController: UIViewController {
                 if error == nil && snapshot?.isEmpty == false {
                     print("회원 & 본인")
                 } else if error == nil && snapshot?.isEmpty == true {
-                    self.setBarButtonDisabled()
+                    db.collection("users").whereField("uid", isEqualTo: uid).whereField("permission", isEqualTo: true).getDocuments { (snapshot, error) in
+                        if error == nil && snapshot?.isEmpty == false {
+                            print("관리자")
+                        } else if error == nil && snapshot?.isEmpty == true {
+                            self.setBarButtonDisabled()
+                        }
+                    }
                 }
             }
         } else {

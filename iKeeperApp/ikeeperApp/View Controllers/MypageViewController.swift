@@ -40,6 +40,7 @@ class MypageViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("test")
         setUser()
     }
     
@@ -65,10 +66,8 @@ class MypageViewController: UIViewController {
             }
         } else {
             print("no user")
-//            self.tabBarController?.selectedIndex = 0
-            let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC")
-//            self.navigationController?.popToRootViewController(animated: true)
-            self.navigationController?.pushViewController(loginViewController!, animated: true)
+//            let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC")
+//            self.navigationController?.pushViewController(loginViewController!, animated: true)
         }
     }
 }

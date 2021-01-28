@@ -178,8 +178,17 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
                     cell.deleteButton.tag = indexPath.row
                     cell.deleteButton.addTarget(self, action: #selector(self.deleteCalendar(_:)), for: .touchUpInside)
                 } else if error == nil && snapshot?.isEmpty == true {
-                    cell.deleteButton.isHidden = true
-                    cell.deleteButton.isEnabled = false
+                    db.collection("users").whereField("uid", isEqualTo: uid).whereField("permission", isEqualTo: true).getDocuments { (snapshot, error) in
+                        if error == nil && snapshot?.isEmpty == false {
+                            cell.deleteButton.isHidden = false
+                            cell.deleteButton.isEnabled = true
+                            cell.deleteButton.tag = indexPath.row
+                            cell.deleteButton.addTarget(self, action: #selector(self.deleteCalendar(_:)), for: .touchUpInside)
+                        } else if error == nil && snapshot?.isEmpty == true {
+                            cell.deleteButton.isHidden = true
+                            cell.deleteButton.isEnabled = false
+                        }
+                    }
                 }
             }
         } else {

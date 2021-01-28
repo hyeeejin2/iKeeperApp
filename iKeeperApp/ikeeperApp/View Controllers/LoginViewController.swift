@@ -35,13 +35,6 @@ class LoginViewController: UIViewController {
                 self.showAlert(message: "이메일 또는 비밀번호를 확인해주세요")
             } else {
                 self.navigationController?.popViewController(animated: true)
-//                let user = Auth.auth().currentUser
-//                if let user = user {
-//                    let uid = user.uid
-//                    let email = user.email
-//                    let name = user.displayName
-//                }
-                //self.transitionHome()
             }
         }
 
