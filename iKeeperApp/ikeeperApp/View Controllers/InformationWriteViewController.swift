@@ -31,6 +31,30 @@ class InformationWriteViewController: UIViewController {
         dismissTimePicker()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setUser()
+    }
+    
+    func setUser(){
+        let user = Auth.auth().currentUser
+        if user != nil {
+            let uid: String = user!.uid
+            let db = Firestore.firestore()
+            db.collection("users").whereField("uid", isEqualTo: uid).getDocuments { (snapshot, error) in
+                if error == nil && snapshot?.isEmpty == false {
+                    for document in snapshot!.documents {
+                        let documentData = document.data()
+                        print(documentData)
+                        self.writerValue.text = documentData["name"] as? String
+                        self.writerValue.isEnabled = false
+                    }
+                }
+            }
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
     func requestPhotosPermission() {
         let photoAuthorizationStatusStatus = PHPhotoLibrary.authorizationStatus()
             
@@ -164,11 +188,13 @@ class InformationWriteViewController: UIViewController {
             return
         }
         
+        let user = Auth.auth().currentUser
+        let uid = user!.uid
         let timestamp = NSDate().timeIntervalSince1970
         let views: Int = 0
         let db = Firestore.firestore()
         let newDocument = db.collection("infoList").document()
-        newDocument.setData(["id": newDocument.documentID,"title": title, "writer": writer, "date": date, "time": time, "views": views, "content": content, "created": timestamp]) { (error) in
+        newDocument.setData(["id": newDocument.documentID, "uid": uid, "title": title, "writer": writer, "date": date, "time": time, "views": views, "content": content, "created": timestamp]) { (error) in
             if error != nil {
                 print("check for error : \(error!.localizedDescription)")
                 self.showAlert(message: "게시글 등록 실패")

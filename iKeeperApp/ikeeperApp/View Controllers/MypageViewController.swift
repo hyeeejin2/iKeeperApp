@@ -24,6 +24,7 @@ class MypageViewController: UIViewController {
     let tableViewList1 = ["회원정보 수정", "비밀번호 변경" ,"프로필 사진 설정"]
     let tableViewList2 = ["로그아웃", "회원탈퇴"]
     let space = [" ", " "]
+    let picker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,13 +35,15 @@ class MypageViewController: UIViewController {
         
         self.functionTableView.delegate = self
         self.functionTableView.dataSource = self
+        
+        self.picker.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setProfile()
+        setUser()
     }
     
-    func setProfile() {
+    func setUser() {
         let user = Auth.auth().currentUser
         if user != nil {
             // systemName : person.circle
@@ -62,6 +65,10 @@ class MypageViewController: UIViewController {
             }
         } else {
             print("no user")
+//            self.tabBarController?.selectedIndex = 0
+            let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC")
+//            self.navigationController?.popToRootViewController(animated: true)
+            self.navigationController?.pushViewController(loginViewController!, animated: true)
         }
     }
 }
@@ -167,10 +174,17 @@ extension MypageViewController: UITableViewDelegate, UITableViewDataSource {
                 self.navigationController?.pushViewController(mypageChangePasswordViewController, animated: true)
             } else if indexPath.row == 2 {
                 print("프로필 사진 설정")
+//                let alert =  UIAlertController(title: "원하는 타이틀", message: "원하는 메세지", preferredStyle: .actionSheet)
+//                let library =  UIAlertAction(title: "앨범에서 사진 선택", style: .default) { (action) in self.openLibrary() }
+//                let delete =  UIAlertAction(title: "기본 이미지로 변경", style: .default) { (action) in self.deletePhoto() }
+//                let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+//                alert.addAction(library)
+//                alert.addAction(delete)
+//                alert.addAction(cancel)
+//                present(alert, animated: true, completion: nil)
             }
         } else if indexPath.section == 1{
             if indexPath.row == 0 {
-                print("로그아웃")
                 let firebaseAuth = Auth.auth()
                 do {
                     try firebaseAuth.signOut()
@@ -179,7 +193,7 @@ extension MypageViewController: UITableViewDelegate, UITableViewDataSource {
                     self.gradeLabel.text = "grade"
                     self.partLabel.text = "part"
                     self.statusLabel.text = "status"
-                    // 초기화면으로 전환
+                    self.tabBarController?.selectedIndex = 0
                 } catch let signOutError as NSError {
                     print ("Error signing out: %@", signOutError)
                 }
@@ -188,4 +202,18 @@ extension MypageViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
+    
+//    func openLibrary() {
+//        picker.sourceType = .photoLibrary
+//        present(picker, animated: false, completion: nil)
+//    }
+//
+//    func deletePhoto() {
+//        print("delete")
+//    }
+    
+}
+
+extension MypageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
 }

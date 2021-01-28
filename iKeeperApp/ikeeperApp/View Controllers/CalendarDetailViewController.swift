@@ -8,7 +8,7 @@
 import UIKit
 import Firebase
 
-class CalendarDetailViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class CalendarDetailViewController: UIViewController {
 
     @IBOutlet weak var titleValue: UITextField!
     @IBOutlet weak var writerValue: UITextField!
@@ -18,6 +18,7 @@ class CalendarDetailViewController: UIViewController, UIPickerViewDelegate, UIPi
     @IBOutlet weak var endValue: UITextField!
     @IBOutlet weak var placeValue: UITextField!
     @IBOutlet weak var contentValue: UITextField!
+    @IBOutlet weak var deleteBarButton: UIBarButtonItem!
     @IBOutlet weak var editBarButton: UIBarButtonItem!
     @IBOutlet weak var completeButton: UIButton!
     let datePicker: UIDatePicker = UIDatePicker()
@@ -43,6 +44,35 @@ class CalendarDetailViewController: UIViewController, UIPickerViewDelegate, UIPi
         dismissStartPicker()
         createEndPicker()
         dismissEndPicker()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setUser()
+    }
+    
+    func setUser(){
+        let user = Auth.auth().currentUser
+        if user != nil {
+            let uid: String = user!.uid
+            let documentID: String = dataList["id"] as! String
+            let db = Firestore.firestore()
+            db.collection("calendar").whereField("id", isEqualTo: documentID).whereField("uid", isEqualTo: uid).getDocuments { (snapshot, error) in
+                if error == nil && snapshot?.isEmpty == false {
+                    print("회원 & 본인")
+                } else if error == nil && snapshot?.isEmpty == true {
+                    self.setBarButtonDisabled()
+                }
+            }
+        } else {
+            setBarButtonDisabled()
+        }
+    }
+    
+    func setBarButtonDisabled() {
+        editBarButton.image = nil
+        editBarButton.isEnabled = false
+        deleteBarButton.image = nil
+        deleteBarButton.isEnabled = false
     }
     
     func setEnabled() {
@@ -75,30 +105,6 @@ class CalendarDetailViewController: UIViewController, UIPickerViewDelegate, UIPi
         endValue.text = dataList["endTime"] as? String
         placeValue.text = dataList["place"] as? String
         contentValue.text = dataList["content"] as? String
-    }
-    
-    // 선택 가능한 리스트 개수
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    // pickerView에 표시될 항목 개수 반환
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return category.count
-    }
-    
-    // pickerView 내에서 특정한 위치(row)를 가르키면 해당 위치의 문자열을 반환
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return category[row]
-    }
-    
-    // pickerView에서 특정 위치(row)가 선택될 때 어떤 행동을 할지 정의
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if row != 0 {
-            selectedCategory = category[row]
-        } else {
-            selectedCategory = "" // "-- 선택 --" 선택하면
-        }
     }
     
     // pickerView
@@ -290,5 +296,31 @@ class CalendarDetailViewController: UIViewController, UIPickerViewDelegate, UIPi
         let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
+    }
+}
+
+extension CalendarDetailViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    // 선택 가능한 리스트 개수
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    // pickerView에 표시될 항목 개수 반환
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return category.count
+    }
+    
+    // pickerView 내에서 특정한 위치(row)를 가르키면 해당 위치의 문자열을 반환
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return category[row]
+    }
+    
+    // pickerView에서 특정 위치(row)가 선택될 때 어떤 행동을 할지 정의
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if row != 0 {
+            selectedCategory = category[row]
+        } else {
+            selectedCategory = "" // "-- 선택 --" 선택하면
+        }
     }
 }

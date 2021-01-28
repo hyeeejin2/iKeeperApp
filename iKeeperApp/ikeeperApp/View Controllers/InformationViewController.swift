@@ -10,6 +10,7 @@ import Firebase
 
 class InformationViewController: UIViewController {
 
+    @IBOutlet weak var writeBarButton: UIBarButtonItem!
     @IBOutlet weak var infoTableView: UITableView!
     let statusLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 414, height: 40))
     var dataList = [[String: Any]]()
@@ -27,7 +28,19 @@ class InformationViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         dataList = [[String:Any]]()
+        setBarButton()
         showInfo()
+    }
+    
+    func setBarButton() {
+        let user = Auth.auth().currentUser
+        if user != nil {
+            writeBarButton.image = UIImage(systemName: "plus")
+            writeBarButton.isEnabled = true
+        } else {
+            writeBarButton.image = nil
+            writeBarButton.isEnabled = false
+        }
     }
     
     func showInfo() {
@@ -102,3 +115,4 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
         super.didReceiveMemoryWarning()
     }
 }
+

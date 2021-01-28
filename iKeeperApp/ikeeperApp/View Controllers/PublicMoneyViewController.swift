@@ -10,6 +10,7 @@ import Firebase
 
 class PublicMoneyViewController: UIViewController {
 
+    @IBOutlet weak var writeBarButton: UIBarButtonItem!
     @IBOutlet weak var yearValue: UITextField!
     @IBOutlet weak var monthValue: UITextField!
     @IBOutlet weak var publicMoneyTableView: UITableView!
@@ -34,9 +35,29 @@ class PublicMoneyViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear")
         dataList = [[String:Any]]()
+        setBarButton()
         showPublicMoney()
+    }
+    
+    func setBarButton() {
+        let user = Auth.auth().currentUser
+        if user != nil {
+            let uid: String = user!.uid
+            let db = Firestore.firestore()
+            db.collection("users").whereField("uid", isEqualTo: uid).whereField("permission", isEqualTo: true).getDocuments { (snapshot, error) in
+                if error == nil && snapshot?.isEmpty == false {
+                    self.writeBarButton.image = UIImage(systemName: "plus")
+                    self.writeBarButton.isEnabled = true
+                } else if error == nil && snapshot?.isEmpty == true {
+                    self.writeBarButton.image = nil
+                    self.writeBarButton.isEnabled = false
+                }
+            }
+        } else {
+            writeBarButton.image = nil
+            writeBarButton.isEnabled = false
+        }
     }
     
     func showPublicMoney() {
@@ -190,7 +211,7 @@ class PublicMoneyViewController: UIViewController {
     }
 }
 
-extension PublicMoneyViewController: UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDelegate, UITableViewDataSource {
+extension PublicMoneyViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -233,7 +254,9 @@ extension PublicMoneyViewController: UIPickerViewDelegate, UIPickerViewDataSourc
             }
         }
     }
-    
+}
+
+extension PublicMoneyViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataList.count
     }

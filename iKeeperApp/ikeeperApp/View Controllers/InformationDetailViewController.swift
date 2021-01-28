@@ -16,6 +16,7 @@ class InformationDetailViewController: UIViewController {
     @IBOutlet weak var timeValue: UITextField!
     @IBOutlet weak var viewsValue: UITextField!
     @IBOutlet weak var contentValue: UITextField!
+    @IBOutlet weak var deleteBarButton: UIBarButtonItem!
     @IBOutlet weak var editBarButton: UIBarButtonItem!
     @IBOutlet weak var completeButton: UIButton!
     let datePicker: UIDatePicker = UIDatePicker()
@@ -34,6 +35,35 @@ class InformationDetailViewController: UIViewController {
         dismissDatePicker()
         createTimePicker()
         dismissTimePicker()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setUser()
+    }
+    
+    func setUser(){
+        let user = Auth.auth().currentUser
+        if user != nil {
+            let uid: String = user!.uid
+            let documentID: String = dataList["id"] as! String
+            let db = Firestore.firestore()
+            db.collection("infoList").whereField("id", isEqualTo: documentID).whereField("uid", isEqualTo: uid).getDocuments { (snapshot, error) in
+                if error == nil && snapshot?.isEmpty == false {
+                    print("회원 & 본인")
+                } else if error == nil && snapshot?.isEmpty == true {
+                    self.setBarButtonDisabled()
+                }
+            }
+        } else {
+            setBarButtonDisabled()
+        }
+    }
+    
+    func setBarButtonDisabled() {
+        editBarButton.image = nil
+        editBarButton.isEnabled = false
+        deleteBarButton.image = nil
+        deleteBarButton.isEnabled = false
     }
     
     func setEnabled() {

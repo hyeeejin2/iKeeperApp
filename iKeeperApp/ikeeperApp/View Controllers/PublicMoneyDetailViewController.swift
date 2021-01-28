@@ -16,6 +16,7 @@ class PublicMoneyDetailViewController: UIViewController {
     @IBOutlet weak var createDateValue: UITextField!
     @IBOutlet weak var writerValue: UITextField!
     @IBOutlet weak var memoValue: UITextField!
+    @IBOutlet weak var deleteBarButton: UIBarButtonItem!
     @IBOutlet weak var editBarButton: UIBarButtonItem!
     @IBOutlet weak var completeButton: UIButton!
     let datePicker: UIDatePicker = UIDatePicker()
@@ -32,6 +33,35 @@ class PublicMoneyDetailViewController: UIViewController {
         setValue()
         createDatePicker()
         dismissDatePicker()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setUser()
+    }
+    
+    func setUser(){
+        let user = Auth.auth().currentUser
+        if user != nil {
+            let uid: String = user!.uid
+            let documentID: String = dataList["id"] as! String
+            let db = Firestore.firestore()
+            db.collection("publicMoney").whereField("id", isEqualTo: documentID).whereField("uid", isEqualTo: uid).getDocuments { (snapshot, error) in
+                if error == nil && snapshot?.isEmpty == false {
+                    print("관리자")
+                } else if error == nil && snapshot?.isEmpty == true {
+                    self.setBarButtonDisabled()
+                }
+            }
+        } else {
+            setBarButtonDisabled()
+        }
+    }
+    
+    func setBarButtonDisabled() {
+        editBarButton.image = nil
+        editBarButton.isEnabled = false
+        deleteBarButton.image = nil
+        deleteBarButton.isEnabled = false
     }
     
     func setEnabled() {

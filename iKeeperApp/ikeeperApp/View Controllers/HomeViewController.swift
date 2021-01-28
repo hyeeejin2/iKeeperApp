@@ -32,8 +32,33 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         dataList = [[String:Any]]()
+        setBarButton()
         showCalendar()
-        setUser()
+    }
+    
+    func setBarButton() {
+        let user = Auth.auth().currentUser
+        if user != nil {
+            menuBarButton.image = nil
+            menuBarButton.isEnabled = false
+            
+            let uid: String = user!.uid
+            let db = Firestore.firestore()
+            db.collection("users").whereField("uid", isEqualTo: uid).getDocuments { (snapshot, error) in
+                if error == nil && snapshot?.isEmpty == false {
+                    for document in snapshot!.documents {
+                        let documentData = document.data()
+                        print(documentData)
+                        let userName = documentData["name"] as! String
+                        self.sideMenu?.navigationBar.topItem?.title = "\(userName)님"
+                    }
+                }
+            }
+        } else {
+            menuBarButton.image = UIImage(systemName: "text.justify")
+            menuBarButton.isEnabled = true
+            sideMenu?.navigationBar.topItem?.title = "환영합니다."
+        }
     }
     
 //    func setNavigation() {
@@ -52,33 +77,6 @@ class HomeViewController: UIViewController {
         sideMenu?.statusBarEndAlpha = 0.0 // 상태바 보이게
         sideMenu?.presentationStyle = .menuSlideIn
         
-    }
-    
-    func setUser() {
-        let user = Auth.auth().currentUser
-        if user != nil {
-            menuBarButton.title = ""
-            menuBarButton.image = nil
-            menuBarButton.isEnabled = false
-            
-            let uid: String = user!.uid
-            let db = Firestore.firestore()
-            db.collection("users").whereField("uid", isEqualTo: uid).getDocuments { (snapshot, error) in
-                if error == nil && snapshot?.isEmpty == false {
-                    for document in snapshot!.documents {
-                        let documentData = document.data()
-                        print(documentData)
-                        let userName = documentData["name"] as! String
-                        self.sideMenu?.navigationBar.topItem?.title = "\(userName)님"
-                    }
-                }
-            }
-        } else {
-            menuBarButton.title = "menu"
-            menuBarButton.image = UIImage(systemName: "text.justify")
-            menuBarButton.isEnabled = true
-            sideMenu?.navigationBar.topItem?.title = "환영합니다."
-        }
     }
     
     func showCalendar() {
@@ -116,9 +114,10 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func moreButton(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let calendarViewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.calenderViewController)
-        self.navigationController?.pushViewController(calendarViewController, animated: true)
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let calendarViewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.calenderViewController)
+//        self.navigationController?.pushViewController(calendarViewController, animated: true)
+        self.tabBarController?.selectedIndex = 2
     } 
 }
 
@@ -193,12 +192,3 @@ class MenuListController: UITableViewController {
         }
     }
 }
-
-
-//tabBarController?.delegate = self
-//extension ViewController: UITabBarControllerDelegate {
-//// excute when the tab is selected
-//func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-//    print("tab!!")
-//}
-//}

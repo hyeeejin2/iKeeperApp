@@ -28,6 +28,32 @@ class PublicMoneyWriteViewController: UIViewController {
         dismissDatePicker()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setUser()
+    }
+    
+    func setUser(){
+        let user = Auth.auth().currentUser
+        if user != nil {
+            let uid: String = user!.uid
+            let db = Firestore.firestore()
+            db.collection("users").whereField("uid", isEqualTo: uid).whereField("permission", isEqualTo: true).getDocuments { (snapshot, error) in
+                if error == nil && snapshot?.isEmpty == false {
+                    for document in snapshot!.documents {
+                        let documentData = document.data()
+                        print(documentData)
+                        self.writerValue.text = documentData["name"] as? String
+                        self.writerValue.isEnabled = false
+                    }
+                } else if error == nil && snapshot?.isEmpty == true {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
     func setDate() {
         formatter.dateFormat = "YYYY-MM-dd"
         let dateString = formatter.string(from: Date())
@@ -95,6 +121,8 @@ class PublicMoneyWriteViewController: UIViewController {
             op = "-"
         }
         
+        let user = Auth.auth().currentUser
+        let uid: String = user!.uid
         let calendar = Calendar.current
         let year = calendar.component(.year, from: self.datePicker.date)
         let month = calendar.component(.month, from: self.datePicker.date)
@@ -104,7 +132,7 @@ class PublicMoneyWriteViewController: UIViewController {
         // add data
         let db = Firestore.firestore()
         let newDocument = db.collection("publicMoney").document()
-        newDocument.setData(["id": newDocument.documentID, "category": category, "amount": amount, "op": op, "create date": createDate, "history date": historyDate, "year":year, "month":month, "day": day, "writer": writer, "memo": memo, "created": timestamp]) { (error) in
+        newDocument.setData(["id": newDocument.documentID, "uid": uid, "category": category, "amount": amount, "op": op, "create date": createDate, "history date": historyDate, "year":year, "month":month, "day": day, "writer": writer, "memo": memo, "created": timestamp]) { (error) in
             if error != nil {
                 print("check for error : \(error!.localizedDescription)")
                 self.showAlert(message: "공금내역 등록 실패")

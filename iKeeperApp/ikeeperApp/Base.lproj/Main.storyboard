@@ -325,7 +325,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="InfoNoticeBoard" id="T8d-oq-jDt">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="2oU-6a-DFR">
+                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="2oU-6a-DFR">
                             <connections>
                                 <segue destination="e2W-Vt-boQ" kind="show" id="Yln-By-Bth"/>
                             </connections>
@@ -335,6 +335,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="infoTableView" destination="MYF-CM-irq" id="fca-2C-PC1"/>
+                        <outlet property="writeBarButton" destination="2oU-6a-DFR" id="PQA-l3-3cm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3lr-45-w3j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -535,7 +536,8 @@
                         <outlet property="completeButton" destination="eVF-3C-NQI" id="dZh-K6-sCR"/>
                         <outlet property="contentValue" destination="sjl-AG-5WS" id="eaw-16-cRY"/>
                         <outlet property="dateValue" destination="pAA-YD-YQ6" id="dth-Po-bsb"/>
-                        <outlet property="editBarButton" destination="kbT-km-tAI" id="QfD-cL-4Bw"/>
+                        <outlet property="deleteBarButton" destination="Xvl-lo-YE1" id="ydK-F4-a0E"/>
+                        <outlet property="editBarButton" destination="kbT-km-tAI" id="3LM-1t-SYa"/>
                         <outlet property="timeValue" destination="2ui-hf-z5P" id="hdU-YV-QzL"/>
                         <outlet property="titleValue" destination="mpO-QH-0k2" id="VRG-m9-Vd7"/>
                         <outlet property="viewsValue" destination="s5l-wV-piG" id="iUl-Ny-0Ih"/>
@@ -653,7 +655,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="Qtl-XC-deA">
-                        <barButtonItem key="rightBarButtonItem" title="menu" image="text.justify" catalog="system" id="gbJ-Q1-kVg">
+                        <barButtonItem key="rightBarButtonItem" image="text.justify" catalog="system" id="gbJ-Q1-kVg">
                             <connections>
                                 <action selector="menuButton:" destination="wfz-wj-6ey" id="vqQ-yv-n51"/>
                             </connections>
@@ -794,6 +796,7 @@
                     <connections>
                         <outlet property="monthValue" destination="CJ3-Wt-uAO" id="Qjv-6p-saf"/>
                         <outlet property="publicMoneyTableView" destination="gGu-yn-tGz" id="HJB-ZW-mIh"/>
+                        <outlet property="writeBarButton" destination="Esf-k3-Yt4" id="LE3-Lw-nsO"/>
                         <outlet property="yearValue" destination="ji0-dm-hXC" id="Rvk-7k-UTi"/>
                     </connections>
                 </viewController>
@@ -1001,6 +1004,7 @@
                         <outlet property="categoryControl" destination="7Az-3V-DFp" id="HvW-PE-FTd"/>
                         <outlet property="completeButton" destination="WmD-7e-k0O" id="Wqc-VR-CcW"/>
                         <outlet property="createDateValue" destination="fSf-L0-FgB" id="VBD-Lm-4F0"/>
+                        <outlet property="deleteBarButton" destination="RRZ-4E-YXN" id="i7m-MY-mZv"/>
                         <outlet property="editBarButton" destination="sFE-sI-vxd" id="S4f-8G-4tf"/>
                         <outlet property="historyDateValue" destination="vGq-7b-8jP" id="aSs-P1-2GT"/>
                         <outlet property="memoValue" destination="twy-o8-8JI" id="h43-Fj-brH"/>
@@ -1167,6 +1171,7 @@
                         <outlet property="calendar" destination="lwb-ec-vbN" id="Gf6-3r-ohv"/>
                         <outlet property="calendarTableView" destination="CkW-k6-7W5" id="add-n7-cuW"/>
                         <outlet property="statusLabel" destination="ytK-3e-gF6" id="Unr-dD-sGJ"/>
+                        <outlet property="writeBarButton" destination="leU-9u-H1g" id="gsU-Fb-iBz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzz-9B-Xs4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1420,6 +1425,7 @@
                         <outlet property="completeButton" destination="7sI-R0-fPG" id="dyt-2j-OXt"/>
                         <outlet property="contentValue" destination="MNR-MP-2eR" id="KRi-cl-WoI"/>
                         <outlet property="dateValue" destination="w66-Tj-JoK" id="tpy-oa-0TV"/>
+                        <outlet property="deleteBarButton" destination="pvF-0p-m7s" id="wKO-3q-2SP"/>
                         <outlet property="editBarButton" destination="iQo-ps-gAo" id="5oK-XI-29s"/>
                         <outlet property="endValue" destination="4Yd-7N-D8b" id="Clq-Kl-yev"/>
                         <outlet property="placeValue" destination="2pv-BR-Dju" id="eSI-Br-y7b"/>

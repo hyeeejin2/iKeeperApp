@@ -11,6 +11,7 @@ import Firebase
 
 class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendarDelegate {
     
+    @IBOutlet weak var writeBarButton: UIBarButtonItem!
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var calendarTableView: UITableView!
@@ -34,12 +35,23 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear")
         dataList = [[String:Any]]()
         scheduleDate = []
+        setBarButton()
         eventDate()
         todayCalender()
         deselectDate()
+    }
+    
+    func setBarButton() {
+        let user = Auth.auth().currentUser
+        if user != nil {
+            writeBarButton.image = UIImage(systemName: "plus")
+            writeBarButton.isEnabled = true
+        } else {
+            writeBarButton.image = nil
+            writeBarButton.isEnabled = false
+        }
     }
     
     func setCalendar() {
@@ -154,8 +166,26 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         cell.endLabel?.text = data["endTime"] as? String
         cell.contentLabel?.text = data["content"] as? String
         
-        cell.deleteButton.tag = indexPath.row
-        cell.deleteButton.addTarget(self, action: #selector(deleteCalendar(_:)), for: .touchUpInside)
+        let user = Auth.auth().currentUser
+        if user != nil {
+            let documentID: String = data["id"] as! String
+            let uid: String = user!.uid
+            let db = Firestore.firestore()
+            db.collection("calendar").whereField("id", isEqualTo: documentID).whereField("uid", isEqualTo: uid).getDocuments { (snapshot, error) in
+                if error == nil && snapshot?.isEmpty == false {
+                    cell.deleteButton.isHidden = false
+                    cell.deleteButton.isEnabled = true
+                    cell.deleteButton.tag = indexPath.row
+                    cell.deleteButton.addTarget(self, action: #selector(self.deleteCalendar(_:)), for: .touchUpInside)
+                } else if error == nil && snapshot?.isEmpty == true {
+                    cell.deleteButton.isHidden = true
+                    cell.deleteButton.isEnabled = false
+                }
+            }
+        } else {
+            cell.deleteButton.isHidden = true
+            cell.deleteButton.isEnabled = false
+        }
         print(cell.deleteButton.tag)
         return cell
     }
