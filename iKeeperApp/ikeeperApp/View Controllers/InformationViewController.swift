@@ -84,7 +84,7 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
         let data = dataList[indexPath.row]
         cell.numLabel?.text = data["num"] as? String
         cell.titleLabel?.text = data["title"] as? String
-        cell.viewsLable?.text = String((data["views"] as? Int)!)
+        cell.viewsLabel?.text = String((data["views"] as? Int)!)
         cell.dateLabel?.text = data["date"] as? String
         cell.timeLabel?.text = data["time"] as? String
         cell.writerLabel?.text = data["writer"] as? String

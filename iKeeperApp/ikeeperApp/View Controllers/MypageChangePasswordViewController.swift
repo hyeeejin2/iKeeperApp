@@ -40,6 +40,8 @@ class MypageChangePasswordViewController: UIViewController {
                     }
                 }
             }
+        } else {
+            self.navigationController?.popViewController(animated: true)
         }
     }
     

@@ -98,7 +98,7 @@ class MypageUserInfoViewController: UIViewController {
                 }
             }
         } else {
-            print("no user")
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
