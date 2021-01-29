@@ -42,7 +42,6 @@ class MypageViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("test")
         setUser()
     }
     
@@ -69,10 +68,19 @@ class MypageViewController: UIViewController {
                 }
             }
         } else {
-            print("no user")
-//            let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC")
-//            self.navigationController?.pushViewController(loginViewController!, animated: true)
+            permissionDenied()
         }
+    }
+    
+    func permissionDenied() {
+        let alert = UIAlertController(title: "알림",
+                                      message: "로그인 해주세요",
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+            self.tabBarController?.selectedIndex = 0
+        }
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
 //    func openLibrary() {
@@ -84,6 +92,21 @@ class MypageViewController: UIViewController {
 //        print("delete")
 //    }
     
+    func logout() {
+        let user = Auth.auth().currentUser
+        if user != nil {
+            let firebaseAuth = Auth.auth()
+            do {
+                try firebaseAuth.signOut()
+                initForLogout()
+            } catch let signOutError as NSError {
+                print ("Error signing out: %@", signOutError)
+            }
+        } else {
+            showAlert(message: "권한이 없습니다")
+        }
+    }
+    
     func initForLogout() {
         nameLabel.text = "name"
         departmentLabel.text = "department"
@@ -94,26 +117,31 @@ class MypageViewController: UIViewController {
     }
     
     func showAlertForPasswordCheck() {
-        let alert = UIAlertController(title: "비밀번호 확인",
-                                      message: "비밀번호를 입력하세요",
-                                      preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-        let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
-            if let alertPW: String = alert.textFields?[0].text {
-                if alertPW == self.currentPW {
-                    self.deleteUser()
-                } else {
-                    self.showAlert(message: "비밀번호를 확인하세요")
+        let user = Auth.auth().currentUser
+        if user != nil {
+            let alert = UIAlertController(title: "비밀번호 확인",
+                                          message: "비밀번호를 입력하세요",
+                                          preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+            let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+                if let alertPW: String = alert.textFields?[0].text {
+                    if alertPW == self.currentPW {
+                        self.deleteUser()
+                    } else {
+                        self.showAlert(message: "비밀번호를 확인하세요")
+                    }
                 }
             }
+            alert.addAction(cancelAction)
+            alert.addAction(okAction)
+            alert.addTextField { (pwValue) in
+                pwValue.placeholder = "password"
+                pwValue.isSecureTextEntry = true
+            }
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            showAlert(message: "권한이 없습니다")
         }
-        alert.addAction(cancelAction)
-        alert.addAction(okAction)
-        alert.addTextField { (pwValue) in
-            pwValue.placeholder = "password"
-            pwValue.isSecureTextEntry = true
-        }
-        self.present(alert, animated: true, completion: nil)
     }
     
     func deleteUser() {
@@ -126,7 +154,7 @@ class MypageViewController: UIViewController {
                     if error != nil {
                         print("check for error : \(error!.localizedDescription)")
                     } else {
-                        let alert = UIAlertController(title: "회원탈퇴 완료", message: "회원탈퇴가 완료됐습니다", preferredStyle: .alert)
+                        let alert = UIAlertController(title: "회원탈퇴 완료", message: "회원탈퇴가 완료되었습니다", preferredStyle: .alert)
                         let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
                             self.initForLogout()
                         }
@@ -260,13 +288,7 @@ extension MypageViewController: UITableViewDelegate, UITableViewDataSource {
             }
         } else if indexPath.section == 1{
             if indexPath.row == 0 {
-                let firebaseAuth = Auth.auth()
-                do {
-                    try firebaseAuth.signOut()
-                    initForLogout()
-                } catch let signOutError as NSError {
-                    print ("Error signing out: %@", signOutError)
-                }
+                logout()
             } else if indexPath.row == 1{
                 showAlertForPasswordCheck()
             }
