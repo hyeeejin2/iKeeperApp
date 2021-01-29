@@ -25,6 +25,8 @@ class MypageViewController: UIViewController {
     let tableViewList2 = ["로그아웃", "회원탈퇴"]
     let space = [" ", " "]
     let picker = UIImagePickerController()
+    var documentID: String = ""
+    var currentPW: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +63,8 @@ class MypageViewController: UIViewController {
                         self.gradeLabel.text = documentData["grade"] as? String
                         self.partLabel.text = documentData["part"] as? String
                         self.statusLabel.text = documentData["status"] as? String
+                        self.documentID = documentData["id"] as! String
+                        self.currentPW = documentData["password"] as! String
                     }
                 }
             }
@@ -69,6 +73,78 @@ class MypageViewController: UIViewController {
 //            let loginViewController = self.storyboard?.instantiateViewController(withIdentifier: "LoginVC")
 //            self.navigationController?.pushViewController(loginViewController!, animated: true)
         }
+    }
+    
+//    func openLibrary() {
+//        picker.sourceType = .photoLibrary
+//        present(picker, animated: false, completion: nil)
+//    }
+//
+//    func deletePhoto() {
+//        print("delete")
+//    }
+    
+    func initForLogout() {
+        nameLabel.text = "name"
+        departmentLabel.text = "department"
+        gradeLabel.text = "grade"
+        partLabel.text = "part"
+        statusLabel.text = "status"
+        self.tabBarController?.selectedIndex = 0
+    }
+    
+    func showAlertForPasswordCheck() {
+        let alert = UIAlertController(title: "비밀번호 확인",
+                                      message: "비밀번호를 입력하세요",
+                                      preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+            if let alertPW: String = alert.textFields?[0].text {
+                if alertPW == self.currentPW {
+                    self.deleteUser()
+                } else {
+                    self.showAlert(message: "비밀번호를 확인하세요")
+                }
+            }
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        alert.addTextField { (pwValue) in
+            pwValue.placeholder = "password"
+            pwValue.isSecureTextEntry = true
+        }
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func deleteUser() {
+        Auth.auth().currentUser?.delete(completion: { (err) in
+            if err != nil {
+                print("check for error : \(err!.localizedDescription)")
+            } else {
+                let db = Firestore.firestore()
+                db.collection("users").document("\(self.documentID)").delete { (error) in
+                    if error != nil {
+                        print("check for error : \(error!.localizedDescription)")
+                    } else {
+                        let alert = UIAlertController(title: "회원탈퇴 완료", message: "회원탈퇴가 완료됐습니다", preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+                            self.initForLogout()
+                        }
+                        alert.addAction(okAction)
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
+            }
+        })
+    }
+    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "알림",
+                                      message: message,
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -187,32 +263,17 @@ extension MypageViewController: UITableViewDelegate, UITableViewDataSource {
                 let firebaseAuth = Auth.auth()
                 do {
                     try firebaseAuth.signOut()
-                    self.nameLabel.text = "name"
-                    self.departmentLabel.text = "department"
-                    self.gradeLabel.text = "grade"
-                    self.partLabel.text = "part"
-                    self.statusLabel.text = "status"
-                    self.tabBarController?.selectedIndex = 0
+                    initForLogout()
                 } catch let signOutError as NSError {
                     print ("Error signing out: %@", signOutError)
                 }
             } else if indexPath.row == 1{
-                print("회원탈퇴")
+                showAlertForPasswordCheck()
             }
         }
     }
-    
-//    func openLibrary() {
-//        picker.sourceType = .photoLibrary
-//        present(picker, animated: false, completion: nil)
-//    }
-//
-//    func deletePhoto() {
-//        print("delete")
-//    }
-    
 }
 
 extension MypageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+ 
 }
