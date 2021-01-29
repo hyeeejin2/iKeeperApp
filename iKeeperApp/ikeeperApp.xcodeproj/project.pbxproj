@@ -41,6 +41,7 @@
 		0AD493D82557F48700BA552E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD493D72557F48700BA552E /* HomeViewController.swift */; };
 		0AD493DD2558267C00BA552E /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD493DC2558267C00BA552E /* CalendarViewController.swift */; };
 		0ADA090025C3FDB200A28D73 /* MypageInfoListCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADA08FF25C3FDB200A28D73 /* MypageInfoListCustomCell.swift */; };
+		0ADA090725C41C9000A28D73 /* MypageCalendarListCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADA090625C41C9000A28D73 /* MypageCalendarListCustomCell.swift */; };
 		0ADB319625A5D9B3009812B0 /* PublicMoneyCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADB319525A5D9B3009812B0 /* PublicMoneyCustomCell.swift */; };
 		FF3A89ADAD5306D7E7CD1449 /* Pods_ikeeperApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8029E19F27DBDCB5C375ED7D /* Pods_ikeeperApp.framework */; };
 /* End PBXBuildFile section */
@@ -83,6 +84,7 @@
 		0AD493D72557F48700BA552E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0AD493DC2558267C00BA552E /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		0ADA08FF25C3FDB200A28D73 /* MypageInfoListCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageInfoListCustomCell.swift; sourceTree = "<group>"; };
+		0ADA090625C41C9000A28D73 /* MypageCalendarListCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageCalendarListCustomCell.swift; sourceTree = "<group>"; };
 		0ADB319525A5D9B3009812B0 /* PublicMoneyCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMoneyCustomCell.swift; sourceTree = "<group>"; };
 		8029E19F27DBDCB5C375ED7D /* Pods_ikeeperApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ikeeperApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		886F3A895E37B8AD54838270 /* Pods-ikeeperApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ikeeperApp.debug.xcconfig"; path = "Target Support Files/Pods-ikeeperApp/Pods-ikeeperApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				0A7279E325BE820F0092C551 /* MypageCollectionCustomCell.swift */,
 				0A7279EA25BEAF650092C551 /* MypageTableCustomCell.swift */,
 				0ADA08FF25C3FDB200A28D73 /* MypageInfoListCustomCell.swift */,
+				0ADA090625C41C9000A28D73 /* MypageCalendarListCustomCell.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 				0A1A579D2567E10400562BE1 /* InfoCustomCell.swift in Sources */,
 				0A744D8F255E7CBB00FFC5F7 /* CalendarWriteViewController.swift in Sources */,
 				0ABF3481258B9AA300919E1F /* CalendarDetailViewController.swift in Sources */,
+				0ADA090725C41C9000A28D73 /* MypageCalendarListCustomCell.swift in Sources */,
 				0A1A578D2567A43C00562BE1 /* InformationViewController.swift in Sources */,
 				0ADB319625A5D9B3009812B0 /* PublicMoneyCustomCell.swift in Sources */,
 				0AA7369D258F5EAE00CD6314 /* InformationDetailViewController.swift in Sources */,

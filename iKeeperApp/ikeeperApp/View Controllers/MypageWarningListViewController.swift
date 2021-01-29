@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MypageWarningListViewController: UIViewController {
 
@@ -16,6 +17,18 @@ class MypageWarningListViewController: UIViewController {
     }
     
 
+    override func viewWillAppear(_ animated: Bool) {
+        setUser()
+    }
+    
+    func setUser() {
+        let user = Auth.auth().currentUser
+        if user != nil {
+            print("exist")
+        } else {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
     /*
     // MARK: - Navigation
 

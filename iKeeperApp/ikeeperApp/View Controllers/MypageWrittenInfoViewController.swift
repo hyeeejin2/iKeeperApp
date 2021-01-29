@@ -7,11 +7,10 @@
 
 import UIKit
 import Firebase
-//import FirebaseAuth
 
 class MypageWrittenInfoViewController: UIViewController {
 
-    @IBOutlet weak var testBarButton: UIBarButtonItem!
+    @IBOutlet weak var editBarButton: UIBarButtonItem!
     @IBOutlet weak var infoListTableView: UITableView!
     let statusLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 414, height: 40))
     var dataList = [[String: Any]]()
@@ -34,12 +33,12 @@ class MypageWrittenInfoViewController: UIViewController {
     func setUser() {
         let user = Auth.auth().currentUser
         if user != nil {
-            testBarButton.image = UIImage(systemName: "pencil.slash")
-            testBarButton.isEnabled = true
+            editBarButton.image = UIImage(systemName: "pencil.slash")
+            editBarButton.isEnabled = true
             getList()
         } else {
-            testBarButton.image = nil
-            testBarButton.isEnabled = false
+            editBarButton.image = nil
+            editBarButton.isEnabled = false
             self.navigationController?.popViewController(animated: true)
         }
     }
@@ -65,13 +64,13 @@ class MypageWrittenInfoViewController: UIViewController {
         }
     }
     
-    @IBAction func testBarButton(_ sender: UIBarButtonItem) {
+    @IBAction func editBarButton(_ sender: UIBarButtonItem) {
         if infoListTableView.isEditing {
             infoListTableView.isEditing = false
-            testBarButton.image = UIImage(systemName: "pencil.slash")
+            editBarButton.image = UIImage(systemName: "pencil.slash")
         } else {
             infoListTableView.isEditing = true
-            testBarButton.image = UIImage(systemName: "checkmark.circle")
+            editBarButton.image = UIImage(systemName: "checkmark.circle")
         }
     }
 }
@@ -130,7 +129,6 @@ extension MypageWrittenInfoViewController: UITableViewDelegate, UITableViewDataS
                     self.dataList.remove(at: indexPath.row)
                     self.infoListTableView.deleteRows(at: [indexPath], with: .automatic)
                     self.infoListTableView.reloadData()
-                    
                 }
             }
         }
