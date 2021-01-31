@@ -33,8 +33,6 @@ class MypageWrittenCalendarViewController: UIViewController {
     func setUser() {
         let user = Auth.auth().currentUser
         if user != nil {
-            editBarButton.image = UIImage(systemName: "pencil.slash")
-            editBarButton.isEnabled = true
             getList()
         } else {
             editBarButton.image = nil
@@ -55,10 +53,14 @@ class MypageWrittenCalendarViewController: UIViewController {
                     let documentData = document.data()
                     self.dataList.append(documentData)
                 }
+                self.editBarButton.image = UIImage(systemName: "pencil.slash")
+                self.editBarButton.isEnabled = true
             } else if error == nil && snapshot?.isEmpty == true {
                 self.statusLabel.textAlignment = .center
                 self.statusLabel.text = "아직 작성한 글이 없습니다."
                 self.view.addSubview(self.statusLabel)
+                self.editBarButton.image = nil
+                self.editBarButton.isEnabled = false
             }
             self.calendarListTableView.reloadData()
         }
@@ -117,6 +119,14 @@ extension MypageWrittenCalendarViewController: UITableViewDelegate, UITableViewD
                     self.numbering = 1
                     self.dataList.remove(at: indexPath.row)
                     self.calendarListTableView.deleteRows(at: [indexPath], with: .automatic)
+                    if self.dataList.count == 0 {
+                        self.statusLabel.textAlignment = .center
+                        self.statusLabel.text = "아직 작성한 글이 없습니다."
+                        self.view.addSubview(self.statusLabel)
+                        self.calendarListTableView.isEditing = false
+                        self.editBarButton.image = nil
+                        self.editBarButton.isEnabled = false
+                    }
                     self.calendarListTableView.reloadData()
                 }
             }

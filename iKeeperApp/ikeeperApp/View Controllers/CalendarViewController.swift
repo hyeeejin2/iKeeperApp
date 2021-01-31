@@ -133,12 +133,21 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         }
     }
     
-//    func showAlert(message: String) {
-//        let alert = UIAlertController(title: "알림",
-//                                      message: message,
+//    func showAlertForDelete() {
+//        let alert = UIAlertController(title: "일정 삭제",
+//                                      message: "일정을 삭제하시겠습니까?",
 //                                      preferredStyle: .alert)
-//        let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
-//        let cancelAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
+//        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+//        let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+//            let alert = UIAlertController(title: "삭제 완료",
+//                                          message: "일정 삭제가 완료되었습니다",
+//                                          preferredStyle: .alert)
+//            let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+//                self.navigationController?.popViewController(animated: true)
+//            }
+//            alert.addAction(okAction)
+//            self.present(alert, animated: true, completion: nil)
+//        }
 //        alert.addAction(cancelAction)
 //        alert.addAction(okAction)
 //        self.present(alert, animated: true, completion: nil)
@@ -200,28 +209,67 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func deleteCalendar(_ sender: UIButton) {
-        let date = dataList[sender.tag]["date"] as! String
-        let id = dataList[sender.tag]["id"] as! String
-        
-        let db = Firestore.firestore()
-        db.collection("calendar").document("\(id)").delete { (error) in
-            if error != nil {
-                print("check for error : \(error!.localizedDescription)")
-            } else {
-                self.dataList.remove(at: sender.tag)
-                if self.dataList.count > 0 {
-                    self.numbering()
-                    self.statusLabel.text = "✓ \(self.dataList.count)개의 일정이 있습니다."
-                    self.calendarTableView.reloadData()
+        let alert = UIAlertController(title: "일정 삭제",
+                                      message: "일정을 삭제하시겠습니까?",
+                                      preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+            let date = self.dataList[sender.tag]["date"] as! String
+            let id = self.dataList[sender.tag]["id"] as! String
+            
+            let db = Firestore.firestore()
+            db.collection("calendar").document("\(id)").delete { (error) in
+                if error != nil {
+                    print("check for error : \(error!.localizedDescription)")
                 } else {
-                    self.statusLabel.isHidden = false
-                    self.calendarTableView.isHidden = true
-                    self.statusLabel.text = "X 오늘 일정은 없습니다."
-                    self.scheduleDate.remove(date)
-                    self.calendar.reloadData()
+                    self.dataList.remove(at: sender.tag)
+                    if self.dataList.count > 0 {
+                        self.numbering()
+                        self.statusLabel.text = "✓ \(self.dataList.count)개의 일정이 있습니다."
+                        self.calendarTableView.reloadData()
+                    } else {
+                        self.statusLabel.isHidden = false
+                        self.calendarTableView.isHidden = true
+                        self.statusLabel.text = "X 오늘 일정은 없습니다."
+                        self.scheduleDate.remove(date)
+                        self.calendar.reloadData()
+                    }
                 }
             }
+            
+            let alert = UIAlertController(title: "삭제 완료",
+                                          message: "일정 삭제가 완료되었습니다",
+                                          preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
         }
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+        
+//        let date = dataList[sender.tag]["date"] as! String
+//        let id = dataList[sender.tag]["id"] as! String
+//
+//        let db = Firestore.firestore()
+//        db.collection("calendar").document("\(id)").delete { (error) in
+//            if error != nil {
+//                print("check for error : \(error!.localizedDescription)")
+//            } else {
+//                self.dataList.remove(at: sender.tag)
+//                if self.dataList.count > 0 {
+//                    self.numbering()
+//                    self.statusLabel.text = "✓ \(self.dataList.count)개의 일정이 있습니다."
+//                    self.calendarTableView.reloadData()
+//                } else {
+//                    self.statusLabel.isHidden = false
+//                    self.calendarTableView.isHidden = true
+//                    self.statusLabel.text = "X 오늘 일정은 없습니다."
+//                    self.scheduleDate.remove(date)
+//                    self.calendar.reloadData()
+//                }
+//            }
+//        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -90,12 +90,22 @@ class MypageChangePasswordViewController: UIViewController {
                     if error != nil {
                         print("check for error : \(error!.localizedDescription)")
                     } else {
-                        print("success")
-                        self.showAlert(message: "비밀번호 변경 성공")
+                        self.showAlertForChangePassword()
                     }
                 }
             }
         }
+    }
+    
+    func showAlertForChangePassword() {
+        let alert = UIAlertController(title: "변경 완료",
+                                      message: "비밀번호가 변경되었습니다",
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     func showAlert(message: String) {

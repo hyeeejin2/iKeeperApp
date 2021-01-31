@@ -195,7 +195,7 @@ class InformationDetailViewController: UIViewController {
             if error != nil {
                 print("check for error : \(error!.localizedDescription)")
             } else {
-                print("success")
+                self.showAlertModifyOrDelete(title: "수정 완료", message: "게시글 수정이 완료되었습니다")
             }
         }
         editBarButton.image = UIImage(systemName: "pencil.slash")
@@ -212,9 +212,33 @@ class InformationDetailViewController: UIViewController {
             if error != nil {
                 print("check for error : \(error!.localizedDescription)")
             } else {
-                self.navigationController?.popViewController(animated: true)
+                self.showAlertForDelete()
             }
         }
+    }
+    
+    func showAlertModifyOrDelete(title: String, message: String) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func showAlertForDelete() {
+        let alert = UIAlertController(title: "게시글 삭제",
+                                      message: "게시글을 삭제하시겠습니까?",
+                                      preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+            self.showAlertModifyOrDelete(title: "삭제 완료", message: "게시글 삭제가 완료되었습니다")
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     func showAlert(message: String) {

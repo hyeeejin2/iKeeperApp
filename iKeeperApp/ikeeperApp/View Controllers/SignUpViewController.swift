@@ -189,11 +189,22 @@ class SignUpViewController: UIViewController {
                         print("check for error : \(error!.localizedDescription)")
                         self.showAlert(message: "회원가입 실패")
                     } else {
-                        self.navigationController?.popViewController(animated: true)
+                        self.showAlertForSignupSuccess()
                     }
                 }
             }
         }
+    }
+    
+    func showAlertForSignupSuccess() {
+        let alert = UIAlertController(title: "회원가입 성공",
+                                      message: "회원가입에 성공했습니다",
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     func showAlert(message: String) {

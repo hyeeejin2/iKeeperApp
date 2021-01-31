@@ -199,11 +199,22 @@ class InformationWriteViewController: UIViewController {
                 print("check for error : \(error!.localizedDescription)")
                 self.showAlert(message: "게시글 등록 실패")
             } else {
-                self.navigationController?.popViewController(animated: true)
+                self.showAlertForWrite()
             }
         }
     }
 
+    func showAlertForWrite() {
+        let alert = UIAlertController(title: "등록 완료",
+                                      message: "게시글 등록이 완료되었습니다",
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func showAlert(message: String) {
         let alert = UIAlertController(title: "알림",
                                       message: message,

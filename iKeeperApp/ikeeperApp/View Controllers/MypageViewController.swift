@@ -83,6 +83,14 @@ class MypageViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    func profilePhoto() {
+        let user = Auth.auth().currentUser
+        if user != nil {
+            print("test")
+        } else {
+            showAlert(message: "권한이 없습니다")
+        }
+    }
 //    func openLibrary() {
 //        picker.sourceType = .photoLibrary
 //        present(picker, animated: false, completion: nil)
@@ -92,19 +100,33 @@ class MypageViewController: UIViewController {
 //        print("delete")
 //    }
     
+    // 로그아웃
     func logout() {
         let user = Auth.auth().currentUser
         if user != nil {
-            let firebaseAuth = Auth.auth()
-            do {
-                try firebaseAuth.signOut()
-                initForLogout()
-            } catch let signOutError as NSError {
-                print ("Error signing out: %@", signOutError)
-            }
+            showAlertForlogout()
         } else {
             showAlert(message: "권한이 없습니다")
         }
+    }
+    
+    func showAlertForlogout() {
+        let alert = UIAlertController(title: "로그아웃",
+                                      message: "로그아웃 하시겠습니까?",
+                                      preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+            let firebaseAuth = Auth.auth()
+            do {
+                try firebaseAuth.signOut()
+                self.initForLogout()
+            } catch let signOutError as NSError {
+                print ("Error signing out: %@", signOutError)
+            }
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     func initForLogout() {
@@ -116,6 +138,7 @@ class MypageViewController: UIViewController {
         self.tabBarController?.selectedIndex = 0
     }
     
+    // 회원탈퇴
     func showAlertForPasswordCheck() {
         let user = Auth.auth().currentUser
         if user != nil {
@@ -154,18 +177,25 @@ class MypageViewController: UIViewController {
                     if error != nil {
                         print("check for error : \(error!.localizedDescription)")
                     } else {
-                        let alert = UIAlertController(title: "회원탈퇴 완료", message: "회원탈퇴가 완료되었습니다", preferredStyle: .alert)
-                        let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
-                            self.initForLogout()
-                        }
-                        alert.addAction(okAction)
-                        self.present(alert, animated: true, completion: nil)
+                        self.showAlertDeleteUser()
                     }
                 }
             }
         })
     }
     
+    func showAlertDeleteUser() {
+        let alert = UIAlertController(title: "회원탈퇴 완료",
+                                      message: "회원탈퇴가 완료되었습니다",
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+            self.initForLogout()
+        }
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    // 알림창
     func showAlert(message: String) {
         let alert = UIAlertController(title: "알림",
                                       message: message,
@@ -276,7 +306,7 @@ extension MypageViewController: UITableViewDelegate, UITableViewDataSource {
                 let mypageChangePasswordViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.mypageChangePasswordViewController) as! MypageChangePasswordViewController
                 self.navigationController?.pushViewController(mypageChangePasswordViewController, animated: true)
             } else if indexPath.row == 2 {
-                print("프로필 사진 설정")
+                profilePhoto()
 //                let alert =  UIAlertController(title: "원하는 타이틀", message: "원하는 메세지", preferredStyle: .actionSheet)
 //                let library =  UIAlertAction(title: "앨범에서 사진 선택", style: .default) { (action) in self.openLibrary() }
 //                let delete =  UIAlertAction(title: "기본 이미지로 변경", style: .default) { (action) in self.deletePhoto() }

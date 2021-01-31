@@ -206,7 +206,7 @@ class MypageUserInfoViewController: UIViewController {
             if error != nil {
                 print("check for error : \(error!.localizedDescription)")
             } else {
-                print("success")
+                self.showAlertForUserInfoModify()
             }
         }
         
@@ -214,6 +214,17 @@ class MypageUserInfoViewController: UIViewController {
         editBarButton.isEnabled = true
         completeButton.isHidden = true
         setDisabled()
+    }
+    
+    func showAlertForUserInfoModify() {
+        let alert = UIAlertController(title: "수정 완료",
+                                      message: "회원정보가 수정되었습니다",
+                                      preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     func showAlert(message: String) {

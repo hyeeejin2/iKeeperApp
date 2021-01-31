@@ -33,8 +33,6 @@ class MypageWrittenInfoViewController: UIViewController {
     func setUser() {
         let user = Auth.auth().currentUser
         if user != nil {
-            editBarButton.image = UIImage(systemName: "pencil.slash")
-            editBarButton.isEnabled = true
             getList()
         } else {
             editBarButton.image = nil
@@ -55,10 +53,14 @@ class MypageWrittenInfoViewController: UIViewController {
                     let documentData = document.data()
                     self.dataList.append(documentData)
                 }
+                self.editBarButton.image = UIImage(systemName: "pencil.slash")
+                self.editBarButton.isEnabled = true
             } else if error == nil && snapshot?.isEmpty == true {
                 self.statusLabel.textAlignment = .center
                 self.statusLabel.text = "아직 작성한 글이 없습니다."
                 self.view.addSubview(self.statusLabel)
+                self.editBarButton.image = nil
+                self.editBarButton.isEnabled = false
             }
             self.infoListTableView.reloadData()
         }
@@ -128,6 +130,14 @@ extension MypageWrittenInfoViewController: UITableViewDelegate, UITableViewDataS
                     self.numbering = 1
                     self.dataList.remove(at: indexPath.row)
                     self.infoListTableView.deleteRows(at: [indexPath], with: .automatic)
+                    if self.dataList.count == 0 {
+                        self.statusLabel.textAlignment = .center
+                        self.statusLabel.text = "아직 작성한 글이 없습니다."
+                        self.view.addSubview(self.statusLabel)
+                        self.infoListTableView.isEditing = false
+                        self.editBarButton.image = nil
+                        self.editBarButton.isEnabled = false
+                    }
                     self.infoListTableView.reloadData()
                 }
             }
