@@ -10,7 +10,7 @@ import Firebase
 
 class MypageViewController: UIViewController {
 
-    @IBOutlet weak var profileImage: UIImage!
+    @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var departmentLabel: UILabel!
     @IBOutlet weak var gradeLabel: UILabel!
@@ -83,22 +83,31 @@ class MypageViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    // 프로필 사진 설정
     func profilePhoto() {
         let user = Auth.auth().currentUser
         if user != nil {
-            print("test")
+            let alert =  UIAlertController(title: "프로필 사진 설정", message: "아래 두 가지 중 선택하세요", preferredStyle: .actionSheet)
+            let library =  UIAlertAction(title: "앨범에서 사진 선택", style: .default) { (action) in self.openLibrary() }
+            let delete =  UIAlertAction(title: "기본 이미지로 변경", style: .default) { (action) in self.deletePhoto() }
+            let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+            alert.addAction(library)
+            alert.addAction(delete)
+            alert.addAction(cancel)
+            present(alert, animated: true, completion: nil)
         } else {
             showAlert(message: "권한이 없습니다")
         }
     }
-//    func openLibrary() {
-//        picker.sourceType = .photoLibrary
-//        present(picker, animated: false, completion: nil)
-//    }
-//
-//    func deletePhoto() {
-//        print("delete")
-//    }
+    
+    func openLibrary() {
+        picker.sourceType = .photoLibrary
+        present(picker, animated: false, completion: nil)
+    }
+
+    func deletePhoto() {
+        profileImage.image = UIImage(systemName: "person.circle")
+    }
     
     // 로그아웃
     func logout() {
@@ -307,14 +316,6 @@ extension MypageViewController: UITableViewDelegate, UITableViewDataSource {
                 self.navigationController?.pushViewController(mypageChangePasswordViewController, animated: true)
             } else if indexPath.row == 2 {
                 profilePhoto()
-//                let alert =  UIAlertController(title: "원하는 타이틀", message: "원하는 메세지", preferredStyle: .actionSheet)
-//                let library =  UIAlertAction(title: "앨범에서 사진 선택", style: .default) { (action) in self.openLibrary() }
-//                let delete =  UIAlertAction(title: "기본 이미지로 변경", style: .default) { (action) in self.deletePhoto() }
-//                let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-//                alert.addAction(library)
-//                alert.addAction(delete)
-//                alert.addAction(cancel)
-//                present(alert, animated: true, completion: nil)
             }
         } else if indexPath.section == 1{
             if indexPath.row == 0 {
@@ -327,5 +328,13 @@ extension MypageViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension MypageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
- 
+    // 사진 선택이 끝나면
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+            profileImage.image = image
+            print(info)
+        }
+        dismiss(animated: true, completion: nil)
+
+    }
 }

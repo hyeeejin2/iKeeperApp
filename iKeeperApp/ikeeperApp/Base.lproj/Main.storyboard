@@ -1625,7 +1625,7 @@
                         <outlet property="gradeLabel" destination="QXN-wI-2L0" id="QaK-mS-xnv"/>
                         <outlet property="nameLabel" destination="tmc-TT-wBO" id="ITn-GY-GHY"/>
                         <outlet property="partLabel" destination="TQQ-PF-HBm" id="grU-Fe-lDN"/>
-                        <outlet property="profileImage" destination="yRg-Ss-Uqh" id="a51-eO-iv2"/>
+                        <outlet property="profileImage" destination="yRg-Ss-Uqh" id="1P3-sn-GoS"/>
                         <outlet property="statusLabel" destination="uBm-LC-244" id="8re-Wj-AMY"/>
                     </connections>
                 </viewController>
