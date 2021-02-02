@@ -48,22 +48,45 @@ class MypageViewController: UIViewController {
     func setUser() {
         let user = Auth.auth().currentUser
         if user != nil {
-            // systemName : person.circle
-            let user = Auth.auth().currentUser
-            let uid: String = user!.uid
-            let db = Firestore.firestore()
-            db.collection("users").whereField("uid", isEqualTo: uid).getDocuments { (snapshot, error) in
-                if error == nil && snapshot?.isEmpty == false {
-                    for document in snapshot!.documents {
-                        let documentData = document.data()
-                        print(documentData)
-                        self.nameLabel.text = documentData["name"] as? String
-                        self.departmentLabel.text = documentData["department"] as? String
-                        self.gradeLabel.text = documentData["grade"] as? String
-                        self.partLabel.text = documentData["part"] as? String
-                        self.statusLabel.text = documentData["status"] as? String
-                        self.documentID = documentData["id"] as! String
-                        self.currentPW = documentData["password"] as! String
+            DispatchQueue.main.async {
+                let user = Auth.auth().currentUser
+                let uid: String = user!.uid
+                let db = Firestore.firestore()
+                db.collection("users").whereField("uid", isEqualTo: uid).getDocuments { (snapshot, error) in
+                    if error == nil && snapshot?.isEmpty == false {
+                        for document in snapshot!.documents {
+                            let documentData = document.data()
+                            print(documentData)
+                            self.nameLabel.text = documentData["name"] as? String
+                            self.departmentLabel.text = documentData["department"] as? String
+                            self.gradeLabel.text = documentData["grade"] as? String
+                            self.partLabel.text = documentData["part"] as? String
+                            self.statusLabel.text = documentData["status"] as? String
+                            self.documentID = documentData["id"] as! String
+                            self.currentPW = documentData["password"] as! String
+                        }
+                    }
+                }
+                let storage = Storage.storage().reference()
+                storage.child("images/profile/\(uid).png").downloadURL { (url, error) in
+                    if error != nil {
+                        print("check for error : \(error!.localizedDescription)")
+                        let defaultImage = UIImage(systemName: "person.circle")
+                        self.profileImage.image = defaultImage
+                    } else {
+                        guard let urlString = UserDefaults.standard.value(forKey: "\(uid)") as? String, let url = URL(string: urlString) else {
+                            return
+                        }
+                        let task = URLSession.shared.dataTask(with: url, completionHandler: { data, _, error in
+                            guard let data = data, error == nil else {
+                                return
+                            }
+                            DispatchQueue.main.async {
+                                let image = UIImage(data: data)
+                                self.profileImage.image = image
+                            }
+                        })
+                        task.resume()
                     }
                 }
             }
@@ -102,11 +125,21 @@ class MypageViewController: UIViewController {
     
     func openLibrary() {
         picker.sourceType = .photoLibrary
-        present(picker, animated: false, completion: nil)
+        present(picker, animated: false, completion: nil) // library present
     }
 
     func deletePhoto() {
-        profileImage.image = UIImage(systemName: "person.circle")
+        let user = Auth.auth().currentUser
+        let uid: String = user!.uid
+        let storage = Storage.storage().reference()
+        storage.child("images/profile/\(uid).png").delete { (error) in
+            if error != nil {
+                print("check for error : \(error!.localizedDescription)")
+            } else {
+                let defaultImage = UIImage(systemName: "person.circle")
+                self.profileImage.image = defaultImage
+            }
+        }
     }
     
     // 로그아웃
@@ -330,11 +363,43 @@ extension MypageViewController: UITableViewDelegate, UITableViewDataSource {
 extension MypageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     // 사진 선택이 끝나면
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
-            profileImage.image = image
-            print(info)
+//        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+//            profileImage.image = image
+//            print(info)
+//        }
+//        dismiss(animated: true, completion: nil)
+        
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
+            return
         }
+        profileImage.image = image
+        print(info)
         dismiss(animated: true, completion: nil)
+        guard let imageData = image.pngData() else {
+            return
+        }
 
+        let user = Auth.auth().currentUser
+        let uid: String = user!.uid
+        let storage = Storage.storage().reference()
+        storage.child("images/profile/\(uid).png").putData(imageData, metadata: nil, completion: { _, error in
+            guard error == nil else {
+                print("Failed to upload")
+                return
+            }
+            storage.child("images/profile/\(uid).png").downloadURL { (url, error) in
+                guard let url = url, error == nil else {
+                    return
+                }
+                
+                let urlString = url.absoluteString
+                print("Download URL : \(urlString)")
+                UserDefaults.standard.setValue(urlString, forKey: "\(uid)")
+            }
+        })
+    }
+    // 사진 선택을 취소하면
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
 }
