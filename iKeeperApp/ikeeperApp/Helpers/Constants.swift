@@ -26,6 +26,7 @@ struct Constants {
         static let mypageWrittenInfoViewController = "MypageWrittenInfoVC"
         static let mypageWrittenCalendarViewController = "MypageWrittenCalendarVC"
         static let mypageWarningListViewController = "MypageWarningListVC"
+        static let adminViewController = "AdminVC"
         
     }
 }

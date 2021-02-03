@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var calendarTableView: UITableView!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var adminBarButton: UIBarButtonItem!
     @IBOutlet weak var menuBarButton: UIBarButtonItem!
     let statusLabel = UILabel(frame: CGRect(x: 0, y: 400, width: 414, height: 40))
     //let pink = UIColor(red: 243/255.0, green: 148/255.0, blue: 173/255.0, alpha: 1)
@@ -38,22 +39,30 @@ class HomeViewController: UIViewController {
     func setBarButton() {
         let user = Auth.auth().currentUser
         if user != nil {
-            menuBarButton.image = nil
-            menuBarButton.isEnabled = false
-            
             let uid: String = user!.uid
             let db = Firestore.firestore()
             db.collection("users").whereField("uid", isEqualTo: uid).getDocuments { (snapshot, error) in
                 if error == nil && snapshot?.isEmpty == false {
                     for document in snapshot!.documents {
                         let documentData = document.data()
-                        print(documentData)
-                        let userName = documentData["name"] as! String
-                        self.sideMenu?.navigationBar.topItem?.title = "\(userName)님"
+                        let permission = documentData["permission"] as! Bool
+                        if permission {
+                            self.adminBarButton.image = UIImage(systemName: "gearshape.fill")
+                            self.adminBarButton.isEnabled = true
+                            self.menuBarButton.image = nil
+                            self.menuBarButton.isEnabled = false
+                        } else {
+                            self.adminBarButton.image = nil
+                            self.adminBarButton.isEnabled = false
+                            self.menuBarButton.image = nil
+                            self.menuBarButton.isEnabled = false
+                        }
                     }
                 }
             }
         } else {
+            adminBarButton.image = nil
+            adminBarButton.isEnabled = false
             menuBarButton.image = UIImage(systemName: "text.justify")
             menuBarButton.isEnabled = true
             sideMenu?.navigationBar.topItem?.title = "환영합니다."
@@ -108,14 +117,16 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @IBAction func menuButton(_ sender: UIButton) {
+    @IBAction func adminBarButton(_ sender: UIBarButtonItem) {
+        let adminViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.adminViewController) as! AdminViewController
+        self.navigationController?.pushViewController(adminViewController, animated: true)
+    }
+    
+    @IBAction func menuBarButton(_ sender: UIBarButtonItem) {
         present(sideMenu!, animated: true)
     }
     
     @IBAction func moreButton(_ sender: UIButton) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let calendarViewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.calenderViewController)
-//        self.navigationController?.pushViewController(calendarViewController, animated: true)
         self.tabBarController?.selectedIndex = 2
     } 
 }
@@ -175,7 +186,7 @@ class MenuListController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+
         switch indexPath.row {
         case 0:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -184,7 +195,7 @@ class MenuListController: UITableViewController {
             
         case 1:
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let signupViewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.signUpViewController)
+            let signupViewController = storyboard.instantiateViewController(withIdentifier:Constants.Storyboard.signUpViewController)
             self.navigationController?.pushViewController(signupViewController, animated: true)
         default:
             return

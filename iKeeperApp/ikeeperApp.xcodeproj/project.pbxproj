@@ -18,6 +18,7 @@
 		0A3A931725A07E530015C43D /* PublicMoneyWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3A931625A07E530015C43D /* PublicMoneyWriteViewController.swift */; };
 		0A3CC3A92555009D00AEACF9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3CC3A82555009D00AEACF9 /* SignUpViewController.swift */; };
 		0A4E5BBB25B6FDF1006193F3 /* PublicMoneyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E5BBA25B6FDF1006193F3 /* PublicMoneyDetailViewController.swift */; };
+		0A5DAB5825CA691200C757FF /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5DAB5725CA691200C757FF /* AdminViewController.swift */; };
 		0A7279E425BE820F0092C551 /* MypageCollectionCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7279E325BE820F0092C551 /* MypageCollectionCustomCell.swift */; };
 		0A7279EB25BEAF650092C551 /* MypageTableCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7279EA25BEAF650092C551 /* MypageTableCustomCell.swift */; };
 		0A744D8F255E7CBB00FFC5F7 /* CalendarWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A744D8E255E7CBB00FFC5F7 /* CalendarWriteViewController.swift */; };
@@ -59,6 +60,7 @@
 		0A3A931625A07E530015C43D /* PublicMoneyWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMoneyWriteViewController.swift; sourceTree = "<group>"; };
 		0A3CC3A82555009D00AEACF9 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0A4E5BBA25B6FDF1006193F3 /* PublicMoneyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMoneyDetailViewController.swift; sourceTree = "<group>"; };
+		0A5DAB5725CA691200C757FF /* AdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
 		0A7279E325BE820F0092C551 /* MypageCollectionCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageCollectionCustomCell.swift; sourceTree = "<group>"; };
 		0A7279EA25BEAF650092C551 /* MypageTableCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageTableCustomCell.swift; sourceTree = "<group>"; };
 		0A744D8E255E7CBB00FFC5F7 /* CalendarWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarWriteViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				0ABF9BA225C1546D0015B788 /* MypageWarningListViewController.swift */,
 				0AA00FE025C02838004122F5 /* MypageUserInfoViewController.swift */,
 				0AA00FDC25C02802004122F5 /* MypageChangePasswordViewController.swift */,
+				0A5DAB5725CA691200C757FF /* AdminViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				0AA73699258F25A800CD6314 /* InformationWriteViewController.swift in Sources */,
 				0AD493D82557F48700BA552E /* HomeViewController.swift in Sources */,
 				0AA00FDD25C02802004122F5 /* MypageChangePasswordViewController.swift in Sources */,
+				0A5DAB5825CA691200C757FF /* AdminViewController.swift in Sources */,
 				0A3CC3A92555009D00AEACF9 /* SignUpViewController.swift in Sources */,
 				0A4E5BBB25B6FDF1006193F3 /* PublicMoneyDetailViewController.swift in Sources */,
 				0A7279E425BE820F0092C551 /* MypageCollectionCustomCell.swift in Sources */,
