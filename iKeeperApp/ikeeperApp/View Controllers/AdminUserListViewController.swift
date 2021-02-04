@@ -94,4 +94,13 @@ extension AdminUserListViewController: UITableViewDelegate, UITableViewDataSourc
         cell.gradeLabel?.text = data["grade"] as? String
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let data = dataList[indexPath.row]
+        let adminUserInfoDetailViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.adminUserInfoDetailViewController) as! AdminUserInfoDetailViewController
+        adminUserInfoDetailViewController.dataList = data
+        self.navigationController?.pushViewController(adminUserInfoDetailViewController, animated: true)
+    }
 }

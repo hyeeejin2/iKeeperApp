@@ -44,26 +44,6 @@ class MypageUserInfoViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         setValue()
     }
-
-    func setEnabled() {
-        pwValue.isEnabled = true
-        departmentValue.isEnabled = true
-        gradeValue.isEnabled = true
-        phoneNumberValue.isEnabled = true
-        statusControl.isEnabled = true
-    }
-    
-    func setDisabled() {
-        emailValue.isEnabled = false
-        nameValue.isEnabled = false
-        pwValue.isEnabled = false
-        studentIDValue.isEnabled = false
-        departmentValue.isEnabled = false
-        gradeValue.isEnabled = false
-        phoneNumberValue.isEnabled = false
-        partControl.isEnabled = false
-        statusControl.isEnabled = false
-    }
     
     func setValue() {
         let user = Auth.auth().currentUser
@@ -100,6 +80,26 @@ class MypageUserInfoViewController: UIViewController {
         } else {
             self.navigationController?.popViewController(animated: true)
         }
+    }
+    
+    func setEnabled() {
+        pwValue.isEnabled = true
+        departmentValue.isEnabled = true
+        gradeValue.isEnabled = true
+        phoneNumberValue.isEnabled = true
+        statusControl.isEnabled = true
+    }
+    
+    func setDisabled() {
+        emailValue.isEnabled = false
+        nameValue.isEnabled = false
+        pwValue.isEnabled = false
+        studentIDValue.isEnabled = false
+        departmentValue.isEnabled = false
+        gradeValue.isEnabled = false
+        phoneNumberValue.isEnabled = false
+        partControl.isEnabled = false
+        statusControl.isEnabled = false
     }
     
     func createPickerView() {

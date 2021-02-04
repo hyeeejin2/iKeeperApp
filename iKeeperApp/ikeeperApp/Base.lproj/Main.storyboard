@@ -2098,6 +2098,140 @@
             </objects>
             <point key="canvasLocation" x="3086.9565217391305" y="2265.4017857142858"/>
         </scene>
+        <!--UserInfo Detail-->
+        <scene sceneID="2r7-oG-RBM">
+            <objects>
+                <viewController storyboardIdentifier="AdminUserInfoDetailVC" id="wg3-sA-Kqv" customClass="AdminUserInfoDetailViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6KI-yr-TDR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Bz7-uM-E0H">
+                                <rect key="frame" x="20" y="108" width="374" height="645"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5ei-fH-hHV">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="eGY-iY-tPa"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4z9-Sa-i8x">
+                                        <rect key="frame" x="0.0" y="55" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ip8-eh-t72">
+                                        <rect key="frame" x="0.0" y="110" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="studentID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VeW-vM-5ya">
+                                        <rect key="frame" x="0.0" y="165" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="department" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wgH-K9-ETy">
+                                        <rect key="frame" x="0.0" y="220" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="grade" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qG5-sj-1uT">
+                                        <rect key="frame" x="0.0" y="275" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qQe-7m-nWU">
+                                        <rect key="frame" x="0.0" y="330" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="permission" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pio-7z-Fqm">
+                                        <rect key="frame" x="0.0" y="385" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="warning" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GBj-cd-Uc4">
+                                        <rect key="frame" x="0.0" y="440" width="374" height="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="P1E-DO-1cp">
+                                        <rect key="frame" x="0.0" y="495" width="374" height="41"/>
+                                        <segments>
+                                            <segment title="개발"/>
+                                            <segment title="보안"/>
+                                        </segments>
+                                    </segmentedControl>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cAy-am-1Nz">
+                                        <rect key="frame" x="0.0" y="550" width="374" height="41"/>
+                                        <segments>
+                                            <segment title="재학"/>
+                                            <segment title="휴학"/>
+                                        </segments>
+                                    </segmentedControl>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0FU-zr-L7c">
+                                        <rect key="frame" x="0.0" y="605" width="374" height="40"/>
+                                        <state key="normal" title="complete"/>
+                                        <connections>
+                                            <action selector="completeButton:" destination="gND-ri-y6x" eventType="touchUpInside" id="81I-T8-dej"/>
+                                            <action selector="completeButtonWith_sender:" destination="wg3-sA-Kqv" eventType="touchUpInside" id="bxj-cb-zzr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ip8-eh-t72" firstAttribute="height" secondItem="5ei-fH-hHV" secondAttribute="height" id="3cf-oR-FSN"/>
+                                    <constraint firstItem="wgH-K9-ETy" firstAttribute="height" secondItem="5ei-fH-hHV" secondAttribute="height" id="RZd-Yq-966"/>
+                                    <constraint firstItem="qG5-sj-1uT" firstAttribute="height" secondItem="5ei-fH-hHV" secondAttribute="height" id="V26-4e-LNw"/>
+                                    <constraint firstItem="cAy-am-1Nz" firstAttribute="height" secondItem="5ei-fH-hHV" secondAttribute="height" id="XU3-ty-Kez"/>
+                                    <constraint firstItem="pio-7z-Fqm" firstAttribute="height" secondItem="5ei-fH-hHV" secondAttribute="height" id="cVz-9D-GOB"/>
+                                    <constraint firstItem="VeW-vM-5ya" firstAttribute="height" secondItem="5ei-fH-hHV" secondAttribute="height" id="gD7-Zb-xSG"/>
+                                    <constraint firstItem="qQe-7m-nWU" firstAttribute="height" secondItem="5ei-fH-hHV" secondAttribute="height" id="gjV-9C-ORM"/>
+                                    <constraint firstItem="P1E-DO-1cp" firstAttribute="height" secondItem="5ei-fH-hHV" secondAttribute="height" id="gz1-2u-dbn"/>
+                                    <constraint firstItem="4z9-Sa-i8x" firstAttribute="height" secondItem="5ei-fH-hHV" secondAttribute="height" id="hM5-1n-bHr"/>
+                                    <constraint firstItem="0FU-zr-L7c" firstAttribute="height" secondItem="5ei-fH-hHV" secondAttribute="height" id="lrR-sS-O3M"/>
+                                    <constraint firstItem="GBj-cd-Uc4" firstAttribute="height" secondItem="5ei-fH-hHV" secondAttribute="height" id="o5x-PW-s5s"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="1C5-xY-l69"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Bz7-uM-E0H" firstAttribute="top" secondItem="1C5-xY-l69" secondAttribute="top" constant="20" id="dzB-gq-44e"/>
+                            <constraint firstItem="Bz7-uM-E0H" firstAttribute="leading" secondItem="1C5-xY-l69" secondAttribute="leading" constant="20" id="q4p-ID-Qjn"/>
+                            <constraint firstItem="1C5-xY-l69" firstAttribute="trailing" secondItem="Bz7-uM-E0H" secondAttribute="trailing" constant="20" id="qtq-Jw-gUl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="UserInfo Detail" id="Jcp-CW-Adn">
+                        <barButtonItem key="rightBarButtonItem" image="pencil.slash" catalog="system" id="288-Su-UYd">
+                            <connections>
+                                <action selector="editBarButton:" destination="wg3-sA-Kqv" id="DTe-M1-2Cn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="completeButton" destination="0FU-zr-L7c" id="R02-fB-Z3b"/>
+                        <outlet property="departmentValue" destination="wgH-K9-ETy" id="3Vv-rP-lt5"/>
+                        <outlet property="editBarButton" destination="288-Su-UYd" id="7YV-XS-BCe"/>
+                        <outlet property="emailValue" destination="5ei-fH-hHV" id="KbJ-3a-cfD"/>
+                        <outlet property="gradeValue" destination="qG5-sj-1uT" id="EBt-P9-Qzn"/>
+                        <outlet property="nameValue" destination="4z9-Sa-i8x" id="Mbk-6W-8aZ"/>
+                        <outlet property="partControl" destination="P1E-DO-1cp" id="gp9-Ln-j5Q"/>
+                        <outlet property="permissionValue" destination="pio-7z-Fqm" id="UBI-8X-dZ0"/>
+                        <outlet property="phoneNumberValue" destination="qQe-7m-nWU" id="d0H-BG-o5z"/>
+                        <outlet property="pwValue" destination="ip8-eh-t72" id="aBP-Wy-bVL"/>
+                        <outlet property="statusControl" destination="cAy-am-1Nz" id="kMj-aO-jI5"/>
+                        <outlet property="studentIDValue" destination="VeW-vM-5ya" id="jYf-cv-Rgg"/>
+                        <outlet property="warningValue" destination="GBj-cd-Uc4" id="FqY-o0-MjQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dAl-gt-tiw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3908.6956521739135" y="2265.4017857142858"/>
+        </scene>
         <!--Check the info I written-->
         <scene sceneID="LSv-Vp-jKz">
             <objects>

@@ -19,6 +19,7 @@
 		0A3CC3A92555009D00AEACF9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3CC3A82555009D00AEACF9 /* SignUpViewController.swift */; };
 		0A4A64F525CC338A004781A0 /* AdminUserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4A64F425CC338A004781A0 /* AdminUserListViewController.swift */; };
 		0A4A64F825CC340C004781A0 /* AdminUserListCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4A64F725CC340C004781A0 /* AdminUserListCustomCell.swift */; };
+		0A4A64FB25CC40B1004781A0 /* AdminUserInfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4A64FA25CC40B1004781A0 /* AdminUserInfoDetailViewController.swift */; };
 		0A4E5BBB25B6FDF1006193F3 /* PublicMoneyDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E5BBA25B6FDF1006193F3 /* PublicMoneyDetailViewController.swift */; };
 		0A5DAB5825CA691200C757FF /* AdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5DAB5725CA691200C757FF /* AdminViewController.swift */; };
 		0A5DAB5B25CA780900C757FF /* AdminCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5DAB5A25CA780900C757FF /* AdminCustomCell.swift */; };
@@ -65,6 +66,7 @@
 		0A3CC3A82555009D00AEACF9 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0A4A64F425CC338A004781A0 /* AdminUserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminUserListViewController.swift; sourceTree = "<group>"; };
 		0A4A64F725CC340C004781A0 /* AdminUserListCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminUserListCustomCell.swift; sourceTree = "<group>"; };
+		0A4A64FA25CC40B1004781A0 /* AdminUserInfoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminUserInfoDetailViewController.swift; sourceTree = "<group>"; };
 		0A4E5BBA25B6FDF1006193F3 /* PublicMoneyDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMoneyDetailViewController.swift; sourceTree = "<group>"; };
 		0A5DAB5725CA691200C757FF /* AdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminViewController.swift; sourceTree = "<group>"; };
 		0A5DAB5A25CA780900C757FF /* AdminCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminCustomCell.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				0AA00FDC25C02802004122F5 /* MypageChangePasswordViewController.swift */,
 				0A5DAB5725CA691200C757FF /* AdminViewController.swift */,
 				0A4A64F425CC338A004781A0 /* AdminUserListViewController.swift */,
+				0A4A64FA25CC40B1004781A0 /* AdminUserInfoDetailViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				0A3A931725A07E530015C43D /* PublicMoneyWriteViewController.swift in Sources */,
 				0A7A68EE2551473100DD3BC9 /* AppDelegate.swift in Sources */,
 				0A7A68F02551473100DD3BC9 /* SceneDelegate.swift in Sources */,
+				0A4A64FB25CC40B1004781A0 /* AdminUserInfoDetailViewController.swift in Sources */,
 				0ADA090025C3FDB200A28D73 /* MypageInfoListCustomCell.swift in Sources */,
 				0ABF9B9D25C151A50015B788 /* MypageWrittenInfoViewController.swift in Sources */,
 				0AA00FE125C02838004122F5 /* MypageUserInfoViewController.swift in Sources */,
