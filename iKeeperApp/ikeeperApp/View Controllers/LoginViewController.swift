@@ -33,7 +33,26 @@ class LoginViewController: UIViewController {
             if error != nil {
                 self.showAlert(message: "이메일 또는 비밀번호를 확인해주세요")
             } else {
-                self.navigationController?.popViewController(animated: true)
+                let user = Auth.auth().currentUser
+                let uid: String = user!.uid
+                let db = Firestore.firestore()
+                db.collection("users").whereField("uid", isEqualTo: uid).getDocuments { (snapshot, error) in
+                    if error != nil {
+                        print("check for error : \(error!.localizedDescription)")
+                    } else {
+                        if snapshot!.isEmpty == true {
+                            Auth.auth().currentUser?.delete(completion: { (err) in
+                                if err != nil {
+                                    print("check for error : \(err!.localizedDescription)")
+                                } else {
+                                    self.showAlert(message: "이메일 또는 비밀번호를 확인해주세요")
+                                }
+                            })
+                        } else {
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                    }
+                }
             }
         }
 

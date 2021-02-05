@@ -169,40 +169,37 @@ extension AdminUserListViewController: UITableViewDelegate, UITableViewDataSourc
         let documentID = dataList[index]["id"] as! String
         
         // 현재 유저 말고
-        Auth.auth().currentUser?.delete(completion: { (err) in
-            if err != nil {
-                print("check for error : \(err!.localizedDescription)")
+//        Auth.auth().currentUser?.delete(completion: { (err) in
+//            if err != nil {
+//                print("check for error : \(err!.localizedDescription)")
+//            } else {
+        let db = Firestore.firestore()
+        db.collection("users").document("\(documentID)").delete { (error) in
+            if error != nil {
+                print("check for error : \(error!.localizedDescription)")
             } else {
-                let db = Firestore.firestore()
-                db.collection("users").document("\(documentID)").delete { (error) in
-                    if error != nil {
-                        print("check for error : \(error!.localizedDescription)")
-                    } else {
-                        self.numbering = 1
-                        self.dataList.remove(at: index)
-                        self.userListTableView.deleteRows(at: [indexpath], with: .automatic)
-                        if self.dataList.count == 0 {
-                            self.statusLabel.textAlignment = .center
-                            self.statusLabel.text = "회원이 없습니다."
-                            self.view.addSubview(self.statusLabel)
-                            self.userListTableView.isEditing = false
-                            self.deleteBarButton.image = nil
-                            self.deleteBarButton.isEnabled = false
-                        }
-                        self.showAlertDeleteUser(name: name)
-                    }
+                self.numbering = 1
+                self.dataList.remove(at: index)
+                self.userListTableView.deleteRows(at: [indexpath], with: .automatic)
+                if self.dataList.count == 0 {
+                    self.statusLabel.textAlignment = .center
+                    self.statusLabel.text = "회원이 없습니다."
+                    self.view.addSubview(self.statusLabel)
+                    self.userListTableView.isEditing = false
+                    self.deleteBarButton.image = nil
+                    self.deleteBarButton.isEnabled = false
                 }
+                self.userListTableView.reloadData()
+                self.showAlertDeleteUser(name: name)
             }
-        })
+        }
     }
     
     func showAlertDeleteUser(name: String) {
         let alert = UIAlertController(title: "회원탈퇴 완료",
                                       message: "\(name)님의 회원탈퇴가 완료되었습니다.",
                                       preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
-            self.userListTableView.reloadData()
-        }
+        let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }
