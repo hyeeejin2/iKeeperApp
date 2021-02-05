@@ -33,7 +33,6 @@ class AdminUserInfoDetailViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print(dataList)
         setUser()
     }
     
@@ -68,8 +67,6 @@ class AdminUserInfoDetailViewController: UIViewController {
         self.gradeValue.text = dataList["grade"] as? String
         self.phoneNumberValue.text = dataList["phoneNumber"] as? String
         self.warningValue.text = String(dataList["warning"] as! Int)
-//        self.documentID = dataList["id"] as! String
-//        print(documentID)
         
         if dataList["part"] as! String == "개발" {
             self.partControl.selectedSegmentIndex = 0

@@ -12,7 +12,7 @@ class AdminViewController: UIViewController {
 
     @IBOutlet weak var functionTableView: UITableView!
     let tableViewTitle = ["회원", "게시판"]
-    let tableViewList1 = ["회원 목록", "회원 강제 탈퇴" ,"경고내역"]
+    let tableViewList1 = ["회원 목록","경고내역"]
     let tableViewList2 = ["정보게시판 관리", "일정 관리", "공금내역 관리"]
     let space = [" ", " "]
     
@@ -93,11 +93,7 @@ extension AdminViewController: UITableViewDelegate, UITableViewDataSource {
             if indexPath.row == 0 {
                 let adminUserListViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.adminUserListViewController) as! AdminUserListViewController
                 self.navigationController?.pushViewController(adminUserListViewController, animated: true)
-            } else if indexPath.row == 1{
-                print("회원 강제 탈퇴")
-//                let mypageChangePasswordViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.mypageChangePasswordViewController) as! MypageChangePasswordViewController
-//                self.navigationController?.pushViewController(mypageChangePasswordViewController, animated: true)
-            } else if indexPath.row == 2 {
+            } else if indexPath.row == 1 {
                 print("경고내역")
             }
         } else if indexPath.section == 1{
