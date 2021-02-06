@@ -49,6 +49,9 @@
 		0ADA090025C3FDB200A28D73 /* MypageInfoListCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADA08FF25C3FDB200A28D73 /* MypageInfoListCustomCell.swift */; };
 		0ADA090725C41C9000A28D73 /* MypageCalendarListCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADA090625C41C9000A28D73 /* MypageCalendarListCustomCell.swift */; };
 		0ADB319625A5D9B3009812B0 /* PublicMoneyCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADB319525A5D9B3009812B0 /* PublicMoneyCustomCell.swift */; };
+		0AE4031925CD8A1700422A1D /* AdminWarningListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4031825CD8A1700422A1D /* AdminWarningListViewController.swift */; };
+		0AE4031C25CD8C5800422A1D /* AdminWarningWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4031B25CD8C5800422A1D /* AdminWarningWriteViewController.swift */; };
+		0AE4031F25CD8D7F00422A1D /* AdminWarningListCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4031E25CD8D7F00422A1D /* AdminWarningListCustomCell.swift */; };
 		FF3A89ADAD5306D7E7CD1449 /* Pods_ikeeperApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8029E19F27DBDCB5C375ED7D /* Pods_ikeeperApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +101,9 @@
 		0ADA08FF25C3FDB200A28D73 /* MypageInfoListCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageInfoListCustomCell.swift; sourceTree = "<group>"; };
 		0ADA090625C41C9000A28D73 /* MypageCalendarListCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageCalendarListCustomCell.swift; sourceTree = "<group>"; };
 		0ADB319525A5D9B3009812B0 /* PublicMoneyCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMoneyCustomCell.swift; sourceTree = "<group>"; };
+		0AE4031825CD8A1700422A1D /* AdminWarningListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminWarningListViewController.swift; sourceTree = "<group>"; };
+		0AE4031B25CD8C5800422A1D /* AdminWarningWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminWarningWriteViewController.swift; sourceTree = "<group>"; };
+		0AE4031E25CD8D7F00422A1D /* AdminWarningListCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminWarningListCustomCell.swift; sourceTree = "<group>"; };
 		8029E19F27DBDCB5C375ED7D /* Pods_ikeeperApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ikeeperApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		886F3A895E37B8AD54838270 /* Pods-ikeeperApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ikeeperApp.debug.xcconfig"; path = "Target Support Files/Pods-ikeeperApp/Pods-ikeeperApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -138,6 +144,8 @@
 				0A5DAB5725CA691200C757FF /* AdminViewController.swift */,
 				0A4A64F425CC338A004781A0 /* AdminUserListViewController.swift */,
 				0A4A64FA25CC40B1004781A0 /* AdminUserInfoDetailViewController.swift */,
+				0AE4031825CD8A1700422A1D /* AdminWarningListViewController.swift */,
+				0AE4031B25CD8C5800422A1D /* AdminWarningWriteViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -194,6 +202,7 @@
 				0A5DAB5D25CA783E00C757FF /* MypageWarningListCustomCell.swift */,
 				0A5DAB5A25CA780900C757FF /* AdminCustomCell.swift */,
 				0A4A64F725CC340C004781A0 /* AdminUserListCustomCell.swift */,
+				0AE4031E25CD8D7F00422A1D /* AdminWarningListCustomCell.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -339,6 +348,7 @@
 				0A5DAB5B25CA780900C757FF /* AdminCustomCell.swift in Sources */,
 				0A5DAB5E25CA783E00C757FF /* MypageWarningListCustomCell.swift in Sources */,
 				0A194BB3257FB2B700820837 /* CalendarCustomCell.swift in Sources */,
+				0AE4031F25CD8D7F00422A1D /* AdminWarningListCustomCell.swift in Sources */,
 				0AD493DD2558267C00BA552E /* CalendarViewController.swift in Sources */,
 				0ABF9BA025C151B60015B788 /* MypageWrittenCalendarViewController.swift in Sources */,
 				0A13DCAD2552FCBC00B3E53F /* LoginViewController.swift in Sources */,
@@ -346,10 +356,12 @@
 				0A3A931725A07E530015C43D /* PublicMoneyWriteViewController.swift in Sources */,
 				0A7A68EE2551473100DD3BC9 /* AppDelegate.swift in Sources */,
 				0A7A68F02551473100DD3BC9 /* SceneDelegate.swift in Sources */,
+				0AE4031925CD8A1700422A1D /* AdminWarningListViewController.swift in Sources */,
 				0A4A64FB25CC40B1004781A0 /* AdminUserInfoDetailViewController.swift in Sources */,
 				0ADA090025C3FDB200A28D73 /* MypageInfoListCustomCell.swift in Sources */,
 				0ABF9B9D25C151A50015B788 /* MypageWrittenInfoViewController.swift in Sources */,
 				0AA00FE125C02838004122F5 /* MypageUserInfoViewController.swift in Sources */,
+				0AE4031C25CD8C5800422A1D /* AdminWarningWriteViewController.swift in Sources */,
 				0A98D52125559DE400E4BF66 /* Constants.swift in Sources */,
 				0AA73699258F25A800CD6314 /* InformationWriteViewController.swift in Sources */,
 				0AD493D82557F48700BA552E /* HomeViewController.swift in Sources */,

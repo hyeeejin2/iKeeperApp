@@ -1,19 +1,19 @@
 //
-//  AdminUserListCustomCell.swift
+//  AdminWarningListCustomCell.swift
 //  ikeeperApp
 //
-//  Created by 김혜진 on 2021/02/04.
+//  Created by 김혜진 on 2021/02/05.
 //
 
 import UIKit
 
-class AdminUserListCustomCell: UITableViewCell {
+class AdminWarningListCustomCell: UITableViewCell {
     
     @IBOutlet weak var numLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var studentIDLabel: UILabel!
     @IBOutlet weak var departmentLabel: UILabel!
     @IBOutlet weak var gradeLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

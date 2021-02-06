@@ -29,6 +29,7 @@ struct Constants {
         static let adminViewController = "AdminVC"
         static let adminUserListViewController = "AdminUserVC"
         static let adminUserInfoDetailViewController = "AdminUserInfoDetailVC"
+        static let adminWarningListViewController = "AdminWarningListVC"
         
     }
 }
