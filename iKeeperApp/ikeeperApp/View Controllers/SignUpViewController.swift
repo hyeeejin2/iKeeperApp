@@ -184,7 +184,7 @@ class SignUpViewController: UIViewController {
                 let uid: String = result!.user.uid
                 let db = Firestore.firestore()
                 let newDocument = db.collection("users").document()
-                newDocument.setData(["id": newDocument.documentID, "uid": uid,"email": email, "name": name, "password": pw, "studentID": studentID, "department": department, "grade": grade, "phoneNumber": phoneNumber, "part": part, "status": status, "warning": 0, "permission": false]) { (error) in
+                newDocument.setData(["id": newDocument.documentID, "uid": uid,"email": email, "name": name, "password": pw, "studentID": studentID, "department": department, "grade": grade, "phoneNumber": phoneNumber, "part": part, "status": status, "permission": false]) { (error) in
                     if error != nil {
                         print("check for error : \(error!.localizedDescription)")
                         self.showAlert(message: "회원가입 실패")

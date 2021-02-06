@@ -167,12 +167,6 @@ extension AdminUserListViewController: UITableViewDelegate, UITableViewDataSourc
     
     func deleteUser(name: String, indexpath: IndexPath, index: Int) {
         let documentID = dataList[index]["id"] as! String
-        
-        // 현재 유저 말고
-//        Auth.auth().currentUser?.delete(completion: { (err) in
-//            if err != nil {
-//                print("check for error : \(err!.localizedDescription)")
-//            } else {
         let db = Firestore.firestore()
         db.collection("users").document("\(documentID)").delete { (error) in
             if error != nil {

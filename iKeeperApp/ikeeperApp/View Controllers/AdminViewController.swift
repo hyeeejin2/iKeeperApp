@@ -99,11 +99,14 @@ extension AdminViewController: UITableViewDelegate, UITableViewDataSource {
             }
         } else if indexPath.section == 1{
             if indexPath.row == 0 {
-                print("정보")
+                let informationViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.informationViewController) as! InformationViewController
+                self.navigationController?.pushViewController(informationViewController, animated: true)
             } else if indexPath.row == 1{
-                print("일정")
+                let calendarViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.calendarViewController) as! CalendarViewController
+                self.navigationController?.pushViewController(calendarViewController, animated: true)
             } else if indexPath.row == 2 {
-                print("공금")
+                let publicMoneyViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.publicMoneyViewController) as! PublicMoneyViewController
+                self.navigationController?.pushViewController(publicMoneyViewController, animated: true)
             }
         }
     }

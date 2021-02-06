@@ -28,7 +28,7 @@ class AdminUserInfoDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+     
         completeButton.isHidden = true
     }
     
@@ -66,7 +66,20 @@ class AdminUserInfoDetailViewController: UIViewController {
         self.departmentValue.text = dataList["department"] as? String
         self.gradeValue.text = dataList["grade"] as? String
         self.phoneNumberValue.text = dataList["phoneNumber"] as? String
-        self.warningValue.text = String(dataList["warning"] as! Int)
+        
+        let userUid: String = dataList["uid"] as! String
+        let db = Firestore.firestore()
+        db.collection("warningList").whereField("userUid", isEqualTo: userUid).getDocuments { (snapshot, error) in
+            if error != nil {
+                print("check for error : \(error!.localizedDescription)")
+            } else {
+                if snapshot?.isEmpty == false {
+                    self.warningValue.text = String(snapshot!.count)
+                } else {
+                    self.warningValue.text = "0"
+                }
+            }
+        }
         
         if dataList["part"] as! String == "개발" {
             self.partControl.selectedSegmentIndex = 0
@@ -112,7 +125,7 @@ class AdminUserInfoDetailViewController: UIViewController {
     }
     
     @IBAction func completeButton(_sender: UIBarButtonItem) {
-        let documentID: String = dataList["id"] as! String
+        let id = dataList["id"] as! String
         var part: String = ""
         var status: String = ""
         
@@ -130,7 +143,7 @@ class AdminUserInfoDetailViewController: UIViewController {
         print(modifyData)
         
         let db = Firestore.firestore()
-        db.collection("users").document("\(documentID)").updateData(modifyData) { (error) in
+        db.collection("users").document("\(id)").updateData(modifyData) { (error) in
             if error != nil {
                 print("check for error : \(error!.localizedDescription)")
             } else {
