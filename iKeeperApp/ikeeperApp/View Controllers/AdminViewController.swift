@@ -12,7 +12,7 @@ class AdminViewController: UIViewController {
 
     @IBOutlet weak var functionTableView: UITableView!
     let tableViewTitle = ["회원", "게시판"]
-    let tableViewList1 = ["회원 목록","경고 목록"]
+    let tableViewList1 = ["회원 목록","경고 내역"]
     let tableViewList2 = ["정보게시판 관리", "일정 관리", "공금내역 관리"]
     let space = [" ", " "]
     

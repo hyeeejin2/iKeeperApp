@@ -1,14 +1,14 @@
 //
-//  AdminWarningWriteViewController.swift
+//  AdminWarningDetailViewController.swift
 //  ikeeperApp
 //
-//  Created by 김혜진 on 2021/02/05.
+//  Created by 김혜진 on 2021/02/06.
 //
 
 import UIKit
 import Firebase
 
-class AdminWarningWriteViewController: UIViewController {
+class AdminWarningDetailViewController: UIViewController {
 
     @IBOutlet weak var userNameValue: UITextField!
     @IBOutlet weak var studentIDValue: UITextField!
@@ -19,9 +19,13 @@ class AdminWarningWriteViewController: UIViewController {
     @IBOutlet weak var reasonValue: UITextField!
     @IBOutlet weak var createDateValue: UITextField!
     @IBOutlet weak var writerValue: UITextField!
+    @IBOutlet weak var deleteBarButton: UIBarButtonItem!
+    @IBOutlet weak var editBarButton: UIBarButtonItem!
+    @IBOutlet weak var completeButton: UIButton!
     let userListPickerView: UIPickerView = UIPickerView()
     let noUserList = ["-- 회원 없음 --"]
     var dataList = [[String: Any]]()
+    var data = [String: Any]()
     var userList: [String] = ["-- 선택 --"]
     var selectedUserUid: String = ""
     var selectedUser: String = ""
@@ -32,13 +36,12 @@ class AdminWarningWriteViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
+        completeButton.isHidden = true
         createPickerView()
         dismissPickerView()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
-        dataList = [[String:Any]]()
-        userList = ["-- 선택 --"]
         setUser()
     }
     
@@ -54,12 +57,8 @@ class AdminWarningWriteViewController: UIViewController {
                     if snapshot?.isEmpty == true {
                         self.navigationController?.popViewController(animated: true)
                     } else {
-                        for document in snapshot!.documents {
-                            let documentData = document.data()
-                            self.writerValue.text = documentData["name"] as? String
-                        }
                         self.setDisabled()
-                        self.setDate()
+                        self.setValue()
                         self.getUserList()
                     }
                 }
@@ -69,21 +68,41 @@ class AdminWarningWriteViewController: UIViewController {
         }
     }
     
+    func setEnabled() {
+        userNameValue.isEnabled = true
+        reasonValue.isEnabled = true
+    }
+    
     func setDisabled() {
+        userNameValue.isEnabled = false
         studentIDValue.isEnabled = false
         departmentValue.isEnabled = false
         gradeValue.isEnabled = false
         partControl.isEnabled = false
         statusControl.isEnabled = false
+        reasonValue.isEnabled = false
         createDateValue.isEnabled = false
         writerValue.isEnabled = false
     }
     
-    func setDate() {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY-MM-dd"
-        let dateString = formatter.string(from: Date())
-        self.createDateValue.text = "\(dateString)"
+    func setValue() {
+        userNameValue.text = data["userName"] as? String
+        studentIDValue.text = data["studentID"] as? String
+        departmentValue.text = data["department"] as? String
+        gradeValue.text = data["grade"] as? String
+        if let part = data["part"] as? String, part == "개발" {
+            partControl.selectedSegmentIndex = 0
+        } else {
+            partControl.selectedSegmentIndex = 1
+        }
+        if let status = data["status"] as? String, status == "재학" {
+            statusControl.selectedSegmentIndex = 0
+        } else {
+            statusControl.selectedSegmentIndex = 1
+        }
+        reasonValue.text = data["reason"] as? String
+        createDateValue.text = data["create date"] as? String
+        writerValue.text = data["writer"] as? String
     }
     
     func getUserList() {
@@ -154,8 +173,15 @@ class AdminWarningWriteViewController: UIViewController {
         }
         self.view.endEditing(true)
     }
+
+    @IBAction func editBarButton(_ sender: UIBarButtonItem) {
+        editBarButton.image = nil
+        editBarButton.isEnabled = false
+        completeButton.isHidden = false
+        setEnabled()
+    }
     
-    @IBAction func writeButton(_ sender: UIButton) {
+    @IBAction func completeButton(_ sender: UIButton) {
         guard let userName: String = userNameValue.text, userName.isEmpty == false else {
             showAlert(message: "빈칸을 채워주세요")
             return
@@ -198,23 +224,53 @@ class AdminWarningWriteViewController: UIViewController {
             status = "휴학"
         }
         
-        // id(문서), uid(userName's), userName, studentID, department, grade, part, status, reason, createDate, writer, created(timestamp)
-        let timestamp = NSDate().timeIntervalSince1970
+        let modifyData = ["userUid": selectedUserUid, "userName": userName, "studentID": studentID, "department": department, "grade": grade, "part": part, "status": status, "reason": reason] as [String: Any]
+        let id = data["id"] as! String
+        print(modifyData, id)
+
         let db = Firestore.firestore()
-        let newDocument = db.collection("warningList").document()
-        newDocument.setData(["id": newDocument.documentID, "userUid": selectedUserUid, "userName": userName, "studentID": studentID, "department": department, "grade": grade, "part": part, "status": status, "reason": reason, "create date": createDate, "writer": writer, "created": timestamp]) { (error) in
+        db.collection("warningList").document("\(id)").updateData(modifyData) { (error) in
             if error != nil {
                 print("check for error : \(error!.localizedDescription)")
-                self.showAlert(message: "경고내역 등록 실패")
             } else {
-                self.showAlertForWrite()
+                self.showAlertModifyOrDelete(title: "수정 완료", message: "경고내역 수정이 완료되었습니다")
+            }
+        }
+        editBarButton.image = UIImage(systemName: "pencil.slash")
+        editBarButton.isEnabled = true
+        completeButton.isHidden = true
+        setDisabled()
+    }
+    
+    @IBAction func deleteBarButton(_ sender: UIBarButtonItem) {
+        let id = data["id"] as! String
+        
+        let db = Firestore.firestore()
+        db.collection("warningList").document("\(id)").delete { (error) in
+            if error != nil {
+                print("check for error : \(error!.localizedDescription)")
+            } else {
+                self.showAlertForDelete()
             }
         }
     }
     
-    func showAlertForWrite() {
-        let alert = UIAlertController(title: "등록 완료",
-                                      message: "경고내역 등록이 완료되었습니다",
+    func showAlertForDelete() {
+        let alert = UIAlertController(title: "경고내역 삭제",
+                                      message: "경고내역을 삭제하시겠습니까?",
+                                      preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+            self.showAlertModifyOrDelete(title: "삭제 완료", message: "경고내역 삭제가 완료되었습니다")
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func showAlertModifyOrDelete(title: String, message: String) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
                                       preferredStyle: .alert)
         let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
             self.navigationController?.popViewController(animated: true)
@@ -222,7 +278,6 @@ class AdminWarningWriteViewController: UIViewController {
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }
-    
     
     func showAlert(message: String) {
         let alert = UIAlertController(title: "알림",
@@ -234,7 +289,7 @@ class AdminWarningWriteViewController: UIViewController {
     }
 }
 
-extension AdminWarningWriteViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+extension AdminWarningDetailViewController: UIPickerViewAccessibilityDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

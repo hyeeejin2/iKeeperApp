@@ -48,21 +48,25 @@ class MypageWrittenInfoViewController: UIViewController {
         let uid: String = user!.uid
         let db = Firestore.firestore()
         db.collection("infoList").whereField("uid", isEqualTo: uid).order(by: "created", descending: true).getDocuments { (snapshot, error) in
-            if error == nil && snapshot?.isEmpty == false {
-                for document in snapshot!.documents {
-                    let documentData = document.data()
-                    self.dataList.append(documentData)
+            if error != nil {
+                print("check for error : \(error!.localizedDescription)")
+            } else {
+                if snapshot?.isEmpty == false {
+                    for document in snapshot!.documents {
+                        let documentData = document.data()
+                        self.dataList.append(documentData)
+                    }
+                    self.editBarButton.image = UIImage(systemName: "pencil.slash")
+                    self.editBarButton.isEnabled = true
+                } else {
+                    self.statusLabel.textAlignment = .center
+                    self.statusLabel.text = "아직 작성한 글이 없습니다."
+                    self.view.addSubview(self.statusLabel)
+                    self.editBarButton.image = nil
+                    self.editBarButton.isEnabled = false
                 }
-                self.editBarButton.image = UIImage(systemName: "pencil.slash")
-                self.editBarButton.isEnabled = true
-            } else if error == nil && snapshot?.isEmpty == true {
-                self.statusLabel.textAlignment = .center
-                self.statusLabel.text = "아직 작성한 글이 없습니다."
-                self.view.addSubview(self.statusLabel)
-                self.editBarButton.image = nil
-                self.editBarButton.isEnabled = false
+                self.infoListTableView.reloadData()
             }
-            self.infoListTableView.reloadData()
         }
     }
     

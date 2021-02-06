@@ -10,7 +10,7 @@ import UIKit
 class AdminWarningListCustomCell: UITableViewCell {
     
     @IBOutlet weak var numLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var departmentLabel: UILabel!
     @IBOutlet weak var gradeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
