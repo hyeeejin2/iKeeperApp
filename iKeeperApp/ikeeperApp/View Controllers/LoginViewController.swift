@@ -29,9 +29,17 @@ class LoginViewController: UIViewController {
         }
         
         Auth.auth().signIn(withEmail: email, password: pw) { (result, error) in
-            
             if error != nil {
-                self.showAlert(message: "이메일 또는 비밀번호를 확인해주세요")
+                print("check for error : \(error!.localizedDescription)")
+                switch error!.localizedDescription {
+                case "There is no user record corresponding to this identifier. The user may have been deleted.":
+                    self.showAlert(message: "존재하지 않는 사용자입니다")
+                case "The password is invalid or the user does not have a password.":
+                    self.showAlert(message: "이메일 또는 비밀번호를 확인해주세요")
+                default:
+                    self.showAlert(message: "로그인 실패")
+                    return
+                }
             } else {
                 let user = Auth.auth().currentUser
                 let uid: String = user!.uid
@@ -45,7 +53,7 @@ class LoginViewController: UIViewController {
                                 if err != nil {
                                     print("check for error : \(err!.localizedDescription)")
                                 } else {
-                                    self.showAlert(message: "이메일 또는 비밀번호를 확인해주세요")
+                                    self.showAlert(message: "존재하지 않는 사용자입니다")
                                 }
                             })
                         } else {

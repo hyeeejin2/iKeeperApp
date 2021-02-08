@@ -34,6 +34,8 @@ class AdminUserInfoDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setUser()
+        print(dataList)
+        print(dataList["id"] as! String)
     }
     
     func setUser(){
@@ -125,7 +127,6 @@ class AdminUserInfoDetailViewController: UIViewController {
     }
     
     @IBAction func completeButton(_sender: UIBarButtonItem) {
-        let id = dataList["id"] as! String
         var part: String = ""
         var status: String = ""
         
@@ -140,7 +141,8 @@ class AdminUserInfoDetailViewController: UIViewController {
             status = "휴학"
         }
         let modifyData = ["part": part, "status": status]
-        print(modifyData)
+        let id: String = dataList["id"] as! String
+        print(id, modifyData)
         
         let db = Firestore.firestore()
         db.collection("users").document("\(id)").updateData(modifyData) { (error) in

@@ -167,11 +167,10 @@ class SignUpViewController: UIViewController {
             status = "휴학"
         }
         
-        Auth.auth().createUser(withEmail: email, password: pw) { (result, err) in
-            // check for error
-            if err != nil {
-                print("check for err : \(err!.localizedDescription)")
-                switch err?.localizedDescription {
+        Auth.auth().createUser(withEmail: email, password: pw) { (result, error) in
+            if error != nil {
+                print("check for err : \(error!.localizedDescription)")
+                switch error?.localizedDescription {
                 case "The email address is already in use by another account.":
                     self.showAlert(message: "이미 가입된 이메일입니다. \n 다른 이메일 주소를 사용해주세요")
                 case "The email address is badly formatted.":
@@ -218,7 +217,6 @@ class SignUpViewController: UIViewController {
  }
 
 extension SignUpViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

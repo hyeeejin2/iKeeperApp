@@ -73,6 +73,7 @@ class MypageViewController: UIViewController {
                         print("check for error : \(error!.localizedDescription)")
                         let defaultImage = UIImage(systemName: "person.circle")
                         self.profileImage.image = defaultImage
+                        
                     } else {
                         guard let urlString = UserDefaults.standard.value(forKey: "\(uid)") as? String, let url = URL(string: urlString) else {
                             return

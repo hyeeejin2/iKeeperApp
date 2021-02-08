@@ -95,6 +95,12 @@ class InformationDetailViewController: UIViewController {
         timeValue.text = dataList["time"] as? String
         viewsValue.text = String((dataList["views"] as? Int)!)
         contentValue.text = dataList["content"] as? String
+        
+        // url
+//        contentValue.isEditable = false
+//        contentValue.isSelectable = true
+//        contentValue.isUserInteractionEnabled = true
+//        contentValue.dataDetectorTypes = .link
     }
     
     // datePicker - date

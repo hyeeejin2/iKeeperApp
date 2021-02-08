@@ -15,7 +15,8 @@ class InformationWriteViewController: UIViewController {
     @IBOutlet weak var writerValue: UITextField!
     @IBOutlet weak var dateValue: UITextField!
     @IBOutlet weak var timeValue: UITextField!
-    @IBOutlet weak var contentValue: UITextField!
+    //@IBOutlet weak var contentValue: UITextField!
+    @IBOutlet weak var contentValue: UITextView!
     let datePicker: UIDatePicker = UIDatePicker()
     let timePicker: UIDatePicker = UIDatePicker()
     let formatter = DateFormatter()
@@ -25,6 +26,7 @@ class InformationWriteViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        setTextview()
         createDatePicker()
         dismissDatePicker()
         createTimePicker()
@@ -53,6 +55,17 @@ class InformationWriteViewController: UIViewController {
         } else {
             self.navigationController?.popViewController(animated: true)
         }
+    }
+    
+    func setTextview() {
+        contentValue.delegate = self
+        
+        contentValue.text = "content"
+        contentValue.textColor = .lightGray
+        
+        contentValue.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        contentValue.layer.borderWidth = 0.5
+        contentValue.layer.cornerRadius = 5.0
     }
     
     func requestPhotosPermission() {
@@ -161,8 +174,16 @@ class InformationWriteViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    @IBAction func imageButton(_ sender: UIButton) {
+    @IBAction func imageBarButton(_ sender: UIBarButtonItem) {
         print("image button click")
+//        let textString = contentValue.text!
+//        let textRange = contentValue.selectedTextRange
+//        let offset = contentValue.offset(from: contentValue.beginningOfDocument, to: textRange!.start)
+        //let afterString = textString.substring(from: textString.index(after: textString.startIndex))
+        //contentValue.offset(from: textRange!.start, to: textRange!.end)
+//        let textAttachment = NSTextAttachment()
+//        textAttachment.image = UIImage(systemName: "photo")
+//        let attrStringWithImage = NSAttributedString(attachment: textAttachment)
         //requestPhotosPermission()
     }
     
@@ -222,5 +243,26 @@ class InformationWriteViewController: UIViewController {
         let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
+    }
+}
+
+extension InformationWriteViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        print("start")
+        if contentValue.text == "content" {
+            textView.text = ""
+            textView.textColor = .black
+        } else if contentValue.text == "" {
+            contentValue.text = "content"
+            contentValue.textColor = .lightGray
+        }
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        print("end")
+        if textView.text == "" {
+            contentValue.text = "content"
+            contentValue.textColor = .lightGray
+        }
     }
 }
