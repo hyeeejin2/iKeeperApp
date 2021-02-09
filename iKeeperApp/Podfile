@@ -9,6 +9,7 @@ target 'ikeeperApp' do
 
 pod 'SideMenu'
 pod 'FSCalendar'
+pod 'YPImagePicker'
 
 # Add the Firebase pod for Google Analytics
 pod 'Firebase/Analytics'

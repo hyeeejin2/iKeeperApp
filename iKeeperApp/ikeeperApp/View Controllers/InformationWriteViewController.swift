@@ -6,8 +6,8 @@
 //
 
 import UIKit
-import Photos
 import Firebase
+import YPImagePicker
 
 class InformationWriteViewController: UIViewController {
 
@@ -15,22 +15,25 @@ class InformationWriteViewController: UIViewController {
     @IBOutlet weak var writerValue: UITextField!
     @IBOutlet weak var dateValue: UITextField!
     @IBOutlet weak var timeValue: UITextField!
-    //@IBOutlet weak var contentValue: UITextField!
     @IBOutlet weak var contentValue: UITextView!
+    @IBOutlet var pickedImages: [UIImageView]!
     let datePicker: UIDatePicker = UIDatePicker()
     let timePicker: UIDatePicker = UIDatePicker()
     let formatter = DateFormatter()
-    var fetchResult: PHFetchResult<PHAsset>?
+    var config = YPImagePickerConfiguration()
+    var images: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
         setTextview()
         createDatePicker()
         dismissDatePicker()
         createTimePicker()
         dismissTimePicker()
+        setYPImagePicker()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,56 +69,6 @@ class InformationWriteViewController: UIViewController {
         contentValue.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         contentValue.layer.borderWidth = 0.5
         contentValue.layer.cornerRadius = 5.0
-    }
-    
-    func requestPhotosPermission() {
-        let photoAuthorizationStatusStatus = PHPhotoLibrary.authorizationStatus()
-            
-        switch photoAuthorizationStatusStatus {
-        case .authorized:
-            print("Photo Authorization status is authorized.")
-            self.requestCollection()
-                
-        case .denied:
-            print("Photo Authorization status is denied.")
-                
-        case .notDetermined:
-            print("Photo Authorization status is not determined.")
-            PHPhotoLibrary.requestAuthorization() { (status) in
-                switch status {
-                case .authorized:
-                    print("User permiited.")
-                    self.requestCollection()
-                case .denied:
-                    print("User denied.")
-                    break
-                default:
-                    break
-                }
-            }
-                
-        case .restricted:
-            print("Photo Authorization status is restricted.")
-        default:
-            break
-        }
-    }
-    
-    func requestCollection() {
-        let cameraRoll: PHFetchResult<PHAssetCollection> = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
-
-        guard let cameraRollCollection = cameraRoll.firstObject else {
-            return
-        }
-
-        let fetchOption = PHFetchOptions()
-        fetchOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-
-        self.fetchResult = PHAsset.fetchAssets(in: cameraRollCollection, options: fetchOption)
-
-//        OperationQueue.main.addOperation {
-//            self.tableView.reloadData()
-//        }
     }
     
     // datePicker - date
@@ -167,6 +120,44 @@ class InformationWriteViewController: UIViewController {
         timeValue.inputAccessoryView = timeToolBar
     }
     
+    func setYPImagePicker() {
+        config.isScrollToChangeModesEnabled = true
+        config.onlySquareImagesFromCamera = true
+        config.usesFrontCamera = false
+        config.showsPhotoFilters = false
+        config.showsVideoTrimmer = false
+        config.shouldSaveNewPicturesToAlbum = true
+        config.albumName = "DefaultYPImagePickerAlbumName"
+        config.startOnScreen = YPPickerScreen.photo
+        config.screens = [.library] // .photo .video
+        
+        config.showsCrop = .none
+        config.targetImageSize = YPImageSize.original
+        config.overlayView = UIView()
+        config.hidesStatusBar = true
+        config.hidesBottomBar = false
+        config.hidesCancelButton = false
+        config.preferredStatusBarStyle = UIStatusBarStyle.default
+        config.bottomMenuItemSelectedTextColour = UIColor(red: 38, green: 38, blue: 38, alpha: 0)
+        config.bottomMenuItemUnSelectedTextColour = UIColor(red: 153, green: 153, blue: 153, alpha: 0)
+        //config.filters = []
+        config.maxCameraZoomFactor = 1.0
+        
+        config.library.preSelectItemOnMultipleSelection = true
+        config.library.options = nil
+        config.library.onlySquare = false
+        config.library.isSquareByDefault = true
+        config.library.minWidthForItem = nil
+        config.library.mediaType = YPlibraryMediaType.photo
+        config.library.defaultMultipleSelection = false
+        config.library.maxNumberOfItems = 1
+        config.library.minNumberOfItems = 1
+        config.library.numberOfItemsInRow = 4
+        config.library.spacingBetweenItems = 1.0
+        config.library.skipSelectionsGallery = false
+        config.library.preselectedItems = nil
+        config.gallery.hidesRemoveButton = false
+    }
     @objc func timeDone() {
         formatter.dateFormat = "hh:mm a"
         let timeString = formatter.string(from: timePicker.date)
@@ -176,15 +167,35 @@ class InformationWriteViewController: UIViewController {
     
     @IBAction func imageBarButton(_ sender: UIBarButtonItem) {
         print("image button click")
-//        let textString = contentValue.text!
-//        let textRange = contentValue.selectedTextRange
-//        let offset = contentValue.offset(from: contentValue.beginningOfDocument, to: textRange!.start)
-        //let afterString = textString.substring(from: textString.index(after: textString.startIndex))
-        //contentValue.offset(from: textRange!.start, to: textRange!.end)
-//        let textAttachment = NSTextAttachment()
-//        textAttachment.image = UIImage(systemName: "photo")
-//        let attrStringWithImage = NSAttributedString(attachment: textAttachment)
-        //requestPhotosPermission()
+        
+        config.library.maxNumberOfItems = 3
+        let picker = YPImagePicker(configuration: config)
+        picker.didFinishPicking { [unowned picker] items, cancelled in
+            self.pickedImages = []
+            self.images = []
+
+            if cancelled {
+                picker.dismiss(animated: true, completion: nil)
+                return
+            }
+
+            for item in items {
+                switch item {
+                case .photo(let photo):
+                    //let image = UIImageView(image: photo.image)
+                    //self.pickedImages.append(image)
+                    self.images.append(photo.image)
+                default:
+                    return
+                }
+            }
+            
+            for image in self.pickedImages {
+                image.image = UIImage(systemName: "pencil")
+            }
+            picker.dismiss(animated: true, completion: nil)
+        }
+        present(picker, animated: true, completion: nil)
     }
     
     @IBAction func writeButton(_ sender: UIButton) {

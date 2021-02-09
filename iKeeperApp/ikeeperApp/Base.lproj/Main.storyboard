@@ -459,6 +459,9 @@
                         <outlet property="timeValue" destination="b3w-1Q-35x" id="JGK-Um-8Ii"/>
                         <outlet property="titleValue" destination="htX-Ft-dd9" id="aRm-6h-PnJ"/>
                         <outlet property="writerValue" destination="Khu-gM-MHp" id="HfC-jW-y9h"/>
+                        <outletCollection property="pickedImages" destination="0SK-fP-DdG" collectionClass="NSMutableArray" id="1Xz-m9-WCH"/>
+                        <outletCollection property="pickedImages" destination="CYZ-DA-gT3" collectionClass="NSMutableArray" id="C9x-EF-Unn"/>
+                        <outletCollection property="pickedImages" destination="gOd-R0-cQq" collectionClass="NSMutableArray" id="bRQ-7D-5ez"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sKw-13-iap" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
