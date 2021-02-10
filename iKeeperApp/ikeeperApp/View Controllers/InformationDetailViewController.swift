@@ -15,7 +15,7 @@ class InformationDetailViewController: UIViewController {
     @IBOutlet weak var dateValue: UITextField!
     @IBOutlet weak var timeValue: UITextField!
     @IBOutlet weak var viewsValue: UITextField!
-    @IBOutlet weak var contentValue: UITextField!
+    @IBOutlet weak var contentValue: UITextView!
     @IBOutlet weak var deleteBarButton: UIBarButtonItem!
     @IBOutlet weak var editBarButton: UIBarButtonItem!
     @IBOutlet weak var completeButton: UIButton!

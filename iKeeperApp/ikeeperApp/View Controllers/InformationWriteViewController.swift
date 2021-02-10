@@ -171,8 +171,8 @@ class InformationWriteViewController: UIViewController {
         config.library.maxNumberOfItems = 3
         let picker = YPImagePicker(configuration: config)
         picker.didFinishPicking { [unowned picker] items, cancelled in
-            self.pickedImages = []
-            self.images = []
+            self.pickedImages = nil
+            //self.images = []
 
             if cancelled {
                 picker.dismiss(animated: true, completion: nil)
@@ -182,17 +182,22 @@ class InformationWriteViewController: UIViewController {
             for item in items {
                 switch item {
                 case .photo(let photo):
-                    //let image = UIImageView(image: photo.image)
-                    //self.pickedImages.append(image)
-                    self.images.append(photo.image)
+                    if let pickedImages = self.pickedImages {
+                        for image in pickedImages {
+                            image.image = photo.image
+                        }
+                    }
+//                    let image = UIImageView(image: photo.image)
+//                    self.pickedImages.append(image)
+                    //self.images.append(photo.image)
                 default:
                     return
                 }
             }
             
-            for image in self.pickedImages {
-                image.image = UIImage(systemName: "pencil")
-            }
+//            for image in self.pickedImages {
+//                image.image = image.image
+//            }
             picker.dismiss(animated: true, completion: nil)
         }
         present(picker, animated: true, completion: nil)
