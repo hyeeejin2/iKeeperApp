@@ -18,19 +18,25 @@ class InformationDetailViewController: UIViewController {
     @IBOutlet weak var contentValue: UITextView!
     @IBOutlet weak var deleteBarButton: UIBarButtonItem!
     @IBOutlet weak var editBarButton: UIBarButtonItem!
+    @IBOutlet weak var imageCollectionView: UICollectionView!
     @IBOutlet weak var completeButton: UIButton!
     let datePicker: UIDatePicker = UIDatePicker()
     let timePicker: UIDatePicker = UIDatePicker()
     let formatter = DateFormatter()
     var dataList = [String: Any]()
+    var storedImage = [UIImage]()
+    var selectedImages = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+//        imageCollectionView.delegate = self
+//        imageCollectionView.dataSource = self
         completeButton.isHidden = true
         setDisabled()
         setValue()
+        setTextview()
         createDatePicker()
         dismissDatePicker()
         createTimePicker()
@@ -103,6 +109,12 @@ class InformationDetailViewController: UIViewController {
 //        contentValue.isSelectable = true
 //        contentValue.isUserInteractionEnabled = true
 //        contentValue.dataDetectorTypes = .link
+    }
+    
+    func setTextview() {
+        contentValue.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        contentValue.layer.borderWidth = 0.5
+        contentValue.layer.cornerRadius = 5.0
     }
     
     // datePicker - date
@@ -214,15 +226,27 @@ class InformationDetailViewController: UIViewController {
     
     @IBAction func deleteButton(_ sender: UIBarButtonItem) {
         let id = dataList["id"] as! String
-        
-        let db = Firestore.firestore()
-        db.collection("infoList").document("\(id)").delete { (error) in
-            if error != nil {
-                print("check for error : \(error!.localizedDescription)")
-            } else {
-                self.showAlertForDelete()
+        showAlertForDelete(id: id)
+    }
+    
+    func showAlertForDelete(id: String) {
+        let alert = UIAlertController(title: "게시글 삭제",
+                                      message: "게시글을 삭제하시겠습니까?",
+                                      preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+            let db = Firestore.firestore()
+            db.collection("infoList").document("\(id)").delete { (error) in
+                if error != nil {
+                    print("check for error : \(error!.localizedDescription)")
+                } else {
+                    self.showAlertModifyOrDelete(title: "삭제 완료", message: "게시글 삭제가 완료되었습니다")
+                }
             }
         }
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     func showAlertModifyOrDelete(title: String, message: String) {
@@ -236,19 +260,6 @@ class InformationDetailViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func showAlertForDelete() {
-        let alert = UIAlertController(title: "게시글 삭제",
-                                      message: "게시글을 삭제하시겠습니까?",
-                                      preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-        let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
-            self.showAlertModifyOrDelete(title: "삭제 완료", message: "게시글 삭제가 완료되었습니다")
-        }
-        alert.addAction(cancelAction)
-        alert.addAction(okAction)
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     func showAlert(message: String) {
         let alert = UIAlertController(title: "알림",
                                       message: message,
@@ -258,3 +269,32 @@ class InformationDetailViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
 }
+
+//extension InformationDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        <#code#>
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        <#code#>
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        <#code#>
+//    }
+//}
+//
+//extension InformationDetailViewController: UICollectionViewDelegateFlowLayout {
+//    // 옆 간격
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//        return 2
+//    }
+//
+//    // cell 사이즈
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//
+//        let width = collectionView.frame.width / 3-2
+//        let size = CGSize(width: width, height: width)
+//        return size
+//    }
+//}

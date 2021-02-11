@@ -407,4 +407,18 @@ extension MypageViewController: UIImagePickerControllerDelegate, UINavigationCon
         picker.dismiss(animated: true, completion: nil)
     }
     
+//    func resize(image: UIImage) -> Data? {
+//        if let imageData = image.pngData() { //if there is an image start the checks and possible compression
+//            let size = imageData.count / 1024
+//            if size > 1024 { //if the image data size is > 1024
+//                let compressionValue = CGFloat(1024 / size) //get the compression value needed in order to bring the image down to 1024
+//                return image.jpegData(compressionQuality: compressionValue) //return the compressed image data
+//            } else { //if your image <= 1024 nothing needs to be done and return it as is
+//                return imageData
+//            }
+//        } else { //if it cant get image data return nothing
+//            return nil
+//        }
+//    }
+    
 }

@@ -30,6 +30,7 @@ class InformationWriteViewController: UIViewController {
         
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
+        
         setTextview()
         createDatePicker()
         dismissDatePicker()
@@ -131,7 +132,7 @@ class InformationWriteViewController: UIViewController {
         config.shouldSaveNewPicturesToAlbum = true
         config.albumName = "DefaultYPImagePickerAlbumName"
         config.startOnScreen = YPPickerScreen.photo
-        config.screens = [.library] // .photo .video
+        config.screens = [.library]
         
         config.showsCrop = .none
         config.targetImageSize = YPImageSize.original
@@ -219,6 +220,7 @@ class InformationWriteViewController: UIViewController {
         let uid = user!.uid
         let timestamp = NSDate().timeIntervalSince1970
         let views: Int = 0
+        
         let db = Firestore.firestore()
         let newDocument = db.collection("infoList").document()
         newDocument.setData(["id": newDocument.documentID, "uid": uid, "title": title, "writer": writer, "date": date, "time": time, "views": views, "content": content, "created": timestamp]) { (error) in
@@ -226,6 +228,27 @@ class InformationWriteViewController: UIViewController {
                 print("check for error : \(error!.localizedDescription)")
                 self.showAlert(message: "게시글 등록 실패")
             } else {
+                let storage = Storage.storage().reference()
+                var count: Int = 1
+                for selectedImage in self.selectedImages {
+                    let pngImage: Data = selectedImage.pngData()!
+                    storage.child("images/infoBoard/\(newDocument.documentID)/\(count).png").putData(pngImage, metadata: nil, completion: { _, error in
+                        guard error == nil else {
+                            print("Failed to upload")
+                            return
+                        }
+                        storage.child("images/infoBoard/\(newDocument.documentID)/\(count).png").downloadURL { (url, error) in
+                            guard let url = url, error == nil else {
+                                return
+                            }
+                            
+                            let urlString = url.absoluteString
+                            print("Download URL : \(urlString)")
+                            UserDefaults.standard.setValue(urlString, forKey: "\(newDocument.documentID)")
+                        }
+                    })
+                    count += 1
+                }
                 self.showAlertForWrite()
             }
         }
@@ -290,8 +313,17 @@ extension InformationWriteViewController: UICollectionViewDelegate, UICollection
     }
     
     @objc func deleteButton(_ sender: UIButton) {
-        selectedImages.remove(at: sender.tag)
-        imageCollectionView.reloadData()
+        let alert = UIAlertController(title: "이미지 삭제",
+                                      message: "이미지를 삭제하시겠습니까?",
+                                      preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+            self.selectedImages.remove(at: sender.tag)
+            self.imageCollectionView.reloadData()
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

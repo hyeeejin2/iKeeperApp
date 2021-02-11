@@ -189,24 +189,23 @@ class PublicMoneyDetailViewController: UIViewController {
     
     @IBAction func deleteButton(_ sender: UIBarButtonItem) {
         let id = dataList["id"] as! String
-        
-        let db = Firestore.firestore()
-        db.collection("publicMoney").document("\(id)").delete { (error) in
-            if error != nil {
-                print("check for error : \(error!.localizedDescription)")
-            } else {
-                self.showAlertForDelete()
-            }
-        }
+        showAlertForDelete(id: id)
     }
     
-    func showAlertForDelete() {
+    func showAlertForDelete(id: String) {
         let alert = UIAlertController(title: "공금내역 삭제",
                                       message: "공금내역을 삭제하시겠습니까?",
                                       preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
-            self.showAlertModifyOrDelete(title: "삭제 완료", message: "공금내역 삭제가 완료되었습니다")
+            let db = Firestore.firestore()
+            db.collection("publicMoney").document("\(id)").delete { (error) in
+                if error != nil {
+                    print("check for error : \(error!.localizedDescription)")
+                } else {
+                    self.showAlertModifyOrDelete(title: "삭제 완료", message: "공금내역 삭제가 완료되었습니다")
+                }
+            }
         }
         alert.addAction(cancelAction)
         alert.addAction(okAction)
