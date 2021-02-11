@@ -364,6 +364,7 @@ extension MypageViewController: UITableViewDelegate, UITableViewDataSource {
 extension MypageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     // 사진 선택이 끝나면
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
 //        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
 //            profileImage.image = image
 //            print(info)
@@ -373,13 +374,15 @@ extension MypageViewController: UIImagePickerControllerDelegate, UINavigationCon
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
             return
         }
+        
         profileImage.image = image
         print(info)
         dismiss(animated: true, completion: nil)
+
         guard let imageData = image.pngData() else {
             return
         }
-
+        
         let user = Auth.auth().currentUser
         let uid: String = user!.uid
         let storage = Storage.storage().reference()
@@ -403,4 +406,5 @@ extension MypageViewController: UIImagePickerControllerDelegate, UINavigationCon
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
+    
 }

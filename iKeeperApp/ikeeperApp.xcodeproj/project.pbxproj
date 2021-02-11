@@ -14,6 +14,7 @@
 		0A361F4D25B2E54800EB27A0 /* logo1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A361F4C25B2E54800EB27A0 /* logo1.png */; };
 		0A361F5025B2E6A900EB27A0 /* logo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A361F4F25B2E6A900EB27A0 /* logo2.png */; };
 		0A361F5325B2E6B300EB27A0 /* logo3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0A361F5225B2E6B300EB27A0 /* logo3.png */; };
+		0A36506A25D560A900A15AA3 /* InfoWriteCollectionCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A36506925D560A900A15AA3 /* InfoWriteCollectionCustomCell.swift */; };
 		0A3A931325A06AF90015C43D /* PublicMoneyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3A931225A06AF90015C43D /* PublicMoneyViewController.swift */; };
 		0A3A931725A07E530015C43D /* PublicMoneyWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3A931625A07E530015C43D /* PublicMoneyWriteViewController.swift */; };
 		0A3CC3A92555009D00AEACF9 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3CC3A82555009D00AEACF9 /* SignUpViewController.swift */; };
@@ -65,6 +66,7 @@
 		0A361F4C25B2E54800EB27A0 /* logo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo1.png; sourceTree = "<group>"; };
 		0A361F4F25B2E6A900EB27A0 /* logo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo2.png; sourceTree = "<group>"; };
 		0A361F5225B2E6B300EB27A0 /* logo3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo3.png; sourceTree = "<group>"; };
+		0A36506925D560A900A15AA3 /* InfoWriteCollectionCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoWriteCollectionCustomCell.swift; sourceTree = "<group>"; };
 		0A3A931225A06AF90015C43D /* PublicMoneyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMoneyViewController.swift; sourceTree = "<group>"; };
 		0A3A931625A07E530015C43D /* PublicMoneyWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMoneyWriteViewController.swift; sourceTree = "<group>"; };
 		0A3CC3A82555009D00AEACF9 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 			children = (
 				0A98D52025559DE400E4BF66 /* Constants.swift */,
 				0A1A579C2567E10400562BE1 /* InfoCustomCell.swift */,
+				0A36506925D560A900A15AA3 /* InfoWriteCollectionCustomCell.swift */,
 				0A194BB2257FB2B700820837 /* CalendarCustomCell.swift */,
 				0ADB319525A5D9B3009812B0 /* PublicMoneyCustomCell.swift */,
 				0AC41B9425B47A6200968B9B /* HomeCalendarCustomCell.swift */,
@@ -365,6 +368,7 @@
 				0ABF9B9D25C151A50015B788 /* MypageWrittenInfoViewController.swift in Sources */,
 				0AA00FE125C02838004122F5 /* MypageUserInfoViewController.swift in Sources */,
 				0AE4031C25CD8C5800422A1D /* AdminWarningWriteViewController.swift in Sources */,
+				0A36506A25D560A900A15AA3 /* InfoWriteCollectionCustomCell.swift in Sources */,
 				0A98D52125559DE400E4BF66 /* Constants.swift in Sources */,
 				0AA73699258F25A800CD6314 /* InformationWriteViewController.swift in Sources */,
 				0AD493D82557F48700BA552E /* HomeViewController.swift in Sources */,

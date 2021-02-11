@@ -76,7 +76,8 @@ class InformationDetailViewController: UIViewController {
         titleValue.isEnabled = true
         dateValue.isEnabled = true
         timeValue.isEnabled = true
-        contentValue.isEnabled = true
+        contentValue.isEditable = true
+        //contentValue.isEnabled = true
     }
     
     func setDisabled() {
@@ -85,7 +86,8 @@ class InformationDetailViewController: UIViewController {
         dateValue.isEnabled = false
         timeValue.isEnabled = false
         viewsValue.isEnabled = false
-        contentValue.isEnabled = false
+        contentValue.isEditable = false
+//        contentValue.isEnabled = false
     }
     
     func setValue() {

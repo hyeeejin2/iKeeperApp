@@ -16,18 +16,20 @@ class InformationWriteViewController: UIViewController {
     @IBOutlet weak var dateValue: UITextField!
     @IBOutlet weak var timeValue: UITextField!
     @IBOutlet weak var contentValue: UITextView!
-    @IBOutlet var pickedImages: [UIImageView]!
+    @IBOutlet weak var imageCollectionView: UICollectionView!
     let datePicker: UIDatePicker = UIDatePicker()
     let timePicker: UIDatePicker = UIDatePicker()
     let formatter = DateFormatter()
     var config = YPImagePickerConfiguration()
-    var images: [UIImage] = []
+    var selectedImages = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
+        imageCollectionView.delegate = self
+        imageCollectionView.dataSource = self
         setTextview()
         createDatePicker()
         dismissDatePicker()
@@ -166,13 +168,10 @@ class InformationWriteViewController: UIViewController {
     }
     
     @IBAction func imageBarButton(_ sender: UIBarButtonItem) {
-        print("image button click")
-        
         config.library.maxNumberOfItems = 3
         let picker = YPImagePicker(configuration: config)
         picker.didFinishPicking { [unowned picker] items, cancelled in
-            self.pickedImages = nil
-            //self.images = []
+            self.selectedImages = [UIImage]()
 
             if cancelled {
                 picker.dismiss(animated: true, completion: nil)
@@ -182,23 +181,14 @@ class InformationWriteViewController: UIViewController {
             for item in items {
                 switch item {
                 case .photo(let photo):
-                    if let pickedImages = self.pickedImages {
-                        for image in pickedImages {
-                            image.image = photo.image
-                        }
-                    }
-//                    let image = UIImageView(image: photo.image)
-//                    self.pickedImages.append(image)
-                    //self.images.append(photo.image)
+                    self.selectedImages.append(photo.image)
                 default:
                     return
                 }
             }
-            
-//            for image in self.pickedImages {
-//                image.image = image.image
-//            }
-            picker.dismiss(animated: true, completion: nil)
+            picker.dismiss(animated: true) {
+                self.imageCollectionView.reloadData()
+            }
         }
         present(picker, animated: true, completion: nil)
     }
@@ -280,5 +270,42 @@ extension InformationWriteViewController: UITextViewDelegate {
             contentValue.text = "content"
             contentValue.textColor = .lightGray
         }
+    }
+}
+
+extension InformationWriteViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return selectedImages.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        //cell은 as 키워드로 앞서 만든 InfoWriteCollectionCustomCell 클래스화
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InfoWriteCollectionCustomCell", for: indexPath) as! InfoWriteCollectionCustomCell
+        
+        // cell에 데이터 삽입
+        let selectedImage: UIImage = selectedImages[indexPath.row]
+        cell.image.image = selectedImage
+        cell.deleteButton.addTarget(self, action: #selector(self.deleteButton(_:)), for: .touchUpInside)
+        return cell
+    }
+    
+    @objc func deleteButton(_ sender: UIButton) {
+        selectedImages.remove(at: sender.tag)
+        imageCollectionView.reloadData()
+    }
+}
+
+extension InformationWriteViewController: UICollectionViewDelegateFlowLayout {
+    // 옆 간격
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 2
+    }
+
+    // cell 사이즈
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let width = collectionView.frame.width / 3-2
+        let size = CGSize(width: width, height: width)
+        return size
     }
 }
