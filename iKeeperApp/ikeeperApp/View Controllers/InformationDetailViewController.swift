@@ -24,8 +24,7 @@ class InformationDetailViewController: UIViewController {
     let timePicker: UIDatePicker = UIDatePicker()
     let formatter = DateFormatter()
     var dataList = [String: Any]()
-    var storedImage = [UIImage]()
-    var selectedImages = [UIImage]()
+    var images = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +44,7 @@ class InformationDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setUser()
+        getImages()
     }
     
     func setUser(){
@@ -115,6 +115,36 @@ class InformationDetailViewController: UIViewController {
         contentValue.layer.borderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         contentValue.layer.borderWidth = 0.5
         contentValue.layer.cornerRadius = 5.0
+    }
+    
+    func getImages() {
+        let id: String = dataList["id"] as! String
+        let numberOfImage: Int = dataList["count"] as! Int
+        
+        let storage = Storage.storage().reference()
+        for count in 0..<numberOfImage {
+            storage.child("images/infoBoard/\(id)/\(count).png").downloadURL { (url, error) in
+                if error != nil {
+                    print("check for error :\(error!.localizedDescription)")
+                } else {
+                    guard let urlString = UserDefaults.standard.value(forKey: "\(id)-\(count)") as? String, let url = URL(string: urlString) else {
+                        return
+                    }
+                    let task = URLSession.shared.dataTask(with: url, completionHandler: { data, _, error in
+                        guard let data = data, error == nil else {
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            let image = UIImage(data: data)
+                            self.images.append(image!)
+                        }
+                    })
+                    task.resume()
+                }
+            }
+        }
+        print(images)
+        imageCollectionView.reloadData()
     }
     
     // datePicker - date
@@ -270,31 +300,37 @@ class InformationDetailViewController: UIViewController {
     }
 }
 
-//extension InformationDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        <#code#>
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        <#code#>
-//    }
-//
+extension InformationDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return images.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        //cell은 as 키워드로 앞서 만든 InfoDetailCollectionCustomCell 클래스화
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "InfoDetailCollectionCustomCell", for: indexPath) as! InfoDetailCollectionCustomCell
+        
+        // cell에 데이터 삽입
+        let image: UIImage = images[indexPath.row]
+        cell.image.image = image
+        return cell
+    }
+
 //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        <#code#>
 //    }
-//}
-//
-//extension InformationDetailViewController: UICollectionViewDelegateFlowLayout {
-//    // 옆 간격
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 2
-//    }
-//
-//    // cell 사이즈
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//        let width = collectionView.frame.width / 3-2
-//        let size = CGSize(width: width, height: width)
-//        return size
-//    }
-//}
+}
+
+extension InformationDetailViewController: UICollectionViewDelegateFlowLayout {
+    // 옆 간격
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 2
+    }
+
+    // cell 사이즈
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let width = collectionView.frame.width / 3-2
+        let size = CGSize(width: width, height: width)
+        return size
+    }
+}

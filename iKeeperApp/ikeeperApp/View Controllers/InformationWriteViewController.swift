@@ -223,13 +223,13 @@ class InformationWriteViewController: UIViewController {
         
         let db = Firestore.firestore()
         let newDocument = db.collection("infoList").document()
-        newDocument.setData(["id": newDocument.documentID, "uid": uid, "title": title, "writer": writer, "date": date, "time": time, "views": views, "content": content, "created": timestamp]) { (error) in
+        newDocument.setData(["id": newDocument.documentID, "uid": uid, "title": title, "writer": writer, "date": date, "time": time, "views": views, "content": content, "count": self.selectedImages.count, "created": timestamp]) { (error) in
             if error != nil {
                 print("check for error : \(error!.localizedDescription)")
                 self.showAlert(message: "게시글 등록 실패")
             } else {
                 let storage = Storage.storage().reference()
-                var count: Int = 1
+                var count: Int = 0
                 for selectedImage in self.selectedImages {
                     let pngImage: Data = selectedImage.pngData()!
                     storage.child("images/infoBoard/\(newDocument.documentID)/\(count).png").putData(pngImage, metadata: nil, completion: { _, error in
@@ -244,7 +244,7 @@ class InformationWriteViewController: UIViewController {
                             
                             let urlString = url.absoluteString
                             print("Download URL : \(urlString)")
-                            UserDefaults.standard.setValue(urlString, forKey: "\(newDocument.documentID)")
+                            UserDefaults.standard.setValue(urlString, forKey: "\(newDocument.documentID)-\(count)")
                         }
                     })
                     count += 1

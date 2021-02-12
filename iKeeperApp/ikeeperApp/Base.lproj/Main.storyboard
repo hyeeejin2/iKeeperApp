@@ -509,18 +509,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mpO-QH-0k2">
-                                                <rect key="frame" x="0.0" y="0.0" width="340" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="xLV-DG-iOM"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hto-uS-23r">
-                                                <rect key="frame" x="350" y="0.0" width="24" height="40"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <state key="normal" image="photo" catalog="system"/>
-                                            </button>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PTk-wQ-ZQN">
@@ -595,7 +590,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="InfoWriteCollectionCustomCell" id="TT2-LY-dhq" customClass="InfoWriteCollectionCustomCell" customModule="ikeeperApp" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="InfoDetailCollectionCustomCell" id="TT2-LY-dhq" customClass="InfoDetailCollectionCustomCell" customModule="ikeeperApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WiH-rA-8wk">
@@ -613,6 +608,9 @@
                                                 <constraint firstAttribute="trailing" secondItem="QMr-sD-clu" secondAttribute="trailing" id="zSG-ow-Glb"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="image" destination="QMr-sD-clu" id="cIs-Ei-tov"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -658,6 +656,7 @@
                         <outlet property="dateValue" destination="pAA-YD-YQ6" id="dth-Po-bsb"/>
                         <outlet property="deleteBarButton" destination="Xvl-lo-YE1" id="ydK-F4-a0E"/>
                         <outlet property="editBarButton" destination="kbT-km-tAI" id="3LM-1t-SYa"/>
+                        <outlet property="imageCollectionView" destination="g3K-b0-Mc1" id="SGl-Ro-PPU"/>
                         <outlet property="timeValue" destination="2ui-hf-z5P" id="hdU-YV-QzL"/>
                         <outlet property="titleValue" destination="mpO-QH-0k2" id="VRG-m9-Vd7"/>
                         <outlet property="viewsValue" destination="s5l-wV-piG" id="iUl-Ny-0Ih"/>
