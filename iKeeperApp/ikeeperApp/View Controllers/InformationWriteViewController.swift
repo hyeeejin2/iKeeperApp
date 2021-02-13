@@ -32,11 +32,11 @@ class InformationWriteViewController: UIViewController {
         imageCollectionView.dataSource = self
         
         setTextview()
+        setYPImagePicker()
         createDatePicker()
         dismissDatePicker()
         createTimePicker()
         dismissTimePicker()
-        setYPImagePicker()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -161,6 +161,7 @@ class InformationWriteViewController: UIViewController {
         config.library.preselectedItems = nil
         config.gallery.hidesRemoveButton = false
     }
+    
     @objc func timeDone() {
         formatter.dateFormat = "hh:mm a"
         let timeString = formatter.string(from: timePicker.date)
@@ -169,29 +170,31 @@ class InformationWriteViewController: UIViewController {
     }
     
     @IBAction func imageBarButton(_ sender: UIBarButtonItem) {
-        config.library.maxNumberOfItems = 3
-        let picker = YPImagePicker(configuration: config)
-        picker.didFinishPicking { [unowned picker] items, cancelled in
-            self.selectedImages = [UIImage]()
-
-            if cancelled {
-                picker.dismiss(animated: true, completion: nil)
-                return
-            }
-
-            for item in items {
-                switch item {
-                case .photo(let photo):
-                    self.selectedImages.append(photo.image)
-                default:
+        if selectedImages.count < 3 {
+            config.library.maxNumberOfItems = 3 - selectedImages.count
+            let picker = YPImagePicker(configuration: config)
+            picker.didFinishPicking { [unowned picker] items, cancelled in
+                if cancelled {
+                    picker.dismiss(animated: true, completion: nil)
                     return
                 }
+
+                for item in items {
+                    switch item {
+                    case .photo(let photo):
+                        self.selectedImages.append(photo.image)
+                    default:
+                        return
+                    }
+                }
+                picker.dismiss(animated: true) {
+                    self.imageCollectionView.reloadData()
+                }
             }
-            picker.dismiss(animated: true) {
-                self.imageCollectionView.reloadData()
-            }
+            present(picker, animated: true, completion: nil)
+        } else {
+            showAlert(message: "사진을 3개 이상 첨부할 수 없습니다")
         }
-        present(picker, animated: true, completion: nil)
     }
     
     @IBAction func writeButton(_ sender: UIButton) {
@@ -228,23 +231,26 @@ class InformationWriteViewController: UIViewController {
                 print("check for error : \(error!.localizedDescription)")
                 self.showAlert(message: "게시글 등록 실패")
             } else {
-                let storage = Storage.storage().reference()
                 var count: Int = 0
                 for selectedImage in self.selectedImages {
-                    let pngImage: Data = selectedImage.pngData()!
-                    storage.child("images/infoBoard/\(newDocument.documentID)/\(count).png").putData(pngImage, metadata: nil, completion: { _, error in
+                    guard let imageData = selectedImage.pngData() else {
+                        return
+                    }
+                    let fileName = "\(newDocument.documentID)-\(count)"
+                    let storage = Storage.storage().reference()
+                    storage.child("images/infoBoard/\(fileName).png").putData(imageData, metadata: nil, completion: { _, error in
                         guard error == nil else {
                             print("Failed to upload")
                             return
                         }
-                        storage.child("images/infoBoard/\(newDocument.documentID)/\(count).png").downloadURL { (url, error) in
+                        storage.child("images/infoBoard/\(fileName).png").downloadURL { (url, error) in
                             guard let url = url, error == nil else {
                                 return
                             }
                             
                             let urlString = url.absoluteString
                             print("Download URL : \(urlString)")
-                            UserDefaults.standard.setValue(urlString, forKey: "\(newDocument.documentID)-\(count)")
+                            UserDefaults.standard.setValue(urlString, forKey: "\(fileName)")
                         }
                     })
                     count += 1

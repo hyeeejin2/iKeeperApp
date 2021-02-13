@@ -10,6 +10,7 @@ import UIKit
 class InfoDetailCollectionCustomCell: UICollectionViewCell {
     
     @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var deleteButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

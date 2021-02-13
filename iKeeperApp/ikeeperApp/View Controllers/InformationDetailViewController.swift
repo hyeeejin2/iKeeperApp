@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import YPImagePicker
 
 class InformationDetailViewController: UIViewController {
 
@@ -16,26 +17,28 @@ class InformationDetailViewController: UIViewController {
     @IBOutlet weak var timeValue: UITextField!
     @IBOutlet weak var viewsValue: UITextField!
     @IBOutlet weak var contentValue: UITextView!
-    @IBOutlet weak var deleteBarButton: UIBarButtonItem!
-    @IBOutlet weak var editBarButton: UIBarButtonItem!
+    @IBOutlet weak var rightBarButton: UIBarButtonItem!
     @IBOutlet weak var imageCollectionView: UICollectionView!
     @IBOutlet weak var completeButton: UIButton!
     let datePicker: UIDatePicker = UIDatePicker()
     let timePicker: UIDatePicker = UIDatePicker()
     let formatter = DateFormatter()
     var dataList = [String: Any]()
+    var config = YPImagePickerConfiguration()
     var images = [UIImage]()
+    var showMode: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-//        imageCollectionView.delegate = self
-//        imageCollectionView.dataSource = self
+        imageCollectionView.delegate = self
+        imageCollectionView.dataSource = self
         completeButton.isHidden = true
         setDisabled()
         setValue()
         setTextview()
+        setYPImagePicker()
         createDatePicker()
         dismissDatePicker()
         createTimePicker()
@@ -72,10 +75,8 @@ class InformationDetailViewController: UIViewController {
     }
     
     func setBarButtonDisabled() {
-        editBarButton.image = nil
-        editBarButton.isEnabled = false
-        deleteBarButton.image = nil
-        deleteBarButton.isEnabled = false
+        rightBarButton.image = nil
+        rightBarButton.isEnabled = false
     }
     
     func setEnabled() {
@@ -83,7 +84,6 @@ class InformationDetailViewController: UIViewController {
         dateValue.isEnabled = true
         timeValue.isEnabled = true
         contentValue.isEditable = true
-        //contentValue.isEnabled = true
     }
     
     func setDisabled() {
@@ -93,7 +93,6 @@ class InformationDetailViewController: UIViewController {
         timeValue.isEnabled = false
         viewsValue.isEnabled = false
         contentValue.isEditable = false
-//        contentValue.isEnabled = false
     }
     
     func setValue() {
@@ -103,12 +102,6 @@ class InformationDetailViewController: UIViewController {
         timeValue.text = dataList["time"] as? String
         viewsValue.text = String((dataList["views"] as? Int)!)
         contentValue.text = dataList["content"] as? String
-        
-        // url
-//        contentValue.isEditable = false
-//        contentValue.isSelectable = true
-//        contentValue.isUserInteractionEnabled = true
-//        contentValue.dataDetectorTypes = .link
     }
     
     func setTextview() {
@@ -117,13 +110,52 @@ class InformationDetailViewController: UIViewController {
         contentValue.layer.cornerRadius = 5.0
     }
     
+    func setYPImagePicker() {
+        config.isScrollToChangeModesEnabled = true
+        config.onlySquareImagesFromCamera = true
+        config.usesFrontCamera = false
+        config.showsPhotoFilters = false
+        config.showsVideoTrimmer = false
+        config.shouldSaveNewPicturesToAlbum = true
+        config.albumName = "DefaultYPImagePickerAlbumName"
+        config.startOnScreen = YPPickerScreen.photo
+        config.screens = [.library]
+        
+        config.showsCrop = .none
+        config.targetImageSize = YPImageSize.original
+        config.overlayView = UIView()
+        config.hidesStatusBar = true
+        config.hidesBottomBar = false
+        config.hidesCancelButton = false
+        config.preferredStatusBarStyle = UIStatusBarStyle.default
+        config.bottomMenuItemSelectedTextColour = UIColor(red: 38, green: 38, blue: 38, alpha: 0)
+        config.bottomMenuItemUnSelectedTextColour = UIColor(red: 153, green: 153, blue: 153, alpha: 0)
+        //config.filters = []
+        config.maxCameraZoomFactor = 1.0
+        
+        config.library.preSelectItemOnMultipleSelection = true
+        config.library.options = nil
+        config.library.onlySquare = false
+        config.library.isSquareByDefault = true
+        config.library.minWidthForItem = nil
+        config.library.mediaType = YPlibraryMediaType.photo
+        config.library.defaultMultipleSelection = false
+        config.library.maxNumberOfItems = 1
+        config.library.minNumberOfItems = 1
+        config.library.numberOfItemsInRow = 4
+        config.library.spacingBetweenItems = 1.0
+        config.library.skipSelectionsGallery = false
+        config.library.preselectedItems = nil
+        config.gallery.hidesRemoveButton = false
+    }
+    
     func getImages() {
         let id: String = dataList["id"] as! String
         let numberOfImage: Int = dataList["count"] as! Int
         
-        let storage = Storage.storage().reference()
         for count in 0..<numberOfImage {
-            storage.child("images/infoBoard/\(id)/\(count).png").downloadURL { (url, error) in
+            let storage = Storage.storage().reference()
+            storage.child("images/infoBoard/\(id)-\(count).png").downloadURL { (url, error) in
                 if error != nil {
                     print("check for error :\(error!.localizedDescription)")
                 } else {
@@ -137,14 +169,13 @@ class InformationDetailViewController: UIViewController {
                         DispatchQueue.main.async {
                             let image = UIImage(data: data)
                             self.images.append(image!)
+                            self.imageCollectionView.reloadData()
                         }
                     })
                     task.resume()
                 }
             }
         }
-        print(images)
-        imageCollectionView.reloadData()
     }
     
     // datePicker - date
@@ -202,12 +233,61 @@ class InformationDetailViewController: UIViewController {
         timeValue.text = "\(timeString)"
         self.view.endEditing(true)
     }
+    
+    func showAlertForChoice() {
+        let alert = UIAlertController(title: "기능 선택", message: nil, preferredStyle: .actionSheet)
+        let modify = UIAlertAction(title: "수정", style: .default) { (action) in
+            self.rightBarButton.image = UIImage(systemName: "photo")
+            self.showMode = false
+            self.completeButton.isHidden = false
+            self.setEnabled()
+            //self.imageCollectionView.reloadData()
+        }
+        let delete = UIAlertAction(title: "삭제", style: .default) { (action) in
+            let id = self.dataList["id"] as! String
+            self.showAlertForDelete(id: id)
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        alert.addAction(modify)
+        alert.addAction(delete)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func imageChoice() {
+        config.library.maxNumberOfItems = 3 - images.count
+        let picker = YPImagePicker(configuration: config)
+        picker.didFinishPicking { [unowned picker] items, cancelled in
+            if cancelled {
+                picker.dismiss(animated: true, completion: nil)
+                return
+            }
 
-    @IBAction func editBarButton(_ sender: UIBarButtonItem) {
-        editBarButton.image = nil
-        editBarButton.isEnabled = false
-        completeButton.isHidden = false
-        setEnabled()
+            for item in items {
+                switch item {
+                case .photo(let photo):
+                    self.images.append(photo.image)
+                default:
+                    return
+                }
+            }
+            picker.dismiss(animated: true) {
+                self.imageCollectionView.reloadData()
+            }
+        }
+        present(picker, animated: true, completion: nil)
+    }
+    
+    @IBAction func rightBarButton(_ sender: UIBarButtonItem) {
+        if showMode {
+            showAlertForChoice()
+        } else {
+            if self.images.count < 3 {
+                imageChoice()
+            } else {
+                showAlert(message: "사진을 3개 이상 첨부할 수 없습니다")
+            }
+        }
     }
     
     @IBAction func completeButton(_ sender: UIButton) {
@@ -236,7 +316,7 @@ class InformationDetailViewController: UIViewController {
             return
         }
         
-        let modifyData = ["title": title, "date": date, "time": time, "content": content]
+        let modifyData = ["title": title, "date": date, "time": time, "content": content, "count": self.images.count] as [String : Any]
         let id = dataList["id"] as! String
         print(modifyData, id)
         
@@ -248,15 +328,10 @@ class InformationDetailViewController: UIViewController {
                 self.showAlertModifyOrDelete(title: "수정 완료", message: "게시글 수정이 완료되었습니다")
             }
         }
-        editBarButton.image = UIImage(systemName: "pencil.slash")
-        editBarButton.isEnabled = true
+        rightBarButton.image = UIImage(systemName: "pencil.slash")
+        showMode = true
         completeButton.isHidden = true
         setDisabled()
-    }
-    
-    @IBAction func deleteButton(_ sender: UIBarButtonItem) {
-        let id = dataList["id"] as! String
-        showAlertForDelete(id: id)
     }
     
     func showAlertForDelete(id: String) {
@@ -312,7 +387,27 @@ extension InformationDetailViewController: UICollectionViewDelegate, UICollectio
         // cell에 데이터 삽입
         let image: UIImage = images[indexPath.row]
         cell.image.image = image
+        if showMode {
+            cell.deleteButton.isHidden = true
+            cell.deleteButton.isEnabled = false
+        } else {
+            cell.deleteButton.addTarget(self, action: #selector(self.deleteButton(_:)), for: .touchUpInside)
+        }
         return cell
+    }
+    
+    @objc func deleteButton(_ sender: UIButton) {
+        let alert = UIAlertController(title: "이미지 삭제",
+                                      message: "이미지를 삭제하시겠습니까?",
+                                      preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+            self.images.remove(at: sender.tag)
+            self.imageCollectionView.reloadData()
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
 
 //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
