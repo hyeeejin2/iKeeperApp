@@ -241,7 +241,7 @@ class InformationDetailViewController: UIViewController {
             self.showMode = false
             self.completeButton.isHidden = false
             self.setEnabled()
-            //self.imageCollectionView.reloadData()
+            self.imageCollectionView.reloadData()
         }
         let delete = UIAlertAction(title: "삭제", style: .default) { (action) in
             let id = self.dataList["id"] as! String
@@ -318,13 +318,47 @@ class InformationDetailViewController: UIViewController {
         
         let modifyData = ["title": title, "date": date, "time": time, "content": content, "count": self.images.count] as [String : Any]
         let id = dataList["id"] as! String
+        let count = dataList["count"] as! Int
         print(modifyData, id)
         
         let db = Firestore.firestore()
         db.collection("infoList").document("\(id)").updateData(modifyData) { (error) in
             if error != nil {
-                print("check for error : \(error!.localizedDescription)")
             } else {
+                for count in 0..<count {
+                    let fileName = "\(id)-\(count)"
+                    let storage = Storage.storage().reference()
+                    storage.child("images/infoBoard/\(fileName).png").delete { (error) in
+                        if error != nil {
+                            print("check for error : \(error!.localizedDescription)")
+                            return
+                        }
+                    }
+                }
+                var count: Int = 0
+                for image in self.images {
+                    guard let imageData = image.pngData() else {
+                        return
+                    }
+                    let fileName = "\(id)-\(count)"
+                    let storage = Storage.storage().reference()
+                    storage.child("images/infoBoard/\(fileName).png").putData(imageData, metadata: nil, completion: { _, error in
+                        guard error == nil else {
+                            print("Failed to upload")
+                            return
+                        }
+                        storage.child("images/infoBoard/\(fileName).png").downloadURL { (url, error) in
+                            guard let url = url, error == nil else {
+                                return
+                            }
+                            
+                            let urlString = url.absoluteString
+                            print("Download URL : \(urlString)")
+                            UserDefaults.standard.setValue(urlString, forKey: "\(fileName)")
+                        }
+                    })
+                    count += 1
+                }
                 self.showAlertModifyOrDelete(title: "수정 완료", message: "게시글 수정이 완료되었습니다")
             }
         }
@@ -340,11 +374,24 @@ class InformationDetailViewController: UIViewController {
                                       preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+            let id = self.dataList["id"] as! String
+            let count = self.dataList["count"] as! Int
+            
             let db = Firestore.firestore()
             db.collection("infoList").document("\(id)").delete { (error) in
                 if error != nil {
                     print("check for error : \(error!.localizedDescription)")
                 } else {
+                    for count in 0..<count {
+                        let fileName = "\(id)-\(count)"
+                        let storage = Storage.storage().reference()
+                        storage.child("images/infoBoard/\(fileName).png").delete { (error) in
+                            if error != nil {
+                                print("check for error : \(error!.localizedDescription)")
+                                return
+                            }
+                        }
+                    }
                     self.showAlertModifyOrDelete(title: "삭제 완료", message: "게시글 삭제가 완료되었습니다")
                 }
             }
@@ -391,6 +438,9 @@ extension InformationDetailViewController: UICollectionViewDelegate, UICollectio
             cell.deleteButton.isHidden = true
             cell.deleteButton.isEnabled = false
         } else {
+            cell.deleteButton.isHidden = false
+            cell.deleteButton.isEnabled = true
+            cell.deleteButton.tag = indexPath.row
             cell.deleteButton.addTarget(self, action: #selector(self.deleteButton(_:)), for: .touchUpInside)
         }
         return cell
@@ -410,9 +460,9 @@ extension InformationDetailViewController: UICollectionViewDelegate, UICollectio
         self.present(alert, animated: true, completion: nil)
     }
 
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        <#code#>
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("click")
+    }
 }
 
 extension InformationDetailViewController: UICollectionViewDelegateFlowLayout {

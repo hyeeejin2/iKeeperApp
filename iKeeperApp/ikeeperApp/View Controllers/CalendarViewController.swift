@@ -294,7 +294,6 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         let dateToString: String = formatter.string(from: date)
-        
         if scheduleDate.contains(dateToString){
             return 1
         }

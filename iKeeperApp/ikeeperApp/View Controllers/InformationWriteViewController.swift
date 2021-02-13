@@ -314,6 +314,7 @@ extension InformationWriteViewController: UICollectionViewDelegate, UICollection
         // cell에 데이터 삽입
         let selectedImage: UIImage = selectedImages[indexPath.row]
         cell.image.image = selectedImage
+        cell.deleteButton.tag = indexPath.row
         cell.deleteButton.addTarget(self, action: #selector(self.deleteButton(_:)), for: .touchUpInside)
         return cell
     }
