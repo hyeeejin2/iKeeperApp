@@ -35,6 +35,7 @@
 		0A7A68F72551473200DD3BC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A7A68F62551473200DD3BC9 /* Assets.xcassets */; };
 		0A7A68FA2551473200DD3BC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A7A68F82551473200DD3BC9 /* LaunchScreen.storyboard */; };
 		0A98D52125559DE400E4BF66 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A98D52025559DE400E4BF66 /* Constants.swift */; };
+		0A9D029125D93A3100236C69 /* InformationDetailImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9D029025D93A3100236C69 /* InformationDetailImageViewController.swift */; };
 		0AA00FDD25C02802004122F5 /* MypageChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA00FDC25C02802004122F5 /* MypageChangePasswordViewController.swift */; };
 		0AA00FE125C02838004122F5 /* MypageUserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA00FE025C02838004122F5 /* MypageUserInfoViewController.swift */; };
 		0AA73699258F25A800CD6314 /* InformationWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA73698258F25A800CD6314 /* InformationWriteViewController.swift */; };
@@ -90,6 +91,7 @@
 		0A7A68F92551473200DD3BC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A7A68FB2551473200DD3BC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A98D52025559DE400E4BF66 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0A9D029025D93A3100236C69 /* InformationDetailImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationDetailImageViewController.swift; sourceTree = "<group>"; };
 		0AA00FDC25C02802004122F5 /* MypageChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageChangePasswordViewController.swift; sourceTree = "<group>"; };
 		0AA00FE025C02838004122F5 /* MypageUserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageUserInfoViewController.swift; sourceTree = "<group>"; };
 		0AA73698258F25A800CD6314 /* InformationWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationWriteViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				0A1A578C2567A43C00562BE1 /* InformationViewController.swift */,
 				0AA73698258F25A800CD6314 /* InformationWriteViewController.swift */,
 				0AA7369C258F5EAE00CD6314 /* InformationDetailViewController.swift */,
+				0A9D029025D93A3100236C69 /* InformationDetailImageViewController.swift */,
 				0A3A931225A06AF90015C43D /* PublicMoneyViewController.swift */,
 				0A3A931625A07E530015C43D /* PublicMoneyWriteViewController.swift */,
 				0A4E5BBA25B6FDF1006193F3 /* PublicMoneyDetailViewController.swift */,
@@ -363,6 +366,7 @@
 				0A13DCAD2552FCBC00B3E53F /* LoginViewController.swift in Sources */,
 				0AC41B9525B47A6200968B9B /* HomeCalendarCustomCell.swift in Sources */,
 				0A3A931725A07E530015C43D /* PublicMoneyWriteViewController.swift in Sources */,
+				0A9D029125D93A3100236C69 /* InformationDetailImageViewController.swift in Sources */,
 				0A7A68EE2551473100DD3BC9 /* AppDelegate.swift in Sources */,
 				0A7A68F02551473100DD3BC9 /* SceneDelegate.swift in Sources */,
 				0AE4031925CD8A1700422A1D /* AdminWarningListViewController.swift in Sources */,

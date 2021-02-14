@@ -39,6 +39,7 @@ class InformationDetailViewController: UIViewController {
         setValue()
         setTextview()
         setYPImagePicker()
+        getImages()
         createDatePicker()
         dismissDatePicker()
         createTimePicker()
@@ -47,7 +48,6 @@ class InformationDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setUser()
-        getImages()
     }
     
     func setUser(){
@@ -461,7 +461,13 @@ extension InformationDetailViewController: UICollectionViewDelegate, UICollectio
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("click")
+        if showMode {
+            let informationDetailImageViewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.Storyboard.informationDetailImageViewController) as! InformationDetailImageViewController
+            informationDetailImageViewController.images = images
+            informationDetailImageViewController.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+            informationDetailImageViewController.modalPresentationStyle = .fullScreen
+            self.present(informationDetailImageViewController, animated: true)
+        }
     }
 }
 

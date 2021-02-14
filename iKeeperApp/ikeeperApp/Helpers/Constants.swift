@@ -18,6 +18,7 @@ struct Constants {
         static let calendarDetailViewController = "CalendarDetailVC"
         static let informationViewController = "InformationVC"
         static let informationDetailViewController = "InformationDetailVC"
+        static let informationDetailImageViewController = "InformationDetailImageVC"
         static let publicMoneyViewController = "PublicMoneyVC"
         static let publicMoneyDetailViewController = "PublicMoneyDetailVC"
         static let mypageViewController = "MypageVC"
