@@ -14,6 +14,7 @@ class InformationViewController: UIViewController {
     @IBOutlet weak var infoTableView: UITableView!
     let statusLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 414, height: 40))
     var dataList = [[String: Any]]()
+    var numbering = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,7 @@ class InformationViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         dataList = [[String:Any]]()
+        numbering = 1
         setBarButton()
         showInfo()
     }
@@ -49,12 +51,12 @@ class InformationViewController: UIViewController {
         let db = Firestore.firestore()
         db.collection("infoList").order(by: "created", descending: true).getDocuments { (snapshot, error) in
             if error == nil && snapshot?.isEmpty == false {
-                var temp: Int = 1
+                //var temp: Int = 1
                 for document in snapshot!.documents {
-                    var documentData = document.data()
-                    documentData["num"] = "\(temp)"
+                    let documentData = document.data()
+                    //documentData["num"] = "\(temp)"
                     self.dataList.append(documentData)
-                    temp += 1
+                    //temp += 1
                 }
             } else if error == nil && snapshot?.isEmpty == true {
                 self.statusLabel.textAlignment = .center
@@ -82,7 +84,9 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
 
         // cell에 데이터 삽입
         let data = dataList[indexPath.row]
-        cell.numLabel?.text = data["num"] as? String
+        cell.numLabel?.text = String(numbering)
+        numbering += 1
+        //cell.numLabel?.text = data["num"] as? String
         cell.titleLabel?.text = data["title"] as? String
         cell.viewsLabel?.text = String((data["views"] as? Int)!)
         cell.dateLabel?.text = data["date"] as? String

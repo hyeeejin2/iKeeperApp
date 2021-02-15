@@ -34,8 +34,6 @@ class AdminUserInfoDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setUser()
-        print(dataList)
-        print(dataList["id"] as! String)
     }
     
     func setUser(){

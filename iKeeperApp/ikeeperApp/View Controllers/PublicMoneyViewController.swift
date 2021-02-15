@@ -22,6 +22,7 @@ class PublicMoneyViewController: UIViewController {
     var dataList = [[String: Any]]()
     var selectedYear = ""
     var selectedMonth = ""
+    var numbering = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,7 @@ class PublicMoneyViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         dataList = [[String:Any]]()
+        numbering = 1
         setBarButton()
         showPublicMoney()
     }
@@ -74,12 +76,9 @@ class PublicMoneyViewController: UIViewController {
         let db = Firestore.firestore()
         db.collection("publicMoney").whereField("year", isEqualTo: year).whereField("month", isEqualTo: month).order(by: "day", descending: false).order(by: "created", descending: false).getDocuments { (snapshot, error) in
             if error == nil && snapshot?.isEmpty == false {
-                var temp: Int = 1
                 for document in snapshot!.documents {
-                    var documentData = document.data()
-                    documentData["num"] = "\(temp)"
+                    let documentData = document.data()
                     self.dataList.append(documentData)
-                    temp += 1
                 }
             } else {
                 self.statusLabel.textAlignment = .center
@@ -92,6 +91,7 @@ class PublicMoneyViewController: UIViewController {
     
     func selectPublicMoney() {
         dataList = [[String:Any]]()
+        numbering = 1
         statusLabel.removeFromSuperview()
         
         let db = Firestore.firestore()
@@ -100,12 +100,9 @@ class PublicMoneyViewController: UIViewController {
         if selectedMonth == "전체" {
             db.collection("publicMoney").whereField("year", isEqualTo: year).order(by: "month", descending: false).order(by: "day", descending: false).order(by: "created", descending: false).getDocuments { (snapshot, error) in
                 if error == nil && snapshot?.isEmpty == false {
-                    var temp: Int = 1
                     for document in snapshot!.documents {
-                        var documentData = document.data()
-                        documentData["num"] = "\(temp)"
+                        let documentData = document.data()
                         self.dataList.append(documentData)
-                        temp += 1
                     }
                 } else if error == nil && snapshot?.isEmpty == true {
                     self.statusLabel.textAlignment = .center
@@ -118,12 +115,9 @@ class PublicMoneyViewController: UIViewController {
             let month:Int = Int(selectedMonth.trimmingCharacters(in: ["월"]))!
             db.collection("publicMoney").whereField("year", isEqualTo: year).whereField("month", isEqualTo: month).order(by: "day", descending: false).order(by: "created", descending: false).getDocuments { (snapshot, error) in
                 if error == nil && snapshot?.isEmpty == false {
-                    var temp: Int = 1
                     for document in snapshot!.documents {
-                        var documentData = document.data()
-                        documentData["num"] = "\(temp)"
+                        let documentData = document.data()
                         self.dataList.append(documentData)
-                        temp += 1
                     }
                 } else {
                     self.statusLabel.textAlignment = .center
@@ -267,7 +261,8 @@ extension PublicMoneyViewController: UITableViewDelegate, UITableViewDataSource 
         
         // cell에 데이터 삽입
         let data = dataList[indexPath.row]
-        cell.numLabel?.text = data["num"] as? String
+        cell.numLabel?.text = String(numbering)
+        numbering += 1
         cell.categoryLabel?.text = data["category"] as? String
         cell.dateLabel?.text = data["history date"] as? String
         cell.amountLabel?.text = data["amount"] as? String

@@ -19,6 +19,7 @@ class HomeViewController: UIViewController {
     //let pink = UIColor(red: 243/255.0, green: 148/255.0, blue: 173/255.0, alpha: 1)
     var dataList = [[String: Any]]()
     var sideMenu: SideMenuNavigationController?
+    var numbering: Int = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,7 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         dataList = [[String:Any]]()
+        numbering = 1
         setBarButton()
         showCalendar()
     }
@@ -101,12 +103,9 @@ class HomeViewController: UIViewController {
         let db = Firestore.firestore()
         db.collection("calendar").whereField("date", isEqualTo: todayDate).order(by: "created", descending: true).getDocuments { (snapshot, error) in
             if error == nil && snapshot?.isEmpty == false {
-                var temp: Int = 1
                 for document in snapshot!.documents {
-                    var documentData = document.data()
-                    documentData["num"] = "\(temp)"
+                    let documentData = document.data()
                     self.dataList.append(documentData)
-                    temp += 1
                 }
             } else if error == nil && snapshot?.isEmpty == true {
                 self.statusLabel.textAlignment = .center
@@ -142,7 +141,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         // cell에 데이터 삽입
         let data = dataList[indexPath.row]
-        cell.numLabel?.text = data["num"] as? String
+        cell.numLabel?.text = String(numbering)
+        numbering += 1
         cell.titleLabel?.text = data["title"] as? String
         cell.categoryLabel?.text = data["category"] as? String
         cell.writerLabel?.text = data["writer"] as? String

@@ -18,6 +18,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     let formatter = DateFormatter()
     var dataList = [[String: Any]]()
     var scheduleDate: Set<String> = []
+    var numbering = 1
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
     override func viewWillAppear(_ animated: Bool) {
         dataList = [[String:Any]]()
         scheduleDate = []
+        numbering = 1
         setBarButton()
         eventDate()
         todayCalender()
@@ -101,12 +103,9 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         db.collection("calendar").whereField("date", isEqualTo: date).order(by: "created", descending: true).getDocuments { (snapshot, error) in
             if error == nil && snapshot?.isEmpty == false {
                 self.calendarTableView.isHidden = false
-                var temp: Int = 1
                 for document in snapshot!.documents {
-                    var documentData = document.data()
-                    documentData["num"] = "\(temp)"
+                    let documentData = document.data()
                     self.dataList.append(documentData)
-                    temp += 1
                 }
                 self.statusLabel.text = "✓ \(self.dataList.count)개의 일정이 있습니다."
                 self.calendarTableView.reloadData() // 속도가 tableview setting > firebase로 데이터 읽기 이므로 데이터를 다시 reload
@@ -118,40 +117,12 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         }
     }
     
-    func numbering() {
-        var temp: Int = 1
-        for i in 0..<dataList.count {
-            dataList[i]["num"] = "\(temp)"
-            temp += 1
-        }
-    }
-    
     func deselectDate() {
         guard calendar.selectedDate == nil else {
             calendar.deselect(calendar.selectedDate!)
             return
         }
     }
-    
-//    func showAlertForDelete() {
-//        let alert = UIAlertController(title: "일정 삭제",
-//                                      message: "일정을 삭제하시겠습니까?",
-//                                      preferredStyle: .alert)
-//        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-//        let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
-//            let alert = UIAlertController(title: "삭제 완료",
-//                                          message: "일정 삭제가 완료되었습니다",
-//                                          preferredStyle: .alert)
-//            let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
-//                self.navigationController?.popViewController(animated: true)
-//            }
-//            alert.addAction(okAction)
-//            self.present(alert, animated: true, completion: nil)
-//        }
-//        alert.addAction(cancelAction)
-//        alert.addAction(okAction)
-//        self.present(alert, animated: true, completion: nil)
-//    }
 }
     
 extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
@@ -167,7 +138,9 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         // cell에 데이터 삽입
         let data = dataList[indexPath.row]
         cell.categoryLabel?.text = data["category"] as? String
-        cell.numLabel?.text = data["num"] as? String
+        cell.numLabel?.text = String(numbering)
+        numbering += 1
+        //cell.numLabel?.text = data["num"] as? String
         cell.titleLabel?.text = data["title"] as? String
         cell.writerLabel?.text = data["writer"] as? String
         cell.placeLabel?.text = data["place"] as? String
@@ -224,8 +197,8 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
                 } else {
                     self.dataList.remove(at: sender.tag)
                     if self.dataList.count > 0 {
-                        self.numbering()
                         self.statusLabel.text = "✓ \(self.dataList.count)개의 일정이 있습니다."
+                        self.numbering = 1
                         self.calendarTableView.reloadData()
                     } else {
                         self.statusLabel.isHidden = false
@@ -247,29 +220,6 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         alert.addAction(cancelAction)
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
-        
-//        let date = dataList[sender.tag]["date"] as! String
-//        let id = dataList[sender.tag]["id"] as! String
-//
-//        let db = Firestore.firestore()
-//        db.collection("calendar").document("\(id)").delete { (error) in
-//            if error != nil {
-//                print("check for error : \(error!.localizedDescription)")
-//            } else {
-//                self.dataList.remove(at: sender.tag)
-//                if self.dataList.count > 0 {
-//                    self.numbering()
-//                    self.statusLabel.text = "✓ \(self.dataList.count)개의 일정이 있습니다."
-//                    self.calendarTableView.reloadData()
-//                } else {
-//                    self.statusLabel.isHidden = false
-//                    self.calendarTableView.isHidden = true
-//                    self.statusLabel.text = "X 오늘 일정은 없습니다."
-//                    self.scheduleDate.remove(date)
-//                    self.calendar.reloadData()
-//                }
-//            }
-//        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -299,5 +249,4 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return 0
     }
-    
 }

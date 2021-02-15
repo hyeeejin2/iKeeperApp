@@ -27,9 +27,9 @@ class AdminUserListViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setUser()
         dataList = [[String:Any]]()
         numbering = 1
+        setUser()
     }
     
     func setUser(){

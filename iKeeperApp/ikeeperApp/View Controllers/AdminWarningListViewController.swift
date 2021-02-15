@@ -13,7 +13,7 @@ class AdminWarningListViewController: UIViewController {
     @IBOutlet weak var warningListTableView: UITableView!
     let statusLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 414, height: 40))
     var dataList = [[String: Any]]()
-    var numbering = 0
+    var numbering = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
