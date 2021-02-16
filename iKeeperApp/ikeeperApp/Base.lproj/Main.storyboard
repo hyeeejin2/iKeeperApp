@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login-->
+        <!--로그인-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="LoginVC" id="BYZ-38-t0r" customClass="LoginViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -21,12 +21,12 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7m0-hO-N6a">
                                 <rect key="frame" x="40" y="148" width="334" height="220"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AwP-Wr-wH5">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이메일" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AwP-Wr-wH5">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eXr-PM-Xpx">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eXr-PM-Xpx">
                                         <rect key="frame" x="0.0" y="60" width="334" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -36,7 +36,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="JHu-xs-hX1"/>
                                         </constraints>
-                                        <state key="normal" title="login"/>
+                                        <state key="normal" title="로그인"/>
                                         <connections>
                                             <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qov-8S-E1I"/>
                                         </connections>
@@ -46,7 +46,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="EEp-6r-RUG"/>
                                         </constraints>
-                                        <state key="normal" title="Don't have an account yet?  Sign Up">
+                                        <state key="normal" title="아직 계정이 없으신가요? 계정 만들기">
                                             <color key="titleColor" systemColor="systemRedColor"/>
                                         </state>
                                         <connections>
@@ -68,7 +68,7 @@
                             <constraint firstItem="7m0-hO-N6a" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="HWI-H9-HWY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Login" id="XKh-l5-4zy"/>
+                    <navigationItem key="navigationItem" title="로그인" id="XKh-l5-4zy"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -80,7 +80,7 @@
             </objects>
             <point key="canvasLocation" x="3067" y="-1362"/>
         </scene>
-        <!--Sign Up-->
+        <!--회원가입-->
         <scene sceneID="kzg-xb-ieA">
             <objects>
                 <viewController storyboardIdentifier="SignUpVC" id="6FG-Ge-tKf" customClass="SignUpViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -119,37 +119,37 @@
                                             <constraint firstItem="yAS-zr-ety" firstAttribute="height" secondItem="bR5-TX-S5j" secondAttribute="height" id="HfF-B8-XlF"/>
                                         </constraints>
                                     </stackView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d56-Rf-E6F">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이름" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d56-Rf-E6F">
                                         <rect key="frame" x="0.0" y="60" width="334" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jnr-ce-8VB">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jnr-ce-8VB">
                                         <rect key="frame" x="0.0" y="120" width="334" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password check" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mGT-wn-qcQ">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호 확인" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mGT-wn-qcQ">
                                         <rect key="frame" x="0.0" y="180" width="334" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="studentID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yqO-DE-dC4">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="학번" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yqO-DE-dC4">
                                         <rect key="frame" x="0.0" y="240" width="334" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="department" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bk4-M1-Lfz">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="학과" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bk4-M1-Lfz">
                                         <rect key="frame" x="0.0" y="300" width="334" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="grade" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mng-Zk-isN">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="학년" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mng-Zk-isN">
                                         <rect key="frame" x="0.0" y="360" width="334" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ukq-OP-mRE">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="휴대폰 번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ukq-OP-mRE">
                                         <rect key="frame" x="0.0" y="420" width="334" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
@@ -173,7 +173,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="cFp-4O-G9l"/>
                                         </constraints>
-                                        <state key="normal" title="Sign Up"/>
+                                        <state key="normal" title="가입하기"/>
                                         <connections>
                                             <action selector="signUpButton:" destination="6FG-Ge-tKf" eventType="touchUpInside" id="XgD-QD-IG3"/>
                                         </connections>
@@ -203,7 +203,7 @@
                             <constraint firstItem="W2Q-oX-BlD" firstAttribute="trailing" secondItem="U1B-i0-bIj" secondAttribute="trailing" constant="40" id="ziJ-n1-YPR"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Sign Up" id="8dv-QR-UPs"/>
+                    <navigationItem key="navigationItem" title="회원가입" id="8dv-QR-UPs"/>
                     <connections>
                         <outlet property="departmentValue" destination="Bk4-M1-Lfz" id="hhC-gZ-nXR"/>
                         <outlet property="domainValue" destination="yAS-zr-ety" id="2tu-u5-alQ"/>
@@ -222,7 +222,7 @@
             </objects>
             <point key="canvasLocation" x="3887" y="-1362"/>
         </scene>
-        <!--InfoNoticeBoard-->
+        <!--정보게시판-->
         <scene sceneID="yhu-je-w1j">
             <objects>
                 <viewController storyboardIdentifier="InformationVC" id="DWt-xa-7Ux" customClass="InformationViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -326,7 +326,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="InfoNoticeBoard" id="T8d-oq-jDt">
+                    <navigationItem key="navigationItem" title="정보게시판" id="T8d-oq-jDt">
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="2oU-6a-DFR">
                             <connections>
                                 <segue destination="e2W-Vt-boQ" kind="show" id="Yln-By-Bth"/>
@@ -344,7 +344,7 @@
             </objects>
             <point key="canvasLocation" x="2187" y="-650"/>
         </scene>
-        <!--Info Write-->
+        <!--게시글 작성-->
         <scene sceneID="z7s-Lt-PtS">
             <objects>
                 <viewController id="e2W-Vt-boQ" customClass="InformationWriteViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -355,7 +355,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="45z-Hu-QrA">
                                 <rect key="frame" x="20" y="128" width="374" height="160"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="htX-Ft-dd9">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="htX-Ft-dd9">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="36n-sL-1gr"/>
@@ -363,7 +363,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="writer" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Khu-gM-MHp">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="작성자" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Khu-gM-MHp">
                                         <rect key="frame" x="0.0" y="60" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -371,12 +371,12 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ZGf-ZP-0Yo">
                                         <rect key="frame" x="0.0" y="120" width="374" height="40"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4fD-Vo-kVM">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="날짜" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4fD-Vo-kVM">
                                                 <rect key="frame" x="0.0" y="0.0" width="182" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b3w-1Q-35x">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="시간" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b3w-1Q-35x">
                                                 <rect key="frame" x="192" y="0.0" width="182" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -406,7 +406,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="EQx-oC-cbJ"/>
                                 </constraints>
-                                <state key="normal" title="write"/>
+                                <state key="normal" title="작성하기"/>
                                 <connections>
                                     <action selector="writeButton:" destination="e2W-Vt-boQ" eventType="touchUpInside" id="kVW-sg-uk2"/>
                                 </connections>
@@ -476,7 +476,7 @@
                             <constraint firstItem="yW3-dc-GPW" firstAttribute="leading" secondItem="7Ph-k4-cjH" secondAttribute="leading" constant="20" id="y6M-Np-9w3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Info Write" id="toL-MF-Cqg">
+                    <navigationItem key="navigationItem" title="게시글 작성" id="toL-MF-Cqg">
                         <barButtonItem key="rightBarButtonItem" image="photo" catalog="system" id="9Jk-Vd-eJg">
                             <connections>
                                 <action selector="imageBarButton:" destination="e2W-Vt-boQ" id="jW3-FF-4M8"/>
@@ -496,7 +496,7 @@
             </objects>
             <point key="canvasLocation" x="3086.9565217391305" y="-650.22321428571422"/>
         </scene>
-        <!--Info Detail-->
+        <!--게시글 보기-->
         <scene sceneID="P55-0g-6Vr">
             <objects>
                 <viewController storyboardIdentifier="InformationDetailVC" id="As0-6X-N1O" customClass="InformationDetailViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -510,7 +510,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kvg-sq-bZ6">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mpO-QH-0k2">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mpO-QH-0k2">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="xLV-DG-iOM"/>
@@ -523,12 +523,12 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="PTk-wQ-ZQN">
                                         <rect key="frame" x="0.0" y="60" width="374" height="40"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="writer" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JFj-VT-hPN">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="작성자" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JFj-VT-hPN">
                                                 <rect key="frame" x="0.0" y="0.0" width="182" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="views" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s5l-wV-piG">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="조회수" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s5l-wV-piG">
                                                 <rect key="frame" x="192" y="0.0" width="182" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -541,12 +541,12 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="v1e-Lc-8OD">
                                         <rect key="frame" x="0.0" y="120" width="374" height="40"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pAA-YD-YQ6">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="날짜" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pAA-YD-YQ6">
                                                 <rect key="frame" x="0.0" y="0.0" width="182" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2ui-hf-z5P">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="시간" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2ui-hf-z5P">
                                                 <rect key="frame" x="192" y="0.0" width="182" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -567,7 +567,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="mey-D1-2Yj"/>
                                 </constraints>
-                                <state key="normal" title="complete"/>
+                                <state key="normal" title="수정하기"/>
                                 <connections>
                                     <action selector="completeButton:" destination="As0-6X-N1O" eventType="touchUpInside" id="jBQ-qp-mAq"/>
                                 </connections>
@@ -646,7 +646,7 @@
                             <constraint firstItem="FAl-2X-D71" firstAttribute="trailing" secondItem="Ehp-cG-ey0" secondAttribute="trailing" constant="20" id="xXz-kt-p1Z"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Info Detail" id="ijW-NO-nJP">
+                    <navigationItem key="navigationItem" title="게시글 보기" id="ijW-NO-nJP">
                         <barButtonItem key="rightBarButtonItem" image="pencil.slash" catalog="system" id="kbT-km-tAI">
                             <connections>
                                 <action selector="rightBarButton:" destination="As0-6X-N1O" id="d9w-92-1FU"/>
@@ -744,7 +744,7 @@
             </objects>
             <point key="canvasLocation" x="4734.7826086956529" y="-650.22321428571422"/>
         </scene>
-        <!--Home-->
+        <!--i-Keeper-->
         <scene sceneID="Ijc-oI-buy">
             <objects>
                 <viewController storyboardIdentifier="HomeVC" id="wfz-wj-6ey" customClass="HomeViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -850,7 +850,7 @@
                             <constraint firstItem="3C7-xa-A5A" firstAttribute="top" secondItem="56l-1P-TfY" secondAttribute="top" constant="40" id="wy3-qj-W3Y"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Home" id="Qtl-XC-deA">
+                    <navigationItem key="navigationItem" title="i-Keeper" id="Qtl-XC-deA">
                         <barButtonItem key="leftBarButtonItem" image="gearshape.fill" catalog="system" id="jv0-KD-Fwa">
                             <connections>
                                 <action selector="adminBarButton:" destination="wfz-wj-6ey" id="li5-po-P0T"/>
@@ -875,7 +875,7 @@
             </objects>
             <point key="canvasLocation" x="2186.9565217391305" y="-1362.0535714285713"/>
         </scene>
-        <!--PublicMoney-->
+        <!--공금 내역-->
         <scene sceneID="R8e-92-VHs">
             <objects>
                 <viewController storyboardIdentifier="PublicMoneyVC" id="mIw-Ke-mcN" customClass="PublicMoneyViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -968,15 +968,15 @@
                                 </prototypes>
                             </tableView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hnr-fM-Kld">
-                                <rect key="frame" x="139.5" y="108" width="135.5" height="34"/>
+                                <rect key="frame" x="155.5" y="108" width="103" height="34"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="year" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ji0-dm-hXC">
-                                        <rect key="frame" x="0.0" y="0.0" width="56" height="34"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="연도" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ji0-dm-hXC">
+                                        <rect key="frame" x="0.0" y="0.0" width="52.5" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="month" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CJ3-Wt-uAO">
-                                        <rect key="frame" x="66" y="0.0" width="69.5" height="34"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="월" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CJ3-Wt-uAO">
+                                        <rect key="frame" x="62.5" y="0.0" width="40.5" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -994,7 +994,7 @@
                             <constraint firstItem="gGu-yn-tGz" firstAttribute="top" secondItem="hnr-fM-Kld" secondAttribute="bottom" constant="20" id="me7-OJ-3gP"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="PublicMoney" id="i9a-sj-fL1">
+                    <navigationItem key="navigationItem" title="공금 내역" id="i9a-sj-fL1">
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="Esf-k3-Yt4">
                             <connections>
                                 <segue destination="gqA-Sk-ljF" kind="show" id="f5h-v3-5K1"/>
@@ -1014,7 +1014,7 @@
             </objects>
             <point key="canvasLocation" x="2190" y="802"/>
         </scene>
-        <!--PublicMoney Write-->
+        <!--공금 내역 작성-->
         <scene sceneID="gEb-39-Vwj">
             <objects>
                 <viewController id="gqA-Sk-ljF" customClass="PublicMoneyWriteViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -1035,7 +1035,7 @@
                                             <segment title="지출"/>
                                         </segments>
                                     </segmentedControl>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="stH-BK-Lg2">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="금액" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="stH-BK-Lg2">
                                         <rect key="frame" x="0.0" y="60" width="374" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="bc9-To-JpA"/>
@@ -1043,7 +1043,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="history date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2G7-xy-x9A">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="수입 or 지출 날짜" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2G7-xy-x9A">
                                         <rect key="frame" x="0.0" y="120" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -1051,12 +1051,12 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jnc-h7-J6h">
                                         <rect key="frame" x="0.0" y="180" width="374" height="40"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="create date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hGX-R7-0mH">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="생성 날짜" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hGX-R7-0mH">
                                                 <rect key="frame" x="0.0" y="0.0" width="182" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="writer" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TRf-zB-9na">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="작성자" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TRf-zB-9na">
                                                 <rect key="frame" x="192" y="0.0" width="182" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -1067,7 +1067,7 @@
                                             <constraint firstAttribute="height" constant="40" id="Wj8-JX-gek"/>
                                         </constraints>
                                     </stackView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="memo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NJX-f4-KQl">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="메모" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NJX-f4-KQl">
                                         <rect key="frame" x="0.0" y="240" width="374" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="urx-It-N8Z"/>
@@ -1077,7 +1077,7 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bW-V4-fVf">
                                         <rect key="frame" x="0.0" y="300" width="374" height="30"/>
-                                        <state key="normal" title="write"/>
+                                        <state key="normal" title="작성하기"/>
                                         <connections>
                                             <action selector="writeButton:" destination="gqA-Sk-ljF" eventType="touchUpInside" id="JRw-xL-9Qz"/>
                                         </connections>
@@ -1099,7 +1099,7 @@
                             <constraint firstItem="2OB-Ib-HeN" firstAttribute="top" secondItem="g67-8L-03y" secondAttribute="top" constant="40" id="qaT-N2-sfh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="PublicMoney Write" id="Q5G-lH-fql"/>
+                    <navigationItem key="navigationItem" title="공금 내역 작성" id="Q5G-lH-fql"/>
                     <connections>
                         <outlet property="amountValue" destination="stH-BK-Lg2" id="z7c-dR-Tc7"/>
                         <outlet property="categoryControl" destination="Joz-hB-LML" id="QAE-nz-rZi"/>
@@ -1113,7 +1113,7 @@
             </objects>
             <point key="canvasLocation" x="3067" y="802"/>
         </scene>
-        <!--PublicMoney Detail-->
+        <!--공금 내역 보기-->
         <scene sceneID="R0Y-YF-R4P">
             <objects>
                 <viewController storyboardIdentifier="PublicMoneyDetailVC" id="yeE-Sf-C3D" customClass="PublicMoneyDetailViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -1134,12 +1134,12 @@
                                             <segment title="지출"/>
                                         </segments>
                                     </segmentedControl>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aDt-EY-aMO">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="금액" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aDt-EY-aMO">
                                         <rect key="frame" x="0.0" y="60" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="history date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vGq-7b-8jP">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="수입 or 지출 날짜" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vGq-7b-8jP">
                                         <rect key="frame" x="0.0" y="120" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -1147,12 +1147,12 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kuw-9h-JJV">
                                         <rect key="frame" x="0.0" y="180" width="374" height="40"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="create date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fSf-L0-FgB">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="생성 날짜" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fSf-L0-FgB">
                                                 <rect key="frame" x="0.0" y="0.0" width="182" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="writer" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1lj-vO-MFu">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="작성자" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1lj-vO-MFu">
                                                 <rect key="frame" x="192" y="0.0" width="182" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -1162,14 +1162,14 @@
                                             <constraint firstItem="1lj-vO-MFu" firstAttribute="width" secondItem="fSf-L0-FgB" secondAttribute="width" id="O6H-ER-xzP"/>
                                         </constraints>
                                     </stackView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="memo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="twy-o8-8JI">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="메모" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="twy-o8-8JI">
                                         <rect key="frame" x="0.0" y="240" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WmD-7e-k0O">
                                         <rect key="frame" x="0.0" y="300" width="374" height="40"/>
-                                        <state key="normal" title="complete"/>
+                                        <state key="normal" title="수정하기"/>
                                         <connections>
                                             <action selector="completeButton:" destination="yeE-Sf-C3D" eventType="touchUpInside" id="eHl-uH-slg"/>
                                         </connections>
@@ -1192,7 +1192,7 @@
                             <constraint firstItem="vFQ-O1-tjz" firstAttribute="top" secondItem="1yz-6O-4vj" secondAttribute="top" constant="40" id="S46-na-CIc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="PublicMoney Detail" id="r3h-q5-rlt">
+                    <navigationItem key="navigationItem" title="공금 내역 보기" id="r3h-q5-rlt">
                         <barButtonItem key="rightBarButtonItem" image="pencil.slash" catalog="system" id="sFE-sI-vxd">
                             <connections>
                                 <action selector="rightBarButton:" destination="yeE-Sf-C3D" id="HWx-03-SJK"/>
@@ -1216,7 +1216,7 @@
             </objects>
             <point key="canvasLocation" x="3909" y="802"/>
         </scene>
-        <!--Calendar-->
+        <!--일정-->
         <scene sceneID="Wwg-wR-sfq">
             <objects>
                 <viewController storyboardIdentifier="CalenderVC" id="evl-F7-Ihv" customClass="CalendarViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -1367,7 +1367,7 @@
                             <constraint firstItem="CkW-k6-7W5" firstAttribute="bottom" secondItem="s27-nK-f8L" secondAttribute="bottom" id="zL0-UV-6Ri"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Calendar" id="3Lj-J7-nYD">
+                    <navigationItem key="navigationItem" title="일정" id="3Lj-J7-nYD">
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="leU-9u-H1g">
                             <connections>
                                 <segue destination="nqw-Nw-arn" kind="show" id="mvT-oB-chD"/>
@@ -1387,7 +1387,7 @@
             </objects>
             <point key="canvasLocation" x="2186.9565217391305" y="77.678571428571431"/>
         </scene>
-        <!--Calendar Write-->
+        <!--일정 작성-->
         <scene sceneID="gEs-cg-AGA">
             <objects>
                 <viewController id="nqw-Nw-arn" customClass="CalendarWriteViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -1398,22 +1398,22 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="txQ-vb-XOf">
                                 <rect key="frame" x="20" y="128" width="374" height="460"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HU2-sp-Lmu">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HU2-sp-Lmu">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="writer" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gIv-fB-BR1">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="작성자" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gIv-fB-BR1">
                                         <rect key="frame" x="0.0" y="60" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="category" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Ky-Tb-oWC">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="카테고리" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Ky-Tb-oWC">
                                         <rect key="frame" x="0.0" y="120" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cMP-NA-E0Z">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="날짜" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cMP-NA-E0Z">
                                         <rect key="frame" x="0.0" y="180" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -1421,7 +1421,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ADU-ur-E6i">
                                         <rect key="frame" x="0.0" y="240" width="374" height="40"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="start time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nbH-JZ-9e9">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="시작 시간" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nbH-JZ-9e9">
                                                 <rect key="frame" x="0.0" y="0.0" width="172" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -1432,7 +1432,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="end time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yg4-Dn-ehm">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="종료 시간" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yg4-Dn-ehm">
                                                 <rect key="frame" x="202.5" y="0.0" width="171.5" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -1443,12 +1443,12 @@
                                             <constraint firstAttribute="height" constant="40" id="YhK-tp-68E"/>
                                         </constraints>
                                     </stackView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="place" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cD7-3A-XeW">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="장소" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cD7-3A-XeW">
                                         <rect key="frame" x="0.0" y="300" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="content" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NEc-Va-4nr">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="내용" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NEc-Va-4nr">
                                         <rect key="frame" x="0.0" y="360" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -1458,7 +1458,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="cM1-6r-D3k"/>
                                         </constraints>
-                                        <state key="normal" title="write"/>
+                                        <state key="normal" title="작성하기"/>
                                         <connections>
                                             <action selector="writeButton:" destination="nqw-Nw-arn" eventType="touchUpInside" id="dvU-Il-vyr"/>
                                         </connections>
@@ -1485,7 +1485,7 @@
                             <constraint firstItem="txQ-vb-XOf" firstAttribute="leading" secondItem="hAa-G1-FSx" secondAttribute="leading" constant="20" id="yPn-ph-w68"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Calendar Write" id="X3y-KN-N7V"/>
+                    <navigationItem key="navigationItem" title="일정 작성" id="X3y-KN-N7V"/>
                     <connections>
                         <outlet property="categoryValue" destination="0Ky-Tb-oWC" id="ugp-lM-Eg7"/>
                         <outlet property="contentValue" destination="NEc-Va-4nr" id="Dv7-aX-kFx"/>
@@ -1501,7 +1501,7 @@
             </objects>
             <point key="canvasLocation" x="3087" y="78"/>
         </scene>
-        <!--Calendar Detail-->
+        <!--일정 보기-->
         <scene sceneID="cMH-RO-u7c">
             <objects>
                 <viewController storyboardIdentifier="CalendarDetailVC" id="St8-50-2p8" customClass="CalendarDetailViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -1512,7 +1512,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ypw-hw-ou4">
                                 <rect key="frame" x="20" y="128" width="374" height="460"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Adt-Xo-tWw">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Adt-Xo-tWw">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="xy7-fd-77V"/>
@@ -1520,7 +1520,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="writer" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CTa-6t-RkY">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="작성자" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CTa-6t-RkY">
                                         <rect key="frame" x="0.0" y="60" width="374" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="crh-VC-nuU"/>
@@ -1528,7 +1528,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="category" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5j9-qe-74Q">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="카테고리" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5j9-qe-74Q">
                                         <rect key="frame" x="0.0" y="120" width="374" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="9iH-ak-0sm"/>
@@ -1536,7 +1536,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w66-Tj-JoK">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="날짜" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w66-Tj-JoK">
                                         <rect key="frame" x="0.0" y="180" width="374" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="ChB-un-SYe"/>
@@ -1547,7 +1547,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="rxl-QS-O5b">
                                         <rect key="frame" x="0.0" y="240" width="374" height="40"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="start time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FB9-sp-jtF">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="시작 시간" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FB9-sp-jtF">
                                                 <rect key="frame" x="0.0" y="0.0" width="172" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -1558,7 +1558,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="end time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Yd-7N-D8b">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="종료 시간" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Yd-7N-D8b">
                                                 <rect key="frame" x="202.5" y="0.0" width="171.5" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -1569,7 +1569,7 @@
                                             <constraint firstAttribute="height" constant="40" id="f89-Eb-dja"/>
                                         </constraints>
                                     </stackView>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="place" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2pv-BR-Dju">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="장소" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2pv-BR-Dju">
                                         <rect key="frame" x="0.0" y="300" width="374" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="gQe-Hj-dsm"/>
@@ -1577,7 +1577,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="content" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MNR-MP-2eR">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="내용" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MNR-MP-2eR">
                                         <rect key="frame" x="0.0" y="360" width="374" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="RcA-W4-92X"/>
@@ -1587,7 +1587,7 @@
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7sI-R0-fPG">
                                         <rect key="frame" x="0.0" y="420" width="374" height="40"/>
-                                        <state key="normal" title="complete"/>
+                                        <state key="normal" title="수정하기"/>
                                         <connections>
                                             <action selector="completeButton:" destination="St8-50-2p8" eventType="touchUpInside" id="nkS-Vz-84N"/>
                                         </connections>
@@ -1612,7 +1612,7 @@
                             <constraint firstItem="Ypw-hw-ou4" firstAttribute="leading" secondItem="u2o-xp-lan" secondAttribute="leading" constant="20" id="t2g-Oc-n62"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Calendar Detail" id="3l3-Wi-1fg">
+                    <navigationItem key="navigationItem" title="일정 보기" id="3l3-Wi-1fg">
                         <barButtonItem key="rightBarButtonItem" image="pencil.slash" catalog="system" id="iQo-ps-gAo">
                             <connections>
                                 <action selector="rightBarButton:" destination="St8-50-2p8" id="L9f-Pk-aS6"/>
@@ -1638,7 +1638,7 @@
             </objects>
             <point key="canvasLocation" x="3887" y="78"/>
         </scene>
-        <!--Mypage-->
+        <!--마이페이지-->
         <scene sceneID="m7o-ej-j2W">
             <objects>
                 <viewController storyboardIdentifier="MypageVC" id="2la-PK-EPE" customClass="MypageViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -1657,7 +1657,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nIT-Pv-pBT">
                                 <rect key="frame" x="135" y="118" width="259" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tmc-TT-wBO">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이름" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tmc-TT-wBO">
                                         <rect key="frame" x="0.0" y="0.0" width="259" height="26.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -1666,20 +1666,20 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="6eM-86-07g">
                                         <rect key="frame" x="0.0" y="36.5" width="259" height="27"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="department" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8D-xR-oFA">
-                                                <rect key="frame" x="0.0" y="0.0" width="89.5" height="27"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학과" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8D-xR-oFA">
+                                                <rect key="frame" x="0.0" y="0.0" width="29.5" height="27"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2p-Q4-t9G">
-                                                <rect key="frame" x="97.5" y="0.0" width="5" height="27"/>
+                                                <rect key="frame" x="37.5" y="0.0" width="5" height="27"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="grade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QXN-wI-2L0">
-                                                <rect key="frame" x="110.5" y="0.0" width="148.5" height="27"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="학년" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QXN-wI-2L0">
+                                                <rect key="frame" x="50.5" y="0.0" width="208.5" height="27"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1689,20 +1689,20 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7E4-za-qjI">
                                         <rect key="frame" x="0.0" y="73.5" width="259" height="26.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="part" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQQ-PF-HBm">
-                                                <rect key="frame" x="0.0" y="0.0" width="31.5" height="26.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="구분" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TQQ-PF-HBm">
+                                                <rect key="frame" x="0.0" y="0.0" width="29.5" height="26.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8g-BR-OLF">
-                                                <rect key="frame" x="39.5" y="0.0" width="5" height="26.5"/>
+                                                <rect key="frame" x="37.5" y="0.0" width="5" height="26.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBm-LC-244">
-                                                <rect key="frame" x="52.5" y="0.0" width="206.5" height="26.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="학적 상태" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBm-LC-244">
+                                                <rect key="frame" x="50.5" y="0.0" width="208.5" height="26.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -1815,7 +1815,7 @@
                             <constraint firstItem="y1r-ee-ZXe" firstAttribute="leading" secondItem="7Z4-tU-QEP" secondAttribute="leading" id="uc4-G6-fu4"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Mypage" id="xYf-rK-bWK"/>
+                    <navigationItem key="navigationItem" title="마이페이지" id="xYf-rK-bWK"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -1833,7 +1833,7 @@
             </objects>
             <point key="canvasLocation" x="2189.8550724637685" y="1552.9017857142856"/>
         </scene>
-        <!--User Info-->
+        <!--회원정보-->
         <scene sceneID="Ahi-de-9ae">
             <objects>
                 <viewController storyboardIdentifier="MypageUserInfoVC" id="gND-ri-y6x" customClass="MypageUserInfoViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -1844,7 +1844,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Pxd-nu-4SF">
                                 <rect key="frame" x="20" y="128" width="374" height="580"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gbd-pc-rfa">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이메일" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gbd-pc-rfa">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="M5y-eF-Ye0"/>
@@ -1852,32 +1852,32 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8cf-or-sGW">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이름" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8cf-or-sGW">
                                         <rect key="frame" x="0.0" y="60" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yew-vH-AhU">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yew-vH-AhU">
                                         <rect key="frame" x="0.0" y="120" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="studentID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4PR-iO-wWd">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="학번" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4PR-iO-wWd">
                                         <rect key="frame" x="0.0" y="180" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="department" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o3x-ov-4mo">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="학과" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o3x-ov-4mo">
                                         <rect key="frame" x="0.0" y="240" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="grade" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LEj-so-Hkc">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="학년" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LEj-so-Hkc">
                                         <rect key="frame" x="0.0" y="300" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fXv-V0-HLZ">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="휴대폰 번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fXv-V0-HLZ">
                                         <rect key="frame" x="0.0" y="360" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
@@ -1898,7 +1898,7 @@
                                     </segmentedControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pl3-N4-bJf">
                                         <rect key="frame" x="0.0" y="540" width="374" height="40"/>
-                                        <state key="normal" title="complete"/>
+                                        <state key="normal" title="수정하기"/>
                                         <connections>
                                             <action selector="completeButton:" destination="gND-ri-y6x" eventType="touchUpInside" id="38d-2m-sn5"/>
                                         </connections>
@@ -1925,7 +1925,7 @@
                             <constraint firstItem="Pxd-nu-4SF" firstAttribute="leading" secondItem="IGI-2K-KIm" secondAttribute="leading" constant="20" id="x0y-L0-Oab"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="User Info" id="NRj-vh-nvF">
+                    <navigationItem key="navigationItem" title="회원정보" id="NRj-vh-nvF">
                         <barButtonItem key="rightBarButtonItem" image="pencil.slash" catalog="system" id="Efr-GR-WNZ">
                             <connections>
                                 <action selector="rightBarButton:" destination="gND-ri-y6x" id="n77-E1-VUG"/>
@@ -1952,7 +1952,7 @@
             </objects>
             <point key="canvasLocation" x="5558" y="1553"/>
         </scene>
-        <!--Change password-->
+        <!--비밀번호 변경-->
         <scene sceneID="4xf-IL-aMY">
             <objects>
                 <viewController storyboardIdentifier="MypageChangePasswordVC" id="lca-jX-mgz" customClass="MypageChangePasswordViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -1963,7 +1963,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="e0r-OU-HPv">
                                 <rect key="frame" x="20" y="128" width="374" height="220"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="current password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SwN-Pf-xhG">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="현재 비밀번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SwN-Pf-xhG">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="WY8-wI-mn6"/>
@@ -1971,19 +1971,19 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="new password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0hw-LK-396">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="새 비밀번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0hw-LK-396">
                                         <rect key="frame" x="0.0" y="60" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="new password check" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EMm-PP-P7o">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="새 비밀번호 확인" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EMm-PP-P7o">
                                         <rect key="frame" x="0.0" y="120" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SP8-DT-VLm">
                                         <rect key="frame" x="0.0" y="180" width="374" height="40"/>
-                                        <state key="normal" title="change"/>
+                                        <state key="normal" title="변경하기"/>
                                         <connections>
                                             <action selector="changeButton:" destination="lca-jX-mgz" eventType="touchUpInside" id="Tfe-jX-nnF"/>
                                         </connections>
@@ -2004,7 +2004,7 @@
                             <constraint firstItem="e0r-OU-HPv" firstAttribute="leading" secondItem="tea-G0-a4s" secondAttribute="leading" constant="20" id="y0C-kE-3wR"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Change password" id="iib-xS-ebK"/>
+                    <navigationItem key="navigationItem" title="비밀번호 변경" id="iib-xS-ebK"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -2136,7 +2136,7 @@
             </objects>
             <point key="canvasLocation" x="1280" y="1553"/>
         </scene>
-        <!--Admin-->
+        <!--관리자 페이지-->
         <scene sceneID="QgT-G3-kEL">
             <objects>
                 <viewController storyboardIdentifier="AdminVC" id="o3D-CZ-Dk4" customClass="AdminViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -2149,14 +2149,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AdminCustomCell" id="QHJ-wh-SGI" customClass="AdminCustomCell" customModule="ikeeperApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QHJ-wh-SGI" id="tNS-SK-4LF">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="function" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1C-Sa-cPF">
-                                                    <rect key="frame" x="20" y="11" width="374" height="21"/>
+                                                    <rect key="frame" x="20" y="11" width="374" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2185,7 +2185,7 @@
                             <constraint firstItem="z4H-r5-ikr" firstAttribute="bottom" secondItem="2ep-jn-XtE" secondAttribute="bottom" id="hZ2-Dq-Ovh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Admin" id="gC3-Wm-3tV"/>
+                    <navigationItem key="navigationItem" title="관리자 페이지" id="gC3-Wm-3tV"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -2196,7 +2196,7 @@
             </objects>
             <point key="canvasLocation" x="2186.9565217391305" y="2266.0714285714284"/>
         </scene>
-        <!--UserList-->
+        <!--회원 목록-->
         <scene sceneID="35h-h4-o6i">
             <objects>
                 <viewController storyboardIdentifier="AdminUserVC" id="tiy-K3-z3j" customClass="AdminUserListViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -2278,7 +2278,7 @@
                             <constraint firstItem="rtc-G0-pc3" firstAttribute="leading" secondItem="suP-mw-7a4" secondAttribute="leading" id="iiX-6c-5b4"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="UserList" id="L6t-Bw-QZk">
+                    <navigationItem key="navigationItem" title="회원 목록" id="L6t-Bw-QZk">
                         <barButtonItem key="rightBarButtonItem" image="person.crop.circle.badge.minus" catalog="system" id="pwJ-gW-uPl">
                             <color key="tintColor" systemColor="systemRedColor"/>
                             <connections>
@@ -2297,7 +2297,7 @@
             </objects>
             <point key="canvasLocation" x="3086.9565217391305" y="2265.4017857142858"/>
         </scene>
-        <!--UserInfo Detail-->
+        <!--회원정보 수정-->
         <scene sceneID="2r7-oG-RBM">
             <objects>
                 <viewController storyboardIdentifier="AdminUserInfoDetailVC" id="wg3-sA-Kqv" customClass="AdminUserInfoDetailViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -2308,7 +2308,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Bz7-uM-E0H">
                                 <rect key="frame" x="20" y="108" width="374" height="645"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5ei-fH-hHV">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이메일" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5ei-fH-hHV">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="eGY-iY-tPa"/>
@@ -2316,42 +2316,42 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4z9-Sa-i8x">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이름" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4z9-Sa-i8x">
                                         <rect key="frame" x="0.0" y="55" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ip8-eh-t72">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ip8-eh-t72">
                                         <rect key="frame" x="0.0" y="110" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="studentID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VeW-vM-5ya">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="학번" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VeW-vM-5ya">
                                         <rect key="frame" x="0.0" y="165" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="department" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wgH-K9-ETy">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="학과" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wgH-K9-ETy">
                                         <rect key="frame" x="0.0" y="220" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="grade" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qG5-sj-1uT">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="학년" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qG5-sj-1uT">
                                         <rect key="frame" x="0.0" y="275" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qQe-7m-nWU">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="휴대폰 번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qQe-7m-nWU">
                                         <rect key="frame" x="0.0" y="330" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="permission" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pio-7z-Fqm">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="회원 등급" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pio-7z-Fqm">
                                         <rect key="frame" x="0.0" y="385" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="warning" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GBj-cd-Uc4">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="누적 경고 횟수" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GBj-cd-Uc4">
                                         <rect key="frame" x="0.0" y="440" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -2372,7 +2372,7 @@
                                     </segmentedControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0FU-zr-L7c">
                                         <rect key="frame" x="0.0" y="605" width="374" height="40"/>
-                                        <state key="normal" title="complete"/>
+                                        <state key="normal" title="수정하기"/>
                                         <connections>
                                             <action selector="completeButton:" destination="gND-ri-y6x" eventType="touchUpInside" id="81I-T8-dej"/>
                                             <action selector="completeButtonWith_sender:" destination="wg3-sA-Kqv" eventType="touchUpInside" id="bxj-cb-zzr"/>
@@ -2402,7 +2402,7 @@
                             <constraint firstItem="1C5-xY-l69" firstAttribute="trailing" secondItem="Bz7-uM-E0H" secondAttribute="trailing" constant="20" id="qtq-Jw-gUl"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="UserInfo Detail" id="Jcp-CW-Adn">
+                    <navigationItem key="navigationItem" title="회원정보 수정" id="Jcp-CW-Adn">
                         <barButtonItem key="rightBarButtonItem" image="pencil.slash" catalog="system" id="288-Su-UYd">
                             <connections>
                                 <action selector="rightBarButton:" destination="wg3-sA-Kqv" id="VpW-4t-Hlh"/>
@@ -2431,7 +2431,7 @@
             </objects>
             <point key="canvasLocation" x="3908.6956521739135" y="2265.4017857142858"/>
         </scene>
-        <!--Warning List-->
+        <!--경고 목록-->
         <scene sceneID="g5G-nG-mlc">
             <objects>
                 <viewController storyboardIdentifier="AdminWarningListVC" id="lCH-F7-ufR" customClass="AdminWarningListViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -2513,7 +2513,7 @@
                             <constraint firstItem="LXN-xE-q2j" firstAttribute="bottom" secondItem="kH6-Kn-W0V" secondAttribute="bottom" id="g49-n5-Ey1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Warning List" id="gBY-2F-Lk4">
+                    <navigationItem key="navigationItem" title="경고 목록" id="gBY-2F-Lk4">
                         <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="Hs1-Ap-hLN">
                             <connections>
                                 <segue destination="MtW-yV-Qr2" kind="show" id="e2i-K7-tkY"/>
@@ -2530,7 +2530,7 @@
             </objects>
             <point key="canvasLocation" x="4734.7826086956529" y="2265.4017857142858"/>
         </scene>
-        <!--Warning Write-->
+        <!--경고 작성-->
         <scene sceneID="U4P-hE-UR7">
             <objects>
                 <viewController id="MtW-yV-Qr2" customClass="AdminWarningWriteViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -2541,7 +2541,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="e7l-05-IvD">
                                 <rect key="frame" x="20" y="128" width="374" height="520"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="user name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FIg-rR-I1f">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="회원명" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FIg-rR-I1f">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="tO2-bN-nM4"/>
@@ -2549,17 +2549,17 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="studentID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KA4-8b-BqA">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="학번" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KA4-8b-BqA">
                                         <rect key="frame" x="0.0" y="60" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="department" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yea-ZO-jbV">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="학과" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yea-ZO-jbV">
                                         <rect key="frame" x="0.0" y="120" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="grade" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SHG-UR-h0G">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="학년" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SHG-UR-h0G">
                                         <rect key="frame" x="0.0" y="180" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -2578,7 +2578,7 @@
                                             <segment title="휴학"/>
                                         </segments>
                                     </segmentedControl>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="reason" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o3g-bi-mNc">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="사유" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o3g-bi-mNc">
                                         <rect key="frame" x="0.0" y="360" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -2586,12 +2586,12 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DWD-ir-U5R">
                                         <rect key="frame" x="0.0" y="420" width="374" height="40"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="create date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7e6-FA-pPT">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="생성 날짜" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7e6-FA-pPT">
                                                 <rect key="frame" x="0.0" y="0.0" width="182" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="writer" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jwm-sf-l86">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="작성자" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jwm-sf-l86">
                                                 <rect key="frame" x="192" y="0.0" width="182" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -2603,7 +2603,7 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QL2-4l-Jar">
                                         <rect key="frame" x="0.0" y="480" width="374" height="40"/>
-                                        <state key="normal" title="write"/>
+                                        <state key="normal" title="작성하기"/>
                                         <connections>
                                             <action selector="writeButton:" destination="MtW-yV-Qr2" eventType="touchUpInside" id="zja-xC-Wy5"/>
                                         </connections>
@@ -2629,7 +2629,7 @@
                             <constraint firstItem="e7l-05-IvD" firstAttribute="leading" secondItem="eQ8-nH-mvl" secondAttribute="leading" constant="20" id="cKH-32-D98"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Warning Write" id="jmC-ip-853"/>
+                    <navigationItem key="navigationItem" title="경고 작성" id="jmC-ip-853"/>
                     <connections>
                         <outlet property="createDateValue" destination="7e6-FA-pPT" id="GVe-JE-hSQ"/>
                         <outlet property="departmentValue" destination="Yea-ZO-jbV" id="mem-l0-BqM"/>
@@ -2646,7 +2646,7 @@
             </objects>
             <point key="canvasLocation" x="5557.971014492754" y="2265.4017857142858"/>
         </scene>
-        <!--Warning Detail-->
+        <!--경고 내역 수정-->
         <scene sceneID="fai-a5-EaC">
             <objects>
                 <viewController storyboardIdentifier="AdminWarningDetailVC" id="TCA-C4-yY7" customClass="AdminWarningDetailViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -2657,7 +2657,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qhZ-6X-XaB">
                                 <rect key="frame" x="20" y="128" width="374" height="520"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="user name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qtn-Fj-TUw">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="회원명" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qtn-Fj-TUw">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="shp-uR-78u"/>
@@ -2665,17 +2665,17 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="studentID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U3I-cJ-aEY">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="학번" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U3I-cJ-aEY">
                                         <rect key="frame" x="0.0" y="60" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="department" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VOA-pg-bqL">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="학과" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VOA-pg-bqL">
                                         <rect key="frame" x="0.0" y="120" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="grade" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rjg-Xv-fMv">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="학년" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rjg-Xv-fMv">
                                         <rect key="frame" x="0.0" y="180" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -2694,7 +2694,7 @@
                                             <segment title="휴학"/>
                                         </segments>
                                     </segmentedControl>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="reason" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5R8-bJ-QQb">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="사유" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5R8-bJ-QQb">
                                         <rect key="frame" x="0.0" y="360" width="374" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -2702,12 +2702,12 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wST-9l-G42">
                                         <rect key="frame" x="0.0" y="420" width="374" height="40"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="create date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UBc-fk-dvb">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="생성 날짜" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UBc-fk-dvb">
                                                 <rect key="frame" x="0.0" y="0.0" width="182" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="writer" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4cz-Xv-Yke">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="작성자" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4cz-Xv-Yke">
                                                 <rect key="frame" x="192" y="0.0" width="182" height="40"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -2719,7 +2719,7 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pxz-8M-F4w">
                                         <rect key="frame" x="0.0" y="480" width="374" height="40"/>
-                                        <state key="normal" title="complete"/>
+                                        <state key="normal" title="수정하기"/>
                                         <connections>
                                             <action selector="completeButton:" destination="TCA-C4-yY7" eventType="touchUpInside" id="TMr-xU-Trt"/>
                                             <action selector="writeButton:" destination="MtW-yV-Qr2" eventType="touchUpInside" id="QMa-gb-NZT"/>
@@ -2746,7 +2746,7 @@
                             <constraint firstItem="qhZ-6X-XaB" firstAttribute="top" secondItem="1RF-eG-5xd" secondAttribute="top" constant="40" id="t5u-t1-zrI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Warning Detail" id="xU3-V8-585">
+                    <navigationItem key="navigationItem" title="경고 내역 수정" id="xU3-V8-585">
                         <barButtonItem key="rightBarButtonItem" image="pencil.slash" catalog="system" id="9Zq-sf-Eep">
                             <connections>
                                 <action selector="rightBarButton:" destination="TCA-C4-yY7" id="iJq-zB-iQl"/>
@@ -2773,7 +2773,7 @@
             </objects>
             <point key="canvasLocation" x="6380" y="2266"/>
         </scene>
-        <!--Check the info I written-->
+        <!--작성한 글 확인-->
         <scene sceneID="LSv-Vp-jKz">
             <objects>
                 <viewController storyboardIdentifier="MypageWrittenInfoVC" id="c1K-O8-Ejl" customClass="MypageWrittenInfoViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -2871,7 +2871,7 @@
                             <constraint firstItem="13Q-rt-Rur" firstAttribute="top" secondItem="sqp-QK-KBE" secondAttribute="top" id="dLO-2h-nzW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Check the info I written" id="Xtq-i7-Nkz">
+                    <navigationItem key="navigationItem" title="작성한 글 확인" id="Xtq-i7-Nkz">
                         <barButtonItem key="rightBarButtonItem" image="pencil.slash" catalog="system" id="fry-nn-saJ">
                             <connections>
                                 <action selector="editBarButton:" destination="c1K-O8-Ejl" id="lKB-PX-qMr"/>
@@ -2889,7 +2889,7 @@
             </objects>
             <point key="canvasLocation" x="3086.9565217391305" y="1552.9017857142856"/>
         </scene>
-        <!--Check the calendar I written-->
+        <!--작성한 일정 확인-->
         <scene sceneID="cjm-4o-Aim">
             <objects>
                 <viewController storyboardIdentifier="MypageWrittenCalendarVC" id="kdY-nY-rRd" customClass="MypageWrittenCalendarViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -2995,7 +2995,7 @@
                             <constraint firstItem="fGh-fc-2EV" firstAttribute="leading" secondItem="ydb-H1-mj5" secondAttribute="leading" id="pGt-ED-zof"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Check the calendar I written" id="a6w-VB-5ht">
+                    <navigationItem key="navigationItem" title="작성한 일정 확인" id="a6w-VB-5ht">
                         <barButtonItem key="rightBarButtonItem" image="pencil.slash" catalog="system" id="eJN-Ts-n3z">
                             <connections>
                                 <action selector="editBarButton:" destination="kdY-nY-rRd" id="YbC-fQ-SyV"/>
@@ -3013,7 +3013,7 @@
             </objects>
             <point key="canvasLocation" x="3908.6956521739135" y="1552.9017857142856"/>
         </scene>
-        <!--Check the warning list-->
+        <!--경고 내역 확인-->
         <scene sceneID="011-M2-FGU">
             <objects>
                 <viewController storyboardIdentifier="MypageWarningListVC" id="5iY-z4-i89" customClass="MypageWarningListViewController" customModule="ikeeperApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -3081,7 +3081,7 @@
                             <constraint firstItem="jFB-yo-SwG" firstAttribute="trailing" secondItem="yzQ-kD-m1b" secondAttribute="trailing" id="pdR-Gr-Oe7"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Check the warning list" id="q3W-HU-n38"/>
+                    <navigationItem key="navigationItem" title="경고 내역 확인" id="q3W-HU-n38"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
