@@ -23,8 +23,6 @@ class InformationViewController: UIViewController {
         
         infoTableView.delegate = self
         infoTableView.dataSource = self
-        //infoTableView.estimatedRowHeight = 60 // 예상 행 높이
-        //infoTableView.rowHeight = UITableView.automaticDimension // autolayout 설정에 맞게 자동으로 table cell height 조절
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,11 +64,6 @@ class InformationViewController: UIViewController {
 }
 
 extension InformationViewController: UITableViewDelegate, UITableViewDataSource {
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 80
-//    }
-    
     // tableView setting - row
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataList.count

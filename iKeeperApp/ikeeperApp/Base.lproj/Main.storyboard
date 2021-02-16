@@ -237,7 +237,7 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InfoCustomCell" rowHeight="80" id="oNa-x1-HyE" customClass="InfoCustomCell" customModule="ikeeperApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oNa-x1-HyE" id="oQC-zu-lKV" customClass="InfoCustomCell" customModule="ikeeperApp" customModuleProvider="target">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oNa-x1-HyE" id="oQC-zu-lKV">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -297,10 +297,10 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="wzb-Vp-nuX" secondAttribute="bottom" constant="5" id="6g1-Jf-q1A"/>
-                                                <constraint firstItem="wzb-Vp-nuX" firstAttribute="leading" secondItem="oQC-zu-lKV" secondAttribute="leading" constant="20" id="AyL-CI-yaP"/>
-                                                <constraint firstItem="wzb-Vp-nuX" firstAttribute="top" secondItem="oQC-zu-lKV" secondAttribute="top" constant="5" id="KgC-eE-lVP"/>
-                                                <constraint firstAttribute="trailing" secondItem="wzb-Vp-nuX" secondAttribute="trailing" constant="20" id="uJr-JV-Sii"/>
+                                                <constraint firstAttribute="trailing" secondItem="wzb-Vp-nuX" secondAttribute="trailing" constant="20" id="1oa-to-f7Z"/>
+                                                <constraint firstItem="wzb-Vp-nuX" firstAttribute="leading" secondItem="oQC-zu-lKV" secondAttribute="leading" constant="20" id="Con-Ae-Uz1"/>
+                                                <constraint firstItem="wzb-Vp-nuX" firstAttribute="top" secondItem="oQC-zu-lKV" secondAttribute="top" constant="5" id="FOT-qY-Cp3"/>
+                                                <constraint firstAttribute="bottom" secondItem="wzb-Vp-nuX" secondAttribute="bottom" constant="5" id="vCd-cJ-v5t"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -437,7 +437,8 @@
                                                         <constraint firstAttribute="height" constant="20" id="vAn-3a-tYR"/>
                                                         <constraint firstAttribute="width" constant="20" id="xEe-0Q-jmp"/>
                                                     </constraints>
-                                                    <state key="normal" image="x.circle" catalog="system"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" image="x.circle.fill" catalog="system"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -608,7 +609,8 @@
                                                         <constraint firstAttribute="height" constant="20" id="AUz-JX-Ve8"/>
                                                         <constraint firstAttribute="width" constant="20" id="kGo-rb-5lT"/>
                                                     </constraints>
-                                                    <state key="normal" image="x.circle" catalog="system"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" image="x.circle.fill" catalog="system"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -2149,14 +2151,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AdminCustomCell" id="QHJ-wh-SGI" customClass="AdminCustomCell" customModule="ikeeperApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QHJ-wh-SGI" id="tNS-SK-4LF">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="function" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1C-Sa-cPF">
-                                                    <rect key="frame" x="20" y="11" width="374" height="21"/>
+                                                    <rect key="frame" x="20" y="11" width="374" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -3108,6 +3110,7 @@
         <image name="trash" catalog="system" width="121" height="128"/>
         <image name="wonsign.circle" catalog="system" width="128" height="121"/>
         <image name="x.circle" catalog="system" width="128" height="121"/>
+        <image name="x.circle.fill" catalog="system" width="128" height="121"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
