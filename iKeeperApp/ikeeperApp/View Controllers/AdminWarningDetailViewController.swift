@@ -19,8 +19,7 @@ class AdminWarningDetailViewController: UIViewController {
     @IBOutlet weak var reasonValue: UITextField!
     @IBOutlet weak var createDateValue: UITextField!
     @IBOutlet weak var writerValue: UITextField!
-    @IBOutlet weak var deleteBarButton: UIBarButtonItem!
-    @IBOutlet weak var editBarButton: UIBarButtonItem!
+    @IBOutlet weak var rightBarButton: UIBarButtonItem!
     @IBOutlet weak var completeButton: UIButton!
     let userListPickerView: UIPickerView = UIPickerView()
     let noUserList = ["-- 회원 없음 --"]
@@ -173,12 +172,24 @@ class AdminWarningDetailViewController: UIViewController {
         }
         self.view.endEditing(true)
     }
-
-    @IBAction func editBarButton(_ sender: UIBarButtonItem) {
-        editBarButton.image = nil
-        editBarButton.isEnabled = false
-        completeButton.isHidden = false
-        setEnabled()
+    
+    @IBAction func rightBarButton(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "기능 선택", message: nil, preferredStyle: .actionSheet)
+        let modify = UIAlertAction(title: "수정", style: .default) { (action) in
+            self.rightBarButton.image = nil
+            self.rightBarButton.isEnabled = false
+            self.completeButton.isHidden = false
+            self.setEnabled()
+        }
+        let delete = UIAlertAction(title: "삭제", style: .destructive) { (action) in
+            let id = self.data["id"] as! String
+            self.showAlertForDelete(id: id)
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        alert.addAction(modify)
+        alert.addAction(delete)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func completeButton(_ sender: UIButton) {
@@ -236,32 +247,27 @@ class AdminWarningDetailViewController: UIViewController {
                 self.showAlertModifyOrDelete(title: "수정 완료", message: "경고내역 수정이 완료되었습니다")
             }
         }
-        editBarButton.image = UIImage(systemName: "pencil.slash")
-        editBarButton.isEnabled = true
+        
+        rightBarButton.image = UIImage(systemName: "pencil.slash")
+        rightBarButton.isEnabled = true
         completeButton.isHidden = true
         setDisabled()
     }
     
-    @IBAction func deleteBarButton(_ sender: UIBarButtonItem) {
-        let id = data["id"] as! String
-        
-        let db = Firestore.firestore()
-        db.collection("warningList").document("\(id)").delete { (error) in
-            if error != nil {
-                print("check for error : \(error!.localizedDescription)")
-            } else {
-                self.showAlertForDelete()
-            }
-        }
-    }
-    
-    func showAlertForDelete() {
+    func showAlertForDelete(id: String) {
         let alert = UIAlertController(title: "경고내역 삭제",
                                       message: "경고내역을 삭제하시겠습니까?",
                                       preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
-            self.showAlertModifyOrDelete(title: "삭제 완료", message: "경고내역 삭제가 완료되었습니다")
+            let db = Firestore.firestore()
+            db.collection("warningList").document("\(id)").delete { (error) in
+                if error != nil {
+                    print("check for error : \(error!.localizedDescription)")
+                } else {
+                    self.showAlertModifyOrDelete(title: "삭제 완료", message: "경고내역 삭제가 완료되었습니다")
+                }
+            }
         }
         alert.addAction(cancelAction)
         alert.addAction(okAction)

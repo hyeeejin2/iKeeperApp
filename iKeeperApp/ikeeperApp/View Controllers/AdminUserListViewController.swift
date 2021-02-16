@@ -12,7 +12,7 @@ class AdminUserListViewController: UIViewController {
 
     @IBOutlet weak var deleteBarButton: UIBarButtonItem!
     @IBOutlet weak var userListTableView: UITableView!
-    let statusLabel = UILabel(frame: CGRect(x: 0, y: 90, width: 414, height: 40))
+    let statusLabel = UILabel(frame: CGRect(x: 0, y: 95, width: 414, height: 40))
     var dataList = [[String: Any]]()
     var numbering = 1
     var currentPW: String = ""
@@ -93,6 +93,10 @@ class AdminUserListViewController: UIViewController {
 }
 
 extension AdminUserListViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 43
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataList.count
     }

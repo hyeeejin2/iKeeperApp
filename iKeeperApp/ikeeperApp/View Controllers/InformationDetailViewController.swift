@@ -243,7 +243,7 @@ class InformationDetailViewController: UIViewController {
             self.setEnabled()
             self.imageCollectionView.reloadData()
         }
-        let delete = UIAlertAction(title: "삭제", style: .default) { (action) in
+        let delete = UIAlertAction(title: "삭제", style: .destructive) { (action) in
             let id = self.dataList["id"] as! String
             self.showAlertForDelete(id: id)
         }

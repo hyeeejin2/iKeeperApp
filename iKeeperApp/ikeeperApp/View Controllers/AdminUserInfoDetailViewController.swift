@@ -21,7 +21,7 @@ class AdminUserInfoDetailViewController: UIViewController {
     @IBOutlet weak var warningValue: UITextField!
     @IBOutlet weak var partControl: UISegmentedControl!
     @IBOutlet weak var statusControl: UISegmentedControl!
-    @IBOutlet weak var editBarButton: UIBarButtonItem!
+    @IBOutlet weak var rightBarButton: UIBarButtonItem!
     @IBOutlet weak var completeButton: UIButton!
     var dataList = [String: Any]()
     
@@ -117,11 +117,18 @@ class AdminUserInfoDetailViewController: UIViewController {
         statusControl.isEnabled = false
     }
     
-    @IBAction func editBarButton(_ sender: UIBarButtonItem) {
-        editBarButton.image = nil
-        editBarButton.isEnabled = false
-        completeButton.isHidden = false
-        setEnabled()
+    @IBAction func rightBarButton(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "기능 선택", message: nil, preferredStyle: .actionSheet)
+        let modify = UIAlertAction(title: "수정", style: .default) { (action) in
+            self.rightBarButton.image = nil
+            self.rightBarButton.isEnabled = false
+            self.completeButton.isHidden = false
+            self.setEnabled()
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        alert.addAction(modify)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func completeButton(_sender: UIBarButtonItem) {
@@ -151,8 +158,8 @@ class AdminUserInfoDetailViewController: UIViewController {
             }
         }
         
-        editBarButton.image = UIImage(systemName: "pencil.slash")
-        editBarButton.isEnabled = true
+        rightBarButton.image = UIImage(systemName: "pencil.slash")
+        rightBarButton.isEnabled = true
         completeButton.isHidden = true
         setDisabled()
     }

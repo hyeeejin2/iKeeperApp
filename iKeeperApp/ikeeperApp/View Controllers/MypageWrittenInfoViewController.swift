@@ -12,7 +12,7 @@ class MypageWrittenInfoViewController: UIViewController {
 
     @IBOutlet weak var editBarButton: UIBarButtonItem!
     @IBOutlet weak var infoListTableView: UITableView!
-    let statusLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 414, height: 40))
+    let statusLabel = UILabel(frame: CGRect(x: 0, y: 95, width: 414, height: 40))
     var dataList = [[String: Any]]()
     var numbering: Int = 1
     

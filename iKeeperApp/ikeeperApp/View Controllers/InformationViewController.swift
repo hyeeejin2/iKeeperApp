@@ -12,7 +12,7 @@ class InformationViewController: UIViewController {
 
     @IBOutlet weak var writeBarButton: UIBarButtonItem!
     @IBOutlet weak var infoTableView: UITableView!
-    let statusLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 414, height: 40))
+    let statusLabel = UILabel(frame: CGRect(x: 0, y: 95, width: 414, height: 40))
     var dataList = [[String: Any]]()
     var numbering = 1
     
@@ -23,7 +23,7 @@ class InformationViewController: UIViewController {
         
         infoTableView.delegate = self
         infoTableView.dataSource = self
-        //infoTableView.estimatedRowHeight = 80.0 // 임의 설정이지만 계산해서 80
+        //infoTableView.estimatedRowHeight = 60 // 예상 행 높이
         //infoTableView.rowHeight = UITableView.automaticDimension // autolayout 설정에 맞게 자동으로 table cell height 조절
     }
     
@@ -51,12 +51,9 @@ class InformationViewController: UIViewController {
         let db = Firestore.firestore()
         db.collection("infoList").order(by: "created", descending: true).getDocuments { (snapshot, error) in
             if error == nil && snapshot?.isEmpty == false {
-                //var temp: Int = 1
                 for document in snapshot!.documents {
                     let documentData = document.data()
-                    //documentData["num"] = "\(temp)"
                     self.dataList.append(documentData)
-                    //temp += 1
                 }
             } else if error == nil && snapshot?.isEmpty == true {
                 self.statusLabel.textAlignment = .center
@@ -66,10 +63,13 @@ class InformationViewController: UIViewController {
             self.infoTableView.reloadData()
         }
     }
-
 }
 
 extension InformationViewController: UITableViewDelegate, UITableViewDataSource {
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 80
+//    }
     
     // tableView setting - row
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -78,7 +78,6 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
     
     // tableView setting - cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         // cell은 as 키워드로 앞서 만든 InfoCustomCell 클래스화
         let cell = tableView.dequeueReusableCell(withIdentifier: "InfoCustomCell", for: indexPath) as! InfoCustomCell
 
@@ -86,7 +85,6 @@ extension InformationViewController: UITableViewDelegate, UITableViewDataSource 
         let data = dataList[indexPath.row]
         cell.numLabel?.text = String(numbering)
         numbering += 1
-        //cell.numLabel?.text = data["num"] as? String
         cell.titleLabel?.text = data["title"] as? String
         cell.viewsLabel?.text = String((data["views"] as? Int)!)
         cell.dateLabel?.text = data["date"] as? String

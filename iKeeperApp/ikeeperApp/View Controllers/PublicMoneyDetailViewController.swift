@@ -16,8 +16,7 @@ class PublicMoneyDetailViewController: UIViewController {
     @IBOutlet weak var createDateValue: UITextField!
     @IBOutlet weak var writerValue: UITextField!
     @IBOutlet weak var memoValue: UITextField!
-    @IBOutlet weak var deleteBarButton: UIBarButtonItem!
-    @IBOutlet weak var editBarButton: UIBarButtonItem!
+    @IBOutlet weak var rightBarButton: UIBarButtonItem!
     @IBOutlet weak var completeButton: UIButton!
     let datePicker: UIDatePicker = UIDatePicker()
     let formatter = DateFormatter()
@@ -57,10 +56,8 @@ class PublicMoneyDetailViewController: UIViewController {
     }
     
     func setBarButtonDisabled() {
-        editBarButton.image = nil
-        editBarButton.isEnabled = false
-        deleteBarButton.image = nil
-        deleteBarButton.isEnabled = false
+        rightBarButton.image = nil
+        rightBarButton.isEnabled = false
     }
     
     func setEnabled() {
@@ -125,11 +122,23 @@ class PublicMoneyDetailViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    @IBAction func editBarButton(_ sender: UIBarButtonItem) {
-        editBarButton.image = nil
-        editBarButton.isEnabled = false
-        completeButton.isHidden = false
-        setEnabled()
+    @IBAction func rightBarButton(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "기능 선택", message: nil, preferredStyle: .actionSheet)
+        let modify = UIAlertAction(title: "수정", style: .default) { (action) in
+            self.rightBarButton.image = nil
+            self.rightBarButton.isEnabled = false
+            self.completeButton.isHidden = false
+            self.setEnabled()
+        }
+        let delete = UIAlertAction(title: "삭제", style: .destructive) { (action) in
+            let id = self.dataList["id"] as! String
+            self.showAlertForDelete(id: id)
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        alert.addAction(modify)
+        alert.addAction(delete)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func completeButton(_ sender: UIButton) {
@@ -181,15 +190,10 @@ class PublicMoneyDetailViewController: UIViewController {
                 self.showAlertModifyOrDelete(title: "수정 완료", message: "공금내역 수정이 완료되었습니다")
             }
         }
-        editBarButton.image = UIImage(systemName: "pencil.slash")
-        editBarButton.isEnabled = true
+        rightBarButton.image = UIImage(systemName: "pencil.slash")
+        rightBarButton.isEnabled = true
         completeButton.isHidden = true
         setDisabled()
-    }
-    
-    @IBAction func deleteButton(_ sender: UIBarButtonItem) {
-        let id = dataList["id"] as! String
-        showAlertForDelete(id: id)
     }
     
     func showAlertForDelete(id: String) {

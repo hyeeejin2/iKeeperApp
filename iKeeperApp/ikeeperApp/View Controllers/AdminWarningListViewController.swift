@@ -11,7 +11,7 @@ import Firebase
 class AdminWarningListViewController: UIViewController {
 
     @IBOutlet weak var warningListTableView: UITableView!
-    let statusLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 414, height: 40))
+    let statusLabel = UILabel(frame: CGRect(x: 0, y: 95, width: 414, height: 40))
     var dataList = [[String: Any]]()
     var numbering = 1
     
@@ -76,6 +76,10 @@ class AdminWarningListViewController: UIViewController {
 }
 
 extension AdminWarningListViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 43
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataList.count
     }

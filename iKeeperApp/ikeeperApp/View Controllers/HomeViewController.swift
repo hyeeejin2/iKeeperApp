@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var adminBarButton: UIBarButtonItem!
     @IBOutlet weak var menuBarButton: UIBarButtonItem!
-    let statusLabel = UILabel(frame: CGRect(x: 0, y: 400, width: 414, height: 40))
+    let statusLabel = UILabel(frame: CGRect(x: 0, y: 410, width: 414, height: 40))
     //let pink = UIColor(red: 243/255.0, green: 148/255.0, blue: 173/255.0, alpha: 1)
     var dataList = [[String: Any]]()
     var sideMenu: SideMenuNavigationController?
@@ -36,6 +36,11 @@ class HomeViewController: UIViewController {
         numbering = 1
         setBarButton()
         showCalendar()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        calendarTableView.layoutIfNeeded()
     }
     
     func setBarButton() {
@@ -131,6 +136,10 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 43
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataList.count
     }

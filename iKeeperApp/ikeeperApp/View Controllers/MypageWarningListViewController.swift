@@ -10,9 +10,8 @@ import Firebase
 
 class MypageWarningListViewController: UIViewController {
 
-    @IBOutlet weak var editBarButton: UIBarButtonItem!
     @IBOutlet weak var warningListTableView: UITableView!
-    let statusLabel = UILabel(frame: CGRect(x: 0, y: 100, width: 414, height: 40))
+    let statusLabel = UILabel(frame: CGRect(x: 0, y: 95, width: 414, height: 40))
     var dataList = [[String: Any]]()
     var numbering: Int = 1
     
@@ -38,8 +37,6 @@ class MypageWarningListViewController: UIViewController {
         if user != nil {
             getList()
         } else {
-            editBarButton.image = nil
-            editBarButton.isEnabled = false
             self.navigationController?.popViewController(animated: true)
         }
     }
@@ -60,32 +57,22 @@ class MypageWarningListViewController: UIViewController {
                         self.dataList.append(documentData)
                     }
                     print(self.dataList)
-                    self.editBarButton.image = UIImage(systemName: "pencil.slash")
-                    self.editBarButton.isEnabled = true
                 } else {
                     self.statusLabel.textAlignment = .center
                     self.statusLabel.text = "경고받은 내역이 없습니다."
                     self.view.addSubview(self.statusLabel)
-                    self.editBarButton.image = nil
-                    self.editBarButton.isEnabled = false
                 }
                 self.warningListTableView.reloadData()
             }
         }
     }
-    
-    @IBAction func editBarButton(_ sender: UIBarButtonItem) {
-        if warningListTableView.isEditing {
-            warningListTableView.isEditing = false
-            editBarButton.image = UIImage(systemName: "pencil.slash")
-        } else {
-            warningListTableView.isEditing = true
-            editBarButton.image = UIImage(systemName: "checkmark.circle")
-        }
-    }
 }
 
 extension MypageWarningListViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 43
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         dataList.count
     }
@@ -102,6 +89,4 @@ extension MypageWarningListViewController: UITableViewDelegate, UITableViewDataS
         cell.reasonLabel?.text = data["reason"] as? String
         return cell
     }
-    
-    
 }
