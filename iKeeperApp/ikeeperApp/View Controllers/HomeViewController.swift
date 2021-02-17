@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var adminBarButton: UIBarButtonItem!
     @IBOutlet weak var menuBarButton: UIBarButtonItem!
     let statusLabel = UILabel(frame: CGRect(x: 0, y: 410, width: 414, height: 40))
-    //let pink = UIColor(red: 243/255.0, green: 148/255.0, blue: 173/255.0, alpha: 1)
+    //let pink = UIColor(red: 243/255.0, green: 148/255.0, blue: 173/255.0, alpha: 0)
     var dataList = [[String: Any]]()
     var sideMenu: SideMenuNavigationController?
     var numbering: Int = 1
@@ -29,6 +29,7 @@ class HomeViewController: UIViewController {
         calendarTableView.dataSource = self
         
         setSideMenu()
+        //setNavigation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,7 +79,7 @@ class HomeViewController: UIViewController {
     
 //    func setNavigation() {
 //        self.navigationController?.setNavigationBarHidden(false, animated: false)
-//        self.navigationController?.setToolbarHidden(false, animated: false)
+//        self.navigationController?.navigationBar.backgroundColor = pink
 //    }
     
     func setSideMenu(){

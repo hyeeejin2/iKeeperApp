@@ -173,6 +173,7 @@ class MypageViewController: UIViewController {
     }
     
     func initForLogout() {
+        profileImage.image = UIImage(systemName: "person.circle")
         nameLabel.text = "name"
         departmentLabel.text = "department"
         gradeLabel.text = "grade"
@@ -260,7 +261,7 @@ extension MypageViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         // cell에 데이터 삽입
         let imageString: String = collectionImage[indexPath.row]
-        cell.backgroundColor = .systemGray6
+        cell.backgroundColor = UIColor(displayP3Red: 229/255, green: 229/255, blue: 229/255, alpha: 0.5)
         cell.functionImage.image = UIImage(systemName: "\(imageString)")
         cell.functionLabel.text? = collectionList[indexPath.row]
         return cell
