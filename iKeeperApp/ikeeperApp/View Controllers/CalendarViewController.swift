@@ -22,7 +22,6 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         calendarTableView.delegate = self
         calendarTableView.dataSource = self
@@ -73,9 +72,6 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
         calendar.appearance.headerMinimumDissolvedAlpha = 0.0 // 이전, 다음달 표시
         calendar.appearance.headerDateFormat = "YYYY년 M월" // 헤더 데이터 형식
         calendar.locale = Locale(identifier: "ko_KR")
-        
-        //calendar.headerHeight = 50
-        //calendar.appearance.headerTitleFont = UIFont.systemFont(ofSize: 24)
     }
     
     func eventDate() {
@@ -126,7 +122,6 @@ class CalendarViewController: UIViewController, FSCalendarDataSource, FSCalendar
 }
     
 extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataList.count
     }
@@ -140,7 +135,6 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
         cell.categoryLabel?.text = data["category"] as? String
         cell.numLabel?.text = String(numbering)
         numbering += 1
-        //cell.numLabel?.text = data["num"] as? String
         cell.titleLabel?.text = data["title"] as? String
         cell.writerLabel?.text = data["writer"] as? String
         cell.placeLabel?.text = data["place"] as? String

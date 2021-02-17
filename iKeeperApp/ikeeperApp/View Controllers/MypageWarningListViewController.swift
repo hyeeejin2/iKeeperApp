@@ -17,8 +17,6 @@ class MypageWarningListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
         warningListTableView.delegate = self
         warningListTableView.dataSource = self

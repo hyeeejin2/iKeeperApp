@@ -30,7 +30,6 @@ class MypageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         self.functionCollectionView.delegate = self
         self.functionCollectionView.dataSource = self
@@ -295,9 +294,6 @@ extension MypageViewController: UICollectionViewDelegateFlowLayout {
         let width = collectionView.frame.width / 3-2
         let size = CGSize(width: width, height: width)
         return size
-//        print("collectionView width=\(collectionView.frame.width)")
-//        print("cell하나당 width=\(width)")
-//        print("root view width = \(self.view.frame.width)")
     }
 }
 
@@ -365,13 +361,6 @@ extension MypageViewController: UITableViewDelegate, UITableViewDataSource {
 extension MypageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     // 사진 선택이 끝나면
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-//        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
-//            profileImage.image = image
-//            print(info)
-//        }
-//        dismiss(animated: true, completion: nil)
-        
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else {
             return
         }
@@ -407,19 +396,4 @@ extension MypageViewController: UIImagePickerControllerDelegate, UINavigationCon
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-    
-//    func resize(image: UIImage) -> Data? {
-//        if let imageData = image.pngData() { //if there is an image start the checks and possible compression
-//            let size = imageData.count / 1024
-//            if size > 1024 { //if the image data size is > 1024
-//                let compressionValue = CGFloat(1024 / size) //get the compression value needed in order to bring the image down to 1024
-//                return image.jpegData(compressionQuality: compressionValue) //return the compressed image data
-//            } else { //if your image <= 1024 nothing needs to be done and return it as is
-//                return imageData
-//            }
-//        } else { //if it cant get image data return nothing
-//            return nil
-//        }
-//    }
-    
 }

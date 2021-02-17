@@ -27,7 +27,6 @@ class CalendarWriteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         createPickerView()
         dismissPickerView()
@@ -123,7 +122,6 @@ class CalendarWriteViewController: UIViewController {
                 startPicker.preferredDatePickerStyle = .wheels
         }
         startPicker.datePickerMode = .time
-        //startPicker.locale = NSLocale(localeIdentifier: "ko_KO") as Locale
         startValue.inputView = startPicker
     }
     
@@ -151,7 +149,6 @@ class CalendarWriteViewController: UIViewController {
                 endPicker.preferredDatePickerStyle = .wheels
         }
         endPicker.datePickerMode = .time
-        //endPicker.locale = NSLocale(localeIdentifier: "ko_KO") as Locale
         endValue.inputView = endPicker
     }
     
@@ -212,8 +209,9 @@ class CalendarWriteViewController: UIViewController {
         let timestamp = NSDate().timeIntervalSince1970
         let db = Firestore.firestore()
         let newDocument = db.collection("calendar").document()
-        newDocument.setData(["id": newDocument.documentID, "uid": uid, "title": title, "writer": writer, "category": category, "date": date, "startTime": start, "endTime": end, "place": place, "content": content, "created": timestamp]) { (error) in
-            
+        newDocument.setData(["id": newDocument.documentID, "uid": uid, "title": title, "writer": writer,
+                             "category": category, "date": date, "startTime": start, "endTime": end,
+                             "place": place, "content": content, "created": timestamp]) { (error) in
             if error != nil {
                 print("check for error : \(error!.localizedDescription)")
                 self.showAlert(message: "일정 등록 실패")

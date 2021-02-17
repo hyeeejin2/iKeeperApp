@@ -25,8 +25,6 @@ class InformationWriteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
@@ -108,7 +106,6 @@ class InformationWriteViewController: UIViewController {
             timePicker.preferredDatePickerStyle = .wheels
         }
         timePicker.datePickerMode = .time
-        //startPicker.locale = NSLocale(localeIdentifier: "ko_KO") as Locale
         timeValue.inputView = timePicker
     }
     

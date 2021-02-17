@@ -19,8 +19,6 @@ class AdminUserListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
         userListTableView.delegate = self
         userListTableView.dataSource = self

@@ -33,7 +33,6 @@ class MypageUserInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         completeButton.isHidden = true
         setDisabled()
@@ -244,7 +243,6 @@ class MypageUserInfoViewController: UIViewController {
 }
 
 extension MypageUserInfoViewController: UIPickerViewDelegate, UIPickerViewDataSource {
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

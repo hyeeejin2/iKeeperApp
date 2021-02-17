@@ -30,7 +30,6 @@ class CalendarDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         completeButton.isHidden = true
         setDisabled()
@@ -56,13 +55,9 @@ class CalendarDetailViewController: UIViewController {
             let documentID: String = dataList["id"] as! String
             let db = Firestore.firestore()
             db.collection("calendar").whereField("id", isEqualTo: documentID).whereField("uid", isEqualTo: uid).getDocuments { (snapshot, error) in
-                if error == nil && snapshot?.isEmpty == false {
-                    print("회원 & 본인")
-                } else if error == nil && snapshot?.isEmpty == true {
+                if error == nil && snapshot?.isEmpty == true {
                     db.collection("users").whereField("uid", isEqualTo: uid).whereField("permission", isEqualTo: true).getDocuments { (snapshot, error) in
-                        if error == nil && snapshot?.isEmpty == false {
-                            print("관리자")
-                        } else if error == nil && snapshot?.isEmpty == true {
+                        if error == nil && snapshot?.isEmpty == true {
                             self.setBarButtonDisabled()
                         }
                     }
@@ -170,7 +165,6 @@ class CalendarDetailViewController: UIViewController {
                 startPicker.preferredDatePickerStyle = .wheels
         }
         startPicker.datePickerMode = .time
-        //startPicker.locale = NSLocale(localeIdentifier: "ko_KO") as Locale
         startValue.inputView = startPicker
     }
     
@@ -198,7 +192,6 @@ class CalendarDetailViewController: UIViewController {
                 endPicker.preferredDatePickerStyle = .wheels
         }
         endPicker.datePickerMode = .time
-        //endPicker.locale = NSLocale(localeIdentifier: "ko_KO") as Locale
         endValue.inputView = endPicker
     }
     

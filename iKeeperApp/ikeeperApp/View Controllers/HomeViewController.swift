@@ -16,20 +16,17 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var adminBarButton: UIBarButtonItem!
     @IBOutlet weak var menuBarButton: UIBarButtonItem!
     let statusLabel = UILabel(frame: CGRect(x: 0, y: 410, width: 414, height: 40))
-    //let pink = UIColor(red: 243/255.0, green: 148/255.0, blue: 173/255.0, alpha: 0)
     var dataList = [[String: Any]]()
     var sideMenu: SideMenuNavigationController?
     var numbering: Int = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
         calendarTableView.delegate = self
         calendarTableView.dataSource = self
         
         setSideMenu()
-        //setNavigation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,16 +74,10 @@ class HomeViewController: UIViewController {
         }
     }
     
-//    func setNavigation() {
-//        self.navigationController?.setNavigationBarHidden(false, animated: false)
-//        self.navigationController?.navigationBar.backgroundColor = pink
-//    }
-    
     func setSideMenu(){
         sideMenu = SideMenuNavigationController(rootViewController: MenuListController())
         sideMenu?.leftSide = false
-        //sideMenu?.navigationBar.barTintColor = pink
-        //sideMenu?.setNavigationBarHidden(true, animated: false)
+        sideMenu?.navigationBar.barTintColor = .white
         
         SideMenuManager.default.rightMenuNavigationController = sideMenu // 메뉴는 오른쪽
         SideMenuManager.default.addPanGestureToPresent(toView: self.view) // 메뉴에 스와이핑 제스처 추가
@@ -173,12 +164,11 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 class MenuListController: UITableViewController {
-    //let pink = UIColor(red: 243/255.0, green: 148/255.0, blue: 173/255.0, alpha: 1)
     let lists = ["로그인", "회원가입"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //tableView.backgroundColor = pink
+        tableView.backgroundColor = .white
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
@@ -189,8 +179,6 @@ class MenuListController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = lists[indexPath.row]
-        //cell.textLabel?.textColor = .black
-        //cell.backgroundColor = pink
         return cell
     }
     

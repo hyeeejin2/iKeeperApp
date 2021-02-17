@@ -24,8 +24,7 @@ class PublicMoneyDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
+
         completeButton.isHidden = true
         setDisabled()
         setValue()
@@ -44,9 +43,7 @@ class PublicMoneyDetailViewController: UIViewController {
             let documentID: String = dataList["id"] as! String
             let db = Firestore.firestore()
             db.collection("publicMoney").whereField("id", isEqualTo: documentID).whereField("uid", isEqualTo: uid).getDocuments { (snapshot, error) in
-                if error == nil && snapshot?.isEmpty == false {
-                    print("관리자")
-                } else if error == nil && snapshot?.isEmpty == true {
+                if error == nil && snapshot?.isEmpty == true {
                     self.setBarButtonDisabled()
                 }
             }

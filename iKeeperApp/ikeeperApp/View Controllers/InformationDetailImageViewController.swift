@@ -16,8 +16,6 @@ class InformationDetailImageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     
         //페이지 컨트롤의 전체 페이지를 images 배열의 전체 개수 값으로 설정
         pageController.numberOfPages = images.count

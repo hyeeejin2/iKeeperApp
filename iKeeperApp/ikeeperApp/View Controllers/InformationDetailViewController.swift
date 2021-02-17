@@ -30,10 +30,10 @@ class InformationDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
+
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
+        
         completeButton.isHidden = true
         setDisabled()
         setValue()
@@ -57,13 +57,9 @@ class InformationDetailViewController: UIViewController {
             let documentID: String = dataList["id"] as! String
             let db = Firestore.firestore()
             db.collection("infoList").whereField("id", isEqualTo: documentID).whereField("uid", isEqualTo: uid).getDocuments { (snapshot, error) in
-                if error == nil && snapshot?.isEmpty == false {
-                    print("회원 & 본인")
-                } else if error == nil && snapshot?.isEmpty == true {
+                if error == nil && snapshot?.isEmpty == true {
                     db.collection("users").whereField("uid", isEqualTo: uid).whereField("permission", isEqualTo: true).getDocuments { (snapshot, error) in
-                        if error == nil && snapshot?.isEmpty == false {
-                            print("관리자")
-                        } else if error == nil && snapshot?.isEmpty == true {
+                        if error == nil && snapshot?.isEmpty == true {
                             self.setBarButtonDisabled()
                         }
                     }

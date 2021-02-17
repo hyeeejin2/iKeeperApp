@@ -15,7 +15,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func loginButton(_ sender: UIButton) {
@@ -74,37 +73,4 @@ class LoginViewController: UIViewController {
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }
-    
-//    func transitionHome() {
-//
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let homeViewController = storyboard.instantiateViewController(withIdentifier: Constants.Storyboard.homeViewController)
-//        let rootViewController = UINavigationController(rootViewController: homeViewController)
-//
-//        view.window?.rootViewController = rootViewController
-//        view.window?.makeKeyAndVisible()
-//    }
-        
-        //self.navigationController?.popToRootViewController(animated: true)
-/*
-        // navigation stack에 homeView push
-        let homeViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC")
-        self.navigationController?.pushViewController(homeViewController!, animated: true)
- */
-        
-/*
-        self.navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
-        self.navigationController?.popToRootViewController(animated: true)
-*/
-        
-/*
-        // homeViewController에 대한 참조 상수
-        let homeViewController = storyboard?.instantiateViewController(identifier:
-                                                                        Constants.Storyboard.homeViewController)
-                                                                        as? HomeViewController
-        
-        view.window?.rootViewController = homeViewController // rootViewController 속성에 homeViewController 할당
-        view.window?.makeKeyAndVisible() // makekeyAndVisible() 메서드 호출
- */
 }
