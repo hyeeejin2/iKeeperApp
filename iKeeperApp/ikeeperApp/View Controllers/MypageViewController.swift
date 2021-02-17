@@ -110,7 +110,7 @@ class MypageViewController: UIViewController {
     func profilePhoto() {
         let user = Auth.auth().currentUser
         if user != nil {
-            let alert =  UIAlertController(title: "프로필 사진 설정", message: "아래 두 가지 중 선택하세요", preferredStyle: .actionSheet)
+            let alert =  UIAlertController(title: "프로필 사진 설정", message: nil, preferredStyle: .actionSheet)
             let library =  UIAlertAction(title: "앨범에서 사진 선택", style: .default) { (action) in self.openLibrary() }
             let delete =  UIAlertAction(title: "기본 이미지로 변경", style: .default) { (action) in self.deletePhoto() }
             let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
