@@ -110,25 +110,41 @@ extension MypageWrittenCalendarViewController: UITableViewDelegate, UITableViewD
             let data = dataList[indexPath.row]
             let id = data["id"] as! String
             
-            let db = Firestore.firestore()
-            db.collection("calendar").document("\(id)").delete { (error) in
-                if error != nil {
-                    print("check for error : \(error!.localizedDescription)")
-                } else {
-                    self.numbering = 1
-                    self.dataList.remove(at: indexPath.row)
-                    self.calendarListTableView.deleteRows(at: [indexPath], with: .automatic)
-                    if self.dataList.count == 0 {
-                        self.statusLabel.textAlignment = .center
-                        self.statusLabel.text = "아직 작성한 글이 없습니다."
-                        self.view.addSubview(self.statusLabel)
-                        self.calendarListTableView.isEditing = false
-                        self.editBarButton.image = nil
-                        self.editBarButton.isEnabled = false
+            let alert = UIAlertController(title: "게시글 삭제",
+                                          message: "게시글을 삭제하시겠습니까?",
+                                          preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+            let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+                let db = Firestore.firestore()
+                db.collection("calendar").document("\(id)").delete { (error) in
+                    if error != nil {
+                        print("check for error : \(error!.localizedDescription)")
+                    } else {
+                        let alert = UIAlertController(title: "삭제 완료",
+                                                      message: "일정 삭제가 완료되었습니다",
+                                                      preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+                            self.numbering = 1
+                            self.dataList.remove(at: indexPath.row)
+                            self.calendarListTableView.deleteRows(at: [indexPath], with: .automatic)
+                            if self.dataList.count == 0 {
+                                self.statusLabel.textAlignment = .center
+                                self.statusLabel.text = "아직 작성한 글이 없습니다."
+                                self.view.addSubview(self.statusLabel)
+                                self.calendarListTableView.isEditing = false
+                                self.editBarButton.image = nil
+                                self.editBarButton.isEnabled = false
+                            }
+                            self.calendarListTableView.reloadData()
+                        }
+                        alert.addAction(okAction)
+                        self.present(alert, animated: true, completion: nil)
                     }
-                    self.calendarListTableView.reloadData()
                 }
             }
+            alert.addAction(cancelAction)
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }
