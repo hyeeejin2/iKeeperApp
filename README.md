@@ -8,10 +8,10 @@ iKeeperApp은 동아리 부원을 위한 일정 관리와 임원을 위한 회�
 - 2020/10/01 ~ 2021/02/19
 
 ## 개발 환경
-- IDE : Xcode12
 - OS : macOS 11.0.1
 - Server & DB : Firebase
 - Language : Swift5
+- IDE : Xcode12
 - Tool : COCOAPODS
 - Library : UIKit, Firebase, FSCalendar, SideMenu, YPImagePicker
 
