@@ -1,4 +1,5 @@
 # iKeeperApp
+<img src="https://github.com/user-attachments/assets/c5f3fac5-6371-496c-9849-5ec4dd7046ad">
 
 ## 소개
 iKeeperApp은 동아리 부원을 위한 일정 관리와 임원을 위한 회원 관리를 제공하는 서비스입니다. 
